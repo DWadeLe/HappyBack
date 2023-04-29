@@ -1,0 +1,13 @@
+@import 'weui/weui.wxss';
+.page {
+  background-color: #fff;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+.wxParse-img {
+  display: block !important;
+}
+.space {
+  height:20rpx;
+  background-color: #fff;
+}

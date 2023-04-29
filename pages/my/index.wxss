@@ -1,0 +1,82 @@
+/* pages/user/user.wxss */
+.user_top{ background: #f48333;background-image: -moz-linear-gradient( 90deg, rgb(244,131,51) 0%, rgb(251,187,117) 100%); background-image: -webkit-linear-gradient( 90deg, rgb(244,131,51) 0%, rgb(251,187,117) 100%); background-image: -ms-linear-gradient( 90deg, rgb(244,131,51) 0%, rgb(251,187,117) 100%); padding: 80rpx 60rpx; }
+.user_top_center{overflow: hidden; position: relative;}
+.user_photo{ height: 140rpx; width:140rpx; float: left;}
+.user_photo image{ height: 140rpx; width:140rpx;}
+.user_text{ margin-left: 160rpx; color: #fff; position: relative;margin-top:20rpx;}
+.user_name image{ width: 20rpx; height: 20rpx; margin-left: 6rpx;}
+.user_star{ border-radius: 10rpx; background: #f4e6b4; background-image: -moz-linear-gradient( 90deg, rgb(205,158,114) 0%, rgb(244,230,180) 100%); background-image: -webkit-linear-gradient( 90deg, rgb(205,158,114) 0%, rgb(244,230,180) 100%); background-image: -ms-linear-gradient( 90deg, rgb(205,158,114) 0%, rgb(244,230,180) 100%); display: inline-block; padding: 0 14rpx; font-weight: bold;}
+.user_btn{ position: absolute; right: 0; bottom: 0;}
+.user_btn button{ line-height: 2.2; font-size: 32rpx;}
+.user_content{ margin: 10rpx 10rpx 0;}
+.user_title{ background: #fff; border-radius: 10rpx; text-align: center; padding: 20rpx 0; margin-bottom: 6rpx;}
+.user_title image{ width: 248rpx; height: 58rpx; margin: 0 auto; vertical-align: top;}
+.user_nav{ display: flex; justify-content: space-around; background: #fff; border-radius: 10rpx; padding: 20rpx 0 10rpx;}
+.user_nav_money{ text-align: center;}
+.user_nav_money image{ width: 60rpx; height: 60rpx;}
+.user_nav_money text{ display: block;}
+.user_nav_money text text{ display: inline-block; padding-left: 50rpx;}
+.user_nav_money text text.user_nav_quan{ color: #999; font-size: 24rpx;}
+.user_list_content{ padding: 0 10rpx;}
+.user_list{ background: #fff; border-radius: 10rpx; padding: 30rpx 40rpx; overflow: hidden; height: 44rpx; line-height: 44rpx; margin-top: 6rpx;}
+.user_list_image{ float: left; width: 44rpx;}
+.user_list_image image{ width: 44rpx; height: 44rpx; vertical-align: top; line-height: 44rpx;}
+.user_list_text{ margin-left: 64rpx; position: relative;}
+.user_list_arrow{ position: absolute; right:0; top:10rpx; border-top:4rpx solid #bdbdbd; border-right:4rpx solid #bdbdbd; width: 20rpx; height: 20rpx; transform: rotate(45deg);}
+.user_list_arrow_2{ position: absolute; right:0; top:4rpx;  width: 330rpx; height: 20rpx;color: #999}
+.user_list_quan{ position: absolute; right:50rpx; top:0;display:flex;align-items:center;color: #999; font-size: 24rpx;}
+
+
+/**弹窗**/
+.index_window{ display: none;}
+.index_window_bg{ position: fixed; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,.4); z-index: 10;}
+.index_window{position: fixed;left: 0; bottom: 0;width: 100%; background: #fff; z-index: 11;}
+.index_window_closed{color: #919191; padding: 30rpx;}
+.index_window_title{ font-size: 46rpx; color: #212121; text-align: center; width: 100%; display: block;}
+.index_window_title_sub{ width: 100%; display: block; text-align:center; color: #212121; font-size: 28rpx; padding: 0 0 40rpx;}
+.input-wrap { background: #fff; border-bottom: 1px solid #eee; margin: 0 60rpx; padding: 0; height: 56px; line-height: 56px; position: relative;}
+.tencent_success_window{ display: none;}
+.tencent_success_window_white_content{width: 70%;position: fixed; top: 50%; left: 50%; -moz-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); z-index: 11;}
+.tencent_success_window_white{background: #fff; border-radius:10rpx; position: relative; text-align:center; padding: 60rpx 40rpx 40rpx;}
+.tencent_success_window_white_closed{ width: 60rpx; height: 60rpx; line-height: 60rpx; text-align: center; color: #fff; position: absolute; right: -60rpx; top:-60rpx; border: 1px solid #fff; border-radius:50%;}
+.tencent_success_window_white image{ width:62rpx; height: 62rpx; display: inline-block; vertical-align: top; padding-right:20rpx;}
+.tencent_success_window_white text{ display: inline-block; font-size: 40rpx; line-height: 62rpx; color: #ec1818;}
+.tencent_success_window_white text.tencent_success_window_text{ display: block; color: #515151; font-size: 30rpx; line-height: 1.4; padding-top: 40rpx;}
+.tencent_success_window_text_left{ text-align: left;}
+.tencent_success_window_btn_content{ padding: 40rpx 0 0; display: flex;}
+.tencent_success_window_btn_content button.tencent_success_window_btn{ background: #588fe3; border-radius: 100px; width: 42%; margin: 0 auto; color: #fff; padding: 0; line-height: 2.3; font-size: 32rpx;}
+.tencent_success_window_btn_content button.tencent_success_window_btn-hover{ opacity: 0.8;}
+.password-code-btn{ position: absolute; right: 0; top:10px; z-index: 2;}
+.password-code-btn button{ height: 36px; line-height: 36px;}
+.label { color: #212121; width: 4.5em; float: left;}
+.account-info-input { font-size: 16px; line-height: 100%; height: 100%; margin-left:4em;}
+.input-wrap input::-webkit-input-placeholder{ color:#e5e5e5;}
+.index_window_btn{ margin: 10rpx 60rpx 60rpx;}
+button.index_window_btn_blue{ background-color:#00a0e9;}
+.password-code-btn button.index_window_btn_blue{ font-size: 12px;}
+button.index_window_btn_blue[disabled][type=primary]{ background-color:#b3ebf2; border-color: #b3ebf2;}
+/**弹窗**/
+
+.user_btn{ position: absolute; right: 0; bottom: 0; text-align: center;}
+.user_btn image{ width: 54rpx; height: 32rpx; margin: 0 auto; vertical-align: bottom;}
+.user_btn text{ font-size: 20rpx; color: #fff; display:block;}
+
+/**弹窗**/
+
+.user_btn{ position: absolute; right: 0; bottom: 0; text-align: center;}
+.user_btn image{ width: 54rpx; height: 32rpx; margin: 0 auto; vertical-align: bottom;}
+.user_btn text{ font-size: 20rpx; color: #fff; display:block;}
+.user_btn button{ line-height: 2.2; font-size: 32rpx;}
+
+.user_list_dian{  display: inline-block; height: 10rpx; width: 10rpx; background: #f00; border-radius: 50%; margin-right: 8rpx;}
+
+/*用户隐私*/
+.user_privacy{ padding: 10rpx 60rpx; overflow: hidden;}
+.user_privacy checkbox-group{ float: left;}
+.user_privacy label{ display: inline-block;}
+.user_privacy label view{ display: inline-block;}
+.user_privacy_txt{ display: float;}
+.user_privacy checkbox .wx-checkbox-input{ border-radius: 50%; width: 40rpx; height: 40rpx; box-sizing: border-box; vertical-align: top;}
+.user_privacy checkbox .wx-checkbox-input.wx-checkbox-input-checked{border: none; background: #00a0e9;}
+.user_privacy checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{ border-radius: 50%; width: 40rpx; height: 40rpx; line-height: 40rpx; text-align: center; font-size:30rpx; color:#fff; background: transparent; transform:translate(-50%, -50%) scale(1); -webkit-transform:translate(-50%, -50%) scale(1);}
+.user_privacy navigator{ color: #00a0e9; display:inline-block;}

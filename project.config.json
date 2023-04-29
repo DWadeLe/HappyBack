@@ -1,0 +1,103 @@
+{
+  "description": "项目配置文件。",
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": false,
+    "postcss": false,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": true,
+    "coverView": true,
+    "nodeModules": false,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "useMultiFrameRuntime": true,
+    "useApiHook": true,
+    "useApiHostProcess": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "useIsolateContext": false,
+    "userConfirmedBundleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true,
+    "disableUseStrict": false,
+    "minifyWXML": true,
+    "showES6CompileOption": false,
+    "useCompilerPlugins": false,
+    "ignoreUploadUnusedFiles": true,
+    "condition": false
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.4.3",
+  "appid": "wx1ebe82f4ee63650a",
+  "projectname": "%E9%9D%A2%E9%A6%86%E9%A1%B9%E7%9B%AE",
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "home",
+          "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "商品详情页面",
+          "pathName": "pages/goods-details/index",
+          "query": "id=134&inviter_id=456",
+          "scene": 1011
+        },
+        {
+          "name": "商品详情页面",
+          "pathName": "pages/goods-details/index",
+          "query": "id= 6761",
+          "scene": null
+        },
+        {
+          "name": "砍价详情页面",
+          "pathName": "pages/goods-details/index",
+          "query": "id=6765",
+          "scene": null
+        },
+        {
+          "name": "砍价详情页面",
+          "pathName": "pages/goods-details/index",
+          "query": "id=6765&kjJoinUid=701677",
+          "scene": null
+        },
+        {
+          "name": "拼团",
+          "pathName": "pages/goods-details/index",
+          "query": "id=6761",
+          "scene": null
+        },
+        {
+          "name": "面馆商品详情",
+          "pathName": "pages/goods-details/index",
+          "query": "id=125930",
+          "scene": null
+        }
+      ]
+    }
+  },
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
+  }
+}

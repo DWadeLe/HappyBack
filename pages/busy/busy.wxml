@@ -1,0 +1,25 @@
+<view class="page">
+  <view class="page__bd">
+    <view class='content'>
+      
+      <scroll-view  scroll-y="true" bindscroll="scroll" scroll-into-view="{{venueToView}}">
+         <block wx:for="{{venueList}}" wx:key="id">
+            <view class='venue-item' bindtap="toDetailsTap" data-id="{{item.id}}">
+              <view class="venue-pic rectangle">
+                <text wx:if="{{item.type==1}}" class="icon">大厅</text>
+                <text wx:if="{{item.type==2}}"  class="icon">小包</text>
+                <text wx:if="{{item.type==3}}"  class="icon">大包</text>
+                  <view><image class='venue-pic' mode='aspectFill' lazy-load="true" src="{{item.icon}}"></image></view>
+               </view>
+              <view class='venue-info'>
+                <text class='venueName'>{{item.name}}</text>
+                <text class='venueDesc'>{{item.desc}}</text>
+                <text class="{{item.status==0?'venueFree':'venueBusy'}}">{{item.status==0?'空闲':'忙碌'}}</text>
+
+              </view>
+            </view>
+        </block>
+      </scroll-view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,66 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/busy/busy",
+    "pages/start/start",
+    "pages/goods-details/index",
+    "pages/shop-cart/index",
+    "pages/to-pay-order/index",
+    "pages/wuliu/index",
+    "pages/my/index",
+    "pages/notice/show",
+    "pages/recharge/index",
+    "pages/withdraw/index",
+    "pages/kanjia/index",
+    "pages/authorize/index",
+    "pages/score-excharge/index",
+    "pages/asset/index",
+    "pages/score/index",
+    "pages/sign/index",
+    "pages/maidan/index",
+    "pages/coupons/index",
+    "pages/category/category"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "backgroundColor": "#f6f0e3",
+    "navigationBarBackgroundColor": "#f6f0e3",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "black",
+    "onReachBottomDistance": 50,
+    "navigationStyle": "default"
+  },
+  "tabBar": {
+    "color": "#6e6d6b",
+    "selectedColor": "#e64340",
+    "borderStyle": "white",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/nav/home-off.png",
+        "selectedIconPath": "images/nav/home-on.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/category/category",
+        "iconPath": "images/nav/ic_catefory_normal.png",
+        "selectedIconPath": "images/nav/ic_catefory_pressed.png",
+        "text": "预定"
+      },
+      {
+        "pagePath": "pages/busy/busy",
+        "iconPath": "images/nav/busyorno.png",
+        "selectedIconPath": "images/nav/busyorno-select.png",
+        "text": "忙闲"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "iconPath": "images/nav/my-off.png",
+        "selectedIconPath": "images/nav/my-on.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

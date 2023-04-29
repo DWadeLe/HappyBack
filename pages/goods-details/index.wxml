@@ -1,0 +1,42 @@
+<view class="page">
+  <view class="page__bd">
+    <view class='goods-name'>{{goodsDetail.basicInfo.name}}</view>    
+    <image wx:for="{{goodsDetail.pics}}" src="{{item.pic}}" class="goods-image" mode="widthFix" lazy-load="true" />
+    <view class='goods-price'>¥ {{selectSizePrice}}</view>
+    <view wx:if="{{goodsDetail.properties && goodsDetail.properties.length > 0}}" class="size-label-box">
+      <block wx:for="{{goodsDetail.properties}}" wx:for-item="property" wx:for-index="idx" wx:key="id">
+        <view class="label">{{property.name}}</view>
+        <view class="label-item-box">
+          <view class="label-item {{item.active ? 'active' : '' }}" wx:for="{{property.childsCurGoods}}" wx:key="id" bindtap="labelItemTap" data-propertyindex="{{idx}}" data-propertyid="{{property.id}}" data-propertyname="{{property.name}}" data-propertychildindex="{{index}}"
+            data-propertychildid="{{item.id}}" data-propertychildname="{{item.name}}">
+            {{item.name}}
+          </view>
+        </view>
+      </block>
+    </view>
+    <view class="buy-num-box">
+      <view class="num-label">购买数量</view>
+      <view class="num-box">
+        <view class="num-jian {{buyNumber == buyNumMin ? 'hui': ''}}" bindtap="numJianTap">-</view>
+        <view class="num-input">
+          <input type="number" value="{{buyNumber}}" disabled/>
+        </view>
+        <view class="num-jia {{buyNumber== buyNumMax ? 'hui': ''}}" bindtap="numJiaTap">+</view>
+      </view>
+    </view>
+    <view class='btns'>
+      <view wx:if="{{shopNum > 0}}">
+        <button class="weui-btn" type="primary" bindtap="goShopCar">去结算</button>
+      </view>  
+      <view>
+        <button class="weui-btn" type="warn" bindtap="addShopCar">加入购物车</button> 
+      </view>   
+    </view>
+  </view>
+  <view class='page__ft'>
+
+  </view>
+</view>
+<view wx:if="{{currentPages.length == 1}}" class='goIndex' bindtap="goIndex">
+  <image class="goIndex-icon" src="/images/nav/home-on.png"></image>
+</view>

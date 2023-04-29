@@ -1,0 +1,87 @@
+.content {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
+
+
+.category-item {
+  width: 100%;
+  height: 120rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.category-item-active {
+  /* background-color: #eee0c0; */
+  background-color: #fff;
+
+}
+
+.venueWrap-category {
+  margin-left: 20rpx;
+  margin-bottom: 20rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-bottom: 1rpx solid #eee0c0;
+}
+
+.venue-item {
+  width: 100%;
+  display: flex;
+  padding: 5px;
+  flex-direction: row;
+  margin-left: 20rpx;
+  align-items: center;
+  justify-content: flex-start;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+
+.venue-pic {
+  width: 100px;
+  height: 100px;
+  flex-shrink: 0;
+}
+
+.venue-info {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 5px 0px 5px;
+  height: 80px;
+}
+.venueName {
+  font-size: 28rpx;
+    color:#e64340;
+
+}
+.venueDesc {
+    font-size: 17rpx;
+}
+.venueBusy {
+  font-size: 17rpx;
+  color:#e64340;
+
+}
+.venueFree {
+  font-size: 17rpx;
+  color:#5ce640;
+
+}
+.rectangle {
+  position: relative;
+}
+.icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10rpx;
+  height: 10rpx;
+  font-size: 0.5rem;
+}
+
