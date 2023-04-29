@@ -1,6 +1,6 @@
 @import 'weui/weui.wxss';
 .page {
-  background-color: #fff;
+  background-color: #f6f6f6 ;
   min-height: 100vh;
   box-sizing: border-box;
 }

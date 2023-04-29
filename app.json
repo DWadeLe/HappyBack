@@ -1,4 +1,5 @@
 {
+  "style": "v2",
   "pages": [
     "pages/index/index",
     "pages/busy/busy",
@@ -21,10 +22,18 @@
     "pages/coupons/index",
     "pages/category/category"
   ],
+  "usingComponents": {
+    "t-button": "tdesign-miniprogram/button/button",
+    "t-tabs": "tdesign-miniprogram/tabs/tabs",
+    "t-tab-panel": "tdesign-miniprogram/tab-panel/tab-panel",
+    "t-link": "tdesign-miniprogram/link/link",
+    "t-popup": "tdesign-miniprogram/popup/popup"
+
+  },
   "window": {
     "backgroundTextStyle": "light",
-    "backgroundColor": "#f6f0e3",
-    "navigationBarBackgroundColor": "#f6f0e3",
+    "backgroundColor": "#ffffff",
+    "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTitleText": "",
     "navigationBarTextStyle": "black",
     "onReachBottomDistance": 50,

@@ -92,3 +92,12 @@
   height:50rpx;
   margin-top: 15rpx;
 }
+.yd-btn{
+  position: fixed; /* 将元素固定在页面底部 */
+  bottom: 10rpx; /* 距离页面底部为0 */
+  left: 10rpx; /* 距离页面左边界为0 */
+  width: 100%; /* 宽度占满整个页面 */
+}
+.orignal-price{
+  transform: skew(-10deg); /* 将文字倾斜10度 */
+}

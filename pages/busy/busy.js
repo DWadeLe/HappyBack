@@ -34,10 +34,14 @@ Page({
     WXAPI.queryVenue({
     }).then(function(res) {
       var venueList=res;
+      //mock 数据
+      venueList.forEach((item,index)=>{
+         item.icon="../../images/banner/banner"+(index%3+1)+".jpg";
+      })
       that.setData({
         venueList: venueList,
       });
-
+      
       console.log(venueList);
 
       wx.hideNavigationBarLoading();

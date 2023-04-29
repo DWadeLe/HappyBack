@@ -42,12 +42,16 @@ Page({
       var venueList=res;
       var hall=[];
       var privateRoom=[];
-      venueList.forEach(element => {
+      venueList.forEach((element,index) => {
           if(element.type==0){
             hall.push(element);
           }else{
             privateRoom.push(element)
           }
+          
+          //mock 数据
+          element.icon="../../images/banner/banner"+(index%3+1)+".jpg";
+     
       });
       that.setData({
         hall: hall,

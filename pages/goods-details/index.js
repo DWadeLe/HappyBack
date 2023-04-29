@@ -5,123 +5,88 @@ const regeneratorRuntime = require('../../utils/runtime')
 
 Page({
   data: {
-    goodsDetail: {},
-    selectSizePrice: 0,
-    shopNum: 0, // 购物车中商品数量
-    buyNumber: 0,
-    buyNumMin: 1,
-    buyNumMax: 0,
+    goodsDetail: {
+       name:"马里奥主题包间",
+       desc:"",
+       icon:"../../images/banner/banner3.jpg",
+       orginalPrice:120,
+       realPrice:100
+    },
+    fabButton: {
+      icon: 'call',
+      openType: 'getPhoneNumber',
+    },
+    isYYNightOrder:false,
+    isAfterNoomOrder:false,
+    isOrderType:1,
+    visible:false
+    
+  },
+  onTabsChange(event) {
+    console.log(event.detail)
+    console.log(`Change tab, tab-panel value is ${event.detail.value}.`);
+    this.setData({
+      isOrderType:event.detail.value
+    })
+  },
 
-    propertyChildIds: "",
-    propertyChildNames: "",
-    canSubmit: false, //  选中规格尺寸时候是否允许加入购物车
-    shopCarInfo: {},
-    currentPages: undefined
+  onTabsClick(event) {
+    console.log(`Click tab, tab-panel value is ${event.detail.value}.`);
+    this.setData({
+      isOrderType:event.detail.value
+    })
   },
   async onLoad(e) {
-    console.log(e)
     this.data.goodsId = e.id
-    const that = this
-    this.data.kjJoinUid = e.kjJoinUid
-    // 获取购物车数据
-    wx.getStorage({
-      key: 'shopCarInfo',
-      success: function(res) {
-        that.setData({
-          shopCarInfo: res.data,
-          shopNum: res.data.shopNum,
-          curuid: wx.getStorageSync('uid')
-        });
+    const now = new Date();
+
+      // 转换为 yyyy-mm-dd 的格式
+      const year = now.getFullYear();
+      const month = now.getMonth() + 1;
+      const day = now.getDate();
+      const formattedDate = `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day}`;
+
+    WXAPI.queryAppointment(this.data.goodsId,formattedDate).then(function(res) {
+      var info=res;
+      if(info && info.length>0){
+            info.forEach(item=>{
+              if(item.session==1){
+                that.setData({
+                  isAfterNoomOrder: true,
+                });
+              }else{
+                that.setData({
+                  isYYNightOrder: true,
+                });
+              }
+             
+            })
+            
       }
-    })
+     
+      
+      wx.hideNavigationBarLoading();
+    }).catch((e) => {
+      wx.hideNavigationBarLoading();
+    });
+    
   },
   onShow (){
-    wx.setClipboardData({
-      data: 'data',
-      success(res) {
-        wx.getClipboardData({
-          success(res) {
-            console.log(res.data) // data
-          }
-        })
-      }
-    })
-    wx.getClipboardData({
-      success(res) {
-        console.log(res.data)
-      }
-    })
-    this.getGoodsDetailAndKanjieInfo(this.data.goodsId)
+    var that=this;
+    // 获取当前时间
+    debugger
+      
   },
-  async getGoodsDetailAndKanjieInfo(goodsId) {
-    const that = this;
-    const goodsDetailRes = await WXAPI.goodsDetail(goodsId)
-    const goodsKanjiaSetRes = await WXAPI.kanjiaSet(goodsId)
-    if (goodsDetailRes.code == 0) {
-      if (goodsDetailRes.data.properties) {
-        that.setData({
-          selectSizePrice: goodsDetailRes.data.basicInfo.minPrice,
-        });
-      }
-      if (goodsDetailRes.data.basicInfo.pingtuan) {
-        that.pingtuanList(goodsId)
-      }
-      that.data.goodsDetail = goodsDetailRes.data;
-      let _data = {
-        goodsDetail: goodsDetailRes.data,
-        selectSizePrice: goodsDetailRes.data.basicInfo.minPrice,
-        buyNumMax: goodsDetailRes.data.basicInfo.stores,
-        buyNumber: (goodsDetailRes.data.basicInfo.stores > 0) ? 1 : 0,
-        currentPages: getCurrentPages()
-      }
-      if (goodsKanjiaSetRes.code == 0) {
-        _data.curGoodsKanjia = goodsKanjiaSetRes.data
-        that.data.kjId = goodsKanjiaSetRes.data.id
-        // 获取当前砍价进度
-        if (!that.data.kjJoinUid) {
-          that.data.kjJoinUid = wx.getStorageSync('uid')
-        }
-        const curKanjiaprogress = await WXAPI.kanjiaDetail(goodsKanjiaSetRes.data.id, that.data.kjJoinUid)
-        const myHelpDetail = await WXAPI.kanjiaHelpDetail(goodsKanjiaSetRes.data.id, that.data.kjJoinUid, wx.getStorageSync('token'))
-        if (curKanjiaprogress.code == 0) {
-          _data.curKanjiaprogress = curKanjiaprogress.data
-        }
-        if (myHelpDetail.code == 0) {
-          _data.myHelpDetail = myHelpDetail.data
-        }
-      }
-      if (goodsDetailRes.data.basicInfo.pingtuan) {
-        const pingtuanSetRes = await WXAPI.pingtuanSet(goodsId)
-        if (pingtuanSetRes.code == 0) {
-          _data.pingtuanSet = pingtuanSetRes.data
-        }        
-      }
-      that.setData(_data);
-      WxParse.wxParse('article', 'html', goodsDetailRes.data.content, that, 5);
-    }
-  },
-  goShopCar: function() {
-    wx.reLaunch({
-      url: "/pages/shop-cart/index"
+  onVisibleChange(e) {
+    this.setData({
+      visible: e.detail.visible,
     });
   },
-  numJianTap: function() {
-    if (this.data.buyNumber > this.data.buyNumMin) {
-      var currentNum = this.data.buyNumber;
-      currentNum--;
-      this.setData({
-        buyNumber: currentNum
-      })
-    }
-  },
-  numJiaTap: function() {
-    if (this.data.buyNumber < this.data.buyNumMax) {
-      var currentNum = this.data.buyNumber;
-      currentNum++;
-      this.setData({
-        buyNumber: currentNum
-      })
-    }
+  goYY: function() {
+    
+     this.setData({
+       visible:true
+     })
   },
   /**
    * 选择商品规格

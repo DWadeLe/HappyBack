@@ -80,3 +80,4 @@ button.index_window_btn_blue[disabled][type=primary]{ background-color:#b3ebf2; 
 .user_privacy checkbox .wx-checkbox-input.wx-checkbox-input-checked{border: none; background: #00a0e9;}
 .user_privacy checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{ border-radius: 50%; width: 40rpx; height: 40rpx; line-height: 40rpx; text-align: center; font-size:30rpx; color:#fff; background: transparent; transform:translate(-50%, -50%) scale(1); -webkit-transform:translate(-50%, -50%) scale(1);}
 .user_privacy navigator{ color: #00a0e9; display:inline-block;}
+.margin_left_right_10{width: 90%;}

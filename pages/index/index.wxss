@@ -92,3 +92,11 @@ swiper-item image {
   width:30rpx; 
   height: 30rpx;
 }
+
+.gamelib{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 96rpx;
+  background-color: #fff;
+}

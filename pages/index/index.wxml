@@ -47,9 +47,9 @@
         </navigator> -->
       </view>
     </block>
-    <navigator url='../gameLib/gameLib'>
-        <view class='recommend-title'>前往游戏库</view>
-    </navigator>
+    <swiper>
+       <view class="gamelib"><t-link size="small" theme="primary" content="游戏库" suffixIcon="jump" hover /></view>
+    </swiper>
     <!--<view class="goods-container" wx:if="{{goodsRecommend.length > 0}}">
       <view class="goods-box" wx:for-items="{{goodsRecommend}}" wx:key="*this" bindtap="toDetailsTap" data-id="{{item.id}}">
         <view class="img-box">

@@ -83,5 +83,6 @@
   width: 10rpx;
   height: 10rpx;
   font-size: 0.5rem;
+  color: rgb(207, 241, 13);
 }
 

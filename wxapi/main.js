@@ -59,9 +59,13 @@ module.exports = {
     return request('/venue/list', false, 'get', null)
   },
   queryOrder:(wx_no) =>{
-    return request(`/order/{wx_no}/list`, false, 'get', null)
+    return request('/order/'+wx_no+'/list', false, 'get', null)
   },
-
+  queryAppointment:(venue_id,date)=>{
+    return request('/appointment/'+venue_id+'/record',false,'get',{
+      date:date
+    })
+  },
   queryMobileLocation: (data) => {
     return request('/common/mobile-segment/location', false, 'get', data)
   },
