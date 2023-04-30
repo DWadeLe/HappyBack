@@ -2,6 +2,7 @@ const WXAPI = require('../../wxapi/main')
 const app = getApp();
 const WxParse = require('../../wxParse/wxParse.js');
 const regeneratorRuntime = require('../../utils/runtime')
+import Toast from 'tdesign-miniprogram/toast/index';
 
 Page({
   data: {
@@ -52,6 +53,7 @@ Page({
   },
 
   onTabsClick(event) {
+    
     console.log(`Click tab, tab-panel value is ${event.detail.value}.`);
     this.setData({
       isOrderType:event.detail.value
@@ -59,6 +61,7 @@ Page({
   },
    onLoad(e) {
     this.data.goodsId = e.id
+    var that=this
     const now = new Date();
 
       // 转换为 yyyy-mm-dd 的格式
@@ -81,7 +84,17 @@ Page({
               }
              
             })
+            if(that.data.isAfterNoomOrder && that.data.isYYNightOrder){
+              Toast({
+                context: this,
+                selector: '#t-toast',
+                message: '明日已预约满了，请下次再来',
+                theme: 'warning',
+                direction: 'column',
+              });
+            }
             
+        
       }
      
       

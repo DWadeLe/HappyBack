@@ -3,24 +3,20 @@
   "pages": [
     "pages/index/index",
     "pages/busy/busy",
-    "pages/start/start",
     "pages/goods-details/index",
-    "pages/shop-cart/index",
-    "pages/to-pay-order/index",
-    "pages/wuliu/index",
     "pages/my/index",
     "pages/notice/show",
     "pages/recharge/index",
-    "pages/withdraw/index",
     "pages/kanjia/index",
     "pages/authorize/index",
     "pages/score-excharge/index",
     "pages/asset/index",
     "pages/score/index",
-    "pages/sign/index",
-    "pages/maidan/index",
     "pages/coupons/index",
-    "pages/category/category"
+    "pages/category/category",
+    "pages/order/index",
+    "pages/vip/index",
+    "pages/appointment/index"
   ],
   "usingComponents": {
     "t-button": "tdesign-miniprogram/button/button",
@@ -32,8 +28,9 @@
     "t-toast": "tdesign-miniprogram/toast/toast",
     "t-dialog": "tdesign-miniprogram/dialog/dialog",
     "t-grid": "tdesign-miniprogram/grid/grid",
-  "t-grid-item": "tdesign-miniprogram/grid-item/grid-item"
-
+    "t-grid-item": "tdesign-miniprogram/grid-item/grid-item",
+    "t-divider": "tdesign-miniprogram/divider/divider",
+    "t-icon": "tdesign-miniprogram/icon/icon"
 
   },
   "window": {
@@ -44,11 +41,10 @@
     "navigationBarTextStyle": "black",
     "onReachBottomDistance": 50,
     "navigationStyle": "default"
-    
   },
   "tabBar": {
     "color": "#6e6d6b",
-    "selectedColor": "#e64340",
+    "selectedColor": "#f48333",
     "borderStyle": "white",
     "backgroundColor": "#fff",
     "list": [
@@ -62,7 +58,7 @@
         "pagePath": "pages/category/category",
         "iconPath": "images/nav/ic_catefory_normal.png",
         "selectedIconPath": "images/nav/ic_catefory_pressed.png",
-        "text": "预定"
+        "text": "预约"
       },
       {
         "pagePath": "pages/busy/busy",

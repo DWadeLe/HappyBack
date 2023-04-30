@@ -15,17 +15,18 @@
       </block>
     </view>
     <view >
-      <t-tabs  bind:click="onTabsClick" defaultValue="{{isOrderType}}" theme="tag" space-evenly="{{true}}">
-        <t-tab-panel  label="明天下午场" value="1" />
-        <t-tab-panel  label="明天夜晚场" value="2" />
+      <t-tabs  bind:click="onTabsClick" value="{{isOrderType}}" theme="line" space-evenly="{{true}}">
+        <t-tab-panel disabled="{{isAfterNoomOrder}}" label="明天下午场" value="1" />
+        <t-tab-panel disabled="{{isYYNightOrder}}" label="明天夜晚场" value="2" />
       </t-tabs>
-      <view class='goods-price'>惊爆价:
+      <view class='goods-price'>特价:
       <!-- <view class="orignal-price">¥{{goodsDetail.orginalPrice}}</view> -->
     ¥ {{goodsDetail.realPrice}}</view>
       <view class="yd-view">
-        <t-button bindtap="goYY" theme="primary" class="yd-btn" block>预约</t-button>
+        <t-button bindtap="goYY" disabled="{{isAfterNoomOrder && isYYNightOrder}}" theme="primary" class="yd-btn" block>预约</t-button>
       </view>  
-      
+      <t-toast id="t-toast" />
+
       <t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="{{'bottom'}}">
         <view class="block">
           <view class="header">
@@ -45,7 +46,7 @@
 
   <t-dialog
   visible="{{YDTipVisible}}"
-  title="预定规则须知"
+  title="预约规则须知"
   confirm-btn="确认"
   bind:confirm="closeYDTip"
 >

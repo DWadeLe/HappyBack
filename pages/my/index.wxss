@@ -85,7 +85,7 @@ button.index_window_btn_blue[disabled][type=primary]{ background-color:#b3ebf2; 
 .user_btn text{ font-size: 20rpx; color: #fff; display:block;}
 .user_btn button{ line-height: 2.2; font-size: 32rpx;}
 
-.user_list_dian{  display: inline-block; height: 10rpx; width: 10rpx; background: #f00; border-radius: 50%; margin-right: 8rpx;}
+.user_list_dian{  display: inline-block; height: 10rpx; width: 10rpx; background: #f48333; border-radius: 50%; margin-right: 8rpx;}
 
 /*用户隐私*/
 .user_privacy{ padding: 10rpx 60rpx; overflow: hidden;}

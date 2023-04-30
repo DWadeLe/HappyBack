@@ -22,18 +22,17 @@
   </t-grid>
 
   <t-grid class="service_list" column="1" theme="card">
-
-    <t-input class="weui-cell__bd" disabled prefixIcon="root-list" label="我的订单" bindtap='goMap' value="{{shopDetail.address}}" align="left">
+    <t-input class="weui-cell__bd" disabled prefixIcon="root-list" id="1" label="我的订单" bindtap='goMap' value="{{shopDetail.address}}" align="left">
       <view slot="suffix" class="suffix">
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </view>
     </t-input>
-    <t-input class="weui-cell__bd"  disabled prefixIcon="star" label="我的会员" bindtap='goMap' value="{{shopDetail.address}}" align="left">
+    <t-input class="weui-cell__bd"  disabled prefixIcon="star" label="我的会员" id="2" bindtap='goMap' value="{{shopDetail.address}}" align="left">
       <view slot="suffix" class="suffix">
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </view>
     </t-input>
-    <t-input class="weui-cell__bd" disabled prefixIcon="wallet" label="我的卡券" bindtap='goMap' value="{{shopDetail.address}}" align="left">
+    <t-input class="weui-cell__bd" disabled prefixIcon="wallet" label="我的卡券" id="3" bindtap='goMap' value="{{shopDetail.address}}" align="left">
       <view slot="suffix" class="suffix">
         <view class='user_list_quan' wx:if="true">
           <view class='user_list_dian' wx:if="true"></view>您有未使用的券
@@ -41,7 +40,7 @@
         </view>
       </view>
     </t-input>
-    <t-input class="weui-cell__bd" disabled prefixIcon="time" label="我的预约" bindtap='goMap' value="{{shopDetail.address}}" align="left">
+    <t-input class="weui-cell__bd" disabled prefixIcon="time" label="我的预约" id="4" bindtap='goMap' value="{{shopDetail.address}}" align="left">
       <view slot="suffix" class="suffix">
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </view>

@@ -28,18 +28,8 @@
        
       </view>
     </block>
-    <swiper>
-       <view class="gamelib"><t-link size="small" theme="primary" content="游戏库" suffixIcon="jump" hover /></view>
-    </swiper>
-    <!--<view class="goods-container" wx:if="{{goodsRecommend.length > 0}}">
-      <view class="goods-box" wx:for-items="{{goodsRecommend}}" wx:key="*this" bindtap="toDetailsTap" data-id="{{item.id}}">
-        <view class="img-box">
-          <image src="{{item.pic}}_m" class="image" mode="aspectFill" lazy-load="true" />
-        </view>
-        <view class="goods-title">{{item.name}}</view>
-        <view class="goods-price">¥ {{item.minPrice}}</view>
-      </view>
-    </view>-->
+    <view class="gamelib"><t-link size="small" theme="primary" content="游戏库" suffixIcon="jump" hover /></view>
+    
   </view>
   <view class='page__ft'>
     

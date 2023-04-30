@@ -72,6 +72,19 @@ Page({
     this.orderList()
   
 },
+  goMap(e){
+    
+     var typeMap={
+         "1":"/pages/order/index",
+         "2":"/pages/vip/index",
+         "3":"/pages/coupons/index",
+         "4":"/pages/appointment/index",
+     }
+     wx.navigateTo({
+      url: typeMap[e.target.id]
+    })
+
+  },
   queryUser(mobile){
 
     let that = this;

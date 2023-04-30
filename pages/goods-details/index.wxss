@@ -7,7 +7,7 @@
   border-bottom: 1rpx solid #eee0c0;
 }
 .goods-price {
-  color: #e64340;
+  color: #f48333;
   margin-top: 30rpx;
   margin-left: 30rpx;
   border-bottom: 1px solid #eee0c0;
@@ -155,10 +155,11 @@
   margin-right: 20rpx;
    float:right;
    color: #fff !important;
-   background-color: rgb(243, 114, 28) !important;
+   background-color: #f48333 !important;
 }
 .yd-price{
   margin-left: 20rpx;
    text-align: center;
    float: left;
+   color: #f48333;
 }

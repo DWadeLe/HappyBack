@@ -11,3 +11,13 @@
   height:20rpx;
   background-color: #fff;
 }
+page {
+  --td-brand-color:#f48333
+}
+
+.float-left{
+  float: left;
+}
+.float-right{
+  float: right;
+}
