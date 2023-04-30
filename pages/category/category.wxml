@@ -1,14 +1,10 @@
-<view class="page">
-  <view class="page__bd">
-    <view class='content'>
-      <scroll-view class='left' scroll-y="true" scroll-into-view="{{categoryToView}}">
-        <block wx:for="{{categories}}" wx:key="id">
-          <view class="category-item {{categorySelected==item.scrollId?'category-item-active':''}}" data-id='{{item.scrollId}}' id='{{item.scrollId}}' bindtap='onCategoryClick'>
-            <text>{{item.name}}</text>
-          </view>
-        </block>
-      </scroll-view>
-      <scroll-view class='right' scroll-y="true" scroll-into-view="{{venueToView}}" bindscroll="scroll">
+<view class="">
+  <view class="">
+    <view>
+      <t-tabs value="{{categorySelected}}" bind:change="onCategoryClick" bind:click="onCategoryClick" theme="card">
+          <t-tab-panel wx:for="{{categories}}"  wx:key="scrollId" label="{{item.name}}" value="{{item.scrollId}}" />
+      </t-tabs>
+      <scrol-view  scroll-y="true" scroll-into-view="{{venueToView}}" bindscroll="scroll">
         <block wx:for="{{showData}}"  wx:key="id">
             <view class='venue-item' bindtap="toDetailsTap" data-id="{{item.id}}">
               <image class='venue-pic' mode='aspectFill' lazy-load="true" src="{{item.icon}}"></image>
@@ -19,7 +15,7 @@
               </view>
             </view>
         </block>
-      </scroll-view>
+      </scrol-view>
     </view>
   </view>
 </view>

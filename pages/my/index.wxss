@@ -1,9 +1,26 @@
 /* pages/user/user.wxss */
-.user_top{ background: #f48333;background-image: -moz-linear-gradient( 90deg, rgb(244,131,51) 0%, rgb(251,187,117) 100%); background-image: -webkit-linear-gradient( 90deg, rgb(244,131,51) 0%, rgb(251,187,117) 100%); background-image: -ms-linear-gradient( 90deg, rgb(244,131,51) 0%, rgb(251,187,117) 100%); padding: 80rpx 60rpx; }
+.user_top{ 
+  background: #fff; 
+  padding: 80rpx 60rpx; 
+  left: 0;
+  bottom: 100px;
+
+}
+.service_list{
+  background: #fff; 
+  padding: 0 20rpx; 
+  left: 0;
+  /* margin-top: 30px ; */
+  bottom: 90px;
+}
 .user_top_center{overflow: hidden; position: relative;}
 .user_photo{ height: 140rpx; width:140rpx; float: left;}
 .user_photo image{ height: 140rpx; width:140rpx;}
-.user_text{ margin-left: 160rpx; color: #fff; position: relative;margin-top:20rpx;}
+.user_text{ margin-left: 160rpx; color: #000; position: relative;margin-top:20rpx;}
+.user_name{
+  font-weight: bold;
+  font-size: 1.5rem;
+}
 .user_name image{ width: 20rpx; height: 20rpx; margin-left: 6rpx;}
 .user_star{ border-radius: 10rpx; background: #f4e6b4; background-image: -moz-linear-gradient( 90deg, rgb(205,158,114) 0%, rgb(244,230,180) 100%); background-image: -webkit-linear-gradient( 90deg, rgb(205,158,114) 0%, rgb(244,230,180) 100%); background-image: -ms-linear-gradient( 90deg, rgb(205,158,114) 0%, rgb(244,230,180) 100%); display: inline-block; padding: 0 14rpx; font-weight: bold;}
 .user_btn{ position: absolute; right: 0; bottom: 0;}
@@ -18,13 +35,13 @@
 .user_nav_money text text{ display: inline-block; padding-left: 50rpx;}
 .user_nav_money text text.user_nav_quan{ color: #999; font-size: 24rpx;}
 .user_list_content{ padding: 0 10rpx;}
-.user_list{ background: #fff; border-radius: 10rpx; padding: 30rpx 40rpx; overflow: hidden; height: 44rpx; line-height: 44rpx; margin-top: 6rpx;}
+.user_list{ background: #fff; border-radius: 10rpx; padding: 30rpx 0rpx; overflow: hidden; height: 44rpx; line-height: 44rpx; margin-top: 6rpx;}
 .user_list_image{ float: left; width: 44rpx;}
 .user_list_image image{ width: 44rpx; height: 44rpx; vertical-align: top; line-height: 44rpx;}
 .user_list_text{ margin-left: 64rpx; position: relative;}
 .user_list_arrow{ position: absolute; right:0; top:10rpx; border-top:4rpx solid #bdbdbd; border-right:4rpx solid #bdbdbd; width: 20rpx; height: 20rpx; transform: rotate(45deg);}
 .user_list_arrow_2{ position: absolute; right:0; top:4rpx;  width: 330rpx; height: 20rpx;color: #999}
-.user_list_quan{ position: absolute; right:50rpx; top:0;display:flex;align-items:center;color: #999; font-size: 24rpx;}
+.user_list_quan{ display:flex;align-items:center;color: #999; font-size: 24rpx;}
 
 
 /**弹窗**/
@@ -81,3 +98,12 @@ button.index_window_btn_blue[disabled][type=primary]{ background-color:#b3ebf2; 
 .user_privacy checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{ border-radius: 50%; width: 40rpx; height: 40rpx; line-height: 40rpx; text-align: center; font-size:30rpx; color:#fff; background: transparent; transform:translate(-50%, -50%) scale(1); -webkit-transform:translate(-50%, -50%) scale(1);}
 .user_privacy navigator{ color: #00a0e9; display:inline-block;}
 .margin_left_right_10{width: 90%;}
+
+.top_color{
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    z-index: 0;
+    background-color: #f48333;
+}

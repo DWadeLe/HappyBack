@@ -1,6 +1,4 @@
 {
-   "navigationBarTitleText": "预约详情",
-   "usingComponents": {
-    "t-fab": "tdesign-miniprogram/fab/fab"
-  }
+   "navigationBarTitleText": "预约详情"
+   
 }

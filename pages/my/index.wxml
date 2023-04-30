@@ -1,7 +1,7 @@
 <!--pages/user/user.wxml-->
-<view>
-  
-  <view class='user_top'>
+<view class="page">
+  <view class="top_color"></view>
+  <t-grid class="user_top" column="1" theme="card">
     <view class='user_top_center'>
       <view class='user_photo'>
         <!--<open-data type="userAvatarUrl"></open-data>-->
@@ -11,7 +11,6 @@
       </view>
       <view class='user_text'>
         <view class='user_name'><text style="font-size:34rpx;">{{userNickName}}</text>
-          <!--<image class="slide-image" mode="aspectFill" src="../../images/user_star.png"></image><image class="slide-image" mode="aspectFill" src="../../images/user_star.png"></image><image class="slide-image" mode="aspectFill" src="../../images/user_star.png"></image><image class="slide-image" mode="aspectFill" src="../../images/user_star.png"></image><image class="slide-image" mode="aspectFill" src="../../images/user_star.png"></image>-->
         </view>
         <!--<view class='user_star'>五星会员</view>-->
         <view class='user_phone'><text>{{mobile}}</text>
@@ -19,51 +18,40 @@
         </view>
       </view>
     </view>
-  </view>
-  <!--列表-->
-  <view class='user_list_content'>
-    <navigator url='../myorder/myorder'>
-      <view class='user_list'>
-        <view class='user_list_image'>
-          <image class="slide-image" mode="aspectFill" src="../../images/my_order.png"></image>
-        </view>
-        <view class='user_list_text'>我的订单<view class='user_list_arrow'></view>
+
+  </t-grid>
+
+  <t-grid class="service_list" column="1" theme="card">
+
+    <t-input class="weui-cell__bd" disabled prefixIcon="root-list" label="我的订单" bindtap='goMap' value="{{shopDetail.address}}" align="left">
+      <view slot="suffix" class="suffix">
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </view>
+    </t-input>
+    <t-input class="weui-cell__bd"  disabled prefixIcon="star" label="我的会员" bindtap='goMap' value="{{shopDetail.address}}" align="left">
+      <view slot="suffix" class="suffix">
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </view>
+    </t-input>
+    <t-input class="weui-cell__bd" disabled prefixIcon="wallet" label="我的卡券" bindtap='goMap' value="{{shopDetail.address}}" align="left">
+      <view slot="suffix" class="suffix">
+        <view class='user_list_quan' wx:if="true">
+          <view class='user_list_dian' wx:if="true"></view>您有未使用的券
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
         </view>
       </view>
-    </navigator>
-    <navigator url='../myorder/myorder'>
-      <view class='user_list'>
-        <view class='user_list_image'>
-          <image class="slide-image" mode="aspectFill" src="../../images/my_vip.png"></image>
-        </view>
-        <view class='user_list_text'>我的会员<view class='user_list_arrow'></view>
-        </view>
+    </t-input>
+    <t-input class="weui-cell__bd" disabled prefixIcon="time" label="我的预约" bindtap='goMap' value="{{shopDetail.address}}" align="left">
+      <view slot="suffix" class="suffix">
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </view>
-    </navigator>
-    <navigator url='../myorder/myorder'>
-      <view class='user_list'>
-        <view class='user_list_image'>
-          <image class="slide-image" mode="aspectFill" src="../../images/my_coupons.png"></image>
-        </view>
-        <view class='user_list_text'>我的卡券<view class='user_list_arrow'></view>
-          <view class='user_list_quan' wx:if="true">
-            <view class='user_list_dian' wx:if="true"></view>您有未使用的券
-          </view>
-        </view>
-      </view>
-    </navigator>
-    <navigator url='../myorder/myorder'>
-      <view class='user_list'>
-        <view class='user_list_image'>
-          <image class="slide-image" mode="aspectFill" src="../../images/my_yd.png"></image>
-        </view>
-        <view class='user_list_text'>我的预定<view class='user_list_arrow'></view>
-        </view>
-      </view>
-    </navigator>
+    </t-input>
 
 
-  </view>
+
+
+
+  </t-grid>
 
 
 </view>

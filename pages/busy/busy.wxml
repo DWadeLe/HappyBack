@@ -1,6 +1,6 @@
-<view class="page">
-  <view class="page__bd">
-    <view class='content'>
+<view class="">
+  <view class="">
+    <view class=''>
       
       <scroll-view  scroll-y="true" bindscroll="scroll" scroll-into-view="{{venueToView}}">
          <block wx:for="{{venueList}}" wx:key="id">

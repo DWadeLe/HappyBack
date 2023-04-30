@@ -39,6 +39,16 @@ Page({
       swiperCurrent: e.detail.current
     })
   },
+  onCopyText() {
+    wx.setClipboardData({     
+       data: this.data.shopDetail.contractPhone,      
+       success(res) {
+        wx.showToast({         
+          title: '复制成功',          
+          icon: 'success'
+        })
+      }})
+    },
   toDetailsTap: function(e) {
     wx.navigateTo({
       url: "/pages/goods-details/index?id=" + e.currentTarget.dataset.id

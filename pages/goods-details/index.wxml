@@ -2,9 +2,7 @@
   <view class="page__bd">
     <view class='goods-name'>{{goodsDetail.name}}</view>    
     <image  src="{{goodsDetail.icon}}" class="goods-image" mode="widthFix" lazy-load="true" />
-    <view class='goods-price'>惊爆价:
-      <!-- <view class="orignal-price">¥{{goodsDetail.orginalPrice}}</view> -->
-    ¥ {{goodsDetail.realPrice}}</view>
+    
     <view wx:if="{{goodsDetail.properties && goodsDetail.properties.length > 0}}" class="size-label-box">
       <block wx:for="{{goodsDetail.properties}}" wx:for-item="property" wx:for-index="idx" wx:key="id">
         <view class="label">{{property.name}}</view>
@@ -18,30 +16,54 @@
     </view>
     <view >
       <t-tabs  bind:click="onTabsClick" defaultValue="{{isOrderType}}" theme="tag" space-evenly="{{true}}">
-        <t-tab-panel  label="明天上午场" value="1" />
+        <t-tab-panel  label="明天下午场" value="1" />
         <t-tab-panel  label="明天夜晚场" value="2" />
       </t-tabs>
-      
-      <view class="yd-btn">
-        <t-button bindtap="goYY" theme="primary" size="large" block>预约</t-button>
+      <view class='goods-price'>惊爆价:
+      <!-- <view class="orignal-price">¥{{goodsDetail.orginalPrice}}</view> -->
+    ¥ {{goodsDetail.realPrice}}</view>
+      <view class="yd-view">
+        <t-button bindtap="goYY" theme="primary" class="yd-btn" block>预约</t-button>
       </view>  
-      <t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="{{'bottom'}}">
-        <view class="block block--">{{goodsDetail.name}}{{goodsDetail.orginalPrice}}</view>
-      </t-popup>
+      
       <t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="{{'bottom'}}">
         <view class="block">
           <view class="header">
-            <view class="btn btn--cancel" aria-role="button">取消</view>
-            <view class="title">标题文字</view>
-            <view class="btn btn--confirm" aria-role="button">确定</view>
+            <view class="title">明细</view>
           </view>
+            <t-input label="房间名称" value="{{goodsDetail.name}}" align="right" />
+            <t-input label="场次" value="{{isOrderType==1?'明天下午场':'明天夜晚场'}}" align="right" />
+            <t-input label="可用券" value="暂无" align="right" />
+            <view class="to_pay">
+                <view class="yd-price">¥ {{goodsDetail.realPrice}}</view>
+                <t-button bindtap="goPay"  shape="round" t-class="yd-py-btn" block>去支付</t-button>
+            </view> 
         </view>
       </t-popup>
     </view>
   </view>
+
+  <t-dialog
+  visible="{{YDTipVisible}}"
+  title="预定规则须知"
+  confirm-btn="确认"
+  bind:confirm="closeYDTip"
+>
+  <scroll-view slot="content" scroll-y class="long-content">
+    <view class="content-container"
+      >这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+      这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+      这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+      这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+      这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+      这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+    </view>
+  </scroll-view>
+</t-dialog>
   <view class='page__ft'>
 
   </view>
+
 </view>
 <view wx:if="{{currentPages.length == 1}}" class='goIndex' bindtap="goIndex">
   <image class="goIndex-icon" src="/images/nav/home-on.png"></image>

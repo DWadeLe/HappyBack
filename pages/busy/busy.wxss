@@ -34,18 +34,19 @@
 
 .venue-item {
   width: 100%;
+  width: ;
   display: flex;
   padding: 5px;
   flex-direction: row;
-  margin-left: 20rpx;
+  /* margin-left: 20rpx; */
   align-items: center;
   justify-content: flex-start;
-  border-bottom: 1rpx solid #f2f2f2;
+  /* border-bottom: 1rpx solid #f2f2f2; */
 }
 
 .venue-pic {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 120px;
   flex-shrink: 0;
 }
 

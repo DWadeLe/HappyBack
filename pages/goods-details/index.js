@@ -9,8 +9,8 @@ Page({
        name:"马里奥主题包间",
        desc:"",
        icon:"../../images/banner/banner3.jpg",
-       orginalPrice:120,
-       realPrice:100
+       orginalPrice:120.00,
+       realPrice:"100.00"
     },
     fabButton: {
       icon: 'call',
@@ -19,8 +19,29 @@ Page({
     isYYNightOrder:false,
     isAfterNoomOrder:false,
     isOrderType:1,
-    visible:false
-    
+    visible:false,
+    YDTipVisible:false,
+    isReadTip:false,
+  },
+  goPay(){
+    let isReadTip=this.data.isReadTip;
+    if(!isReadTip){
+      this.setData({
+        YDTipVisible:true
+       });
+       return;
+    }
+
+    //TODO 调用微信支付接口
+       
+
+  },
+ 
+  closeYDTip(){
+    this.setData({
+      YDTipVisible:false,
+      isReadTip:true
+     });
   },
   onTabsChange(event) {
     console.log(event.detail)
@@ -36,7 +57,7 @@ Page({
       isOrderType:event.detail.value
     })
   },
-  async onLoad(e) {
+   onLoad(e) {
     this.data.goodsId = e.id
     const now = new Date();
 
@@ -45,7 +66,6 @@ Page({
       const month = now.getMonth() + 1;
       const day = now.getDate();
       const formattedDate = `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day}`;
-
     WXAPI.queryAppointment(this.data.goodsId,formattedDate).then(function(res) {
       var info=res;
       if(info && info.length>0){
@@ -72,9 +92,7 @@ Page({
     
   },
   onShow (){
-    var that=this;
-    // 获取当前时间
-    debugger
+    
       
   },
   onVisibleChange(e) {

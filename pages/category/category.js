@@ -16,12 +16,12 @@ Page({
       "scrollId":"2"
     }],
     goodsWrap: [],
-    categorySelected: "",
+    categorySelected: 1,
     goodsToView: "",
     categoryToView: "",
     hall:[],
     privateRoom:[],
-    showData:[]
+    showData:[],
   },
 
   /**
@@ -72,8 +72,8 @@ Page({
   },
   onCategoryClick: function(e) {
 
-    let id = e.currentTarget.dataset.id;
-    this.categoryClick = true;
+    let id = e.detail.value;
+    console.log(e)
     this.setData({
       goodsToView: id,
       categorySelected: id,
