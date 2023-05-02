@@ -21,7 +21,7 @@ Page({
     categoryToView: "",
     hall:[],
     privateRoom:[],
-    showData:[],
+    showData:[{"name":"接率道化","icon":"http://dummyimage.com/100x100","type":12,"status":1,"id":28,"desc":"occaecat cillum"},{"desc":"dolor dolore ut","icon":"http://dummyimage.com/100x100","name":"她类人元将","status":0,"id":12,"type":45},{"icon":"http://dummyimage.com/100x100","status":0,"desc":"anim labore amet nostrud deserunt","id":31,"name":"红府内","type":31},{"name":"如色治响","icon":"http://dummyimage.com/100x100","status":0,"id":65,"desc":"aliquip qui","type":68},{"icon":"http://dummyimage.com/100x100","name":"铁件回当","status":0,"id":66,"desc":"Lorem minim do","type":52}],
   },
 
   /**

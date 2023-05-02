@@ -24,13 +24,33 @@
     background: url(https://cdn.it120.cc/images/weappshop/add-addr.png) no-repeat left center;
     background-size: 40rpx auto;
 }
-.coupons-item{
-  width:630rpx;
-  height: 180rpx;
-  margin: 10rpx;
+.unuse_coupons_item{
+ 
   padding: 50rpx;
-  background-color: #f1a83b;
+  background-color: #f48333 !important;
   font-size: 30rpx;
   line-height: 50rpx;
   color: #fff;
+  margin: 20rpx;
+}
+.use_coupons_item{
+  padding: 50rpx;
+  background-color: #c4bfbcee !important;
+  font-size: 30rpx;
+  line-height: 50rpx;
+  color: #fff;
+  margin: 20rpx;
+
+}
+.icon {
+  position: absolute;
+  top: -40px;
+  left: -40px;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #4c516d;
+  transform: rotate(-45deg);
 }

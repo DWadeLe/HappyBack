@@ -21,3 +21,10 @@ page {
 .float-right{
   float: right;
 }
+.float_clear{
+    clear: both;
+}
+
+.margin_left_30{
+  margin-left: 30px;
+}

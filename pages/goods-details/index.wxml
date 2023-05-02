@@ -25,16 +25,15 @@
       <view class="yd-view">
         <t-button bindtap="goYY" disabled="{{isAfterNoomOrder && isYYNightOrder}}" theme="primary" class="yd-btn" block>预约</t-button>
       </view>  
-      <t-toast id="t-toast" />
 
       <t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="{{'bottom'}}">
         <view class="block">
           <view class="header">
             <view class="title">明细</view>
           </view>
-            <t-input label="房间名称" value="{{goodsDetail.name}}" align="right" />
-            <t-input label="场次" value="{{isOrderType==1?'明天下午场':'明天夜晚场'}}" align="right" />
-            <t-input label="可用券" value="暂无" align="right" />
+            <t-input disabled label="房间名称" value="{{goodsDetail.name}}" align="right" />
+            <t-input disabled label="场次" value="{{isOrderType==1?'明天下午场':'明天夜晚场'}}" align="right" />
+            <t-input disabled label="可用券" value="暂无" align="right" />
             <view class="to_pay">
                 <view class="yd-price">¥ {{goodsDetail.realPrice}}</view>
                 <t-button bindtap="goPay"  shape="round" t-class="yd-py-btn" block>去支付</t-button>
@@ -68,4 +67,5 @@
 </view>
 <view wx:if="{{currentPages.length == 1}}" class='goIndex' bindtap="goIndex">
   <image class="goIndex-icon" src="/images/nav/home-on.png"></image>
-</view>
+</view>     
+ <t-toast id="t-toast" />

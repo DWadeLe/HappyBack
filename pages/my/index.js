@@ -77,7 +77,7 @@ Page({
      var typeMap={
          "1":"/pages/order/index",
          "2":"/pages/vip/index",
-         "3":"/pages/coupons/index",
+         "3":"/pages/mycoupons/index",
          "4":"/pages/appointment/index",
      }
      wx.navigateTo({

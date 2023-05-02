@@ -62,12 +62,20 @@ module.exports = {
     return request('/order/'+wx_no+'/list', false, 'get', null)
   },
   queryAppointment:(venue_id,date)=>{
-    return request('/appointment/'+venue_id+'/record',false,'get',{
+    return request('/appointment/venue/'+venue_id+'/record',false,'get',{
       date:date
+    })
+  },
+  queryAppointmentByUser:(userId,openId)=>{
+    return request('/appointment/user/'+userId+'/record',false,'get',{
+      'X-WX-OPENID':openId
     })
   },
   queryMobileLocation: (data) => {
     return request('/common/mobile-segment/location', false, 'get', data)
+  },
+  queryCouponsByUser: (user_id) => {
+    return request(`/coupon/${user_id}/list`, false, 'get', {})
   },
   queryConfig: (data) => {
     return request('/config/get-value', true, 'get', data)

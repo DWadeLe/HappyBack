@@ -1,15 +1,13 @@
-<view class="container">
-    <view class="coupons-list">
-      <view class="coupons-item" wx:for-items="{{coupons}}" wx:for-index="idx"  bindtap="gitCoupon" data-id="{{item.id}}">
-        <view style="font-size: 50rpx"> ￥ {{item.money}}元 </view>
-        <view> {{item.name}} </view>
-        <view> 满 {{item.moneyHreshold}} 元使用 </view>
-        <view> {{item.dateEnd}} 前有效 </view>
-      </view>
-    </view>
-    <view style="height:100rpx;background-color:#fff;width:100%;"></view>
-    <view class="bottom-box">
-        <view class="add-btn" bindtap="goBuy">立即前往下单</view>
-    </view>
+<view class="page">
+      <t-grid class="{{item.status==1?'unuse_coupons_item':'use_coupons_item'}}" wx:for="{{coupons}}"   bindtap="gitCoupon" >
+        <view> {{item.coupon_name}} </view>
+        <view> {{item.expire_time}} 前有效 </view>
+        <view wx:if="{{item.status==2}}"> {{item.use_time}} 使用 </view>
+
+        <t-badge wx:if="{{item.coupon_type==1}}" count="优惠" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
+        <t-badge wx:if="{{item.coupon_type==2}}" count="包场" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
+        <t-badge wx:if="{{item.coupon_type==3}}" count="小时" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
+      </t-grid>
+      
 
 </view>

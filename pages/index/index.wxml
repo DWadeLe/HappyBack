@@ -28,10 +28,12 @@
        
       </view>
     </block>
-    <view class="gamelib"><t-link size="small" theme="primary" content="游戏库" suffixIcon="jump" hover /></view>
+    <view class="gamelib" bindtap="goGamelib"><t-link size="small" theme="primary" content="游戏库" suffixIcon="jump" hover /></view>
     
   </view>
   <view class='page__ft'>
     
   </view>
+
 </view>
+<t-toast id="t-toast" />

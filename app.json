@@ -12,11 +12,12 @@
     "pages/score-excharge/index",
     "pages/asset/index",
     "pages/score/index",
-    "pages/coupons/index",
+    "pages/mycoupons/index",
     "pages/category/category",
     "pages/order/index",
     "pages/vip/index",
     "pages/appointment/index"
+    
   ],
   "usingComponents": {
     "t-button": "tdesign-miniprogram/button/button",
@@ -30,8 +31,13 @@
     "t-grid": "tdesign-miniprogram/grid/grid",
     "t-grid-item": "tdesign-miniprogram/grid-item/grid-item",
     "t-divider": "tdesign-miniprogram/divider/divider",
-    "t-icon": "tdesign-miniprogram/icon/icon"
-
+    "t-icon": "tdesign-miniprogram/icon/icon",
+    "t-radio": "tdesign-miniprogram/radio/radio",
+    "t-cell": "tdesign-miniprogram/cell/cell",
+    "t-tag": "tdesign-miniprogram/tag/tag",
+    "t-radio-group": "tdesign-miniprogram/radio-group/radio-group",
+    "t-switch": "tdesign-miniprogram/switch/switch",
+    "t-badge": "tdesign-miniprogram/badge/badge"
   },
   "window": {
     "backgroundTextStyle": "light",

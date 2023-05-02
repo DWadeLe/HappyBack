@@ -14,8 +14,10 @@
               <view class='venue-info'>
                 <text class='venueName'>{{item.name}}</text>
                 <text class='venueDesc'>{{item.desc}}</text>
-                <text class="{{item.status==0?'venueFree':'venueBusy'}}">{{item.status==0?'空闲':'忙碌'}}</text>
-
+                <view >
+                  <t-tag v-if="item.status==0" icon="{{item.status==0?'check-rectangle':'time'}}" class="margin-16" theme="{{item.status==0?'success':'danger'}}">{{item.status==0?'空闲':'忙碌'}}</t-tag>
+                </view>
+               
               </view>
             </view>
         </block>
