@@ -1,5 +1,12 @@
 <view class="page">
-      <t-grid class="{{item.status==1?'unuse_coupons_item':'use_coupons_item'}}" wx:for="{{coupons}}"   bindtap="gitCoupon" >
+  <t-pull-down-refresh value="{{baseRefresh.value}}" loadingProps="{{loadingProps}}" loadingTexts="{{['下拉刷新', '松手刷新', '正在刷新', '刷新完成']}}" bind:refresh="onPullDownRefresh" bind:scroll="onScroll">
+    <t-tabs bind:click="onTabsClick" value="{{useStatus}}" theme="line" space-evenly="{{true}}">
+      <t-tab-panel label="待使用" value="1" />
+      <t-tab-panel label="已使用" value="2" />
+      <t-tab-panel label="已失效" value="3" />
+    </t-tabs>
+    <view wx:for="{{coupons}}" class="{{item.status!=1?'use_coupons_shadow':''}}">
+      <t-grid class="{{item.status==1?'unuse_coupons_item':'use_coupons_item'}}" theme="card" bindtap="gitCoupon">
         <view> {{item.coupon_name}} </view>
         <view> {{item.expire_time}} 前有效 </view>
         <view wx:if="{{item.status==2}}"> {{item.use_time}} 使用 </view>
@@ -8,6 +15,9 @@
         <t-badge wx:if="{{item.coupon_type==2}}" count="包场" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
         <t-badge wx:if="{{item.coupon_type==3}}" count="小时" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
       </t-grid>
-      
+    </view>
+    <t-back-top wx:if="{{backTopVisible}}" text="顶部" />
 
+
+  </t-pull-down-refresh>
 </view>

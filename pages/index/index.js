@@ -10,7 +10,7 @@ Page({
     shopDetail:{
       latitude:30.530243,
       longitude:104.089588,
-      name:"Happy Back主机游戏社",
+      name:"HappyBack主机游戏社",
       address:"四川成都市双流区观东一街666号4栋1单元213",
       bussinessTime:"12:00-22:00",
       contractPhone:"18512321654"
@@ -104,7 +104,22 @@ Page({
       }
     })
   },
-  goGamelib(){
+  goGamelib(e){
+      // const aid='200376800'
+      // const timestamp=new Date().getTime()
+      // const path=`pages/video/video?__preload_=${timestamp*10+3}&__key_=${timestamp*10+4}&avid=${aid}`
+      // wx.navigateToMiniProgram({
+      //   appId: 'wx7564fd5313d24844',
+      //   path,
+      //   success: res => {
+      //     console.log('跳转成功')
+      //   }
+      // })
+
+      wx.navigateTo({
+        url: '/pages/gamelib/index',
+      })
+    
     Toast({
       context: this,
       selector: '#t-toast',

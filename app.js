@@ -1,7 +1,7 @@
 const WXAPI = require('wxapi/main')
 App({
   navigateToLogin: false,
-  onLaunch: function() {
+  onLaunch: function () {
     const that = this;
     // 检测新版本
     const updateManager = wx.getUpdateManager()
@@ -33,7 +33,7 @@ App({
      * 监听网络状态变化
      * 可根据业务需求进行调整
      */
-    wx.onNetworkStatusChange(function(res) {
+    wx.onNetworkStatusChange(function (res) {
       if (!res.isConnected) {
         that.globalData.isConnected = false
         wx.showToast({
@@ -47,34 +47,60 @@ App({
       }
     })
     //  获取系统参数设置
-    WXAPI.queryConfigBatch('mallName').then(function(res) {
+    WXAPI.queryConfigBatch('mallName').then(function (res) {
       if (res.code === 0) {
         res.data.forEach(ele => {
           wx.setStorageSync(ele.key, ele.value);
-        })        
+        })
       }
     })
   },
-  goLoginPageTimeOut: function() {
-    if (this.navigateToLogin){
+  /**
+   * 设置监听器
+   */
+  setWatcher(_this) { // 接收index.js传过来的data对象和watch对象
+    var data=_this.data;
+    var watch=_this.watch
+    Object.keys(watch).forEach(v => { // 将watch对象内的key遍历
+      this.observe(_this,data, v, watch[v]); // 监听data内的v属性，传入watch内对应函数以调用
+    })
+  },
+  /**
+   * 监听属性 并执行监听函数
+   */
+  observe(_this,obj, key, watchFun) {
+    var val = obj[key]; // 给该属性设默认值
+    Object.defineProperty(obj, key, {
+      configurable: true,
+      enumerable: true,
+      set: function (value) {
+        watchFun(_this,value, val); // 赋值(set)时，调用对应函数
+      },
+      get: function () {
+        return val;
+      }
+    })
+  },
+  goLoginPageTimeOut: function () {
+    if (this.navigateToLogin) {
       return
     }
     wx.removeStorageSync('token')
     this.navigateToLogin = true
-    setTimeout(function() {
+    setTimeout(function () {
       wx.navigateTo({
         url: "/pages/authorize/index"
       })
     }, 1000)
   },
-  onShow (e) {
+  onShow(e) {
     this.globalData.launchOption = e
     // 保存邀请人
     if (e && e.query && e.query.inviter_id) {
       wx.setStorageSync('referrer', e.query.inviter_id)
     }
   },
-  globalData: {                
+  globalData: {
     isConnected: true,
     launchOption: undefined
   }

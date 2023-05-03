@@ -14,9 +14,8 @@
         </block>
       </view>
     </view>
-    <block>
-      <view class="weui-cells__title">{{shopDetail.name}}</view>
-      <view class="weui-cells weui-cells_after-title" >
+      <!-- <view class="shop_name">{{shopDetail.name}}</view> -->
+      <t-grid theme="card" class="weui-cells weui-cells_after-title location_item" >
         <t-input class="weui-cell__bd" prefixIcon="location" label=""   bindtap='goMap' value="{{shopDetail.address}}" align="left" >
           <view slot="suffix" class="suffix">
             <view class="weui-cell__ft weui-cell__ft_in-access">地图</view>
@@ -24,12 +23,13 @@
         </t-input>
         <t-input class="weui-cell__bd weui-cell__ft" disabled  prefixIcon="time" label="营业时间"    value="{{shopDetail.bussinessTime}}" align="right" />
         <t-input class="weui-cell__bd weui-cell__ft" disabled  prefixIcon="call" label="联系电话" bindtap="onCopyText"   value="{{shopDetail.contractPhone}}" align="right" />
+        <view class="gamelib" ><t-link url="{{'https://www.bilibili.com/video/BV1Ui4y1L7WH'}}" bindtap="goGamelib" size="large" theme="primary" content="精选游戏库" suffixIcon="jump" hover /></view>
+
+
        
-       
-      </view>
-    </block>
-    <view class="gamelib" bindtap="goGamelib"><t-link size="small" theme="primary" content="游戏库" suffixIcon="jump" hover /></view>
-    
+      <!-- </t-grid>
+    <t-grid class="location_item" theme="card"> -->
+  </t-grid>
   </view>
   <view class='page__ft'>
     

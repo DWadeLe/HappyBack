@@ -19,6 +19,7 @@ Page({
     hasWelfareInfo:"",
     avatarUrl:"",
     isVip: false,
+    isManager:true,
     userInfo:{}
   },
   onLoad() {

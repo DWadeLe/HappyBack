@@ -4,7 +4,7 @@
       
       <scroll-view  scroll-y="true" bindscroll="scroll" scroll-into-view="{{venueToView}}">
          <block wx:for="{{venueList}}" wx:key="id">
-            <view class='venue-item' bindtap="toDetailsTap" data-id="{{item.id}}">
+            <view class='venue-item'  data-id="{{item.id}}">
               <view class="venue-pic rectangle">
                 <text wx:if="{{item.type==1}}" class="icon">大厅</text>
                 <text wx:if="{{item.type==2}}"  class="icon">小包</text>

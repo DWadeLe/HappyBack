@@ -94,7 +94,7 @@
 }
 .yd-view{
   position: fixed; /* 将元素固定在页面底部 */
-  bottom: 10rpx; /* 距离页面底部为0 */
+  bottom: 40rpx; /* 距离页面底部为0 */
   left: 10rpx; /* 距离页面左边界为0 */
   width: 100%; /* 宽度占满整个页面 */
 }
@@ -145,7 +145,7 @@
 
 .to_pay{
   position: fixed; /* 将元素固定在页面底部 */
-  bottom: 10rpx; /* 距离页面底部为0 */
+  bottom: 40rpx; /* 距离页面底部为0 */
   left: 0; /* 距离页面左边界为0 */
   width: 100%; /* 宽度占满整个页面 */
 
@@ -162,4 +162,6 @@
    text-align: center;
    float: left;
    color: #f48333;
+   font-size: 1.3rem;
+   font-weight: bold;
 }

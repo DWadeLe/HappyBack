@@ -12,6 +12,7 @@
   left: 0;
   /* margin-top: 30px ; */
   bottom: 90px;
+  margin-bottom: 20px !important;
 }
 .user_top_center{overflow: hidden; position: relative;}
 .user_photo{ height: 140rpx; width:140rpx; float: left;}
@@ -106,4 +107,7 @@ button.index_window_btn_blue[disabled][type=primary]{ background-color:#b3ebf2; 
     height: 100px;
     z-index: 0;
     background-color: #f48333;
+}
+.manager_tag{
+  z-index:1000;
 }

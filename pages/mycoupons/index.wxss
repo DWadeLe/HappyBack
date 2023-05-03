@@ -27,20 +27,31 @@
 .unuse_coupons_item{
  
   padding: 50rpx;
-  background-color: #f48333 !important;
+  background-color: #fff !important;
   font-size: 30rpx;
   line-height: 50rpx;
-  color: #fff;
-  margin: 20rpx;
+  margin: 20rpx !important;
 }
 .use_coupons_item{
   padding: 50rpx;
-  background-color: #c4bfbcee !important;
   font-size: 30rpx;
   line-height: 50rpx;
-  color: #fff;
-  margin: 20rpx;
-
+  margin: 20rpx !important;
+  
+}
+.use_coupons_shadow{
+  position: relative;
+}
+.use_coupons_shadow::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255,255,255,0.5);
+  z-index: 1;
 }
 .icon {
   position: absolute;

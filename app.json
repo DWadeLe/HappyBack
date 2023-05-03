@@ -16,8 +16,10 @@
     "pages/category/category",
     "pages/order/index",
     "pages/vip/index",
-    "pages/appointment/index"
-    
+    "pages/appointment/index",
+    "pages/outside/index",
+    "pages/gamelib/index",
+    "pages/game-details/index"
   ],
   "usingComponents": {
     "t-button": "tdesign-miniprogram/button/button",
@@ -37,7 +39,19 @@
     "t-tag": "tdesign-miniprogram/tag/tag",
     "t-radio-group": "tdesign-miniprogram/radio-group/radio-group",
     "t-switch": "tdesign-miniprogram/switch/switch",
-    "t-badge": "tdesign-miniprogram/badge/badge"
+    "t-badge": "tdesign-miniprogram/badge/badge",
+    "t-textarea": "tdesign-miniprogram/textarea/textarea",
+    "t-calendar": "tdesign-miniprogram/calendar/calendar",
+    "t-back-top": "tdesign-miniprogram/back-top/back-top",
+    "t-loading": "tdesign-miniprogram/loading/loading",
+    "t-pull-down-refresh": "tdesign-miniprogram/pull-down-refresh/pull-down-refresh",
+    "t-skeleton": "tdesign-miniprogram/skeleton/skeleton",
+    "t-dropdown-menu": "tdesign-miniprogram/dropdown-menu/dropdown-menu",
+    "t-dropdown-item": "tdesign-miniprogram/dropdown-item/dropdown-item",
+    "t-search": "tdesign-miniprogram/search/search",
+    "t-rate": "tdesign-miniprogram/rate/rate",
+    "t-swiper": "tdesign-miniprogram/swiper/swiper",
+    "t-swiper-nav": "tdesign-miniprogram/swiper-nav/swiper-nav"
   },
   "window": {
     "backgroundTextStyle": "light",

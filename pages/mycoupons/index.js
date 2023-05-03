@@ -33,13 +33,45 @@ Page({
         "venue_type": 0,
         "wx_no": "string"
       }
-    ]
+    ],
+    useStatus:1,
+    baseRefresh: {
+      value: false,
+    },
+    loadingProps: {
+      size: '50rpx',
+    },
+    backTopVisible: false,
+    pageNo:1,
+    totalNum:null,
+    pageSize:10
+  },
+  onPullDownRefresh() {
+    setTimeout(() => {
+      this.setData({ 'baseRefresh.value': false });
+    }, 1500);
+  },
+  onScroll(e) {
+    const { scrollTop } = e.detail;
+
+    this.setData({
+      backTopVisible: scrollTop > 100,
+    });
+  },
+  onTabsClick(e){
+        
+        var status=e.detail.value;
+        this.setData({
+          useStatus:status
+        })
+        this.getMyCoupons(status);
+
   },
   onLoad: function() {},
   onShow: function() {
-    this.getMyCoupons();
+    this.getMyCoupons(1);
   },
-  getMyCoupons: function() {
+  getMyCoupons: function(status) {
     var that = this;
     WXAPI.queryCouponsByUser("").then(function(res) {
       var coupons=res;

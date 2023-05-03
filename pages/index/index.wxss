@@ -94,10 +94,18 @@ swiper-item image {
   height: 30rpx;
 }
 
+.shop_name{
+   font-size: 1.3rem;
+}
+
 .gamelib{
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  height: 96rpx;
+  height: 100rpx;
   background-color: #fff;
+}
+
+.location_item{
+    margin:0px !important;
 }
