@@ -1,0 +1,27 @@
+<!--pages/vip/index.wxml-->
+<view wx:if="{{isVip}}">
+  <view class="">
+    <!-- <t-icon wx:for="{{userInfo.vip_id}}" wx:key="index" name="star" size="48rpx" prefix="icon" data-name="star" data-type="prefix" bind:click="onIconTap" /> -->
+    <t-input class="weui-cell__bd" disabled align="right" label="会员名称" value="{{userInfo.vip_name}}"/>
+    <t-input class="weui-cell__bd" disabled align="right" label="会员等级" >
+          <view slot="suffix" class="suffix">
+            <view  class="weui-cell__ft">
+                {{userInfo.vip_id}}
+            </view>
+          </view>
+    </t-input>
+    <t-input class="weui-cell__bd" disabled align="right" label="失效时间" value="{{userInfo.vip_expire_time}}">
+          <view slot="suffix" class="suffix">
+            <view class="weui-cell__ft_in-access">去续购</view>
+          </view>
+    </t-input>
+  </view>
+
+</view> 
+<view wx:else="{{isVip}}">
+
+  <view class="go_buy_vip">
+    <text>您还未订购VIP</text>
+    <view><t-link size="small" theme="primary" content="去订购" suffixIcon="jump" hover/></view>
+  </view>
+</view>

@@ -1,0 +1,21 @@
+<!--pages/order/index.wxml-->
+<view>
+  <view class="page">
+      <t-tabs bind:click="onTabsClick" value="{{payStatus}}" theme="line" space-evenly="{{true}}">
+        <t-tab-panel label="全部" value="1" />
+        <t-tab-panel label="已支付" value="2" />
+        <t-tab-panel label="未支付" value="3" />
+      </t-tabs>
+      <t-grid class="order_item" theme="card" wx:for="{{orderList}}" wx:key="order_no"   bindtap="goOrderDetail" >
+        <view> {{item.goods_name}} </view>
+        <view> {{item.amount}} </view>
+        <view prefixIcon="time"> {{item.order_time}} </view>
+        <view wx:if="{{item.status==1}}"> 支付时间:{{item.payment_time}} </view>
+        <t-badge wx:if="{{payStatus==1 && item.status==1}}" count="未支付" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
+        <t-badge wx:if="{{payStatus==1 && item.status==2}}" count="已支付" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
+      </t-grid>
+      
+
+</view>
+  
+</view>

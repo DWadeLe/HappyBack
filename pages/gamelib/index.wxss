@@ -1,0 +1,91 @@
+/* pages/gamelib/index.wxss */
+
+.search_parent{
+  display: flex;
+  flex-direction: row;
+}
+.search_btn{
+  width: 40%!important;
+  background-color: #fff!important;
+  padding: 0px 10px;
+}
+
+.game_list{
+  width: 100%;
+  display: flex;
+  padding: 5px;
+  flex-direction: row;
+  /* margin-left: 20rpx; */
+  align-items: center;
+  justify-content: flex-start;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 1.5);
+}
+
+.gamelib_item {
+  width: 100%;
+  display: flex;
+  padding: 5px;
+  flex-direction: row;
+  /* margin-left: 20rpx; */
+  align-items: center;
+  justify-content: flex-start;
+  border:1px solid #f6f6f6;
+  background-color: #fff;
+  /* border-bottom: 1rpx solid #f2f2f2; */
+}
+
+.gamelib_pic {
+  width: 80px;
+  height: 120px;
+  flex-shrink: 0;
+  padding: 10px;
+}
+
+.gamelib_info {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 5px 0px 5px;
+  height: 120px;
+  width: 100%;
+}
+.gamelibScore {
+  font-size: 25rpx;
+  font-weight: normal;
+  margin-right:5px ;
+    /* color:#f48333; */
+
+}
+.gamelibName {
+  font-size: 25rpx;
+  font-weight: bold;
+    /* color:#f48333; */
+
+}
+.venueDesc {
+    font-size: 17rpx;
+}
+
+.gamelib_tag{
+   margin-right: 10px;
+}
+.gamelib_tag_p{
+  margin-top: 20px;
+}
+.cacel_btn{
+    width: 15% !important;
+    margin: 0 !important;
+    padding: 20rpx 0 !important;
+    text-align: center;
+    float: right;
+    background-color: #fff;
+
+}
+.search_normal_btn{
+  padding: 0 !important;
+  background-color: #fff !important;
+}
+.search_btn{
+    width: 80% !important;
+    padding:0 0 0 20rpx !important;
+    float: left;
+}

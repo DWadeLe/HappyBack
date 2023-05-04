@@ -1,0 +1,10 @@
+/* pages/order/index.wxss */
+.title{
+    margin: 20px auto;
+}
+.order_item{
+  padding: 50rpx;
+  font-size: 30rpx;
+  line-height: 50rpx;
+  margin: 20rpx !important;
+}

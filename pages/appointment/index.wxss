@@ -1,0 +1,30 @@
+/* pages/appointment/index.wxss */
+
+
+.appointment_item{
+  padding: 50rpx;
+  font-size: 30rpx;
+  line-height: 50rpx;
+  margin: 20rpx !important;
+  
+}
+.item_view{
+   display:block;
+   padding: 10prx !important;
+}
+
+.appointment_item_shadow{
+  position: relative;
+}
+.appointment_item_shadow::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255,255,255,0.5);
+  z-index: 1;
+}
+

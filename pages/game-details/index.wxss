@@ -1,0 +1,55 @@
+/* pages/game-details/index.wxss */
+/* 轮播图 */
+.swiper-container{
+  width: 750rpx;
+  position: relative;  
+}
+.swiper_box {
+  width: 750rpx;
+  height:525rpx;
+}
+swiper-item image {
+  width: 750rpx;
+  height:525rpx;
+}
+
+.swiper-container .dots{  
+  position: absolute;  
+  left: 0;  
+  right: 0;  
+  bottom: 20rpx;  
+  display: flex;  
+  justify-content: center;  
+}  
+
+.game_name{
+   font-size: 1.5rem;
+   font-weight: 500;
+}
+.game_info1{
+   color:#6b5353cb;
+   font-size: 0.9rem;
+   font-weight: 500;
+}
+.game_tag{
+    margin: 20px 0;
+}
+.game_tag_item{
+   margin-right: 5px;
+}
+.game_detail_1{
+    margin: 0px !important;
+    padding:0px 20px;
+}
+.game_detail_2{
+  margin: 20px 0 0 0!important;
+  padding:0px 20px
+}
+.game_desc{
+   font-size: 1rem;
+   color: black !important;
+   margin-top:20px ;
+}
+.game_desc_title{
+   font-size: 1.2rem;
+}
