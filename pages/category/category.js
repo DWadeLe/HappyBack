@@ -66,8 +66,9 @@ Page({
     });
   },
   toDetailsTap: function(e) {
+    debugger
     wx.navigateTo({
-      url: "/pages/goods-details/index?id=" + e.currentTarget.dataset.id
+      url: "/pages/goods-details/index?data=" + JSON.stringify(e.currentTarget.dataset.data)
     })
   },
   onCategoryClick: function(e) {

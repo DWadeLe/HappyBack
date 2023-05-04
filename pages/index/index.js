@@ -17,23 +17,8 @@ Page({
     }
   },
   onShow(){
-    const _this = this
-    WXAPI.banners().then(function (res) {
-      if (res.code === 0) {
-        _this.setData({
-          bannerList: res.data
-        })
-      }
-    })
-    WXAPI.goods({
-      recommendStatus: 1
-    }).then(res => {
-      if (res.code === 0) {
-        _this.setData({
-          goodsRecommend: res.data
-        })
-      }
-    })
+    
+
   },
   swiperchange: function(e) { // banner滚动事件
     this.setData({

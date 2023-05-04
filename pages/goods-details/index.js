@@ -85,10 +85,13 @@ Page({
     })
   },
   onLoad(e) {
+    
     getApp().setWatcher(this); // 设置监听器
-
-
-    this.data.goodsId = e.id
+   
+    debugger
+    this.setData({
+        goodsDetail:JSON.parse(e.data)
+    })
     var that = this
     const now = new Date();
 
@@ -108,7 +111,7 @@ Page({
 
 
     const formattedDate = `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day}`;
-    WXAPI.queryAppointment(this.data.goodsId, formattedDate).then(function (res) {
+    WXAPI.queryAppointment(this.data.goodsDetail.id, formattedDate).then(function (res) {
       var info = res;
       if (info && info.length > 0) {
         info.forEach(item => {
@@ -135,6 +138,19 @@ Page({
 
 
       }
+
+
+      wx.hideNavigationBarLoading();
+    }).catch((e) => {
+      wx.hideNavigationBarLoading();
+    });
+    WXAPI.queryVenuePrice(this.data.goodsDetail.id).then(function (res) {
+      var info = res;
+      
+        
+     
+
+      
 
 
       wx.hideNavigationBarLoading();

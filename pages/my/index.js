@@ -70,7 +70,6 @@ Page({
     if(this.data.mobile!=''){
       this.queryUser(this.data.mobile);
     }
-    this.orderList()
   
 },
   goMap(e){
@@ -105,22 +104,7 @@ Page({
     });
 
   },
-  orderList(){
-    WXAPI.orderList({
-      token: wx.getStorageSync('token')
-    }).then(res => {
-      if (res.code === 0) {
-        res.data.orderList.forEach(ele => {
-          ele.dingdanhao = ele.orderNumber.substring(ele.orderNumber.length -4)
-        })
-        this.setData({
-          orderList: res.data.orderList,
-          logisticsMap: res.data.logisticsMap,
-          goodsMap: res.data.goodsMap
-        });
-      }
-    })
-  },
+  
   toPayTap: function (e) {
     const that = this;
     const orderId = e.currentTarget.dataset.id;

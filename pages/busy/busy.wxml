@@ -6,11 +6,11 @@
          <block wx:for="{{venueList}}" wx:key="id">
             <view class='venue-item'  data-id="{{item.id}}">
               <view class="venue-pic rectangle">
-                <text wx:if="{{item.type==1}}" class="icon">大厅</text>
+                <!-- <text wx:if="{{item.type==1}}" class="icon">大厅</text>
                 <text wx:if="{{item.type==2}}"  class="icon">小包</text>
-                <text wx:if="{{item.type==3}}"  class="icon">大包</text>
-                  <view><image class='venue-pic' mode='aspectFill' lazy-load="true" src="{{item.icon}}"></image></view>
-               </view>
+                <text wx:if="{{item.type==3}}"  class="icon">大包</text> -->
+                <view><image class='venue-pic' mode='aspectFill' lazy-load="true" src="{{item.icon}}"></image></view>
+              </view> 
               <view class='venue-info'>
                 <text class='venueName'>{{item.name}}</text>
                 <text class='venueDesc'>{{item.desc}}</text>
