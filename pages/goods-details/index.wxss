@@ -107,7 +107,7 @@
 .block {
   width: 100vw;
   height: 540px;
-  background: #fff;
+  background: #f6f6f6;
   border-top-left-radius: 16rpx;
   border-top-right-radius: 16rpx;
 }
@@ -164,4 +164,59 @@
    color: #f48333;
    font-size: 1.3rem;
    font-weight: bold;
+}
+.unuse_coupons_item{
+ 
+  padding: 20rpx 50rpx;
+  background-color: #fff !important;
+  font-size: 30rpx;
+  line-height: 50rpx;
+  margin: 20rpx !important;
+}
+.use_coupons_item{
+  padding: 20rpx 50rpx;
+  font-size: 30rpx;
+  line-height: 50rpx;
+  margin: 20rpx !important;
+  
+}
+.use_coupons_shadow{
+  position: relative;
+}
+.use_coupons_shadow::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255,255,255,0.5);
+  z-index: 1;
+}
+
+.coupon_list{
+  z-index: 1000;
+}
+.to_pay{
+  z-index: 500;
+  background-color: #f6f6f6 !important;
+
+}
+.scroll_coupon{
+  position: fixed; /* 将元素固定在页面底部 */
+  bottom: 85px; /* 距离页面底部为0 */
+  left: 0; /* 距离页面左边界为0 */
+  width: 100%; /* 宽度占满整个页面 */
+}
+
+.t-radio--block{
+    padding: 0 !important;
+}
+.t-radio__border{
+   height: 0!important;
+}
+
+.coupon_radio .radio_item{
+   margin: 20rpx;
 }

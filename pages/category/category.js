@@ -21,7 +21,7 @@ Page({
     categoryToView: "",
     hall:[],
     privateRoom:[],
-    showData:[{"name":"接率道化","icon":"http://dummyimage.com/100x100","type":12,"status":1,"id":28,"desc":"occaecat cillum"},{"desc":"dolor dolore ut","icon":"http://dummyimage.com/100x100","name":"她类人元将","status":0,"id":12,"type":45},{"icon":"http://dummyimage.com/100x100","status":0,"desc":"anim labore amet nostrud deserunt","id":31,"name":"红府内","type":31},{"name":"如色治响","icon":"http://dummyimage.com/100x100","status":0,"id":65,"desc":"aliquip qui","type":68},{"icon":"http://dummyimage.com/100x100","name":"铁件回当","status":0,"id":66,"desc":"Lorem minim do","type":52}],
+    showData:[]
   },
 
   /**
@@ -33,9 +33,9 @@ Page({
   initData() {
 
     wx.showNavigationBarLoading();
-    this.getGoodsList(1)
+    this.getGoodsList()
   },
-  getGoodsList: function(type) {
+  getGoodsList: function() {
     let that = this;
     WXAPI.queryVenue({
     }).then(function(res) {
@@ -43,21 +43,21 @@ Page({
       var hall=[];
       var privateRoom=[];
       venueList.forEach((element,index) => {
-          if(element.type==0){
+           
+          if(element.type==1){
             hall.push(element);
           }else{
             privateRoom.push(element)
           }
           
           //mock 数据
-          element.icon="../../images/banner/banner"+(index%3+1)+".jpg";
+          // element.icon="../../images/banner/banner"+(index%3+1)+".jpg";
      
       });
       that.setData({
         hall: hall,
         privateRoom: privateRoom,
-        showData:type==0?hall:privateRoom,
-        categorySelected:type
+        showData:that.data.categorySelected==2?hall:privateRoom,
       })
       wx.hideNavigationBarLoading();
     }).catch((e) => {
@@ -72,15 +72,15 @@ Page({
     })
   },
   onCategoryClick: function(e) {
-
-    let id = e.detail.value;
+    
+    let type = e.detail.value;
     console.log(e)
     this.setData({
-      goodsToView: id,
-      categorySelected: id,
+      goodsToView: type,
+      categorySelected: type,
+      showData:type==1?this.data.privateRoom:this.data.hall
     })
-    this.getGoodsList(id)
-
+    
 
   },
   

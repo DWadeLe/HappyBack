@@ -7,20 +7,20 @@ Page({
     select: ["select", "", ""],
     display: ["display", "hidden", "hidden"],
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    userNickName:"",
-    window_display:"none",
+    userNickName: "",
+    window_display: "none",
     msgCode: '',
     serviceNum: '',
     codeDesc: '免费获取',
     loginTip: '',
     login_disabled: 'disabled',
-    mobile:"18512321654",
-    integralCount:"",
-    hasWelfareInfo:"",
-    avatarUrl:"",
+    userId: "",
+    integralCount: "",
+    hasWelfareInfo: "",
+    avatarUrl: "",
     isVip: false,
-    isManager:true,
-    userInfo:{}
+    isManager: true,
+    userInfo: {}
   },
   onLoad() {
 
@@ -45,15 +45,19 @@ Page({
               });
               wx.setStorageSync("nickName", res.userInfo.nickName);
               wx.setStorageSync("headImgUrl", res.userInfo.avatarUrl);
+
+              WXAPI.addUser().then(res=>{
+                
+              })
             }
           })
-        }else{
-          if (wx.getStorageSync('loginRet') != '0'){
+        } else {
+          if (wx.getStorageSync('loginRet') != '0') {
             self.setData({
               userNickName: "授权登录",
               avatarUrl: "../../images/user_photo.png"
             })
-          }else{
+          } else {
             self.setData({
               userNickName: wx.getStorageSync("nickName"),
               avatarUrl: wx.getStorageSync("headImgUrl")
@@ -64,48 +68,51 @@ Page({
     });
     if (wx.getStorageSync('loginRet') == '0') {
       self.setData({
-        mobile: wx.getStorageSync('mobile')
+        userId: wx.getStorageSync('mobile')
       });
-      
+
     }
-    if(this.data.mobile!=''){
-      this.queryUser(this.data.mobile);
+    if (this.data.mobile != '') {
+      this.queryUser(this.data.userId);
     }
-  
-},
-  goMap(e){
-    
-     var typeMap={
-         "1":"/pages/order/index",
-         "2":"/pages/vip/index",
-         "3":"/pages/mycoupons/index",
-         "4":"/pages/appointment/index",
-     }
-     wx.navigateTo({
+
+  },
+  goMap(e) {
+
+    var typeMap = {
+      "1": "/pages/order/index",
+      "2": "/pages/vip/index",
+      "3": "/pages/mycoupons/index",
+      "4": "/pages/appointment/index",
+      "5": "/pages/helporder/index",
+      "6": "/pages/usecoupons/index",
+      "7": "/pages/startvenue/index",
+      "8": "/pages/endvenue/index",
+    }
+    wx.navigateTo({
       url: typeMap[e.target.id]
     })
 
   },
-  queryUser(mobile){
+  queryUser(userId) {
 
     let that = this;
 
-    WXAPI.queryUser(mobile).then(function(res) {
-      var userInfo=res;
+    WXAPI.queryUser(userId).then(function (res) {
+      var userInfo = res;
       that.setData({
         userInfo: userInfo,
+        isVip: userInfo.vip,
+
       });
-      console.log(userInfo);
-         this.setData({
-          isVip: (userInfo.vip_id!='' && userInfo.vip_expire_time>''),
-        });
+
       wx.hideNavigationBarLoading();
     }).catch((e) => {
       wx.hideNavigationBarLoading();
     });
 
   },
-  
+
   toPayTap: function (e) {
     const that = this;
     const orderId = e.currentTarget.dataset.id;

@@ -1,30 +1,52 @@
 // 小程序开发api接口工具包，https://github.com/gooking/wxapi
 const CONFIG = require('./config.js')
-// const API_BASE_URL = 'https://springboot-v0v7-46809-8-1317981326.sh.run.tcloudbase.com'
+// const API_BASE_URL = 'https://springboot-iw  k9-47591-8-1318102458.sh.run.tcloudbase.com'
 const API_BASE_URL = 'http://localhost:8080'
 
 
-const request = (url, needSubDomain, method, data) => {
-  let _url = API_BASE_URL  + url
-  return new Promise((resolve, reject) => {
-    wx.request({
-      url: _url,
-      method: method,
-      data: data,
-      header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
+const parseParamByJson = (param)=>{
+
+     let returnParam='';
+     for(let key in param){
+         returnParam+=`${key}=${param[key]}&`
+     }
+
+     return returnParam;
+}
+
+const request = async (url, needSubDomain, method, data) => {
+  // let _url = API_BASE_URL  + url
+  
+  const result = await wx.cloud.callContainer({
+      "config": {
+        "env": "prod-8g7u9tmqac56ab70"
       },
-      success(request) {
-        resolve(request.data)
+      "path": url,
+      "header": {
+        "X-WX-SERVICE": "springboot-iwk9"
       },
-      fail(error) {
-        reject(error)
-      },
-      complete(aaa) {
-        // 加载完成
-      }
+      "method": method,
+      "data": data
     })
-  })
+   return result.data;
+    // wx.request({
+    //   url: _url,
+    //   method: method,
+    //   data: data,
+    //   header: {
+    //     'Content-Type': 'application/x-www-form-urlencoded'
+    //   },
+    //   success(request) {
+    //     resolve(request.data)
+    //   },
+    //   fail(error) {
+    //     reject(error)
+    //   },
+    //   complete(aaa) {
+    //     // 加载完成
+    //   }
+    // })
+  
 }
 
 /**
@@ -53,13 +75,17 @@ Promise.prototype.finally = function (callback) {
 module.exports = {
   request,
   queryUser:(wx_no) => {
-    return request('/user/'+wx_no, false, 'get', null)
+    return request('/user/', false, 'get', null)
+  },
+  addUser:()=>{
+    return request('/user/', false, 'post', null)
+
   },
   queryVenue:() => {
     return request('/venue/list', false, 'get', null)
   },
-  queryOrder:(wx_no) =>{
-    return request('/order/'+wx_no+'/list', false, 'get', null)
+  queryOrder:(user_id,param) =>{
+    return request(`/order/${user_id}/list?`+parseParamByJson(param), false, 'get', null)
   },
   queryAppointment:(venue_id,date)=>{
     return request('/appointment/venue/'+venue_id+'/record',false,'get',{
@@ -70,17 +96,20 @@ module.exports = {
     return request(`/venue/${venue_id}/price/list`,false,'get',{
     })
   },
-  queryAppointmentByUser:(userId,openId)=>{
-    return request('/appointment/user/'+userId+'/record',false,'get',{
-      'X-WX-OPENID':openId
+  queryAppointmentByUser:(userId,param)=>{
+    return request (`/appointment/user/${userId}/record?`+parseParamByJson(param),false,'get',{
     })
   },
   queryMobileLocation: (data) => {
     return request('/common/mobile-segment/location', false, 'get', data)
   },
-  queryCouponsByUser: (user_id) => {
+  queryCouponsByUser: (user_id,param) => {
     return request(`/coupon/${user_id}/list`, false, 'get', {})
   },
+  queryGame(param){
+    return request(`/game/list?`+parseParamByJson(param), false, 'get', {})
+
+  }
   // queryConfig: (data) => {
   //   return request('/config/get-value', true, 'get', data)
   // },

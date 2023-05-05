@@ -28,7 +28,10 @@ Page({
     showDate: null,
     minDate: null,
     maxDate: null,
-    venuePriceMap:{}
+    venuePriceMap:{},
+    canUseCoupons:[],
+    couponVisible:false
+
   },
   watch: {
 
@@ -46,7 +49,18 @@ Page({
   },
 
 
+  openCouponList(){
+    var that=this;
+    WXAPI.queryCouponsByUser("3",{"payment_venue":1}).then(res=>{
+          
+          var canUseCoupons=res;
+          that.setData({
+              canUseCoupons,
+              couponVisible:true
+          })
 
+    })
+  },
 
   goPay() {
     let isReadTip = this.data.isReadTip;

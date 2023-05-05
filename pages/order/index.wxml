@@ -4,7 +4,7 @@
       <t-tabs bind:click="onTabsClick" value="{{payStatus}}" theme="line" space-evenly="{{true}}">
         <t-tab-panel label="全部" value="1" />
         <t-tab-panel label="已支付" value="2" />
-        <t-tab-panel label="未支付" value="3" />
+        <t-tab-panel label="待支付" value="3" />
       </t-tabs>
       <t-grid class="order_item" theme="card" wx:for="{{orderList}}" wx:key="order_no"   bindtap="goOrderDetail" >
         <view> {{item.goods_name}} </view>

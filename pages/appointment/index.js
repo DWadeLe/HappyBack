@@ -17,12 +17,28 @@ Page({
       size: '50rpx',
     },
     backTopVisible: false,
-    pageNo:1,
-    totalNum:null,
-    pageSize:10
+    current_no:1,
+    isLastPage:false,
+    page_size:10,
+    status:2,
 
   },
+  onPullDownRefresh() {
+    var that=this;
+    this.queryAppointmentByUser(this.data.status,()=>{
+        that.setData({
+          'baseRefresh.value':false
+        })
+    });
 
+  },
+  onScroll(e) {
+    const { scrollTop } = e.detail;
+
+    this.setData({
+      backTopVisible: scrollTop > 100,
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -42,7 +58,17 @@ Page({
    */
   onShow() {
     var that=this;
-    WXAPI.queryAppointmentByUser(1,1).then(function(res) {
+    this.queryAppointmentByUser(this.data.status);
+  },
+
+  queryAppointmentByUser(status){
+    var that=this;
+    var {current_no,page_size}=this.data;
+    WXAPI.queryAppointmentByUser({
+      status,
+      current_no,
+      page_size
+    }).then(function(res) {
       var info=res;
       if(info && info.length>0){
             
@@ -51,11 +77,31 @@ Page({
              })
           
           }
+          else{
+            that.setData({
+               isLastPage:true
+            })
+          }
             
         
       })
   },
-
+  onReachBottom(){
+    if(this.data.isLastPage){
+      wx.showToast({
+        title: '没有更多的数据',
+      })
+      return
+    }
+    var status=this.data.status;
+    var that=this;
+    var {current_no,page_size}=this.data;
+   
+    this.setData({
+      current_no:current_no+1
+    })
+      this.queryAppointmentByUser(status);
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -70,12 +116,7 @@ Page({
 
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
+  
 
   /**
    * 页面上拉触底事件的处理函数
