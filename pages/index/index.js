@@ -105,13 +105,13 @@ Page({
         url: '/pages/gamelib/index',
       })
     
-    Toast({
-      context: this,
-      selector: '#t-toast',
-      message: '游戏库暂未建设完成',
-      theme: 'warning',
-      direction: 'column',
-    });
+    // Toast({
+    //   context: this,
+    //   selector: '#t-toast',
+    //   message: '游戏库暂未建设完成',
+    //   theme: 'warning',
+    //   direction: 'column',
+    // });
   },
   goMap(e){ // 打开地图
     var item=this.data.shopDetail
