@@ -18,9 +18,26 @@ Page({
       size: '50rpx',
     },
     backTopVisible: false,
-    pageNo:1,
-    totalNum:null,
-    pageSize:10
+    current_no:1,
+    isLastPage:false,
+    page_size:10,
+
+  },
+  onPullDownRefresh() {
+    var that=this;
+    this.queryOrder(this.data.payStatus,()=>{
+        that.setData({
+          'baseRefresh.value':false
+        })
+    });
+
+  },
+  onScroll(e) {
+    const { scrollTop } = e.detail;
+
+    this.setData({
+      backTopVisible: scrollTop > 100,
+    });
   },
   onTabsClick(e){
       var payStatus=e.detail.value;
@@ -30,16 +47,64 @@ Page({
        this.queryOrder(payStatus);
   },
 
-  queryOrder(payStatus){
+  queryOrder(payStatus,callback){
     var that=this;
-    var wx_no=wx.getStorageSync('wx_no'); 
-    WXAPI.queryOrder(wx_no).then(function(res) {
+    var user_id=wx.getStorageSync('user_id'); 
+    this.setData({
+        current_no:1,
+        isLastPage:false
+    })
+    var {current_no,page_size}=this.data;
+    WXAPI.queryOrder(user_id,{
+        status:payStatus,
+        current_no,
+        page_size
+    }).then(function(res) {
       
       var orderList=res;
       that.setData({
         orderList: orderList,
       });
+      if(callback){
+          callback()
+      }
+      wx.hideNavigationBarLoading();
+    }).catch((e) => {
+      wx.hideNavigationBarLoading();
+    });
+  },
+  //触底刷新
+  onReachBottom(){
+    if(this.data.isLastPage){
+      wx.showToast({
+        title: '没有更多的数据'
+      })
+      return;
+    }
+    var that=this;
+    var user_id=wx.getStorageSync('user_id'); 
+    var {current_no,page_size,payStatus}=this.data;
+    
+    current_no++;
+    
+    WXAPI.queryOrder(user_id,{
+      status:payStatus,
+      current_no,
+      page_size
+  }).then(function(res) {
       
+      var orderList=res;
+      if(orderList.length>0){
+        var newList=that.data.orderList.concat(orderList);
+         that.setData({
+          orderList: newList,
+          current_no
+         });
+      }else{
+        that.setData({
+          isLastPage: true,
+         });
+      }
       wx.hideNavigationBarLoading();
     }).catch((e) => {
       wx.hideNavigationBarLoading();

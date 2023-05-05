@@ -4,6 +4,16 @@ const CONFIG = require('./config.js')
 const API_BASE_URL = 'https://springboot-v0v7-46809-8-1317981326.sh.run.tcloudbase.com'
 
 
+const parseParamByJson = (param)=>{
+
+     let returnParam='';
+     for(let key in param){
+         returnParam+=`${key}=${param[key]}&`
+     }
+
+     return returnParam;
+}
+
 const request = (url, needSubDomain, method, data) => {
   let _url = API_BASE_URL  + url
   return new Promise((resolve, reject) => {
@@ -58,8 +68,8 @@ module.exports = {
   queryVenue:() => {
     return request('/venue/list', false, 'get', null)
   },
-  queryOrder:(wx_no) =>{
-    return request('/order/'+wx_no+'/list', false, 'get', null)
+  queryOrder:(user_id,param) =>{
+    return request(`/order/${user_id}/list?`+parseParamByJson(param), false, 'get', null)
   },
   queryAppointment:(venue_id,date)=>{
     return request('/appointment/venue/'+venue_id+'/record',false,'get',{
@@ -70,17 +80,20 @@ module.exports = {
     return request('/venue/price/list/'+venue_id,false,'get',{
     })
   },
-  queryAppointmentByUser:(userId,openId)=>{
-    return request('/appointment/user/'+userId+'/record',false,'get',{
-      'X-WX-OPENID':openId
+  queryAppointmentByUser:(userId,param)=>{
+    return request (`/appointment/user/${userId}/record?`+parseParamByJson(param),false,'get',{
     })
   },
   queryMobileLocation: (data) => {
     return request('/common/mobile-segment/location', false, 'get', data)
   },
-  queryCouponsByUser: (user_id) => {
+  queryCouponsByUser: (user_id,param) => {
     return request(`/coupon/${user_id}/list`, false, 'get', {})
   },
+  queryGame(param){
+    return request(`/game/list?`+parseParamByJson(param), false, 'get', {})
+
+  }
   // queryConfig: (data) => {
   //   return request('/config/get-value', true, 'get', data)
   // },

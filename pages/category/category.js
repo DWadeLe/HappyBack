@@ -50,7 +50,7 @@ Page({
           }
           
           //mock 数据
-          element.icon="../../images/banner/banner"+(index%3+1)+".jpg";
+          // element.icon="../../images/banner/banner"+(index%3+1)+".jpg";
      
       });
       that.setData({
@@ -66,7 +66,7 @@ Page({
     });
   },
   toDetailsTap: function(e) {
-    debugger
+    
     wx.navigateTo({
       url: "/pages/goods-details/index?data=" + JSON.stringify(e.currentTarget.dataset.data)
     })

@@ -49,22 +49,22 @@
   <t-grid class="service_list" wx:if="{{isManager}}" column="1" theme="card">
     <t-badge class="manager_tag" count="管理员" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
 
-    <t-input class="weui-cell__bd"  disabled prefixIcon="file-add" label="代客下单" id="2" bindtap='goMap' value="{{shopDetail.address}}" align="left">
+    <t-input class="weui-cell__bd"  disabled prefixIcon="file-add" label="代客下单" id="5" bindtap='goMap' value="{{shopDetail.address}}" align="left">
       <view slot="suffix" class="suffix">
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </view>
     </t-input>
-    <t-input class="weui-cell__bd"  disabled prefixIcon="clear" label="核销卡券" id="2" bindtap='goMap' value="{{shopDetail.address}}" align="left">
+    <t-input class="weui-cell__bd"  disabled prefixIcon="clear" label="核销卡券" id="6" bindtap='goMap' value="{{shopDetail.address}}" align="left">
       <view slot="suffix" class="suffix">
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </view>
     </t-input>
-    <t-input class="weui-cell__bd"  disabled prefixIcon="play-circle-stroke" label="开机计时" id="2" bindtap='goMap' value="{{shopDetail.address}}" align="left">
+    <t-input class="weui-cell__bd"  disabled prefixIcon="play-circle-stroke" label="开机计时" id="7" bindtap='goMap' value="{{shopDetail.address}}" align="left">
       <view slot="suffix" class="suffix">
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </view>
     </t-input>
-    <t-input class="weui-cell__bd"  disabled prefixIcon="minus-circle" label="关机结束" id="2" bindtap='goMap' value="{{shopDetail.address}}" align="left">
+    <t-input class="weui-cell__bd"  disabled prefixIcon="minus-circle" label="关机结束" id="8" bindtap='goMap' value="{{shopDetail.address}}" align="left">
       <view slot="suffix" class="suffix">
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </view>

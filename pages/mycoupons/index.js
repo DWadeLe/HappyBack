@@ -42,14 +42,18 @@ Page({
       size: '50rpx',
     },
     backTopVisible: false,
-    pageNo:1,
-    totalNum:null,
-    pageSize:10
+    current_no:1,
+    isLastPage:false,
+    page_size:10
   },
   onPullDownRefresh() {
-    setTimeout(() => {
-      this.setData({ 'baseRefresh.value': false });
-    }, 1500);
+    var that=this;
+    this.getMyCoupons(this.data.status,()=>{
+        that.setData({
+          'baseRefresh.value':false
+        })
+    });
+
   },
   onScroll(e) {
     const { scrollTop } = e.detail;
@@ -71,13 +75,15 @@ Page({
   onShow: function() {
     this.getMyCoupons(1);
   },
-  getMyCoupons: function(status) {
+  getMyCoupons: function(status,callback) {
     var that = this;
     WXAPI.queryCouponsByUser("").then(function(res) {
       var coupons=res;
       that.setData({
         coupons: coupons,
       });
+      if(callback)
+          callback()
         
       wx.hideNavigationBarLoading();
     }).catch((e) => {

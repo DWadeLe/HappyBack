@@ -88,7 +88,7 @@ Page({
     
     getApp().setWatcher(this); // 设置监听器
    
-    debugger
+    
     this.setData({
         goodsDetail:JSON.parse(e.data)
     })

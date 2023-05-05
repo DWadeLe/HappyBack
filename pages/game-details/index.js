@@ -11,9 +11,9 @@ Page({
        阅读更多：死亡搁浅（https://zh.moegirl.org.cn/%E6%AD%BB%E4%BA%A1%E6%90%81%E6%B5%85 ）
        本文引自萌娘百科(https://zh.moegirl.org.cn )，文字内容默认使用《知识共享 署名-非商业性使用-相同方式共享 3.0 中国大陆》协议。`,
        name:"死亡搁浅",
-       firstSaleDate:"2023-03-32",
+       release_time:"2023-03-32",
        developer:"Nintendo",
-       tag:["动作","剧情","射击","双人","动作"],
+       tag_list:["动作","剧情","射击","双人","动作"],
        icon:"../../images/banner/banner2.jpg",
        plat:"NS",
        bannerList:[{
@@ -30,8 +30,10 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
-
+  onLoad(e) {
+    this.setData({
+      gameDetail:JSON.parse(e.data)
+  })
   },
 
   /**

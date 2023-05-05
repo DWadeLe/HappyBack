@@ -18,9 +18,9 @@
     <!-- <view class="shop_name">{{gameDetail.name}}</view> -->
     <t-grid theme="card" class="game_detail_1" >
       <view class="game_name">{{gameDetail.plat}} {{gameDetail.name}}</view>
-      <view class="game_info1">{{gameDetail.firstSaleDate}}发售   {{gameDetail.developer!=null?gameDetail.developer+'开发':''}}   {{gameDetail.issuer!=null?gameDetail.issuer+'发行':''}}</view>
+      <view class="game_info1">{{gameDetail.release_time}}发售   {{gameDetail.developer!=null?gameDetail.developer+'开发':''}}   {{gameDetail.issuer!=null?gameDetail.issuer+'发行':''}}</view>
       <view class="game_tag">
-        <t-tag class='game_tag_item' wx:for="{{gameDetail.tag}}" wx:for-item="tag" wx:for-index="idx" theme="{{tagColor[idx%4]}}"  shape="square">{{tag}}</t-tag>
+        <t-tag class='game_tag_item' wx:for="{{gameDetail.tag_list}}" wx:for-item="tag" wx:for-index="idx" theme="{{tagColor[idx%4]}}"  shape="square">{{tag}}</t-tag>
       </view>
     </t-grid>
     <t-grid theme="card" class="game_detail_2" >
