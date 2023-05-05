@@ -30,6 +30,7 @@ Page({
     // 查看是否授权
     var self = this;
     var hasUserInfo = false;
+    
     wx.getSetting({
       success(res) {
         if (res.authSetting['scope.userInfo']) {

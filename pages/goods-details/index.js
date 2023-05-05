@@ -27,7 +27,8 @@ Page({
     date: null,
     showDate: null,
     minDate: null,
-    maxDate: null
+    maxDate: null,
+    venuePriceMap:{}
   },
   watch: {
 
@@ -35,12 +36,10 @@ Page({
       const date = new Date(newValue);
       const year = date.getFullYear();
       var month = date.getMonth() + 1
-      const monthShow = (month < 10 ? '0' + month : month);
       var day = date.getDate();
-      const dayShow = (day < 10 ? '0' + day : day);
       
       _this.setData({
-        showDate: `${year}-${monthShow}-${dayShow}`
+        showDate: `${year}-${month}-${day}`
       });
     }
 
@@ -79,7 +78,6 @@ Page({
 
   onTabsClick(event) {
 
-    console.log(`Click tab, tab-panel value is ${event.detail.value}.`);
     this.setData({
       isOrderType: event.detail.value
     })
@@ -88,7 +86,7 @@ Page({
     
     getApp().setWatcher(this); // 设置监听器
    
-    debugger
+    
     this.setData({
         goodsDetail:JSON.parse(e.data)
     })
@@ -103,14 +101,21 @@ Page({
     tomorrow.setDate(tomorrow.getDate() + 1);
     const d7ays = new Date();
     d7ays.setDate(d7ays.getDate() + 7);
-    this.setData({
-      minDate: tomorrow.getTime(),
-      maxDate: d7ays.getTime(),
-    })
+    
     //TODO 不同会员有不同的预约时间
 
 
     const formattedDate = `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day}`;
+    const format = (val) => {
+      const date = new Date(val);
+      return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+    };
+    this.setData({
+      minDate: tomorrow.getTime(),
+      maxDate: d7ays.getTime(),
+      date:tomorrow.getTime(),
+      showDate:format(tomorrow)
+    })
     WXAPI.queryAppointment(this.data.goodsDetail.id, formattedDate).then(function (res) {
       var info = res;
       if (info && info.length > 0) {
@@ -145,13 +150,17 @@ Page({
       wx.hideNavigationBarLoading();
     });
     WXAPI.queryVenuePrice(this.data.goodsDetail.id).then(function (res) {
+      
       var info = res;
+      var venuePriceMap={};
+      info.forEach(item=>{
+          venuePriceMap[item.type]=item;
+      });
       
-        
-     
-
-      
-
+      that.setData({
+          venuePriceMap
+      })
+      console.log(222,venuePriceMap,venuePriceMap[1].price)
 
       wx.hideNavigationBarLoading();
     }).catch((e) => {

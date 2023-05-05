@@ -17,12 +17,12 @@
       <t-calendar visible="{{calendarVisible}}" value="{{date}}" minDate="{{minDate}}" maxDate="{{maxDate}}" bind:confirm="handleConfirm" />
       <t-cell arrow title="预约时间" note="{{showDate}}" bind:tap="handleCalendar" />
       <t-tabs bind:click="onTabsClick" value="{{isOrderType}}" theme="line" space-evenly="{{true}}">
-        <t-tab-panel disabled="{{isAfterNoomOrder}}" label="下午场" value="1" />
-        <t-tab-panel disabled="{{isYYNightOrder}}" label="夜晚场" value="2" />
+        <t-tab-panel disabled="{{isAfterNoomOrder}}" label="{{'下午场('+venuePriceMap['1'].begin_hour+':00-'+venuePriceMap['1'].end_hour+':00)'}}" value="1" />
+        <t-tab-panel disabled="{{isYYNightOrder}}" label="{{'夜晚场('+venuePriceMap['2'].begin_hour+':00-'+venuePriceMap['2'].end_hour+':00)'}}" value="2" />
       </t-tabs>
       <view class='goods-price'>特价:
         <!-- <view class="orignal-price">¥{{goodsDetail.orginalPrice}}</view> -->
-        ¥ {{goodsDetail.realPrice}}
+        ¥ {{venuePriceMap[isOrderType].price}}
       </view>
       <view class="yd-view">
         <t-button bindtap="goYY" disabled="{{isAfterNoomOrder && isYYNightOrder}}" theme="primary" class="yd-btn" block>预约</t-button>
@@ -34,13 +34,13 @@
             <view class="title">明细</view>
           </view>
           <t-input disabled label="房间名称" value="{{goodsDetail.name}}" align="right" />
-          <t-input disabled label="场次" value="{{isOrderType==1?'下午场':'夜晚场'}}" align="right" />
+          <t-input disabled label="场次" value="{{isOrderType==1?'下午场('+venuePriceMap['1'].begin_hour+':00-'+venuePriceMap['1'].end_hour+':00)':'夜晚场('+venuePriceMap['2'].begin_hour+':00-'+venuePriceMap['2'].end_hour+':00)'}}" align="right" />
           <t-input disabled label="可用券" value="暂无" align="right" />
           <!-- <t-input  label="备注" placeholder="您可以填您想玩的游戏，我们帮您预热" value="" align="right" /> -->
           <t-textarea label="备注" placeholder="您可以填您想玩的游戏，我们帮您预热" maxlength="200" disableDefaultPadding="{{true}}" indicator />
 
           <view class="to_pay">
-            <view class="yd-price"><span style="font-size: 0.9rem;">¥</span>{{goodsDetail.realPrice}}</view>
+            <view class="yd-price"><span style="font-size: 0.9rem;">¥</span>{{venuePriceMap[isOrderType].price}}</view>
             <t-button bindtap="goPay" shape="round" t-class="yd-py-btn" block>去支付</t-button>
           </view>
         </view>

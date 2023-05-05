@@ -1,7 +1,7 @@
 // 小程序开发api接口工具包，https://github.com/gooking/wxapi
 const CONFIG = require('./config.js')
-// const API_BASE_URL = 'https://api.it120.cc'
-const API_BASE_URL = 'https://springboot-v0v7-46809-8-1317981326.sh.run.tcloudbase.com'
+// const API_BASE_URL = 'https://springboot-v0v7-46809-8-1317981326.sh.run.tcloudbase.com'
+const API_BASE_URL = 'http://localhost:8080'
 
 
 const request = (url, needSubDomain, method, data) => {
@@ -67,7 +67,7 @@ module.exports = {
     })
   },
   queryVenuePrice:(venue_id)=>{
-    return request('/venue/price/list/'+venue_id,false,'get',{
+    return request(`/venue/${venue_id}/price/list`,false,'get',{
     })
   },
   queryAppointmentByUser:(userId,openId)=>{
