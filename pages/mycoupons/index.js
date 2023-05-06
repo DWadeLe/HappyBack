@@ -77,7 +77,7 @@ Page({
   },
   getMyCoupons: function(status,callback) {
     var that = this;
-    WXAPI.queryCouponsByUser("").then(function(res) {
+    WXAPI.queryCouponsByUser("3").then(function(res) {
       var coupons=res;
       that.setData({
         coupons: coupons,

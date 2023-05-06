@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-      userInfo:{"vip_id":66,"nick_name":"戴静","id":49,"vip_expire_time":"2018-03-18 11:10:49","create_time":"1977-10-04 13:26:01","vip":false,"vip_name":"军据支","wx_no":"mollit ipsum adipisicing Lorem","phone_no":"18128381845"},
+      userInfo:{},
       isVip:true
   },
   queryVIP(){
@@ -19,10 +19,8 @@ Page({
         var userInfo=res;
         that.setData({
           userInfo: userInfo,
-        });
-        console.log(userInfo);
-          this.setData({
-          isVip: (userInfo.vip_id!='' && userInfo.vip_expire_time>''),
+          isVip: userInfo.vip,
+
         });
         wx.hideNavigationBarLoading();
       }).catch((e) => {

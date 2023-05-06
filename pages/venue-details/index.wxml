@@ -69,14 +69,14 @@
           </view>
           <text wx:if="{{canUseCoupons.length==0}}">没有可用的券</text>
           <view wx:if="{{canUseCoupons.length>0}}" >
-            <t-grid wx:for="{{canUseCoupons}}" class="{{item.status==1?'unuse_coupons_item':'use_coupons_item'}}"
+            <t-grid bindtap="onSelectCoupon" data-data="{{item}}" wx:for="{{canUseCoupons}}" class="{{item.status==1?'unuse_coupons_item':'use_coupons_item'}}"
               theme="card" >
 
               <!-- <t-radio class="coupon_radio" bind:change="{{changeCoupon}}" value="{{item}}" label="" placement="right" checked="{{item.checked}}"> -->
                 <view class="radio_item"> {{item.coupon_name}} </view>
                 <view class="radio_item"> {{item.expire_time}} 前有效 </view>
               <!-- </t-radio> -->
-              <icon class="card-btn" type="{{selectedCoupon.id==item.id ? 'success' : 'circle'}}" bindtap="onSelectCoupon" data-id="item.id"></icon>
+              <t-icon class="card-btn" name="{{selectedCoupon.id==item.id ? 'check-circle' : 'circle'}}" ></t-icon>
 
               <t-badge wx:if="{{item.coupon_type==1}}" count="优惠" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
               <t-badge wx:if="{{item.coupon_type==2}}" count="包场" offset="{{[0, 0]}}" shape="ribbon" slot="note" />

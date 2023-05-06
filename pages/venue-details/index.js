@@ -55,7 +55,8 @@ Page({
        var {selectedCoupon}=this.data;
        this.setData({
          use_coupon:selectedCoupon.coupon_name,
-         confirmCoupon:selectedCoupon
+         confirmCoupon:selectedCoupon,
+         couponVisible:false
        })
   },
   onSelectCoupon(e){

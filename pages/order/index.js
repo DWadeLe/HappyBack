@@ -55,7 +55,7 @@ Page({
         isLastPage:false
     })
     var {current_no,page_size}=this.data;
-    WXAPI.queryOrder(user_id,{
+    WXAPI.queryOrder(3,{
         status:payStatus,
         current_no,
         page_size
