@@ -51,7 +51,8 @@
     "t-search": "tdesign-miniprogram/search/search",
     "t-rate": "tdesign-miniprogram/rate/rate",
     "t-swiper": "tdesign-miniprogram/swiper/swiper",
-    "t-swiper-nav": "tdesign-miniprogram/swiper-nav/swiper-nav"
+    "t-swiper-nav": "tdesign-miniprogram/swiper-nav/swiper-nav",
+    "t-cell-group": "tdesign-miniprogram/cell-group/cell-group"
   },
   "window": {
     "backgroundTextStyle": "light",

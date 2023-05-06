@@ -1,6 +1,8 @@
 // pages/vip/index.js
 const WXAPI = require('../../wxapi/main')
 const CONFIG = require('../../config.js')
+const dateUtil = require('../../utils/date.js')
+
 const app = getApp()
 Page({
 
@@ -17,6 +19,8 @@ Page({
   
       WXAPI.queryUser().then(function(res) {
         var userInfo=res;
+        userInfo.vip_expire_time=dateUtil.toDate(userInfo.vip_expire_time)
+        
         that.setData({
           userInfo: userInfo,
           isVip: userInfo.vip,

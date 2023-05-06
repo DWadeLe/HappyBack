@@ -1,7 +1,9 @@
 const app = getApp()
 const wxpay = require('../../utils/pay.js')
+const dateUtil = require('../../utils/date.js')
 const CONFIG = require('../../config.js')
 const WXAPI = require('../../wxapi/main')//获取应用实例
+const date = require('../../utils/date.js')
 Page({
   data: {
     coupons: [
@@ -77,8 +79,14 @@ Page({
   },
   getMyCoupons: function(status,callback) {
     var that = this;
-    WXAPI.queryCouponsByUser("3").then(function(res) {
+    WXAPI.queryCouponsByUser("3",{
+      status
+    }).then(function(res) {
       var coupons=res;
+      coupons.forEach(item=>{
+         item.expire_time=dateUtil.toDate(item.expire_time)
+         item.use_time=dateUtil.toDate(item.use_time)
+      })
       that.setData({
         coupons: coupons,
       });

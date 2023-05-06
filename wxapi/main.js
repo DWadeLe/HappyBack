@@ -104,7 +104,7 @@ module.exports = {
     return request('/common/mobile-segment/location', false, 'get', data)
   },
   queryCouponsByUser: (user_id,param) => {
-    return request(`/coupon/${user_id}/list`, false, 'get', {})
+    return request(`/coupon/${user_id}/list?`+parseParamByJson(param), false, 'get', {})
   },
   queryGame(param){
     return request(`/game/list?`+parseParamByJson(param), false, 'get', {})

@@ -1,19 +1,25 @@
 <!--pages/appointment/index.wxml-->
 
 <view class="page">
- <view wx:for="{{appointmentList}}" wx:key="*this" class="{{item.cancel==1?'appointment_item_shadow':''}}">
-  <t-grid  bindtap='goMap'  class="appointment_item" column="1" theme="card">
-    <view class="item_view"> {{item.id}} </view>
-    <view class="item_view"> {{item.venue_name}} </view>
-    <view class="item_view"> {{item.date}}{{item.session==1?"下午场":"夜晚场"}}
-    </view>
-    <view class="item_view" bindtap="showQrcode" data-id="{{item.id}}"><v-button theme="primary" size="small">二维码</v-button></view>
+  <view wx:for="{{appointmentList}}" wx:key="*this" class="{{item.cancel==1?'appointment_item_shadow':''}}">
 
-    <t-badge wx:if="{{item.cancel==0}}" count="已预约" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
-    <t-badge wx:if="{{item.cancel==1}}" count="已取消" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
-  </t-grid>
- </view>
- 
+    <t-cell-group wx:for="{{appointmentList}}" class="appointment_item" theme="card">
+      <t-cell title="{{item.venue_name}}" leftIcon="service" hover />
+      <t-cell title="{{item.date}}{{item.session==1?'(下午场)':'(夜晚场)'}}" leftIcon="time" hover />
+      <t-cell bindtap="showQrcode" data-id="{{item.id}}" title="二维码" leftIcon="qrcode" hover />
+      <t-badge wx:if="{{item.status==0}}" count="未生效" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
+      <t-badge wx:if="{{item.status==1}}" count="已生效" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
+    </t-cell-group>
+  </view>
+  <t-popup  bindtap="closeQrCode" placement="center" visible="{{qrCodeVisible}}">
+     <view>
+      <canvas  style="width: 200px; height: 200px;text-align:center;" canvas-id="myQrcode"></canvas>
+     </view>
+    
+  </t-popup>
+
+
+
 
 
 </view>

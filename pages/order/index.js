@@ -1,6 +1,7 @@
 // pages/order/index.js
 const app = getApp()
 const wxpay = require('../../utils/pay.js')
+const dateUtil = require('../../utils/date.js')
 const CONFIG = require('../../config.js')
 const WXAPI = require('../../wxapi/main')
 Page({
@@ -23,6 +24,7 @@ Page({
     page_size:10,
 
   },
+  
   onPullDownRefresh() {
     var that=this;
     this.queryOrder(this.data.payStatus,()=>{
@@ -59,13 +61,17 @@ Page({
         current_no,
         page_size
     }
-    debugger
+    
     if(Number(payStatus)<2)
         param.status=payStatus
     
     WXAPI.queryOrder(user_id,param).then(function(res) {
       
       var orderList=res;
+      orderList.forEach(item=>{
+        item.order_time=dateUtil.toDate(item.order_time);
+        item.payment_time=dateUtil.toDate(item.payment_time);
+      })
       that.setData({
         orderList: orderList,
       });
@@ -99,7 +105,12 @@ Page({
     WXAPI.queryOrder(user_id,param).then(function(res) {
       
       var orderList=res;
+
       if(orderList.length>0){
+        orderList.forEach(item=>{
+          item.order_time=dateUtil.toDate(item.order_time);
+          item.payment_time=dateUtil.toDate(item.payment_time);
+        })
         var newList=that.data.orderList.concat(orderList);
          that.setData({
           orderList: newList,
