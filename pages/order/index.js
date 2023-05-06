@@ -59,6 +59,7 @@ Page({
         current_no,
         page_size
     }
+    debugger
     if(Number(payStatus)<2)
         param.status=payStatus
     
@@ -134,7 +135,7 @@ Page({
    */
   onShow() {
     wx.setStorageSync('user_id',4);
-      this.queryOrder(null);
+      this.queryOrder(this.data.payStatus);
   },
 
   /**
