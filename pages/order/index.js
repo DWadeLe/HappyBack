@@ -10,7 +10,7 @@ Page({
    */
   data: {
     orderList:[],
-    payStatus:null,
+    payStatus:2,
     baseRefresh: {
       value: false,
     },
@@ -54,13 +54,14 @@ Page({
         current_no:1,
         isLastPage:false
     })
+    var {current_no,page_size}=this.data;
     var param={
         current_no,
         page_size
     }
-    if(payStatus)
+    if(Number(payStatus)<2)
         param.status=payStatus
-    var {current_no,page_size}=this.data;
+    
     WXAPI.queryOrder(user_id,param).then(function(res) {
       
       var orderList=res;
