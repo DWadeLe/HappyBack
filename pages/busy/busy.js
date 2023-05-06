@@ -12,6 +12,7 @@ Page({
     venueWrap: [],
     categorySelected: "",
     venueToView: "",
+    userInfo:{}
   },
 
   /**
@@ -19,6 +20,20 @@ Page({
    */
   onLoad: function(options) {
     this.initData();
+    var userInfo=wx.getStorageSync('userInfo');
+    this.setData({
+        userInfo
+    })
+    },
+  startTime(e){
+    WXAPI.startTime(e.currentTarget.dataset.id).then(res=>{
+
+    })
+  },
+  endTime(e){
+    WXAPI.endTime(e.currentTarget.dataset.id).then(res=>{
+
+    })
   },
   initData() {
 

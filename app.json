@@ -3,7 +3,7 @@
   "pages": [
     "pages/index/index",
     "pages/busy/busy",
-    "pages/goods-details/index",
+    "pages/venue-details/index",
     "pages/my/index",
     "pages/notice/show",
     "pages/recharge/index",

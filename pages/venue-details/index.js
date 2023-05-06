@@ -6,12 +6,12 @@ import Toast from 'tdesign-miniprogram/toast/index';
 
 Page({
   data: {
-    goodsDetail: {
-      name: "马里奥主题包间",
-      desc: "",
-      icon: "../../images/banner/banner3.jpg",
-      orginalPrice: 120.00,
-      realPrice: "100.00"
+    venueDetail: {
+      // name: "马里奥主题包间",
+      // desc: "",
+      // icon: "../../images/banner/banner3.jpg",
+      // orginalPrice: 120.00,
+      // realPrice: "100.00"
     },
     fabButton: {
       icon: 'call',
@@ -28,10 +28,13 @@ Page({
     showDate: null,
     minDate: null,
     maxDate: null,
-    venuePriceMap:{},
-    canUseCoupons:[],
-    couponVisible:false
-
+    venuePriceMap: {},
+    canUseCoupons: [],
+    couponVisible: false,
+    userCouponId: null,
+    use_coupon: '',
+    selectedCoupon:null,
+    confirmCoupon:null
   },
   watch: {
 
@@ -40,26 +43,46 @@ Page({
       const year = date.getFullYear();
       var month = date.getMonth() + 1
       var day = date.getDate();
-      
+
       _this.setData({
         showDate: `${year}-${month}-${day}`
       });
     }
 
   },
+  confirmCoupon() {
+       // 把选中的券名字显示在上面
+       var {selectedCoupon}=this.data;
+       this.setData({
+         use_coupon:selectedCoupon.coupon_name,
+         confirmCoupon:selectedCoupon
+       })
+  },
+  onSelectCoupon(e){
+    const data = e.currentTarget.dataset.data;
+    this.setData({
+      selectedCoupon: data
+    });  
+  },
+  openCouponList() {
+    var that = this;
+    this.setData({
+       selectedCoupon:this.data.confirmCoupon
+    })
+    WXAPI.queryCouponsByUser("3", { "payment_venue": 1 }).then(res => {
 
-
-  openCouponList(){
-    var that=this;
-    WXAPI.queryCouponsByUser("3",{"payment_venue":1}).then(res=>{
-          
-          var canUseCoupons=res;
-          that.setData({
-              canUseCoupons,
-              couponVisible:true
-          })
+      var canUseCoupons = res;
+      that.setData({
+        canUseCoupons,
+        couponVisible: true
+      })
 
     })
+  },
+  closeCouponListPop(){
+     this.setData({
+      couponVisible:false
+     })
   },
 
   goPay() {
@@ -70,6 +93,34 @@ Page({
       });
       return;
     }
+    /**
+     * {
+        "background_pic_list": [
+          "string"
+        ],
+        "begin_hour": 0,
+        "coupon_id": 0,
+        "date": "2023-05-06T01:52:32.031Z",
+        "end_hour": 0,
+        "icon": "string",
+        "id": 0,
+        "session": 0,
+        "status": 0,
+        "user_id": 0,
+        "venue_id": 0,
+        "venue_name": "string",
+        "wx_no": "string"
+      }
+     * 
+     * 
+     * 
+     */
+
+    WXAPI.appoint(this.data.venueDetail.id, {
+
+    }).then(res => {
+
+    })
 
     //TODO 调用微信支付接口
 
@@ -97,12 +148,12 @@ Page({
     })
   },
   onLoad(e) {
-    
+
     getApp().setWatcher(this); // 设置监听器
-   
-    
+
+
     this.setData({
-        goodsDetail:JSON.parse(e.data)
+      venueDetail: JSON.parse(e.data)
     })
     var that = this
     const now = new Date();
@@ -115,7 +166,7 @@ Page({
     tomorrow.setDate(tomorrow.getDate() + 1);
     const d7ays = new Date();
     d7ays.setDate(d7ays.getDate() + 7);
-    
+
     //TODO 不同会员有不同的预约时间
 
 
@@ -127,10 +178,10 @@ Page({
     this.setData({
       minDate: tomorrow.getTime(),
       maxDate: d7ays.getTime(),
-      date:tomorrow.getTime(),
-      showDate:format(tomorrow)
+      date: tomorrow.getTime(),
+      showDate: format(tomorrow)
     })
-    WXAPI.queryAppointment(this.data.goodsDetail.id, formattedDate).then(function (res) {
+    WXAPI.queryAppointment(this.data.venueDetail.id, formattedDate).then(function (res) {
       var info = res;
       if (info && info.length > 0) {
         info.forEach(item => {
@@ -149,7 +200,7 @@ Page({
           Toast({
             context: this,
             selector: '#t-toast',
-            message: this.data.showDate+'已预约满了，请下次再来',
+            message: this.data.showDate + '已预约满了，请下次再来',
             theme: 'warning',
             direction: 'column',
           });
@@ -163,18 +214,17 @@ Page({
     }).catch((e) => {
       wx.hideNavigationBarLoading();
     });
-    WXAPI.queryVenuePrice(this.data.goodsDetail.id).then(function (res) {
-      
+    WXAPI.queryVenuePrice(this.data.venueDetail.id).then(function (res) {
+
       var info = res;
-      var venuePriceMap={};
-      info.forEach(item=>{
-          venuePriceMap[item.type]=item;
+      var venuePriceMap = {};
+      info.forEach(item => {
+        venuePriceMap[item.type] = item;
       });
-      
+
       that.setData({
-          venuePriceMap
+        venuePriceMap
       })
-      console.log(222,venuePriceMap,venuePriceMap[1].price)
 
       wx.hideNavigationBarLoading();
     }).catch((e) => {

@@ -15,7 +15,7 @@ Page({
 
       let that = this;
   
-      WXAPI.queryUser('').then(function(res) {
+      WXAPI.queryUser().then(function(res) {
         var userInfo=res;
         that.setData({
           userInfo: userInfo,

@@ -45,10 +45,17 @@ Page({
               });
               wx.setStorageSync("nickName", res.userInfo.nickName);
               wx.setStorageSync("headImgUrl", res.userInfo.avatarUrl);
+              this.queryUser(()=>{
+                WXAPI.addUser({
+                  nick_name:res.userInfo.nickName,
+                  wx_no:res.cloudId
+                }).then(res=>{
+                      
+                })
+              });
+        
 
-              WXAPI.addUser().then(res=>{
-                
-              })
+              
             }
           })
         } else {
@@ -72,9 +79,7 @@ Page({
       });
 
     }
-    if (this.data.mobile != '') {
-      this.queryUser(this.data.userId);
-    }
+    
 
   },
   goMap(e) {
@@ -84,27 +89,31 @@ Page({
       "2": "/pages/vip/index",
       "3": "/pages/mycoupons/index",
       "4": "/pages/appointment/index",
-      "5": "/pages/helporder/index",
+      // "5": "/pages/helporder/index",
       "6": "/pages/usecoupons/index",
-      "7": "/pages/startvenue/index",
-      "8": "/pages/endvenue/index",
+      // "7": "/pages/startvenue/index",
+      // "8": "/pages/endvenue/index",
     }
     wx.navigateTo({
       url: typeMap[e.target.id]
     })
 
   },
-  queryUser(userId) {
+  queryUser(callback) {
 
     let that = this;
 
-    WXAPI.queryUser(userId).then(function (res) {
+    WXAPI.queryUser().then(function (res) {
       var userInfo = res;
+      if(!userInfo && userInfo.id==null){
+          callback();
+          return;
+      }
       that.setData({
         userInfo: userInfo,
         isVip: userInfo.vip,
-
       });
+      wx.setStorageSync("userInfo",userInfo);
 
       wx.hideNavigationBarLoading();
     }).catch((e) => {

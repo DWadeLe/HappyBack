@@ -68,7 +68,7 @@ Page({
   toDetailsTap: function(e) {
     
     wx.navigateTo({
-      url: "/pages/goods-details/index?data=" + JSON.stringify(e.currentTarget.dataset.data)
+      url: "/pages/venue-details/index?data=" + JSON.stringify(e.currentTarget.dataset.data)
     })
   },
   onCategoryClick: function(e) {
