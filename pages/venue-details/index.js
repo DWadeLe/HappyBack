@@ -56,7 +56,8 @@ Page({
        this.setData({
          use_coupon:selectedCoupon.coupon_name,
          confirmCoupon:selectedCoupon,
-         couponVisible:false
+         couponVisible:false,
+         visible:true
        })
   },
   onSelectCoupon(e){
@@ -75,14 +76,16 @@ Page({
       var canUseCoupons = res;
       that.setData({
         canUseCoupons,
-        couponVisible: true
+        couponVisible: true,
+        visible:false
       })
 
     })
   },
   closeCouponListPop(){
      this.setData({
-      couponVisible:false
+      couponVisible:false,
+      visible:true
      })
   },
 

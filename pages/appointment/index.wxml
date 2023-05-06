@@ -5,13 +5,9 @@
   <t-grid  bindtap='goMap'  class="appointment_item" column="1" theme="card">
     <view class="item_view"> {{item.id}} </view>
     <view class="item_view"> {{item.venue_name}} </view>
-    <view class="item_view"> {{item.date}}
-      <t-tabs  value="{{item.session}}" theme="line" space-evenly="{{true}}">
-        <t-tab-panel wx:if="{{item.session==1}}" label="下午场" value="1" />
-        <t-tab-panel wx:if="{{item.session==2}}" label="夜晚场" value="2" />
-      </t-tabs>
+    <view class="item_view"> {{item.date}}{{item.session==1?"下午场":"夜晚场"}}
     </view>
-    <view class="item_view"><v-button bindtap="showQrcode" data-id="{{item.id}}">二维码</v-button></view>
+    <view class="item_view" bindtap="showQrcode" data-id="{{item.id}}"><v-button theme="primary" size="small">二维码</v-button></view>
 
     <t-badge wx:if="{{item.cancel==0}}" count="已预约" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
     <t-badge wx:if="{{item.cancel==1}}" count="已取消" offset="{{[0, 0]}}" shape="ribbon" slot="note" />

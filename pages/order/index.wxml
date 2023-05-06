@@ -6,11 +6,11 @@
         <t-tab-panel label="已支付" value="2" />
         <t-tab-panel label="待支付" value="3" />
       </t-tabs>
-      <t-grid class="order_item" theme="card" wx:for="{{orderList}}" wx:key="order_no"   bindtap="goOrderDetail" >
-        <view> {{item.goods_name}} </view>
+      <t-grid class="order_item" theme="card" wx:for="{{orderList}}"    bindtap="goOrderDetail" >
+        <view> {{item.goods_name}}({{item.payment_venue==1?'开通会员':(item.payment_venue==2?'小时结算':'包场结算')}}) </view>
         <view> {{item.amount}} </view>
         <view prefixIcon="time"> {{item.order_time}} </view>
-        <view wx:if="{{item.status==1}}"> 支付时间:{{item.payment_time}} </view>
+        <view wx:if="{{item.status==1}}"> {{item.payment_method==1?'现金':(item.payment_method==2?'抵扣券':'现金+抵扣券')}} {{item.payment_time}} </view>
         <t-badge wx:if="{{payStatus==1 && item.status==1}}" count="未支付" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
         <t-badge wx:if="{{payStatus==1 && item.status==2}}" count="已支付" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
       </t-grid>

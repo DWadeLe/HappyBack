@@ -30,7 +30,7 @@ Page({
     // 查看是否授权
     var self = this;
     var hasUserInfo = false;
-    
+  
     wx.getSetting({
       success(res) {
         if (res.authSetting['scope.userInfo']) {
@@ -45,7 +45,7 @@ Page({
               });
               wx.setStorageSync("nickName", res.userInfo.nickName);
               wx.setStorageSync("headImgUrl", res.userInfo.avatarUrl);
-              this.queryUser(()=>{
+              self.queryUser(()=>{
                 WXAPI.addUser({
                   nick_name:res.userInfo.nickName,
                   wx_no:res.cloudId

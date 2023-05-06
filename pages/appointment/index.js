@@ -28,6 +28,7 @@ Page({
   showQrcode(e){
     var that=this
     var id=e.currentTarget.dataset.id
+    console.log(e)
     drawQrcode({
       width: 200,
       height: 200,
@@ -35,10 +36,10 @@ Page({
       text: id,
       _this: that
     })
-    // wx.previewImage({
-    //   urls: [this.data.miniProgramCodeUrl],
-    //   current: 0
-    // })
+    wx.previewImage({
+      urls: [id],
+      current: 0
+    })
   },
   onPullDownRefresh() {
     var that=this;
