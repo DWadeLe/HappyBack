@@ -19,7 +19,7 @@ Page({
     },
     isYYNightOrder: false,
     isAfterNoomOrder: false,
-    isOrderType: 1,
+    session: 1,
     visible: false,
     YDTipVisible: false,
     isReadTip: false,
@@ -31,10 +31,11 @@ Page({
     venuePriceMap: {},
     canUseCoupons: [],
     couponVisible: false,
-    userCouponId: null,
     use_coupon: '',
     selectedCoupon:null,
-    confirmCoupon:null
+    confirmCoupon:null,
+    remark:"",
+    userInfo:{}
   },
   watch: {
 
@@ -68,19 +69,15 @@ Page({
   },
   openCouponList() {
     var that = this;
+    if(this.data.canUseCoupons.length==0){
+      return;
+    }
     this.setData({
-       selectedCoupon:this.data.confirmCoupon
-    })
-    WXAPI.queryCouponsByUser("3", { "payment_venue": 1 }).then(res => {
-
-      var canUseCoupons = res;
-      that.setData({
-        canUseCoupons,
-        couponVisible: true,
+       selectedCoupon:this.data.confirmCoupon,
+       couponVisible: true,
         visible:false
-      })
-
     })
+    
   },
   closeCouponListPop(){
      this.setData({
@@ -97,32 +94,36 @@ Page({
       });
       return;
     }
-    /**
-     * {
-        "background_pic_list": [
-          "string"
-        ],
-        "begin_hour": 0,
-        "coupon_id": 0,
-        "date": "2023-05-06T01:52:32.031Z",
-        "end_hour": 0,
-        "icon": "string",
-        "id": 0,
-        "session": 0,
-        "status": 0,
-        "user_id": 0,
-        "venue_id": 0,
-        "venue_name": "string",
-        "wx_no": "string"
-      }
-     * 
-     * 
-     * 
-     */
+    var {remark,userInfo,venueDetail,selectedCoupon,session,showDate}=this.data;
+    var param={
+      user_id:userInfo.id,
+       wx_no:userInfo.wx_no,
+       venue_id:venueDetail.id,
+       remark,
+       session,
+       date:showDate
+    }
+    if(selectedCoupon && selectedCoupon.id!=null)
+        param.coupon_id=selectedCoupon.id
+    debugger
+    WXAPI.appoint(venueDetail.id, param).then(res => {
+        console.log(res,11)
 
-    WXAPI.appoint(this.data.venueDetail.id, {
+        wx.requestPayment({
+          appid:"wxf83224ed1b5ec2f4",
+          timeStamp: "1414561699",
+          nonceStr: '5K8264ILTKCH16CQ2502SI8ZNMTM67VS',
+          package: 'prepay_id=wx201410272009395522657a690389285100',
+          signType: 'RSA',
+          paySign: 'oR9d8PuhnIc+YZ8cBHFCwfgpaK9gd7vaRvkYD7rthRAZ\/X+QBhcCYL21N7cHCTUxbQ+EAt6Uy+lwSN22f5YZvI45MLko8Pfso0jm46v5hqcVwrk6uddkGuT+Cdvu4WBqDzaDjnNa5UK3GfE1Wfl2gHxIIY5lLdUgWFts17D4WuolLLkiFZV+JSHMvH7eaLdT9N5GBovBwu5yYKUR7skR8Fu+LozcSqQixnlEZUfyE55feLOQTUYzLmR9pNtPbPsu6WVhbNHMS3Ss2+AehHvz+n64GDmXxbX++IOBvm2olHu3PsOUGRwhudhVf7UcGcunXt8cqNjKNqZLhLw4jq\/xDg==',
+          success (res) { 
+            console.log(res)
+          },
+          fail (res) { 
+            console.log(res)
 
-    }).then(res => {
+          }
+        })
 
     })
 
@@ -138,17 +139,14 @@ Page({
     });
   },
   onTabsChange(event) {
-    console.log(event.detail)
-    console.log(`Change tab, tab-panel value is ${event.detail.value}.`);
     this.setData({
-      isOrderType: event.detail.value
+      session: event.detail.value
     })
   },
 
   onTabsClick(event) {
-
     this.setData({
-      isOrderType: event.detail.value
+      session: event.detail.value
     })
   },
   onLoad(e) {
@@ -157,7 +155,9 @@ Page({
 
 
     this.setData({
-      venueDetail: JSON.parse(e.data)
+      venueDetail: JSON.parse(e.data),
+      userInfo:wx.getStorageSync("userInfo")
+
     })
     var that = this
     const now = new Date();
@@ -234,6 +234,15 @@ Page({
     }).catch((e) => {
       wx.hideNavigationBarLoading();
     });
+
+    WXAPI.queryCouponsByUser("3", { "payment_venue": 1 }).then(res => {
+
+      var canUseCoupons = res;
+      that.setData({
+        canUseCoupons,
+      })
+
+    })
 
   },
   onShow() {

@@ -24,15 +24,42 @@ Page({
     this.setData({
         userInfo
     })
+    debugger
     },
   startTime(e){
+    var that=this;
+
     WXAPI.startTime(e.currentTarget.dataset.id).then(res=>{
+            if(res.code==200){
+              wx.showToast({
+                title: '开机成功',
+                icon: 'success'
+              })
+            }else{
+              wx.showToast({
+                title: '开机失败',
+                icon: 'error'
+              })
+            }   
+            that.initData();
 
     })
   },
   endTime(e){
+    var that=this;
     WXAPI.endTime(e.currentTarget.dataset.id).then(res=>{
-
+      if(res.code==200){
+        wx.showToast({
+          title: '关机成功',
+          icon: 'success'
+        })
+      }else{
+        wx.showToast({
+          title: '关机失败',
+          icon: 'error'
+        })
+      }  
+      that.initData();
     })
   },
   initData() {

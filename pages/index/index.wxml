@@ -23,7 +23,7 @@
         </t-input>
         <t-input class="weui-cell__bd weui-cell__ft" disabled  prefixIcon="time" label="营业时间"    value="{{shopDetail.bussinessTime}}" align="right" />
         <t-input class="weui-cell__bd weui-cell__ft" disabled  prefixIcon="call" label="联系电话" bindtap="onCopyText"   value="{{shopDetail.contractPhone}}" align="right" />
-        <view class="gamelib" ><t-link url="{{'https://www.bilibili.com/video/BV1Ui4y1L7WH'}}" bindtap="goGamelib" size="large" theme="primary" content="精选游戏库" suffixIcon="jump" hover /></view>
+        <view class="gamelib" ><t-link  bindtap="goGamelib" size="large" theme="primary" content="精选游戏库" suffixIcon="jump" hover /></view>
 
 
        

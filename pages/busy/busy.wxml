@@ -17,9 +17,9 @@
                 <view >
                   <t-tag v-if="item.status==0" icon="{{item.status==0?'check-rectangle':'time'}}" class="margin-16" theme="{{item.status==0?'success':'danger'}}">{{item.status==0?'空闲':'忙碌'}}</t-tag>
                 </view>
-                <view>
-                    <t-button theme="primary" data-id="{{item.id}}" bindtap="startTime" v-if="{{item.status==0 && userInfo.role==0}}" >开始计时</t-button>
-                    <t-button theme="primary" data-id="{{item.id}}" bindtap="endTime" v-if="{{item.status==1 && userInfo.role==0}}">结束计时</t-button>
+                <view class='adminPart'>
+                    <t-button theme="primary" data-id="{{item.id}}" bindtap="startTime" wx-if="{{item.status==0 && userInfo.admin}}" >开始计时</t-button>
+                    <t-button theme="primary" data-id="{{item.id}}" bindtap="endTime" wx-if="{{item.status==1 && userInfo.admin}}">结束计时</t-button>
                 </view>
               </view>
             </view>

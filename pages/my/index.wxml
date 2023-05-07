@@ -1,21 +1,22 @@
 <!--pages/user/user.wxml-->
 <view class="page">
   <view class="top_color"></view>
-  <t-grid class="user_top" column="1" theme="card">
-    <view class='user_top_center'>
+  <t-grid class="user_top" column="1" theme="card" style="background-image: url('../../images/banner/backgroud.jpg') !important;background-size: cover;background-position: center;background-repeat: no-repeat;">
+    <view class='user_top_center' >
       <view class='user_photo'>
         <!--<open-data type="userAvatarUrl"></open-data>-->
-        <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" style="padding-left:0px;background-color:#fff;border-radius:70rpx;height:140rpx;width:140rpx;">
+        <button wx:if="{{canIUse}}" open-type="getUserInfo"  bindgetuserinfo="bindGetUserInfo" style="padding-left:0px;border-radius:70rpx;height:140rpx;width:140rpx;">
           <image style="height:140rpx;width:140rpx;" class="slide-image" mode="aspectFill" src="{{avatarUrl}}"></image>
         </button>
       </view>
       <view class='user_text'>
-        <view class='user_name'><text style="font-size:34rpx;">{{userNickName}}</text>
+        <view class='user_name'>          
+<text style="font-size:34rpx;">{{userNickName}}</text><image wx:if="{{isVip}}" style="width:1rem;height:1rem;vertical-align:middle;margin-left:10rpx;" src="../../images/icon/VIP.svg"></image>
         </view>
-        <!--<view class='user_star'>五星会员</view>-->
+        <!--<view class='user_star'>五星会员</view>
         <view class='user_phone'><text>{{mobile}}</text>
           <image wx:if="{{isVip}}" style="width:2rem;height:2rem;vertical-align:middle;margin-left:10rpx;" src="../../images/vip.png"></image>
-        </view>
+        </view>-->
       </view>
     </view>
 

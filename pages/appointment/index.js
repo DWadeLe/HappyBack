@@ -21,10 +21,10 @@ Page({
       size: '50rpx',
     },
     backTopVisible: false,
-    current_no: 1,
+    current_no: 0,
     isLastPage: false,
     page_size: 10,
-    status: 2,
+    status: -1,
     qrCodeVisible:false,
 
   },
@@ -96,11 +96,20 @@ Page({
       current_no,
       page_size
     } = this.data;
-    WXAPI.queryAppointmentByUser(4, {
-      status,
+    debugger
+    var param={
       current_no,
       page_size
-    }).then(function (res) {
+    }
+    if(status!="-1")
+      param.status=status
+
+    
+    var userInfo=wx.getStorageSync('userInfo');
+    that.setData({
+      appointmentList: []
+    })
+    WXAPI.queryAppointmentByUser(userInfo.id, param).then(function (res) {
       var info = res;
       if (info && info.length > 0) {
         info.forEach(item => {
@@ -120,6 +129,13 @@ Page({
 
     })
   },
+  onTabsClick(e){
+    var status=e.detail.value;
+    this.setData({
+      status
+    })
+    this.queryAppointmentByUser(status);
+  },
   onReachBottom() {
     if (this.data.isLastPage) {
       wx.showToast({
@@ -135,7 +151,7 @@ Page({
     } = this.data;
 
     this.setData({
-      current_no: current_no + 1
+      current_no: current_no + page_size
     })
     this.queryAppointmentByUser(status);
   },

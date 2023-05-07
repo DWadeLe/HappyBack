@@ -19,7 +19,7 @@ Page({
       size: '50rpx',
     },
     backTopVisible: false,
-    current_no:1,
+    current_no:0,
     isLastPage:false,
     page_size:10,
 
@@ -53,7 +53,7 @@ Page({
     var that=this;
     var user_id=wx.getStorageSync('user_id'); 
     this.setData({
-        current_no:1,
+        current_no:0,
         isLastPage:false
     })
     var {current_no,page_size}=this.data;
@@ -64,7 +64,7 @@ Page({
     
     if(Number(payStatus)<2)
         param.status=payStatus
-    
+    debugger
     WXAPI.queryOrder(user_id,param).then(function(res) {
       
       var orderList=res;
@@ -95,7 +95,7 @@ Page({
     var user_id=wx.getStorageSync('user_id'); 
     var {current_no,page_size,payStatus}=this.data;
     
-    current_no++;
+    current_no=current_no+page_size;
     var param={
       current_no,
       page_size

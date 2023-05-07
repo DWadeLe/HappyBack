@@ -15,7 +15,7 @@ const parseParamByJson = (param)=>{
 }
 
 const request = async (url, needSubDomain, method, data) => {
-  // let _url = API_BASE_URL  + url
+  let _url = API_BASE_URL  + url
   
   const result = await wx.cloud.callContainer({
       "config": {
@@ -111,12 +111,12 @@ module.exports = {
 
   },
   appoint(venue_id,param){
-    return request(`/appointment/${venue_id}`+parseParamByJson(param), false, 'post', {})
+    return request(`/appointment/${venue_id}`, false, 'post', param)
   },
-  startTime(venue_id){
+  startTime(venue_id,param){
     return request(`/venue/${venue_id}`+parseParamByJson(param), false, 'post', {})
   },
-  endTime(venue_id){
+  endTime(venue_id,param){
     return request(`/venue/${venue_id}`+parseParamByJson(param), false, 'put', {})
   }
 }

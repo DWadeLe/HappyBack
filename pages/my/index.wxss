@@ -15,7 +15,8 @@
   margin-bottom: 20px !important;
 }
 .user_top_center{overflow: hidden; position: relative;}
-.user_photo{ height: 140rpx; width:140rpx; float: left;}
+.user_photo{ height: 140rpx; width:140rpx; float: left;
+}
 .user_photo image{ height: 140rpx; width:140rpx;}
 .user_text{ margin-left: 160rpx; color: #000; position: relative;margin-top:20rpx;}
 .user_name{
@@ -111,3 +112,4 @@ button.index_window_btn_blue[disabled][type=primary]{ background-color:#b3ebf2; 
 .manager_tag{
   z-index:1000;
 }
+

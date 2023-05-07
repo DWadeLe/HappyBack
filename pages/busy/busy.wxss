@@ -143,3 +143,6 @@
 .horizontal-box .card + .card {
   margin-left: 24rpx;
 }
+.adminPart{
+  margin: 10% 30%;
+}

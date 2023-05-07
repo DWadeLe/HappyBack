@@ -3,14 +3,12 @@
   <view class="">
     <!-- <t-icon wx:for="{{userInfo.vip_id}}" wx:key="index" name="star" size="48rpx" prefix="icon" data-name="star" data-type="prefix" bind:click="onIconTap" /> -->
     <t-input class="weui-cell__bd" disabled align="right" label="会员名称" value="{{userInfo.vip_name}}"/>
-    <t-input class="weui-cell__bd" disabled align="right" label="会员等级" >
+    <t-input class="weui-cell__bd" disabled align="right" label="失效时间" value="{{userInfo.vip_expire_time}}">
           <view slot="suffix" class="suffix">
-            <view  class="weui-cell__ft">
-                {{userInfo.vip_id}}
-            </view>
+            <view class="weui-cell__ft_in-access"></view>
           </view>
     </t-input>
-    <t-input class="weui-cell__bd" disabled align="right" label="失效时间" value="{{userInfo.vip_expire_time}}">
+    <t-input class="weui-cell__bd" disabled align="right" label="" value="">
           <view slot="suffix" class="suffix">
             <view class="weui-cell__ft_in-access">去续购</view>
           </view>

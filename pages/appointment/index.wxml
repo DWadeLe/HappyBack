@@ -1,6 +1,12 @@
 <!--pages/appointment/index.wxml-->
 
 <view class="page">
+  <t-tabs bind:click="onTabsClick" value="{{payStatus}}" theme="line" space-evenly="{{true}}">
+        <t-tab-panel label="全部" value="-1" />
+        <t-tab-panel label="未生效" value="0" />
+        <t-tab-panel label="已生效" value="1" />
+        <t-tab-panel label="已取消" value="2" />
+      </t-tabs>
   <view wx:for="{{appointmentList}}" wx:key="*this" class="{{item.cancel==1?'appointment_item_shadow':''}}">
 
     <t-cell-group wx:for="{{appointmentList}}" class="appointment_item" theme="card">
