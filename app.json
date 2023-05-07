@@ -52,7 +52,8 @@
     "t-rate": "tdesign-miniprogram/rate/rate",
     "t-swiper": "tdesign-miniprogram/swiper/swiper",
     "t-swiper-nav": "tdesign-miniprogram/swiper-nav/swiper-nav",
-    "t-cell-group": "tdesign-miniprogram/cell-group/cell-group"
+    "t-cell-group": "tdesign-miniprogram/cell-group/cell-group",
+    "vant-icon": "@vant/weapp/dist/icon/index"
   },
   "window": {
     "backgroundTextStyle": "light",
@@ -95,5 +96,17 @@
       }
     ]
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "navigationBar": {
+    "backgroundColor": "#fff",
+    "textStyle": "black",
+    "custom": true,
+    "right": [{
+      "text": "",
+      "iconPath": "/images/nav/scan.png",
+      "iconSize": "26",
+      "pagePath": "",
+      "eventType": "scan"
+    }]
+  }
 }
