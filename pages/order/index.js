@@ -30,7 +30,7 @@ Page({
     statusMap: {
       0: '未支付',
       1: '已支付'
-    }
+    },
 
 
   },
@@ -95,9 +95,11 @@ Page({
       param.status = payStatus
     debugger
     WXAPI.queryOrder(userInfo.id, param).then(function (res) {
-
+      var now=new Date().getDate();
       var orderList = res;
       orderList.forEach(item => {
+        item.close_time=(15*3600 -(now-item.order_time))<=0?0:(15*3600 -(now-item.order_time));
+
         item.order_time = dateUtil.toDate(item.order_time);
         item.payment_time = dateUtil.toDate(item.payment_time);
       })

@@ -53,7 +53,10 @@
     "t-swiper": "tdesign-miniprogram/swiper/swiper",
     "t-swiper-nav": "tdesign-miniprogram/swiper-nav/swiper-nav",
     "t-cell-group": "tdesign-miniprogram/cell-group/cell-group",
-    "vant-icon": "@vant/weapp/dist/icon/index"
+    "t-count-down": "tdesign-miniprogram/count-down/count-down",
+    "vant-icon": "@vant/weapp/dist/icon/index",
+    "navigation-bar": "/template/navigation-bar/index"
+
   },
   "window": {
     "backgroundTextStyle": "light",
