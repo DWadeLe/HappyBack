@@ -54,8 +54,7 @@
     "t-swiper-nav": "tdesign-miniprogram/swiper-nav/swiper-nav",
     "t-cell-group": "tdesign-miniprogram/cell-group/cell-group",
     "t-count-down": "tdesign-miniprogram/count-down/count-down",
-    "vant-icon": "@vant/weapp/dist/icon/index",
-    "navigation-bar": "/template/navigation-bar/index"
+    "vant-icon": "@vant/weapp/dist/icon/index"
 
   },
   "window": {
@@ -65,7 +64,7 @@
     "navigationBarTitleText": "",
     "navigationBarTextStyle": "black",
     "onReachBottomDistance": 50,
-    "navigationStyle": "default"
+    "navigationStyle": "custom"
   },
   "tabBar": {
     "color": "#6e6d6b",

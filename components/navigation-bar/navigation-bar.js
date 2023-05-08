@@ -15,7 +15,10 @@ Component({
         menuRight: app.globalData.menuRight,
         menuTop: app.globalData.menuTop,
         menuHeight: app.globalData.menuHeight,
+        
     },
     attached: function() {},
-    methods: {}
+    methods: {
+
+    }
 })

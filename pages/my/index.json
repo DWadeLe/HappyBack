@@ -2,4 +2,7 @@
     "navigationBarTitleText": "个人中心",
     "navigationBarBackgroundColor":"#f48333",
     "navigationBarSeparatorColor": "transparent",
+    "usingComponents": {
+        "navigation-bar": "../../components/navigation-bar/navigation-bar"
+    }
 }
