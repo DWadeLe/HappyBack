@@ -19,6 +19,13 @@ Component({
     },
     attached: function() {},
     methods: {
-
+        scanCode(){
+            wx.scanCode({
+                onlyFromCamera: false, // 是否只能从相机扫码，不允许从相册选择图片，默认是false
+                success (res) {
+                    console.log(res)
+                }
+              })
+        }
     }
 })

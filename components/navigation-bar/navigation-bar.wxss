@@ -1,2 +1,15 @@
-.nav-bar{ position: fixed; width: 100%; top: 0; color: #fff; background: #f48333;}
-.nav-bar .search{ width: 60%; color: #333; font-size: 14px; background: #fff; position: absolute; border-radius: 50px; background: #ddd; padding-left: 14px;}
+.nav-bar{  background: #f48333; display: flex;
+    justify-content: center;
+    align-items: center;}
+.center{
+    margin: auto;
+
+}
+.right{
+    margin-left: auto;
+
+}
+.right image{
+    width: 30px;
+    height: 30px;
+}
