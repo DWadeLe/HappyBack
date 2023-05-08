@@ -1,4 +1,6 @@
 <view class="page">
+    <navigation-bar title="游戏库"></navigation-bar>
+
   <t-pull-down-refresh value="{{baseRefresh.value}}" loadingProps="{{loadingProps}}" loadingTexts="{{['下拉刷新', '松手刷新', '正在刷新', '刷新完成']}}" bind:refresh="onPullDownRefresh" bind:scroll="onScroll">
 
     <t-tabs style="background-color:rgb(0, 0, 0,0.1);" bind:click="onTabsClick" value="{{gameType}}" theme="line" space-evenly="{{true}}">

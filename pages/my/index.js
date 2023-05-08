@@ -22,10 +22,8 @@ Page({
     isManager: true,
     userInfo: {},
     haveCoupons:false,
-    defaultData:{
       title: "个人中心", // 导航栏标题
-
-    }
+    
   },
   onLoad() {
 

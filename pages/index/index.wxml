@@ -1,4 +1,6 @@
 <view class="page">
+  <navigation-bar title="首页"></navigation-bar>
+
   <view class="page__bd">
     <view class="swiper-container">
       <swiper class="swiper_box" autoplay="true" bindchange="swiperchange">

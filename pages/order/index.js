@@ -93,7 +93,7 @@ Page({
 
     if (Number(payStatus) < 2)
       param.status = payStatus
-    debugger
+    
     WXAPI.queryOrder(userInfo.id, param).then(function (res) {
       var now=new Date().getDate();
       var orderList = res;

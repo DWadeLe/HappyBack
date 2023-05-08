@@ -56,7 +56,7 @@ Page({
   },
   getUniqueColor(name){
     var color=colorUtil.getUniqueColor(name);
-    debugger
+    
     return {
       backgroundColor:color
     };
@@ -145,7 +145,7 @@ Page({
     WXAPI.queryGame(realParam).then(function(res) {
       
       var gameList=res;
-      debugger
+      
       if(gameList.length>0){
         var newList=that.data.gameList.concat(gameList);
          that.setData({

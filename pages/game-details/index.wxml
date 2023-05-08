@@ -1,5 +1,7 @@
 <!--pages/game-details/index.wxml-->
 <view class="page">
+    <navigation-bar title="游戏详情"></navigation-bar>
+
   <view class="page__bd">
     <view class="swiper-container">
       <swiper class="swiper_box" autoplay="true" bindchange="swiperchange">

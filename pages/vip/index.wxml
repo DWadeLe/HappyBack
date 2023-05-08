@@ -1,5 +1,7 @@
 <!--pages/vip/index.wxml-->
 <view class="page">
+    <navigation-bar title="VIP套餐"></navigation-bar>
+
   <t-grid class="order_item" theme="card" wx:for="{{vipList}}">
     <view class="flex_item">
       <view class="label">会员名称</view>

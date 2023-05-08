@@ -1,11 +1,7 @@
 /* 顶部导航栏样式 */
 .nav-bar {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: space-between;
+     
     background-color: #f48333;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   }
   
   .nav-bar__back {
@@ -19,6 +15,7 @@
   .nav-bar__back-img {
     width: 28rpx;
     height: 28rpx;
+
   }
   
   .nav-bar__title {
@@ -39,5 +36,7 @@
   .nav-bar__scan-img {
     width: 28rpx;
     height: 28rpx;
+    float: left;
+
   }
   

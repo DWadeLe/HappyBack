@@ -1,7 +1,6 @@
 <view class="">
-  <view class="">
-    <view class=''>
-      
+      <navigation-bar title="忙闲"></navigation-bar>
+
       <scroll-view  scroll-y="true" bindscroll="scroll" scroll-into-view="{{venueToView}}">
          <block wx:for="{{venueList}}" wx:key="id">
             <view class='venue-item'  data-id="{{item.id}}">
@@ -25,6 +24,4 @@
             </view>
         </block>
       </scroll-view>
-    </view>
-  </view>
 </view>

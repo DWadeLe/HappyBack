@@ -1,4 +1,6 @@
 <view class="page">
+    <navigation-bar title="预约详情"></navigation-bar>
+
   <view class="page__bd">
     <view class='goods-name'>{{venueDetail.name}}</view>
     <image src="{{venueDetail.icon}}" class="goods-image" mode="widthFix" lazy-load="true" />
@@ -56,9 +58,9 @@
           </t-input>
           <t-textarea value="{{remark}}" label="备注" placeholder="您可以填您想玩的游戏，我们帮您预热" maxlength="200" disableDefaultPadding="{{true}}" indicator />
 
-          <view class="to_pay" bindtap="goPay" >
-            <span style="font-size: 0.9rem;">¥</span><span>{{venuePriceMap[session].price}}</span>
-            <t-button  shape="round" t-class="yd-py-btn" block>去支付</t-button>
+          <view class="to_pay"  >
+            <view class="yd-price"><span style="font-size: 0.9rem;">¥</span>{{venuePriceMap[session].price}}</view>
+            <t-button bindtap="goPay" shape="round" t-class="yd-py-btn" block>去支付</t-button>
           </view>
         </view>
       </t-popup>

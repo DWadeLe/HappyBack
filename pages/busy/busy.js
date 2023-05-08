@@ -24,7 +24,7 @@ Page({
     this.setData({
         userInfo
     })
-    debugger
+    
     },
   startTime(e){
     var that=this;

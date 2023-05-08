@@ -1,5 +1,5 @@
 <!--pages/user/user.wxml-->
-<navigation-bar default-data="{{defaultData}}"></navigation-bar>
+<navigation-bar title="{{title}}"></navigation-bar>
 
 <view class="page">
 

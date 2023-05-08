@@ -110,7 +110,7 @@ Page({
       current_no,
       page_size
     } = this.data;
-    debugger
+    
     var param={
       current_no,
       page_size

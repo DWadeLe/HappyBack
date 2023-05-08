@@ -100,7 +100,7 @@ Page({
     }
     if(selectedCoupon && selectedCoupon.id!=null)
         param.coupon_id=selectedCoupon.id
-    debugger
+    
     WXAPI.appoint(venueDetail.id, param).then(res => {
         console.log(res,11)
 

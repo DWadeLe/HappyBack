@@ -30,6 +30,8 @@
 //     }
 // })
 // 顶部导航栏组件的 JS 代码
+const app = getApp()
+
 Component({
     options: {
       addGlobalClass: true,
@@ -42,18 +44,48 @@ Component({
       }
     },
     data: {
-      navHeight: 88, // 顶部导航栏高度
       statusBarHeight: 20, // 状态栏高度
+      navBarHeight: app.globalData.navBarHeight,
+      rightLeft:'',
+      centerLeft:'',
+      top:"",
+      isCanBack:false,
     },
     lifetimes: {
       attached() {
         // 获取设备信息
         const systemInfo = wx.getSystemInfoSync();
-        const navHeight = systemInfo.platform === 'android' ? 48 : 44;
         const statusBarHeight = systemInfo.statusBarHeight;
+        const screenWidth=systemInfo.screenWidth;
+         //自定义上面的导航栏
+          // 获取系统信息
+          // 胶囊按钮位置信息
+          const menuButtonInfo = wx.getMenuButtonBoundingClientRect();
+          // 导航栏高度 = 状态栏高度 + 44
+        var menuRight = systemInfo.screenWidth - menuButtonInfo.right;
+        var menuTop= menuButtonInfo.top;
+        var top=menuButtonInfo.top;
+        var menuHeight = menuButtonInfo.height;
+        var   navBarHeight = systemInfo.statusBarHeight + 44;
+        var menuWidth=screenWidth-menuButtonInfo.width
+        var centerLeft=(menuButtonInfo.left-32) /2 ;
+        var rightLeft=menuButtonInfo.left-32;
+        var rightWidth=menuButtonInfo.width;
+                // 获取页面栈
+        const pages = getCurrentPages();
+        // 获取当前页面的索引
+        const currentIndex = pages.length - 1;
         this.setData({
-          navHeight,
-          statusBarHeight
+          menuRight,
+          menuTop,
+          menuHeight,
+          navBarHeight,
+          statusBarHeight,
+          centerLeft,
+          rightLeft,
+          top,
+          rightWidth,
+          isCanBack:currentIndex > 0
         });
       }
     },
@@ -66,6 +98,11 @@ Component({
                                 console.log(res)
                             }
                           })
+      },
+      back(){
+        wx.navigateBack({
+          delta: 1 // 返回上一个页面
+        })
       }
     }
   });

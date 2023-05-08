@@ -1,5 +1,6 @@
 <view class="">
-  <view class="">
+    <navigation-bar title="预约"></navigation-bar>
+
     <view>
       <t-tabs value="{{categorySelected}}" bind:change="onCategoryClick" bind:click="onCategoryClick" theme="card">
           <t-tab-panel wx:for="{{categories}}"  wx:key="scrollId" label="{{item.name}}" value="{{item.scrollId}}" />
@@ -16,5 +17,4 @@
         </block>
       </scrol-view>
     </view>
-  </view>
 </view>
