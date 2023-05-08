@@ -114,16 +114,16 @@ module.exports = {
     return request(`/appointment/${venue_id}`, false, 'post', param)
   },
   startTime(venue_id,param){
-    return request(`/venue/${venue_id}`+parseParamByJson(param), false, 'post', {})
+    return request(`/venue/${venue_id}?`+parseParamByJson(param), false, 'post', {})
   },
   endTime(venue_id,param){
-    return request(`/venue/${venue_id}`+parseParamByJson(param), false, 'put', {})
+    return request(`/venue/${venue_id}?`+parseParamByJson(param), false, 'put', {})
   },
 
   queryVIPList(){
     return request(`/vip/list`, false, 'get', {})
   },
   buyVip(vip_id,param){
-    return request(`/vip/buy/${vip_id}`, false, 'post',param)
+    return request(`/vip/buy/${vip_id}?`+parseParamByJson(param), false, 'post',{})
   }
 }

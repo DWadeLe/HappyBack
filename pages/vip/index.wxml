@@ -10,16 +10,18 @@
       <view class="content"> {{item.desc}}</view>
     </view>
 
-    <view  class="flex_item">
+    <view class="flex_item">
       <view class="label">购买价格 </view>
-      <view class="content"> <span style="text-decoration: line-through;font-size: 12px;color: #ccc;
-              ">{{item.discount}}</span>{{item.price}}</view>
+      <view class="content"> <span
+          style="text-decoration: line-through;font-size: 12px;color: #ccc;">{{item.discount}}</span>{{item.price}}
+      </view>
     </view>
     <view class="flex_item">
-        <view class="float_right">
-          <t-button theme="primary" variant="outline" size="small" data-id="item.id" bindtap="goBuy" shape="round">购买</t-button>
-        </view>
+      <view class="float_right">
+        <t-button theme="primary" variant="outline" size="small" data-id="item.id" bindtap="goBuy" shape="round">购买
+        </t-button>
       </view>
+    </view>
   </t-grid>
 
 
