@@ -126,6 +126,12 @@ Page({
   },
  
   getGameList(param){
+    if (this.data.isLastPage) {
+      wx.showToast({
+        title: '没有更多的数据'
+      })
+      return;
+    }
     var that=this;
     var {current_no,page_size}=this.data;
 
@@ -151,12 +157,6 @@ Page({
        
   },
   onReachBottom(){
-    if(this.data.isLastPage){
-      wx.showToast({
-        title: '没有更多的数据',
-      })
-      return
-    }
     var gameType=this.data.gameType;
     var that=this;
     var {current_no,page_size}=this.data;
@@ -184,6 +184,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
+        this.setData({
+           gameList:[]
+        })
         this.getGameList({type:this.data.gameType});
   },
 

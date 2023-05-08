@@ -16,12 +16,7 @@
           <text style="font-size:34rpx;">{{userNickName}}</text>
           <image wx:if="{{isVip}}" style="width:1rem;height:1rem;vertical-align:middle;margin-left:10rpx;"
             src="../../images/icon/VIP.svg"></image>
-        </view>
-      </view>
-      <view class='user_text' wx:if="{{!isVip}}">
-        <view class='user_name'>
-          您还不是会员
-          <t-button theme="primary" bindtap="goMap" id="2" variant="outline" size="small" shape="round">去订购</t-button>
+            <t-button wx:if="{{!isVip}}" theme="primary" bindtap="goMap" id="2" variant="outline" size="small" shape="round">开通会员</t-button>
         </view>
       </view>
     </view>

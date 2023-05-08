@@ -2,7 +2,7 @@
 
 <view class="page">
   <t-tabs bind:click="onTabsClick" value="{{payStatus}}" theme="line" space-evenly="{{true}}">
-        <t-tab-panel label="全部" value="-1" />
+        <t-tab-panel label="全部" value="4" />
         <t-tab-panel label="未生效" value="0" />
         <t-tab-panel label="已生效" value="1" />
         <t-tab-panel label="已取消" value="2" />

@@ -6,36 +6,7 @@ const WXAPI = require('../../wxapi/main')//获取应用实例
 const date = require('../../utils/date.js')
 Page({
   data: {
-    coupons: [
-      {
-        "coupon_name": "2小时抵扣券",
-        "coupon_type": 1,
-        "discount": 0,
-        "expire": true,
-        "expire_time": "2019-08-24T14:15:22Z",
-        "hour": 0,
-        "id": 0,
-        "status": 1,
-        "use_time": "2023-05-24T14:15:22Z",
-        "user_id": 0,
-        "venue_type": 0,
-        "wx_no": "string"
-      },
-      {
-        "coupon_name": "大包间包场券",
-        "coupon_type": 2,
-        "discount": 0,
-        "expire": true,
-        "expire_time": "2019-05-24T14:15:22Z",
-        "hour": 0,
-        "id": 0,
-        "status": 2,
-        "use_time": "2019-08-24T14:15:22Z",
-        "user_id": 0,
-        "venue_type": 0,
-        "wx_no": "string"
-      }
-    ],
+    coupons: [],
     useStatus: 1,
     baseRefresh: {
       value: false,
@@ -50,12 +21,6 @@ Page({
   },
   //触底刷新
   onReachBottom() {
-    if (this.data.isLastPage) {
-      wx.showToast({
-        title: '没有更多的数据'
-      })
-      return;
-    }
     var that = this;
     var { current_no, page_size, payStatus } = this.data;
 
@@ -111,9 +76,18 @@ Page({
   },
   onLoad: function () { },
   onShow: function () {
+    this.setData({
+      coupons:[]
+   })
     this.getMyCoupons(1);
   },
   getMyCoupons: function (status, callback) {
+    if (this.data.isLastPage) {
+      wx.showToast({
+        title: '没有更多的数据'
+      })
+      return;
+    }
     var that = this;
     this.setData({
       current_no: 0,

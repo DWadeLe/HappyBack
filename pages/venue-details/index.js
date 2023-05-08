@@ -7,11 +7,6 @@ import Toast from 'tdesign-miniprogram/toast/index';
 Page({
   data: {
     venueDetail: {
-      // name: "马里奥主题包间",
-      // desc: "",
-      // icon: "../../images/banner/banner3.jpg",
-      // orginalPrice: 120.00,
-      // realPrice: "100.00"
     },
     fabButton: {
       icon: 'call',

@@ -41,6 +41,7 @@ Page({
     })
   },
   onPullDownRefresh() {
+    
     var that = this;
     this.queryOrder(this.data.payStatus, () => {
       that.setData({
@@ -66,6 +67,12 @@ Page({
   },
 
   queryOrder(payStatus, callback) {
+    if (this.data.isLastPage) {
+      wx.showToast({
+        title: '没有更多的数据'
+      })
+      return;
+    }
     var that = this;
     var userInfo = wx.getStorageSync('userInfo');
     this.setData({
@@ -101,12 +108,6 @@ Page({
   },
   //触底刷新
   onReachBottom() {
-    if (this.data.isLastPage) {
-      wx.showToast({
-        title: '没有更多的数据'
-      })
-      return;
-    }
     var that = this;
     var user_id = wx.getStorageSync('user_id');
     var { current_no, page_size, payStatus } = this.data;
@@ -161,7 +162,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    wx.setStorageSync('user_id', 4);
+    this.setData({
+      orderList:[]
+   })
     this.queryOrder(this.data.payStatus);
   },
 

@@ -24,7 +24,7 @@ Page({
     current_no: 0,
     isLastPage: false,
     page_size: 10,
-    status: -1,
+    status: "4",
     qrCodeVisible:false,
 
   },
@@ -87,10 +87,19 @@ Page({
    */
   onShow() {
     var that = this;
+    this.setData({
+       appointmentList:[]
+    })
     this.queryAppointmentByUser(this.data.status);
   },
 
   queryAppointmentByUser(status) {
+    if (this.data.isLastPage) {
+      wx.showToast({
+        title: '没有更多的数据',
+      })
+      return
+    }
     var that = this;
     var {
       current_no,
@@ -101,7 +110,7 @@ Page({
       current_no,
       page_size
     }
-    if(status!="-1")
+    if(status!="4")
       param.status=status
 
     
@@ -137,12 +146,6 @@ Page({
     this.queryAppointmentByUser(status);
   },
   onReachBottom() {
-    if (this.data.isLastPage) {
-      wx.showToast({
-        title: '没有更多的数据',
-      })
-      return
-    }
     var status = this.data.status;
     var that = this;
     var {
