@@ -84,6 +84,7 @@ Page({
 
   },
   getCanUseCouponSize(userId){
+    var that=this;
     WXAPI.queryCouponsByUser(userId,{
       current_no:0,
       page_size:10,

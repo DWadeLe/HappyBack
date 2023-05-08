@@ -8,8 +8,8 @@
     </t-tabs>
     <t-grid class="order_item" theme="card" wx:for="{{orderList}}" wx:key="id" data-data="{{item}}" bindtap="goOrderDetail">
       <view class="flex_item">
-        <view class="good_name">{{(paymentVenueMap[item.payment_venue])item.goods_name}} </view>
-        <view class="float_right"> {{statusMap[item.status]}</view>
+        <view class="good_name">{{(paymentVenueMap[item.payment_venue])}} {{item.goods_name}} </view>
+        <view class="float_right"> {{statusMap[item.status]}}</view>
       </view>
       <view class="flex_item">
         <view>下单时间:{{item.order_time}} </view>

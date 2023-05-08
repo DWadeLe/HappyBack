@@ -24,7 +24,7 @@
         <view class='gamelib_info'>
           <view class='gamelibName'>{{item.name}}<view class="float-right gamelibScore">{{item.score}}分</view></view>
           <view class="gamelib_tag_p">
-            <t-tag class='gamelib_tag' wx:for="{{item.tag_list}}" wx:for-item="tag" wx:for-index="idx" theme="{{tagColor[idx%4]}}"  shape="mark">{{tag}}</t-tag>
+            <t-tag class='gamelib_tag' wx:for="{{item.tag_list}}" wx:for-item="tag" wx:for-index="idx" style="{{getUniqueColor(tag)}}"  shape="mark">{{tag}}</t-tag>
           </view>
            
         </view>

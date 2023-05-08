@@ -13,7 +13,7 @@
     <view class="flex_item">
       <view class="label">购买价格 </view>
       <view class="content"> <span
-          style="text-decoration: line-through;font-size: 12px;color: #ccc;">{{item.discount}}</span>{{item.price}}
+          style="text-decoration: line-through;font-size: 12px;color: #ccc;">{{item.price/item.discount}}</span>{{item.price}}
       </view>
     </view>
     <view class="flex_item">
