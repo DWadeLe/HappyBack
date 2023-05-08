@@ -11,26 +11,46 @@ Page({
    */
   data: {
       userInfo:{},
-      isVip:true
+      vipList:[]
   },
-  queryVIP(){
+  queryVIPList(){
 
       let that = this;
   
-      WXAPI.queryUser().then(function(res) {
-        var userInfo=res;
-        userInfo.vip_expire_time=dateUtil.toDate(userInfo.vip_expire_time)
+      WXAPI.queryVIPList().then(function(res) {
+        var vipList=res;
         
         that.setData({
-          userInfo: userInfo,
-          isVip: userInfo.vip,
-
+          vipList
         });
         wx.hideNavigationBarLoading();
       }).catch((e) => {
         wx.hideNavigationBarLoading();
       });
   },
+  goBuy(e){
+
+    let that = this;
+     
+    WXAPI.buyVip(e.id,{
+       user_id:this.data.userInfo.id
+    }).then(function(res) {
+      
+      if(res.code==200){
+         wx.showToast({
+           title: '会员订购成功',
+         })
+      }else{
+        wx.showToast({
+          title: '会员订购失败',
+        })
+      }
+       
+      wx.hideNavigationBarLoading();
+    }).catch((e) => {
+      wx.hideNavigationBarLoading();
+    });
+},
 
   /**
    * 生命周期函数--监听页面加载
@@ -50,7 +70,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-           this.queryVIP();
+           this.setData({
+            userInfo:wx.getStorageSync("userInfo")
+
+           })
+           this.queryVIPList();
   },
 
   /**

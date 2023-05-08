@@ -1,0 +1,37 @@
+<view class="page">
+  <t-grid class="order_item" theme="card">
+    <view class="flex_item">
+      <view class="label">订单编号</view>
+      <view class="content"> {{orderDetail.order_no}}</view>
+    </view>
+    <view class="flex_item">
+      <view class="label">订单名称</view>
+      <view class="content"> {{(paymentVenueMap[orderDetail.payment_venue])orderDetail.goods_name}}</view>
+    </view>
+    <view class="flex_item">
+      <view class="label">下单时间 </view>
+      <view class="content"> {{orderDetail.order_time}}</view>
+    </view>
+    <view wx:if="orderDetail.status==0" class="flex_item">
+      <view class="label">订单状态 </view>
+      <view class="content"> {{未支付}}</view>
+    </view>
+
+  </t-grid>
+  <t-grid class="order_item" theme="card" wx:if="orderDetail.status==1">
+    <view class="flex_item">
+      <view class="label">支付方式 </view>
+      <view class="content"> {{orderMethodMap[orderDetail.payment_method]}}</view>
+    </view>
+    <view wx:if="orderDetail.status==1" class="flex_item">
+      <view class="label">支付时间 </view>
+      <view class="content"> {{orderDetail.pay_time}}</view>
+    </view>
+    <view wx:if="orderDetail.status==1" class="flex_item">
+      <view class="label">实际付款</view>
+      <view class="content"> ¥{{orderDetail.count}}</view>
+    </view>
+  </t-grid>
+
+
+</view>

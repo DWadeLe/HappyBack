@@ -50,8 +50,6 @@ Page({
             privateRoom.push(element)
           }
           
-          //mock 数据
-          // element.icon="../../images/banner/banner"+(index%3+1)+".jpg";
      
       });
       that.setData({

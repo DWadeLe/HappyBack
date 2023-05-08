@@ -1,47 +1,48 @@
 <!--pages/user/user.wxml-->
 <view class="page">
   <view class="top_color"></view>
-  <t-grid class="user_top" column="1" theme="card" style="background-image: url('../../images/banner/backgroud.jpg') !important;background-size: cover;background-position: center;background-repeat: no-repeat;">
-    <view class='user_top_center' >
+  <t-grid class="user_top" column="1" theme="card"
+    style="background-image: url('../../images/banner/backgroud.jpg') !important;background-size: cover;background-position: center;background-repeat: no-repeat;">
+    <view class='user_top_center'>
       <view class='user_photo'>
         <!--<open-data type="userAvatarUrl"></open-data>-->
-        <button wx:if="{{canIUse}}" open-type="getUserInfo"  bindgetuserinfo="bindGetUserInfo" style="padding-left:0px;border-radius:70rpx;height:140rpx;width:140rpx;">
+        <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo"
+          style="padding-left:0px;border-radius:70rpx;height:140rpx;width:140rpx;">
           <image style="height:140rpx;width:140rpx;" class="slide-image" mode="aspectFill" src="{{avatarUrl}}"></image>
         </button>
       </view>
       <view class='user_text'>
-        <view class='user_name'>          
-<text style="font-size:34rpx;">{{userNickName}}</text><image wx:if="{{isVip}}" style="width:1rem;height:1rem;vertical-align:middle;margin-left:10rpx;" src="../../images/icon/VIP.svg"></image>
+        <view class='user_name'>
+          <text style="font-size:34rpx;">{{userNickName}}</text>
+          <image wx:if="{{isVip}}" style="width:1rem;height:1rem;vertical-align:middle;margin-left:10rpx;"
+            src="../../images/icon/VIP.svg"></image>
         </view>
-        <!--<view class='user_star'>五星会员</view>
-        <view class='user_phone'><text>{{mobile}}</text>
-          <image wx:if="{{isVip}}" style="width:2rem;height:2rem;vertical-align:middle;margin-left:10rpx;" src="../../images/vip.png"></image>
-        </view>-->
+
       </view>
     </view>
 
   </t-grid>
 
   <t-grid class="service_list" column="1" theme="card">
-    <t-input class="weui-cell__bd" disabled prefixIcon="root-list" id="1" label="我的订单" bindtap='goMap'  align="left">
+    <t-input class="weui-cell__bd" disabled prefixIcon="root-list" id="1" label="我的订单" bindtap='goMap' align="left">
       <view slot="suffix" class="suffix">
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </view>
     </t-input>
-    <t-input class="weui-cell__bd"  disabled prefixIcon="star" label="我的会员" id="2" bindtap='goMap'  align="left">
+    <!-- <t-input class="weui-cell__bd" disabled prefixIcon="star" label="我的会员" id="2" bindtap='goMap' align="left">
       <view slot="suffix" class="suffix">
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </view>
-    </t-input>
-    <t-input class="weui-cell__bd" disabled prefixIcon="wallet" label="我的卡券" id="3" bindtap='goMap'  align="left">
+    </t-input> -->
+    <t-input class="weui-cell__bd" disabled prefixIcon="wallet" label="我的卡券" id="3" bindtap='goMap' align="left">
       <view slot="suffix" class="suffix">
         <view class='user_list_quan' wx:if="true">
-          <view class='user_list_dian' wx:if="true"></view>您有未使用的券
+          <view class='user_list_dian' wx:if="{{haveCoupons}}"></view>您有未使用的券
           <view class="weui-cell__ft weui-cell__ft_in-access"></view>
         </view>
       </view>
     </t-input>
-    <t-input class="weui-cell__bd" disabled prefixIcon="time" label="我的预约" id="4" bindtap='goMap'  align="left">
+    <t-input class="weui-cell__bd" disabled prefixIcon="time" label="我的预约" id="4" bindtap='goMap' align="left">
       <view slot="suffix" class="suffix">
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </view>
@@ -55,7 +56,7 @@
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </view>
     </t-input> -->
-    <t-input class="weui-cell__bd"  disabled prefixIcon="clear" label="核销预约" id="6" bindtap='goMap'  align="left">
+    <t-input class="weui-cell__bd" disabled prefixIcon="clear" label="核销预约" id="6" bindtap='goMap' align="left">
       <view slot="suffix" class="suffix">
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </view>

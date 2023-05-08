@@ -20,7 +20,8 @@ Page({
     avatarUrl: "",
     isVip: false,
     isManager: true,
-    userInfo: {}
+    userInfo: {},
+    haveCoupons:false,
   },
   onLoad() {
 
@@ -75,13 +76,32 @@ Page({
     });
     if (wx.getStorageSync('loginRet') == '0') {
       self.setData({
-        userId: wx.getStorageSync('mobile')
+        userId: wx.getStorageSync('userInfo').id
       });
 
     }
-    
+    this.getCanUseCouponSize(wx.getStorageSync('userInfo').id);
 
   },
+  getCanUseCouponSize(userId){
+    WXAPI.queryCouponsByUser(userId,{
+      current_no:0,
+      page_size:10,
+      status:1
+    }).then(function (res) {
+      var coupons = res;
+      if(coupons.length>0)
+         {
+          that.setData({
+             haveCoupons:true
+          })
+         }
+
+      wx.hideNavigationBarLoading();
+    }).catch((e) => {
+      wx.hideNavigationBarLoading();
+    });
+  }
   goMap(e) {
 
     var typeMap = {

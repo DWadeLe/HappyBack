@@ -28,3 +28,14 @@ page {
 .margin_left_30{
   margin-left: 30px;
 }
+
+.label{
+   margin: 10rpx 10rpx 10rpx 0 ; 
+}
+.context{
+  margin: 10rpx 0 10rpx 0 ; 
+}
+.flex_item{
+  display: flex;
+  justify-content: space-between;
+}

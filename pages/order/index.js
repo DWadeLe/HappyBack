@@ -10,8 +10,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    orderList:[],
-    payStatus:2,
+    orderList: [],
+    payStatus: 2,
     baseRefresh: {
       value: false,
     },
@@ -19,18 +19,33 @@ Page({
       size: '50rpx',
     },
     backTopVisible: false,
-    current_no:0,
-    isLastPage:false,
-    page_size:10,
+    current_no: 0,
+    isLastPage: false,
+    page_size: 10,
+    paymentVenueMap: {
+      "1": "开通会员",
+      "2": "预约",
+      "3": "机位结算"
+    },
+    statusMap: {
+      0: '未支付',
+      1: '已支付'
+    }
+
 
   },
-  
+  goOrderDetail(e) {
+
+    wx.navigateTo({
+      url: "/pages/order-details/index?data=" + JSON.stringify(e.currentTarget.dataset.data)
+    })
+  },
   onPullDownRefresh() {
-    var that=this;
-    this.queryOrder(this.data.payStatus,()=>{
-        that.setData({
-          'baseRefresh.value':false
-        })
+    var that = this;
+    this.queryOrder(this.data.payStatus, () => {
+      that.setData({
+        'baseRefresh.value': false
+      })
     });
 
   },
@@ -41,42 +56,42 @@ Page({
       backTopVisible: scrollTop > 100,
     });
   },
-  onTabsClick(e){
-      var payStatus=e.detail.value;
-       this.setData({
-           payStatus
-       })
-       this.queryOrder(payStatus);
+  onTabsClick(e) {
+    var payStatus = e.detail.value;
+    this.setData({
+      payStatus
+    })
+    this.queryOrder(payStatus);
   },
 
-  queryOrder(payStatus,callback){
-    var that=this;
-    var user_id=wx.getStorageSync('user_id'); 
+  queryOrder(payStatus, callback) {
+    var that = this;
+    var userInfo = wx.getStorageSync('userInfo');
     this.setData({
-        current_no:0,
-        isLastPage:false
+      current_no: 0,
+      isLastPage: false
     })
-    var {current_no,page_size}=this.data;
-    var param={
-        current_no,
-        page_size
+    var { current_no, page_size } = this.data;
+    var param = {
+      current_no,
+      page_size
     }
-    
-    if(Number(payStatus)<2)
-        param.status=payStatus
+
+    if (Number(payStatus) < 2)
+      param.status = payStatus
     debugger
-    WXAPI.queryOrder(user_id,param).then(function(res) {
-      
-      var orderList=res;
-      orderList.forEach(item=>{
-        item.order_time=dateUtil.toDate(item.order_time);
-        item.payment_time=dateUtil.toDate(item.payment_time);
+    WXAPI.queryOrder(userInfo.id, param).then(function (res) {
+
+      var orderList = res;
+      orderList.forEach(item => {
+        item.order_time = dateUtil.toDate(item.order_time);
+        item.payment_time = dateUtil.toDate(item.payment_time);
       })
       that.setData({
         orderList: orderList,
       });
-      if(callback){
-          callback()
+      if (callback) {
+        callback()
       }
       wx.hideNavigationBarLoading();
     }).catch((e) => {
@@ -84,42 +99,42 @@ Page({
     });
   },
   //触底刷新
-  onReachBottom(){
-    if(this.data.isLastPage){
+  onReachBottom() {
+    if (this.data.isLastPage) {
       wx.showToast({
         title: '没有更多的数据'
       })
       return;
     }
-    var that=this;
-    var user_id=wx.getStorageSync('user_id'); 
-    var {current_no,page_size,payStatus}=this.data;
-    
-    current_no=current_no+page_size;
-    var param={
+    var that = this;
+    var user_id = wx.getStorageSync('user_id');
+    var { current_no, page_size, payStatus } = this.data;
+
+    current_no = current_no + page_size;
+    var param = {
       current_no,
       page_size
-  }
-  if(payStatus)
-      param.status=payStatus
-    WXAPI.queryOrder(user_id,param).then(function(res) {
-      
-      var orderList=res;
+    }
+    if (payStatus)
+      param.status = payStatus
+    WXAPI.queryOrder(user_id, param).then(function (res) {
 
-      if(orderList.length>0){
-        orderList.forEach(item=>{
-          item.order_time=dateUtil.toDate(item.order_time);
-          item.payment_time=dateUtil.toDate(item.payment_time);
+      var orderList = res;
+
+      if (orderList.length > 0) {
+        orderList.forEach(item => {
+          item.order_time = dateUtil.toDate(item.order_time);
+          item.payment_time = dateUtil.toDate(item.payment_time);
         })
-        var newList=that.data.orderList.concat(orderList);
-         that.setData({
+        var newList = that.data.orderList.concat(orderList);
+        that.setData({
           orderList: newList,
           current_no
-         });
-      }else{
+        });
+      } else {
         that.setData({
           isLastPage: true,
-         });
+        });
       }
       wx.hideNavigationBarLoading();
     }).catch((e) => {
@@ -145,8 +160,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    wx.setStorageSync('user_id',4);
-      this.queryOrder(this.data.payStatus);
+    wx.setStorageSync('user_id', 4);
+    this.queryOrder(this.data.payStatus);
   },
 
   /**

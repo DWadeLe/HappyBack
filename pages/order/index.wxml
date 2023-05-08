@@ -1,34 +1,33 @@
 <!--pages/order/index.wxml-->
 <view>
   <view class="page">
-      <t-tabs bind:click="onTabsClick" value="{{payStatus}}" theme="line" space-evenly="{{true}}">
-        <t-tab-panel label="全部" value="2" />
-        <t-tab-panel label="已支付" value="1" />
-        <t-tab-panel label="待支付" value="0" />
-      </t-tabs>
-     <!-- <t-grid class="order_item" theme="card" wx:for="{{orderList}}" wx:key="id"   bindtap="goOrderDetail" >
-        <view> {{item.order_no}} </view>
+    <t-tabs bind:click="onTabsClick" value="{{payStatus}}" theme="line" space-evenly="{{true}}">
+      <t-tab-panel label="全部" value="2" />
+      <t-tab-panel label="已支付" value="1" />
+      <t-tab-panel label="待支付" value="0" />
+    </t-tabs>
+    <t-grid class="order_item" theme="card" wx:for="{{orderList}}" wx:key="id" data-data="item" bindtap="goOrderDetail">
+      <view class="flex_item">
+        <view class="good_name">{{(paymentVenueMap[item.payment_venue])item.goods_name}} </view>
+        <view class="float_right"> {{statusMap[item.status]}</view>
+      </view>
+      <view class="flex_item">
+        <view>下单时间:{{item.order_time}} </view>
+        <view class="float_right order_count"> ¥{{item.count}}</view>
 
-        <view> {{item.goods_name}}({{item.payment_venue==1?'开通会员':(item.payment_venue==2?'小时结算':'包场结算')}}) </view>
-        <view> {{item.amount}} </view>
-        <view prefixIcon="time"> {{item.order_time}} </view>
-        <view> {{item.payment_method==1?'现金':(item.payment_method==2?'抵扣券':'现金+抵扣券')}} {{item.payment_time}} </view>
-        <t-badge wx:if="{{payStatus==2 && item.status==0}}" count="未支付" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
-        <t-badge wx:if="{{payStatus==2 && item.status==1}}" count="已支付" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
-      </t-grid> -->
+      </view>
+      <view class="flex_item">
+        <view class="float_right" wx:if="item.status==0">
+          <t-button theme="primary" variant="outline" size="small" shape="round">取消</t-button>
+        </view>
+        <view></view>
+      </view>
+      <!-- <t-badge wx:if="{{payStatus==2 && item.status==0}}" count="未支付" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
+      <t-badge wx:if="{{payStatus==2 && item.status==1}}" count="已支付" offset="{{[0, 0]}}" shape="ribbon" slot="note" /> -->
+    </t-grid>
 
-      <t-cell-group class="order_item"   theme="card" wx:for="{{orderList}}" wx:key="id"   bindtap="goOrderDetail" >
-        <t-cell title="{{item.order_no}}" leftIcon="view-module" hover  />
 
-        <t-cell title="{{item.goods_name}}({{item.payment_venue==1?'开通会员':(item.payment_venue==2?'小时结算':'包场结算')}})" leftIcon="shop" hover  />
-        <t-cell title="{{item.amount}}" leftIcon="money-circle" hover  />
 
-        <t-cell title="{{item.order_time}}" leftIcon="star" hover  />
+  </view>
 
-        <t-cell  wx:if="{{item.status==1}}" title="{{item.payment_method==1?'现金':(item.payment_method==2?'抵扣券':'现金+抵扣券')}} {{item.payment_time}}" leftIcon="qrcode" hover  />
-      </t-cell-group>
-       
-
-</view>
-  
 </view>

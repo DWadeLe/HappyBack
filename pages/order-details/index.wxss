@@ -18,7 +18,3 @@
 .order_count{
   font-weight: bold;
 }
-.flex_item{
-  display: flex;
-  justify-content: space-between;
-}
