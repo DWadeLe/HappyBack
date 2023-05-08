@@ -24,7 +24,7 @@ Page({
     current_no: 0,
     isLastPage: false,
     page_size: 10,
-    status: "4",
+    status: "-1",
     qrCodeVisible:false,
 
   },
@@ -52,6 +52,11 @@ Page({
   },
   onPullDownRefresh() {
     var that = this;
+    var {current_no,page_size}=this.data;
+   
+    this.setData({
+      current_no:current_no+page_size
+    })
     this.queryAppointmentByUser(this.data.status, () => {
       that.setData({
         'baseRefresh.value': false
@@ -110,7 +115,7 @@ Page({
       current_no,
       page_size
     }
-    if(status!="4")
+    if(status!="-1")
       param.status=status
 
     

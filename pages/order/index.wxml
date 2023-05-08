@@ -1,12 +1,15 @@
 <!--pages/order/index.wxml-->
-<view>
-  <view class="page">
+<view class="page">
+  <t-pull-down-refresh value="{{baseRefresh.value}}" loadingProps="{{loadingProps}}"
+    loadingTexts="{{['下拉刷新', '松手刷新', '正在刷新', '刷新完成']}}" bind:refresh="onPullDownRefresh" bind:scroll="onScroll">
+
     <t-tabs bind:click="onTabsClick" value="{{payStatus}}" theme="line" space-evenly="{{true}}">
       <t-tab-panel label="全部" value="2" />
       <t-tab-panel label="已支付" value="1" />
       <t-tab-panel label="待支付" value="0" />
     </t-tabs>
-    <t-grid class="order_item" theme="card" wx:for="{{orderList}}" wx:key="id" data-data="{{item}}" bindtap="goOrderDetail">
+    <t-grid class="order_item" theme="card" wx:for="{{orderList}}" wx:key="id" data-data="{{item}}"
+      bindtap="goOrderDetail">
       <view class="flex_item">
         <view class="good_name">{{(paymentVenueMap[item.payment_venue])}} {{item.goods_name}} </view>
         <view class="float_right"> {{statusMap[item.status]}}</view>
@@ -25,9 +28,7 @@
       <!-- <t-badge wx:if="{{payStatus==2 && item.status==0}}" count="未支付" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
       <t-badge wx:if="{{payStatus==2 && item.status==1}}" count="已支付" offset="{{[0, 0]}}" shape="ribbon" slot="note" /> -->
     </t-grid>
+  </t-pull-down-refresh>
 
-
-
-  </view>
 
 </view>

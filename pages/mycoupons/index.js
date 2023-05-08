@@ -50,6 +50,11 @@ Page({
   },
   onPullDownRefresh() {
     var that = this;
+    var {current_no,page_size}=this.data;
+   
+    this.setData({
+      current_no:current_no+page_size
+    })
     this.getMyCoupons(this.data.status, () => {
       that.setData({
         'baseRefresh.value': false

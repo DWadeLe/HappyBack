@@ -43,6 +43,12 @@ Page({
   onPullDownRefresh() {
     
     var that = this;
+    var that = this;
+    var {current_no,page_size}=this.data;
+   
+    this.setData({
+      current_no:current_no+page_size
+    })
     this.queryOrder(this.data.payStatus, () => {
       that.setData({
         'baseRefresh.value': false
@@ -182,12 +188,6 @@ Page({
 
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
 
   /**
    * 页面上拉触底事件的处理函数
