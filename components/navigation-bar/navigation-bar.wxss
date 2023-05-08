@@ -1,15 +1,45 @@
-.nav-bar{  background: #f48333; display: flex;
+/* 顶部导航栏样式 */
+.nav-bar {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    height: {{navHeight + statusBarHeight}}px;
+    padding-top: {{statusBarHeight}}px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .nav-bar__back {
+    width: 60rpx;
+    height: 100%;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    align-items: center;}
-.center{
-    margin: auto;
-
-}
-.right{
-    margin-left: auto;
-
-}
-.right image{
-    width: 30px;
-    height: 30px;
-}
+  }
+  
+  .nav-bar__back-img {
+    width: 28rpx;
+    height: 28rpx;
+  }
+  
+  .nav-bar__title {
+    font-size: 34rpx;
+    font-weight: bold;
+  }
+  
+  .nav-bar__scan {
+    width: 80rpx;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 16px;
+  }
+  
+  .nav-bar__scan-img {
+    width: 28rpx;
+    height: 28rpx;
+  }
+  

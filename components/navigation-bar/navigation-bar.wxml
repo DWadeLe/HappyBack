@@ -1,9 +1,24 @@
 <!-- 自定义顶部栏 -->
-<view class="nav-bar" style="height:{{navBarHeight}}px;">
+<!-- <view class="nav-bar" style="height:{{navBarHeight}}px;">
     <view class="center" style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px; left:{{menuRight}}px; top:{{menuTop}}px;">{{defaultData.value}}</view>
     <view class="right" bindtap="scanCode" style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px; left:{{menuRight}}px; top:{{menuTop}}px;"><image src="../../images/nav/scan.png"></image></view>
     <!-- <input class="search" placeholder="输入关键词！" style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px; left:{{menuRight}}px; top:{{menuTop}}px;"></input> -->
-</view>
+</view> -->
 
 <!-- 占位，高度与顶部栏一样 -->
 <!-- <view style="height:{{navBarHeight}}px;"></view> -->
+<!-- 顶部导航栏 WXML 模板 -->
+<view class="nav-bar">
+  <!-- 左侧返回按钮 -->
+  <view class="nav-bar__back">
+    <image class="nav-bar__back-img" src="/images/icon/back.png"></image>
+  </view>
+  <!-- 标题 -->
+  <view class="nav-bar__title">
+    <text>{{title}}</text>
+  </view>
+  <!-- 右侧扫一扫按钮 -->
+  <view class="nav-bar__scan" bindtap="scanCode">
+    <image class="nav-bar__scan-img" src="/images/icon/scan.png"></image>
+  </view>
+</view>
