@@ -103,7 +103,8 @@ Page({
 
     var status = e.detail.value;
     this.setData({
-      useStatus: status
+      useStatus: status,
+      coupons:[]
     })
     this.getMyCoupons(status);
 

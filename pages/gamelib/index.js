@@ -55,8 +55,10 @@ Page({
     isLastPage:false,
   },
   getUniqueColor(name){
+    var color=colorUtil.getUniqueColor(name);
+    debugger
     return {
-      backgroundColor:colorUtil.getUniqueColor(name)
+      backgroundColor:color
     };
     
   },
@@ -112,12 +114,13 @@ Page({
      });
   },
   onTabsClick(e){
-    gameType=e.detail.value;
+    var gameType=e.detail.value;
      this.setData({
       gameType, 
       current_no:0,
       page_size:10,
-      isLastPage:false
+      isLastPage:false,
+      gameList:[]
      });
      this.getGameList({type:gameType});
   },
@@ -131,7 +134,7 @@ Page({
     WXAPI.queryGame(realParam).then(function(res) {
       
       var gameList=res;
-      if(orderList.length>0){
+      if(gameList.length>0){
         var newList=that.data.gameList.concat(gameList);
          that.setData({
           gameList: newList,

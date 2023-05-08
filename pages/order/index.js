@@ -59,7 +59,8 @@ Page({
   onTabsClick(e) {
     var payStatus = e.detail.value;
     this.setData({
-      payStatus
+      payStatus,
+      orderList:[]
     })
     this.queryOrder(payStatus);
   },
