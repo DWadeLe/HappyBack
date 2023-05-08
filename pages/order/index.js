@@ -152,6 +152,45 @@ Page({
     });
   },
 
+  toPay(e){
+    var data=e.currentTarget.dataset.data;
+
+    WXAPI.queryOrder(data.order_no).then(function (res) {
+
+
+      if(res.code==200){
+          wx.showToast({
+            "title":"取消订单成功"
+          })
+      }else{
+        wx.showToast({
+          "title":"取消订单失败:"+res.msg
+        })
+      }
+      wx.hideNavigationBarLoading();
+    }).catch((e) => {
+      wx.hideNavigationBarLoading();
+    });
+  },
+  toCancel(e){
+    var data=e.currentTarget.dataset.data;
+    WXAPI.cancelOrder(data.order_no).then(function (res) {
+
+      if(res.code==200){
+          wx.showToast({
+            "title":"支付订单成功"
+          })
+      }else{
+        wx.showToast({
+          "title":"支付订单失败:"+res.msg
+        })
+      }
+      wx.hideNavigationBarLoading();
+    }).catch((e) => {
+      wx.hideNavigationBarLoading();
+    });
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */

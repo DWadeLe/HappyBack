@@ -42,7 +42,7 @@ Page({
          })
       }else{
         wx.showToast({
-          title: '会员订购失败',
+          title: '会员订购失败:'+res.msg,
         })
       }
        

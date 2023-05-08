@@ -24,8 +24,8 @@
       </view>
       <view class="flex_item">
         <view class="float_right" wx:if="item.status==0">
-           <t-button theme="primary" variant="outline" size="small" shape="round">去支付</t-button>
-           <t-button theme="primary" variant="outline" size="small" shape="round">取消</t-button>
+           <t-button bindtap="toPay" data-data="item" theme="primary" variant="outline" size="small" shape="round">去支付</t-button>
+           <t-button bindtap="toCancel" data-data="item" theme="primary" variant="outline" size="small" shape="round">取消</t-button>
         </view>
         <view></view>
       </view>

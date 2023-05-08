@@ -37,7 +37,7 @@ Page({
               })
             }else{
               wx.showToast({
-                title: '开机失败',
+                title: '开机失败:'+res.msg,
                 icon: 'error'
               })
             }   
@@ -55,7 +55,7 @@ Page({
         })
       }else{
         wx.showToast({
-          title: '关机失败',
+          title: '关机失败:'+res.msg,
           icon: 'error'
         })
       }  

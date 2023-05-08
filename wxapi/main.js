@@ -125,5 +125,12 @@ module.exports = {
   },
   buyVip(vip_id,param){
     return request(`/vip/buy/${vip_id}?`+parseParamByJson(param), false, 'post',{})
+  },
+  cancelOrder(order_no){
+    return request(`/order/${order_no}/cancel`, false, 'post',{})
+  },
+  payOrderOnline(order_no){
+    return request(`order/${order_no}/pay`, false, 'post',{})
+
   }
 }
