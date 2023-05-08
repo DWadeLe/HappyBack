@@ -123,7 +123,7 @@ module.exports = {
   queryVIPList(){
     return request(`/vip/list`, false, 'get', {})
   },
-  buyVip(vip_id){
-    return request(`/vip/buy/${vip_id}`, false, 'post', {})
+  buyVip(vip_id,param){
+    return request(`/vip/buy/${vip_id}`, false, 'post',param)
   }
 }

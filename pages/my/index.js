@@ -101,7 +101,7 @@ Page({
     }).catch((e) => {
       wx.hideNavigationBarLoading();
     });
-  }
+  },
   goMap(e) {
 
     var typeMap = {

@@ -17,7 +17,11 @@
           <image wx:if="{{isVip}}" style="width:1rem;height:1rem;vertical-align:middle;margin-left:10rpx;"
             src="../../images/icon/VIP.svg"></image>
         </view>
-
+      </view>
+      <view class='user_text'>
+        <view class='user_name'>
+           <t-button theme="primary" bindtap="goMap" id="2" variant="outline" size="small" shape="round">去订购</t-button>
+        </view>
       </view>
     </view>
 
