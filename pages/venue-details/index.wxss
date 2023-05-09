@@ -204,6 +204,10 @@
   background-color: #fff !important;
 
 }
+.backgroud-color-fff{
+  background-color: #fff !important;
+
+}
 .scroll_coupon{
   position: fixed; /* 将元素固定在页面底部 */
   bottom: 85px; /* 距离页面底部为0 */
