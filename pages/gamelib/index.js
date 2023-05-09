@@ -63,8 +63,8 @@ Page({
   },
   selectCondition() {
     var param = {};
-    var tag = this.tag.value;
-    var sorter = this.sorter.value;
+    var tag = this.data.tag.value;
+    var sorter = this.data.sorter.value;
     var searchName = this.data.searchName;
     this.setData({
       current_no: 0,

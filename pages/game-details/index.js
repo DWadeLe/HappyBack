@@ -10,7 +10,7 @@ Page({
     gameDetail:{
       },
       colorMap:{
-        
+
       }
   },
 
@@ -76,6 +76,7 @@ Page({
         lastIndex= url.lastIndexOf("/");
         bvid=url.substring(lastIndex + 1);
       }catch(e){
+        console.log(url,e)
         wx.showToast({
           title: '地址异常，跳转失败',
         })

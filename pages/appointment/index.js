@@ -39,15 +39,12 @@ Page({
   async showQrcode(e) {
     var that = this
     var data = e.currentTarget.dataset.data
-    var json={
-      "url":"/pages/check-appointment/index",
-      "data":data
-    }
+    var content="/pages/check-appointment/index?id="+data.id;
     drawQrcode({
       width: 200,
       height: 200,
       canvasId: 'myQrcode',
-      text: JSON.stringify(json),
+      text: content,
       _this: that
     })
     this.setData({

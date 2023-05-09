@@ -71,9 +71,8 @@ Component({
             success (res) {
                 console.log(res)
                 var result=res.result;
-                var json=JSON.parse(result);
                 wx.navigateTo({
-                  url: json.url + "?id=" +json.id
+                  url: result
                 })
             },
             fail(res){
