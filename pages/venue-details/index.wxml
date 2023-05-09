@@ -56,11 +56,11 @@
               </view>
             </view>
           </t-input>
-          <t-textarea value="{{remark}}" label="备注" placeholder="您可以填您想玩的游戏，我们帮您预热" maxlength="200" disableDefaultPadding="{{true}}" indicator />
+          <t-textarea value="{{remark}}" label="备注" placeholder="您可以填您想玩的游戏，我们帮您预热" style="height:50px" maxlength="200" disableDefaultPadding="{{true}}" indicator />
 
-          <view class="to_pay" bindtap="goPay" >
+          <view class="backgroud-color-fff"  >
             <view class="yd-price"><span style="font-size: 0.9rem;">¥</span>{{venuePriceMap[session].price}}</view>
-            <t-button  shape="round" t-class="yd-py-btn" block>去支付</t-button>
+            <t-button  bindtap="goPay" shape="round" t-class="yd-py-btn" block>去支付</t-button>
           </view>
         </view>
       </t-popup>
@@ -72,7 +72,7 @@
             <view class="title">可用卡券</view>
           </view>
           <text wx:if="{{canUseCoupons.length==0}}">没有可用的券</text>
-          <view wx:if="{{canUseCoupons.length>0}}">
+          <view wx:else="{{canUseCoupons.length==0}}">
             <t-grid bindtap="onSelectCoupon" data-data="{{item}}" wx:for="{{canUseCoupons}}" class="{{item.status==1?'unuse_coupons_item':'use_coupons_item'}}" theme="card">
 
               <!-- <t-radio class="coupon_radio" bind:change="{{changeCoupon}}" value="{{item}}" label="" placement="right" checked="{{item.checked}}"> -->
@@ -89,7 +89,7 @@
 
 
         </scroll-view>
-        <view class="to_pay">
+        <view class="backgroud-color-fff">
           <t-button bindtap="closeCouponListPop" shape="round" t-class="yd-price" block>取消</t-button>
           <t-button bindtap="confirmCoupon" shape="round" t-class="yd-py-btn" block>确定</t-button>
         </view>
@@ -107,9 +107,6 @@
   <view class='page__ft'>
 
   </view>
+  <t-toast id="t-toast" />
+</view>
 
-</view>
-<view wx:if="{{currentPages.length == 1}}" class='goIndex' bindtap="goIndex">
-  <image class="goIndex-icon" src="/images/nav/home-on.png"></image>
-</view>
-<t-toast id="t-toast" />

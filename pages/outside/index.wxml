@@ -1,2 +1,0 @@
-<!--pages/outside/index.wxml-->
-<web-view src="{{src}}"> </web-view>

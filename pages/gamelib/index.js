@@ -69,19 +69,19 @@ Page({
     this.setData({
       current_no: 0,
       page_size: 10,
-      gameList:[],
-      isLastPage:false
+      gameList: [],
+      isLastPage: false
     })
-    if (tag != "-1")
+    if (tag && tag != "-1")
       param.tag = tag
-    if (sorter != "-1") {
+    if (sorter && sorter != "-1") {
       var index = sorter.indexOf(",");
       param.order_by = sorter.substring(0, index - 1);
       param.order_type = sorter.substring(index + 1);
     }
-    if (searchName != '')
+    if (searchName && searchName != '')
       param.name = searchName
-
+    param.type=this.data.gameType
     this.getGameList(param);
   },
 
@@ -121,7 +121,7 @@ Page({
   },
   toDetailsTap(e) {
     wx.navigateTo({
-      url: "/pages/game-details/index?data=" + JSON.stringify(e.currentTarget.dataset.data)+"&colorMap="+JSON.stringify(this.data.colorMap)
+      url: "/pages/game-details/index?data=" + JSON.stringify(e.currentTarget.dataset.data) + "&colorMap=" + JSON.stringify(this.data.colorMap)
     })
 
   },
@@ -175,16 +175,16 @@ Page({
 
       if (gameList.length > 0) {
         gameList.forEach(item => {
-                  //处理显示颜色
+          //处理显示颜色
 
           if (item.tag_list && item.tag_list.length > 0) {
             item.tag_list.forEach(tag => {
               if (!colorMap[tag])
-              colorMap[tag] = colorUtil.getRandomColor()
+                colorMap[tag] = colorUtil.getRandomColor()
             })
           }
           //处理时间
-          item.release_time=dateUtil.toDate(item.release_time)
+          item.release_time = dateUtil.toDate(item.release_time)
         })
         var newList = that.data.gameList.concat(gameList);
         that.setData({

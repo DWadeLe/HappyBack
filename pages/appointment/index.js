@@ -131,7 +131,7 @@ Page({
       if (info && info.length > 0) {
         info.forEach(item => {
 
-          item.date = dateUtil.toDate(item.date)
+          item.date = dateUtil.toDate(item.date).substring(0,10)
         })
         that.setData({
           appointmentList: info
