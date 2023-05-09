@@ -33,11 +33,24 @@ Page({
   },
  
   onLoad(e) {
-      var data=e.data;
+      var id=e.id;
       this.setData({
        userInfo: wx.getStorageSync('userInfo'),
-        appointment:data
       })
+      this.queryItem(id);
+  },
+  queryItem(id){
+    WXAPI.queryAppointmentById(id).then(function(res) {
+         
+      this.setData({
+        appointment:res
+      })
+       
+      wx.hideNavigationBarLoading();
+    }).catch((e) => {
+
+      wx.hideNavigationBarLoading();
+    });
   },
   /**
    * 核销确认

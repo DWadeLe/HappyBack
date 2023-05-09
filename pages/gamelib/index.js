@@ -33,19 +33,19 @@ Page({
         label: '排序',
       },
       {
-        value: 'score,desc',
+        value: 'score,2',
         label: '按评分高',
       },
       {
-        value: 'score,asc',
+        value: 'score,1',
         label: '按评分低',
       }, {
-        value: 'score,desc',
-        label: '按价格高',
+        value: 'release_time,2',
+        label: '按发售时间晚',
       },
       {
-        value: 'score,asc',
-        label: '按价格低',
+        value: 'release_time,1',
+        label: '按发售时间早',
       }]
     },
     gameType: 1,
@@ -68,7 +68,8 @@ Page({
     var searchName = this.data.searchName;
     this.setData({
       current_no: 0,
-      page_size: 10
+      page_size: 10,
+      gameList:[]
     })
     if (tag != "-1")
       param.tag = tag
@@ -132,6 +133,7 @@ Page({
     this.setData({
       tag
     });
+    this.selectCondition()
   },
   onSorterChange(e) {
     var sorter = this.data.sorter;
@@ -139,6 +141,8 @@ Page({
     this.setData({
       sorter
     });
+    this.selectCondition()
+
   },
   onTabsClick(e) {
     var gameType = e.detail.value;

@@ -98,11 +98,11 @@ Page({
       param.status = payStatus
     
     WXAPI.queryOrder(userInfo.id, param).then(function (res) {
-      var now=new Date().getDate();
+      var now=new Date().getTime();
       var orderList = res;
       orderList.forEach(item => {
-        item.close_time=(15*3600 -(now-item.order_time))<=0?0:(15*3600 -(now-item.order_time));
-
+        item.close_time=(15*60*1000 -(now-new Date(item.order_time).getTime()))<=0?0:(15*60*1000  -(now-new Date(item.order_time).getTime()));
+        debugger
         item.order_time = dateUtil.toDate(item.order_time);
         item.payment_time = dateUtil.toDate(item.payment_time);
       })
@@ -163,11 +163,11 @@ Page({
 
       if(res.code==200){
           wx.showToast({
-            "title":"取消订单成功"
+            "title":"支付订单成功"
           })
       }else{
         wx.showToast({
-          "title":"取消订单失败:"+res.msg
+          "title":"支付订单失败:"+res.msg
         })
       }
       wx.hideNavigationBarLoading();
@@ -181,11 +181,11 @@ Page({
 
       if(res.code==200){
           wx.showToast({
-            "title":"支付订单成功"
+            "title":"取消订单成功"
           })
       }else{
         wx.showToast({
-          "title":"支付订单失败:"+res.msg
+          "title":"取消订单失败:"+res.msg
         })
       }
       wx.hideNavigationBarLoading();

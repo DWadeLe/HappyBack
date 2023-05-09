@@ -11,8 +11,8 @@
     </t-tabs>
     <view wx:if="{{normalSearch}}" class="search_parent">
       <t-dropdown-menu style="width: 60%!important;">
-        <t-dropdown-item style="border: 1px solid black !important;" bindchange="selectCondition" options="{{tag.options}}" value="{{tag.value}}" bindchange="onTagChange" />
-        <t-dropdown-item style="border: 1px solid black !important;" bindchange="selectCondition" options="{{sorter.options}}" value="{{sorter.value}}" bindchange="onSorterChange" />
+        <t-dropdown-item style="border: 1px solid black !important;"  options="{{tag.options}}" value="{{tag.value}}" bindchange="onTagChange" />
+        <t-dropdown-item style="border: 1px solid black !important;"  options="{{sorter.options}}" value="{{sorter.value}}" bindchange="onSorterChange" />
       </t-dropdown-menu>
       <t-search shape="square" class="search_normal_btn" bindtap="showHighSearch" model:value="{{searchName}}" placeholder="搜一搜" />
     </view>

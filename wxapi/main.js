@@ -135,6 +135,10 @@ module.exports = {
   },
   verifAppointment(record_id){
     return request(`/appointment/verify/${record_id}`, false, 'post',{})
+  },
+  queryAppointmentById(record_id){
+    return request(`/user/record/${record_id}`, false, 'get',{})
+
   }
   
   
