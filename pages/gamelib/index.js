@@ -69,14 +69,15 @@ Page({
     this.setData({
       current_no: 0,
       page_size: 10,
-      gameList:[]
+      gameList:[],
+      isLastPage:false
     })
     if (tag != "-1")
       param.tag = tag
     if (sorter != "-1") {
       var index = sorter.indexOf(",");
-      param.order_type = sorter.substring(0, index - 1);
-      param.order_by = sorter.substring(index + 1);
+      param.order_by = sorter.substring(0, index - 1);
+      param.order_type = sorter.substring(index + 1);
     }
     if (searchName != '')
       param.name = searchName
