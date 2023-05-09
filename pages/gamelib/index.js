@@ -168,7 +168,7 @@ Page({
     var { current_no, page_size, colorMap } = this.data;
 
     const realParam = Object.assign({}, param, { current_no, page_size });
-
+    console.log(realParam)
     WXAPI.queryGame(realParam).then(function (res) {
 
       var gameList = res;
