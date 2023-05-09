@@ -8,10 +8,12 @@
     "pages/mycoupons/index",
     "pages/category/category",
     "pages/order/index",
+    "pages/order-details/index",
     "pages/vip/index",
     "pages/appointment/index",
     "pages/gamelib/index",
-    "pages/game-details/index"
+    "pages/game-details/index",
+    "pages/check-appointment/index"
   ],
   "usingComponents": {
     "t-button": "tdesign-miniprogram/button/button",

@@ -5,11 +5,12 @@
 }
 .swiper_box {
   width: 750rpx;
-  height:575rpx;
+  height:475rpx;
 }
 swiper-item image {
   width: 750rpx;
-  height:575rpx;
+  height:475rpx;
+  border-radius: 15rpx;
 }
 
 .swiper-container .dots{  
@@ -107,5 +108,5 @@ swiper-item image {
 }
 
 .location_item{
-    margin:0px !important;
+    margin:20rpx !important;
 }

@@ -1,6 +1,7 @@
 // pages/category/category.js
 
 const WXAPI = require('../../wxapi/main')
+const app = getApp();
 
 Page({
 
