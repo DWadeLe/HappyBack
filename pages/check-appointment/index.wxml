@@ -1,0 +1,31 @@
+ <view class="page">
+ <navigation-bar title="预约详情"></navigation-bar>
+
+  <t-grid class="appointment_item" theme="card">
+    <view class="flex_item">
+      <view class="label">预约编号</view>
+      <view class="content"> {{appointment.id}}</view>
+    </view>
+    <view class="flex_item">
+      <view class="label">房间名称</view>
+      <view class="content"> {{appointment.venue_name}}</view>
+    </view>
+    <view class="flex_item">
+      <view class="label">预约时间 </view>
+      <view class="content"> {{appointment.date}}({{sessionMap[appointment.session]}})</view>
+    </view>
+    <view class="flex_item">
+      <view class="label">是否生效 </view>
+      <view class="content"> {{appointment.status==1?'是':'否'}}</view>
+    </view>
+
+  </t-grid>
+  <t-grid class="appointment_item" theme="card" wx:if="{{userInfo.vip}}">
+    <view class="flex_item">
+      <view class="label"> </view>
+      <view class="content">
+        <t-button bindtap="toConfirm" >核销</t-button>
+      </view>
+    </view>
+  </t-grid>
+</view> 
