@@ -1,0 +1,12 @@
+<!--pages/appointment/index.wxml-->
+
+<view class="page">
+    <navigation-bar title="预约详情"></navigation-bar>
+
+  
+
+
+
+
+
+</view>
