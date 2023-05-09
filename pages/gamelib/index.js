@@ -76,7 +76,7 @@ Page({
       param.tag = tag
     if (sorter && sorter != "-1") {
       var index = sorter.indexOf(",");
-      param.order_by = sorter.substring(0, index - 1);
+      param.order_by = sorter.substring(0, index );
       param.order_type = sorter.substring(index + 1);
     }
     if (searchName && searchName != '')
@@ -168,7 +168,7 @@ Page({
     var { current_no, page_size, colorMap } = this.data;
 
     const realParam = Object.assign({}, param, { current_no, page_size });
-
+    console.log(realParam)
     WXAPI.queryGame(realParam).then(function (res) {
 
       var gameList = res;

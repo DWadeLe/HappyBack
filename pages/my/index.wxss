@@ -12,13 +12,12 @@
   left: 0;
   /* margin-top: 30px ; */
   bottom: 90px;
-  margin-bottom: 20px !important;
 }
 .user_top_center{overflow: hidden; position: relative;}
-.user_photo{ height: 140rpx; width:140rpx; float: left;
+.user_photo{ height: 120rpx; width:120rpx; float: left;
 }
-.user_photo image{ height: 140rpx; width:140rpx;}
-.user_text{ margin-left: 160rpx; color: #000; position: relative;margin-top:20rpx;}
+.user_photo image{ height: 120rpx; width:120rpx;}
+.user_text{ margin-left: 140rpx; color: #000; position: relative;margin-top:20rpx;}
 .user_name{
   font-weight: bold;
   font-size: 1.5rem;
