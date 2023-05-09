@@ -26,7 +26,10 @@ Page({
     page_size: 10,
     status: "-1",
     qrCodeVisible:false,
-
+    sessionMap:{
+      "1":"下午场",
+      "2":"夜晚场"
+    }
   },
   closeQrCode(){
     this.setData({
@@ -37,7 +40,7 @@ Page({
     var that = this
     var data = e.currentTarget.dataset.data
     var json={
-      "url":"/pages/checkappointment/index",
+      "url":"/pages/check-appointment/index",
       "data":data
     }
     drawQrcode({

@@ -23,7 +23,7 @@ Page({
     userInfo: {},
     haveCoupons:false,
       title: "个人中心", // 导航栏标题
-    
+    top_color_height:app.globalData.navBarHeight
   },
   onLoad() {
 

@@ -1,7 +1,7 @@
 /* 顶部导航栏样式 */
 .nav-bar {
      
-    background-color: #f48333;
+    background-color: #B3E5FC;
   }
   
   .nav-bar__back {

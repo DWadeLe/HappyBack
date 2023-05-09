@@ -107,7 +107,7 @@ button.index_window_btn_blue[disabled][type=primary]{ background-color:#b3ebf2; 
     width: 100%;
     height: 100px;
     z-index: 0;
-    background-color: #f48333;
+    background-color: #B3E5FC;
 }
 .manager_tag{
   z-index:1000;

@@ -132,5 +132,10 @@ module.exports = {
   payOrderOnline(order_no){
     return request(`order/${order_no}/pay`, false, 'post',{})
 
+  },
+  verifAppointment(record_id){
+    return request(`/appointment/verify/${record_id}`, false, 'post',{})
   }
+  
+  
 }

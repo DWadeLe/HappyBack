@@ -39,7 +39,7 @@ Component({
         var menuTop= menuButtonInfo.top;
         var top=menuButtonInfo.top;
         var menuHeight = menuButtonInfo.height;
-        var   navBarHeight = systemInfo.statusBarHeight + 44;
+        var navBarHeight = systemInfo.statusBarHeight + 44;
         var menuWidth=screenWidth-menuButtonInfo.width
         var needDelWidth=16*this.properties.title.length
         var centerLeft=(systemInfo.screenWidth-needDelWidth) /2 ;
