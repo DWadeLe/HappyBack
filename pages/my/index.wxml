@@ -1,5 +1,5 @@
 <!--pages/user/user.wxml-->
-<navigation-bar title="{{title}}"></navigation-bar>
+<navigation-bar title="{{title}}" scanVisible="{{true}}"></navigation-bar>
 
 <view class="page">
 

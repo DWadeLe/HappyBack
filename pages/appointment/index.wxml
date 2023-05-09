@@ -1,6 +1,8 @@
 <!--pages/appointment/index.wxml-->
 
 <view class="page">
+    <navigation-bar title="我的预约"></navigation-bar>
+
   <t-pull-down-refresh value="{{baseRefresh.value}}" loadingProps="{{loadingProps}}"
     loadingTexts="{{['下拉刷新', '松手刷新', '正在刷新', '刷新完成']}}" bind:refresh="onPullDownRefresh" bind:scroll="onScroll">
 
@@ -15,7 +17,7 @@
       <t-cell-group wx:for="{{appointmentList}}" class="appointment_item" theme="card">
         <t-cell title="{{item.venue_name}}" leftIcon="service" hover />
         <t-cell title="{{item.date}}{{item.session==1?'(下午场)':'(夜晚场)'}}" leftIcon="time" hover />
-        <t-cell bindtap="showQrcode" data-id="{{item.id}}" title="二维码" leftIcon="qrcode" hover />
+        <t-cell bindtap="showQrcode" data-data="{{item}}" title="二维码" leftIcon="qrcode" hover />
         <t-badge wx:if="{{item.status==0}}" count="未生效" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
         <t-badge wx:if="{{item.status==1}}" count="已生效" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
       </t-cell-group>

@@ -67,7 +67,10 @@ Page({
     var payStatus = e.detail.value;
     this.setData({
       payStatus,
-      orderList:[]
+      orderList:[],
+      current_no: 0,
+      page_size: 10,
+      isLastPage:false
     })
     this.queryOrder(payStatus);
   },

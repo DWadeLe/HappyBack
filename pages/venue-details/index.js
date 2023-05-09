@@ -100,7 +100,8 @@ Page({
     }
     if(selectedCoupon && selectedCoupon.id!=null)
         param.coupon_id=selectedCoupon.id
-    
+        //TODO 调用微信支付接口
+
     WXAPI.appoint(venueDetail.id, param).then(res => {
         console.log(res,11)
 
@@ -122,7 +123,6 @@ Page({
 
     })
 
-    //TODO 调用微信支付接口
 
 
   },
@@ -166,7 +166,7 @@ Page({
     const d7ays = new Date();
     d7ays.setDate(d7ays.getDate() + 7);
 
-    //TODO 不同会员有不同的预约时间
+    // 不同会员有不同的预约时间
 
 
     const formattedDate = `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day}`;
@@ -230,7 +230,7 @@ Page({
       wx.hideNavigationBarLoading();
     });
 
-    WXAPI.queryCouponsByUser("3", { "payment_venue": 1 }).then(res => {
+    WXAPI.queryCouponsByUser(this.data.userInfo.id, { "payment_venue": 1,"status":1 }).then(res => {
 
       var canUseCoupons = res;
       that.setData({

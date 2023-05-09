@@ -121,6 +121,7 @@
   display: flex;
   align-items: center;
   height: 116rpx;
+  background-color: #f6f6f6;
 }
 
 .title {
@@ -200,7 +201,7 @@
 }
 .to_pay{
   z-index: 500;
-  background-color: #f6f6f6 !important;
+  background-color: #fff !important;
 
 }
 .scroll_coupon{

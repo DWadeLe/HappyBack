@@ -49,6 +49,7 @@ Page({
               wx.setStorageSync("nickName", res.userInfo.nickName);
               wx.setStorageSync("headImgUrl", res.userInfo.avatarUrl);
               self.queryUser(()=>{
+                console.log(res)
                 WXAPI.addUser({
                   nick_name:res.userInfo.nickName,
                   wx_no:res.cloudId

@@ -74,7 +74,10 @@ Page({
     var status = e.detail.value;
     this.setData({
       useStatus: status,
-      coupons:[]
+      coupons:[],
+      current_no: 0,
+      page_size: 10,
+      isLastPage:false
     })
     this.getMyCoupons(status);
 

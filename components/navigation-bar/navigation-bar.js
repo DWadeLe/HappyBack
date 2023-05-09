@@ -1,34 +1,3 @@
-// const app = getApp()
-// Component({
-//     properties: {
-//         // defaultData（父页面传递的数据-就是引用组件的页面）
-//         defaultData: {
-//             type: Object,
-//             value: {
-//                 title: "我是默认标题"
-//             },
-//             observer: function(newVal, oldVal) {}
-//         }
-//     },
-//     data: {
-//         navBarHeight: app.globalData.navBarHeight,
-//         menuRight: app.globalData.menuRight,
-//         menuTop: app.globalData.menuTop,
-//         menuHeight: app.globalData.menuHeight,
-        
-//     },
-//     attached: function() {},
-//     methods: {
-//         scanCode(){
-//             wx.scanCode({
-//                 onlyFromCamera: false, // 是否只能从相机扫码，不允许从相册选择图片，默认是false
-//                 success (res) {
-//                     console.log(res)
-//                 }
-//               })
-//         }
-//     }
-// })
 // 顶部导航栏组件的 JS 代码
 const app = getApp()
 
@@ -41,6 +10,10 @@ Component({
       title: {
         type: String,
         value: ''
+      },
+      scanVisible:{
+        type:Boolean,
+        value:false
       }
     },
     data: {
@@ -68,7 +41,8 @@ Component({
         var menuHeight = menuButtonInfo.height;
         var   navBarHeight = systemInfo.statusBarHeight + 44;
         var menuWidth=screenWidth-menuButtonInfo.width
-        var centerLeft=(menuButtonInfo.left-32) /2 ;
+        var needDelWidth=16*this.properties.title.length
+        var centerLeft=(systemInfo.screenWidth-needDelWidth) /2 ;
         var rightLeft=menuButtonInfo.left-32;
         var rightWidth=menuButtonInfo.width;
                 // 获取页面栈
@@ -93,11 +67,18 @@ Component({
       scanCode() {
         // 扫一扫操作
         wx.scanCode({
-                            onlyFromCamera: false, // 是否只能从相机扫码，不允许从相册选择图片，默认是false
-                            success (res) {
-                                console.log(res)
-                            }
-                          })
+            onlyFromCamera: false, // 是否只能从相机扫码，不允许从相册选择图片，默认是false
+            success (res) {
+                console.log(res)
+                var result=res.result;
+                var json=JSON.parse(result);
+                wx.navigateTo({
+                  url: json.url + "?id=" +json.id
+                })
+            },
+            fail(res){
+            }
+          })
       },
       back(){
         wx.navigateBack({

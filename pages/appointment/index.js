@@ -35,13 +35,16 @@ Page({
   },
   async showQrcode(e) {
     var that = this
-    var id = e.currentTarget.dataset.id
-
+    var data = e.currentTarget.dataset.data
+    var json={
+      "url":"/pages/checkappointment/index",
+      "data":data
+    }
     drawQrcode({
       width: 200,
       height: 200,
       canvasId: 'myQrcode',
-      text: "https://www.llkkk.fun/",
+      text: JSON.stringify(json),
       _this: that
     })
     this.setData({
@@ -146,7 +149,11 @@ Page({
   onTabsClick(e){
     var status=e.detail.value;
     this.setData({
-      status
+      status,
+      current_no: 0,
+      page_size: 10,
+      appointmentList:[],
+      isLastPage:false
     })
     this.queryAppointmentByUser(status);
   },
