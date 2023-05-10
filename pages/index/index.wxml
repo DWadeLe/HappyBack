@@ -32,17 +32,17 @@
       </view>
     </t-grid> -->
     <view style='float:left;width: {{parentWidth}}px;height: {{parentHeight}}px'>
-      <view class="item_style" style='margin: 20rpx 0 20rpx 20rpx;width: {{itemWidth}}px;height: {{itemHeight * 3}}px'>
-        11</view>
-      <view class="item_style" style='margin: 0 0 20rpx 20rpx;width: {{itemWidth}}px;height: {{itemHeight }}px'>44
+      <view  class="item_style" style='margin: 20rpx 0 20rpx 20rpx;width: {{itemWidth}}px;height: {{itemHeight * 3}}px'>
+        会员活动</view>
+      <view class="item_style" style='margin: 0 0 20rpx 20rpx;width: {{itemWidth}}px;height: {{itemHeight }}px'>地址 联系电话
       </view>
 
     </view>
     <view style='float:left;width: {{parentWidth}}px;height: {{parentHeight}}px'>
-      <view class="item_style" style='margin: 20rpx 20rpx 20rpx 0;width: {{itemWidth}}px;height: {{itemHeight }}px'>22
+      <view bindtap="goGamelib" class="item_style" style='margin: 20rpx 20rpx 20rpx 0;width: {{itemWidth}}px;height: {{itemHeight }}px'>游戏库TODO
       </view>
       <view class="item_style" style='margin: 0 20rpx 20rpx 0;width: {{itemWidth}}px;height: {{itemHeight * 3}}px'>
-        33</view>
+        todo活动轮播</view>
 
     </view>
 
