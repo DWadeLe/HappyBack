@@ -50,7 +50,7 @@ Page({
     var {current_no,page_size}=this.data;
    
     this.setData({
-      current_no:current_no+page_size,
+      current_no:0,
       orderList:[]
     })
     this.queryOrder(this.data.payStatus, () => {

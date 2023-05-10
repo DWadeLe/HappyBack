@@ -31,29 +31,13 @@ Page({
     }
 
     var userInfo = wx.getStorageSync('userInfo');
-    WXAPI.queryCouponsByUser(userInfo.id, param).then(function (res) {
-      var coupons = res;
-      coupons.forEach(item => {
-        item.expire_time = dateUtil.toDate(item.expire_time)
-        item.use_time = dateUtil.toDate(item.use_time)
-      })
-      that.setData({
-        coupons: coupons,
-      });
-      if (callback)
-        callback()
-
-      wx.hideNavigationBarLoading();
-    }).catch((e) => {
-      wx.hideNavigationBarLoading();
-    });
+    this.queryCouponsByUser(payStatus);
   },
   onPullDownRefresh() {
     var that = this;
-    var {current_no,page_size}=this.data;
    
     this.setData({
-      current_no:current_no+page_size,
+      current_no:0,
       coupons:[]
     })
     this.getMyCoupons(this.data.useStatus, () => {
@@ -99,7 +83,6 @@ Page({
     }
     var that = this;
     this.setData({
-      current_no: 0,
       isLastPage: false
     })
     var { current_no, page_size } = this.data;
@@ -116,7 +99,8 @@ Page({
         item.use_time = dateUtil.toDate(item.use_time)
       })
       that.setData({
-        coupons: coupons,
+        coupons: that.data.coupons.concat(coupons),
+
       });
       if (callback)
         callback()

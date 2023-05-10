@@ -71,7 +71,7 @@ Page({
     page_size: 10,
     isLastPage: false,
   },
-  selectCondition() {
+  selectCondition(callback) {
     var param = {};
     var tag = this.data.tag.value;
     var sorter = this.data.sorter.value;
@@ -92,18 +92,13 @@ Page({
     if (searchName && searchName != '')
       param.name = searchName
     param.type=this.data.gameType
-    this.getGameList(param);
+    this.getGameList(param,callback);
   },
 
 
   onPullDownRefresh() {
-    var that = this;
-    var { current_no, page_size } = this.data;
 
-    this.setData({
-      current_no: current_no + page_size
-    })
-    this.getGameList({ type: this.data.gameType }, () => {
+    this.selectCondition(() => {
       that.setData({
         'baseRefresh.value': false
       })
@@ -196,10 +191,6 @@ Page({
           //处理时间
           item.release_time = dateUtil.toDate(item.release_time)
 
-          if(item.introduce_pic==undefined || item.introduce_pic=='')
-               item.introduce_pic="../../images/not_found.jpg"
-               if(item.guideline_pic==undefined || item.guideline_pic=='')
-               item.guideline_pic="../../images/not_found.jpg"    
         })
         var newList = that.data.gameList.concat(gameList);
         that.setData({
@@ -218,14 +209,11 @@ Page({
 
   },
   onReachBottom() {
-    var gameType = this.data.gameType;
-    var that = this;
     var { current_no, page_size } = this.data;
-
     this.setData({
       current_no: current_no + page_size
     })
-    this.getGameList({ type: gameType });
+    this.selectCondition();
   },
   /**
    * 生命周期函数--监听页面加载
