@@ -23,6 +23,8 @@
           <t-badge wx:if="{{item.status==1}}" count="已生效" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
         </t-cell-group>
       </view>
+            <view style="height: 100px;width: 100%;"></view>
+
     </scroll-view>
     <t-popup bindtap="closeQrCode" placement="center" visible="{{qrCodeVisible}}">
       <view>
@@ -31,7 +33,6 @@
 
     </t-popup>
         <t-back-top wx:if="{{backTopVisible}}" text="顶部" />
-      <view style="height: 100px;width: 100%;"></view>
 
   </t-pull-down-refresh>
 

@@ -53,7 +53,8 @@ Page({
     var {current_no,page_size}=this.data;
    
     this.setData({
-      current_no:current_no+page_size
+      current_no:current_no+page_size,
+      coupons:[]
     })
     this.getMyCoupons(this.data.useStatus, () => {
       that.setData({

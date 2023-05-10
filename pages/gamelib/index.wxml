@@ -42,9 +42,10 @@
           </view>
         </view>
       </block>
+              <view style="height: 100px;width: 100%;"></view>
+
     </scroll-view>
     <t-back-top wx:if="{{backTopVisible}}" text="顶部" />
-        <view style="height: 100px;width: 100%;"></view>
 
   </t-pull-down-refresh>
 

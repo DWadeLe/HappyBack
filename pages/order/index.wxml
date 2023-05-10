@@ -6,7 +6,7 @@
     loadingTexts="{{['下拉刷新', '松手刷新', '正在刷新', '刷新完成']}}" bind:refresh="onPullDownRefresh" bind:scroll="onScroll">
 
     <t-tabs bind:click="onTabsClick" value="{{payStatus}}" theme="line" space-evenly="{{true}}">
-      <t-tab-panel label="全部" value="-1" />
+      <t-tab-panel label="全部" value="" />
       <t-tab-panel label="已支付" value="2" />
       <t-tab-panel label="待支付" value="1" />
     </t-tabs>
@@ -37,9 +37,10 @@
         <!-- <t-badge wx:if="{{payStatus==2 && item.status==0}}" count="未支付" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
       <t-badge wx:if="{{payStatus==2 && item.status==1}}" count="已支付" offset="{{[0, 0]}}" shape="ribbon" slot="note" /> -->
       </t-grid>
+        <view style="height: 100px;width: 100%;"></view>
+
     </scroll-view>
     <t-back-top wx:if="{{backTopVisible}}" text="顶部" />
-  <view style="height: 100px;width: 100%;"></view>
 
   </t-pull-down-refresh>
 

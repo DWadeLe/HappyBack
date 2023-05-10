@@ -21,8 +21,9 @@
           <t-badge wx:if="{{item.coupon_type==3}}" count="小时" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
         </t-grid>
       </view>
+            <view style="height: 100px;width: 100%;"></view>
+
     </scroll-view>
-        <view style="height: 100px;width: 100%;"></view>
 
     <t-back-top wx:if="{{backTopVisible}}" text="顶部" />
 

@@ -57,7 +57,8 @@ Page({
     var that = this;
     this.setData({
       current_no:0,
-      page_size:10
+      page_size:10,
+      appointmentList:[]
     })
     this.queryAppointmentByUser(this.data.status, () => {
       that.setData({

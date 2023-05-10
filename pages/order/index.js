@@ -11,7 +11,7 @@ Page({
    */
   data: {
     orderList: [],
-    payStatus: 2,
+    payStatus: -1,
     baseRefresh: {
       value: false,
     },
@@ -47,11 +47,11 @@ Page({
   onPullDownRefresh() {
     
     var that = this;
-    var that = this;
     var {current_no,page_size}=this.data;
    
     this.setData({
-      current_no:current_no+page_size
+      current_no:current_no+page_size,
+      orderList:[]
     })
     this.queryOrder(this.data.payStatus, () => {
       that.setData({
@@ -98,7 +98,7 @@ Page({
       page_size
     }
 
-    if (Number(payStatus) < 0)
+    if (payStatus!="-1")
       param.status = payStatus
     
     WXAPI.queryOrder(userInfo.id, param).then(function (res) {
