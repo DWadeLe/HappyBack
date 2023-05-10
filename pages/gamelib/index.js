@@ -195,6 +195,11 @@ Page({
           }
           //处理时间
           item.release_time = dateUtil.toDate(item.release_time)
+
+          if(item.introduce_pic==undefined || item.introduce_pic=='')
+               item.introduce_pic="../../images/not_found.jpg"
+               if(item.guideline_pic==undefined || item.guideline_pic=='')
+               item.guideline_pic="../../images/not_found.jpg"    
         })
         var newList = that.data.gameList.concat(gameList);
         that.setData({

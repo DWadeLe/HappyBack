@@ -28,6 +28,7 @@ const request = async (url, needSubDomain, method, data) => {
       "method": method,
       "data": data
     })
+    console.log(`url:${url}\n method:${method} \n data:${JSON.stringify(data)} \n result:${JSON.stringify(result.data)}`)
    return result.data;
     // wx.request({
     //   url: _url,

@@ -99,7 +99,7 @@
   width: 100%; /* 宽度占满整个页面 */
 }
 .yd-btn{
-   background-color: rgb(243, 114, 28) !important;
+   background-color:  var(--td-brand-color) !important;
 }
 .orignal-price{
   transform: skew(-10deg); /* 将文字倾斜10度 */
@@ -153,16 +153,15 @@
 }
 
 .yd-py-btn{
-  margin-right: 20rpx;
+  margin-right: 25rpx;
    float:right;
    color: #fff !important;
-   background-color: #f48333 !important;
+   background-color:  var(--td-brand-color) !important;
 }
 .yd-price{
-  margin-left: 20rpx;
    text-align: center;
    float: left;
-   color: #f48333;
+   color:  var(--td-brand-color);
    font-size: 1.3rem;
    font-weight: bold;
 }
@@ -210,7 +209,7 @@
 }
 .scroll_coupon{
   position: fixed; /* 将元素固定在页面底部 */
-  bottom: 85px; /* 距离页面底部为0 */
+  bottom: 0px; /* 距离页面底部为0 */
   left: 0; /* 距离页面左边界为0 */
   width: 100%; /* 宽度占满整个页面 */
 }
@@ -228,3 +227,11 @@
 
 .coupon_dian{  display: inline-block; height: 10rpx; width: 10rpx; background: #f48333; border-radius: 50%; margin-right: 8rpx;}
 .user_list_quan{ display:flex;align-items:center;color: #999; font-size: 24rpx;}
+
+.card-btn{
+  margin-right: 20rpx;
+  float: right;
+}
+.margin-top{
+  margin-top: 20rpx;
+}

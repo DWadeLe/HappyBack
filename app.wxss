@@ -12,7 +12,7 @@
   background-color: #fff;
 }
 page {
-  --td-brand-color: #B3E5FC,
+  --td-brand-color: #B3E5FC;
 }
 
 .float-left{
@@ -40,4 +40,11 @@ page {
   justify-content: space-between;
   padding: 30rpx;
 }
+.item_important{
+  font-size: 1.1rem;
+  font-weight: blod;
+}
 
+.stadard_card{
+   margin: 10rpx;
+}

@@ -110,3 +110,9 @@ swiper-item image {
 .location_item{
     margin:20rpx !important;
 }
+
+.item_style{
+  background-color: #B3E5FC;
+  border-radius: 15rpx;
+  float: left;
+}

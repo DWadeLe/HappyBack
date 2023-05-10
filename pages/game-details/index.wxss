@@ -11,6 +11,7 @@
 swiper-item image {
   width: 750rpx;
   height:525rpx;
+  border-radius: 15rpx;
 }
 
 .swiper-container .dots{  
@@ -57,4 +58,5 @@ swiper-item image {
 .game_detail_2 image{
   width: 750rpx;
   height:525rpx;
+  border-radius: 15rpx;
 }

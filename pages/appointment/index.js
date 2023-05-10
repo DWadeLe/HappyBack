@@ -55,10 +55,9 @@ Page({
   },
   onPullDownRefresh() {
     var that = this;
-    var {current_no,page_size}=this.data;
-   
     this.setData({
-      current_no:current_no+page_size
+      current_no:0,
+      page_size:10
     })
     this.queryAppointmentByUser(this.data.status, () => {
       that.setData({
@@ -134,7 +133,7 @@ Page({
           item.date = dateUtil.toDate(item.date).substring(0,10)
         })
         that.setData({
-          appointmentList: info
+          appointmentList: that.data.appointmentList.concat(info)
         })
 
       } else {

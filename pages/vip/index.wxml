@@ -2,7 +2,7 @@
 <view class="page">
     <navigation-bar title="VIP套餐"></navigation-bar>
 
-  <t-grid class="order_item" theme="card" wx:for="{{vipList}}">
+  <t-grid class="stadard_card" theme="card" wx:for="{{vipList}}">
     <view class="flex_item">
       <view class="label">会员名称</view>
       <view class="content"> {{item.name}}</view>
@@ -14,8 +14,12 @@
 
     <view class="flex_item">
       <view class="label">购买价格 </view>
-      <view class="content"> <span
-          style="text-decoration: line-through;font-size: 12px;color: #ccc;">{{item.price/item.discount}}</span>{{item.price}}
+      <view class="content"> {{item.price}}
+      </view>
+    </view>
+    <view class="flex_item">
+      <view class="label">专享折扣 </view>
+      <view class="content"> {{item.discount*10}}折
       </view>
     </view>
     <view class="flex_item">

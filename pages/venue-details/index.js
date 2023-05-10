@@ -2,6 +2,8 @@ const WXAPI = require('../../wxapi/main')
 const app = getApp();
 const WxParse = require('../../wxParse/wxParse.js');
 const regeneratorRuntime = require('../../utils/runtime')
+const dateUtil = require('../../utils/date.js')
+
 import Toast from 'tdesign-miniprogram/toast/index';
 
 Page({
@@ -25,12 +27,16 @@ Page({
     maxDate: null,
     venuePriceMap: {},
     canUseCoupons: [],
+    coupons_current_no: 0,
+    coupons_page_size: 10,
+    isLastPage: false,
     couponVisible: false,
     use_coupon: '',
-    selectedCoupon:null,
-    confirmCoupon:null,
-    remark:"",
-    userInfo:{}
+    selectedCoupon: null,
+    confirmCoupon: null,
+    remark: "",
+    userInfo: {},
+    themeColor: app.globalData.themeColor
   },
   watch: {
 
@@ -47,38 +53,38 @@ Page({
 
   },
   confirmCoupon() {
-       // 把选中的券名字显示在上面
-       var {selectedCoupon}=this.data;
-       this.setData({
-         use_coupon:selectedCoupon.coupon_name,
-         confirmCoupon:selectedCoupon,
-         couponVisible:false,
-         visible:true
-       })
+    // 把选中的券名字显示在上面
+    var { selectedCoupon } = this.data;
+    this.setData({
+      use_coupon: selectedCoupon.coupon_name,
+      confirmCoupon: selectedCoupon,
+      couponVisible: false,
+      visible: true
+    })
   },
-  onSelectCoupon(e){
+  onSelectCoupon(e) {
     const data = e.currentTarget.dataset.data;
     this.setData({
       selectedCoupon: data
-    });  
+    });
   },
   openCouponList() {
     var that = this;
-    if(this.data.canUseCoupons.length==0){
+    if (this.data.canUseCoupons.length == 0) {
       return;
     }
     this.setData({
-       selectedCoupon:this.data.confirmCoupon,
-       couponVisible: true,
-        visible:false
+      selectedCoupon: this.data.confirmCoupon,
+      couponVisible: true,
+      visible: false
     })
-    
+
   },
-  closeCouponListPop(){
-     this.setData({
-      couponVisible:false,
-      visible:true
-     })
+  closeCouponListPop() {
+    this.setData({
+      couponVisible: false,
+      visible: true
+    })
   },
 
   goPay() {
@@ -89,37 +95,42 @@ Page({
       });
       return;
     }
-    var {remark,userInfo,venueDetail,selectedCoupon,session,showDate}=this.data;
-    var param={
-      user_id:userInfo.id,
-       wx_no:userInfo.wx_no,
-       venue_id:venueDetail.id,
-       remark,
-       session,
-       date:showDate
+    var { remark, userInfo, venueDetail, selectedCoupon, session, showDate } = this.data;
+    var param = {
+      user_id: userInfo.id,
+      wx_no: userInfo.wx_no,
+      venue_id: venueDetail.id,
+      remark,
+      session,
+      date: showDate
     }
-    if(selectedCoupon && selectedCoupon.id!=null)
-        param.coupon_id=selectedCoupon.id
-        //TODO 调用微信支付接口
+    if (selectedCoupon && selectedCoupon.id != null)
+      param.coupon_id = selectedCoupon.id
+    //TODO 调用微信支付接口
 
     WXAPI.appoint(venueDetail.id, param).then(res => {
-        console.log(res,11)
+      if(res.status==400){
+         wx.showToast({
+           title: '预约异常:'+res.message,
+         })
+         return;
+      }
 
-        wx.requestPayment({
-          appid:"wxf83224ed1b5ec2f4",
-          timeStamp: "1414561699",
-          nonceStr: '5K8264ILTKCH16CQ2502SI8ZNMTM67VS',
-          package: 'prepay_id=wx201410272009395522657a690389285100',
-          signType: 'RSA',
-          paySign: 'oR9d8PuhnIc+YZ8cBHFCwfgpaK9gd7vaRvkYD7rthRAZ\/X+QBhcCYL21N7cHCTUxbQ+EAt6Uy+lwSN22f5YZvI45MLko8Pfso0jm46v5hqcVwrk6uddkGuT+Cdvu4WBqDzaDjnNa5UK3GfE1Wfl2gHxIIY5lLdUgWFts17D4WuolLLkiFZV+JSHMvH7eaLdT9N5GBovBwu5yYKUR7skR8Fu+LozcSqQixnlEZUfyE55feLOQTUYzLmR9pNtPbPsu6WVhbNHMS3Ss2+AehHvz+n64GDmXxbX++IOBvm2olHu3PsOUGRwhudhVf7UcGcunXt8cqNjKNqZLhLw4jq\/xDg==',
-          success (res) { 
-            console.log(res)
-          },
-          fail (res) { 
-            console.log(res)
+      wx.requestPayment({
+        appid: "wxf83224ed1b5ec2f4",
+        timeStamp: "1414561699",
+        nonceStr: '5K8264ILTKCH16CQ2502SI8ZNMTM67VS',
+        package: 'prepay_id=wx201410272009395522657a690389285100',
+        signType: 'RSA',
+        paySign: 'oR9d8PuhnIc+YZ8cBHFCwfgpaK9gd7vaRvkYD7rthRAZ\/X+QBhcCYL21N7cHCTUxbQ+EAt6Uy+lwSN22f5YZvI45MLko8Pfso0jm46v5hqcVwrk6uddkGuT+Cdvu4WBqDzaDjnNa5UK3GfE1Wfl2gHxIIY5lLdUgWFts17D4WuolLLkiFZV+JSHMvH7eaLdT9N5GBovBwu5yYKUR7skR8Fu+LozcSqQixnlEZUfyE55feLOQTUYzLmR9pNtPbPsu6WVhbNHMS3Ss2+AehHvz+n64GDmXxbX++IOBvm2olHu3PsOUGRwhudhVf7UcGcunXt8cqNjKNqZLhLw4jq\/xDg==',
+        success(res) {
+          console.log(res)
+        },
+        fail(res) {
+          console.log(res)
 
-          }
-        })
+        }
+      })
 
     })
 
@@ -151,7 +162,7 @@ Page({
 
     this.setData({
       venueDetail: JSON.parse(e.data),
-      userInfo:wx.getStorageSync("userInfo")
+      userInfo: wx.getStorageSync("userInfo")
 
     })
     var that = this
@@ -180,6 +191,40 @@ Page({
       date: tomorrow.getTime(),
       showDate: format(tomorrow)
     })
+    this.queryAppiontment(formattedDate);
+    WXAPI.queryVenuePrice(this.data.venueDetail.id).then(function (res) {
+
+      var info = res;
+      var venuePriceMap = {};
+      info.forEach(item => {
+        venuePriceMap[item.type] = item;
+      });
+
+      that.setData({
+        venuePriceMap
+      })
+
+      wx.hideNavigationBarLoading();
+    }).catch((e) => {
+      wx.hideNavigationBarLoading();
+    });
+
+    this.queryCouponsByUser();
+
+  },
+  loadMoreCoupons() {
+    let { coupons_current_no, coupons_page_size } = this.data;
+    this.setData({
+      coupons_current_no: coupons_current_no + coupons_page_size
+    })
+    this.queryCouponsByUser();
+  },
+  
+  /**
+   * 根据日期查询当日预约情况
+   */
+  queryAppiontment(formattedDate){
+    var that=this;
     WXAPI.queryAppointment(this.data.venueDetail.id, formattedDate).then(function (res) {
       var info = res;
       if (info && info.length > 0) {
@@ -213,32 +258,40 @@ Page({
     }).catch((e) => {
       wx.hideNavigationBarLoading();
     });
-    WXAPI.queryVenuePrice(this.data.venueDetail.id).then(function (res) {
-
-      var info = res;
-      var venuePriceMap = {};
-      info.forEach(item => {
-        venuePriceMap[item.type] = item;
-      });
-
-      that.setData({
-        venuePriceMap
-      })
-
-      wx.hideNavigationBarLoading();
-    }).catch((e) => {
-      wx.hideNavigationBarLoading();
-    });
-
-    WXAPI.queryCouponsByUser(this.data.userInfo.id, { "payment_venue": 1,"status":1 }).then(res => {
+  },
+  /**
+   * 查询未使用的卡券
+   * @returns 
+   */
+  queryCouponsByUser() {
+    var that = this;
+    let { coupons_current_no, coupons_page_size, isLastPage } = this.data;
+    if (isLastPage) {
+      return;
+    }
+    //3包场结算
+    WXAPI.queryCouponsByUser(this.data.userInfo.id, {
+      "payment_venue": 3, "status": 1,
+      "current_no": coupons_current_no,
+      "page_size": coupons_page_size
+    }).then(res => {
 
       var canUseCoupons = res;
+      if (!canUseCoupons || canUseCoupons.length == 0) {
+        that.setData({
+          isLastPage: true
+        })
+        return;
+      }
+      canUseCoupons.forEach(item=>{
+        item.expire_time = dateUtil.toDate(item.expire_time)
+        item.use_time = dateUtil.toDate(item.use_time)
+      })
       that.setData({
         canUseCoupons,
       })
 
     })
-
   },
   onShow() {
 
@@ -267,14 +320,17 @@ Page({
     } = e.detail;
     const format = (val) => {
       const date = new Date(val);
-      return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+      const year = date.getFullYear();
+      const month = date.getMonth() + 1;
+      const day = date.getDate();
+      return `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day}`;
     };
-
+    var selectedDate=format(value)
     this.setData({
       date: new Date(value).getTime(),
-      showDate: format(value),
+      showDate: selectedDate,
     });
-    console.log(this)
+    this.queryAppiontment(selectedDate);
   },
   goYY: function () {
 

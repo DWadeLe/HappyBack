@@ -55,7 +55,7 @@ Page({
     this.setData({
       current_no:current_no+page_size
     })
-    this.getMyCoupons(this.data.status, () => {
+    this.getMyCoupons(this.data.useStatus, () => {
       that.setData({
         'baseRefresh.value': false
       })

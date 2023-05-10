@@ -1,13 +1,10 @@
 <view class="">
-      <navigation-bar title="忙闲"></navigation-bar>
+  <navigation-bar title="忙闲"></navigation-bar>
 
-      <scroll-view  scroll-y="true" scroll-y="false" bindscroll="scroll" scroll-into-view="{{venueToView}}">
+  <!-- <scroll-view  scroll-y="true" scroll-y="false" bindscroll="scroll" scroll-into-view="{{venueToView}}">
          <block wx:for="{{venueList}}" wx:key="id">
             <view class='venue-item'  data-id="{{item.id}}">
               <view class="venue-pic rectangle">
-                <!-- <text wx:if="{{item.type==1}}" class="icon">大厅</text>
-                <text wx:if="{{item.type==2}}"  class="icon">小包</text>
-                <text wx:if="{{item.type==3}}"  class="icon">大包</text> -->
                 <view><image class='venue-pic' mode='aspectFill' lazy-load="true" src="{{item.icon}}"></image></view>
               </view> 
               <view class='venue-info'>
@@ -23,5 +20,21 @@
               </view>
             </view>
         </block>
-      </scroll-view>
+      </scroll-view> -->
+
+  <scroll-view scroll-y="true" scroll-y="false" bindscroll="scroll" scroll-into-view="{{venueToView}}">
+    <view class="title">大厅</view>
+    <t-grid class="content">
+            
+    </t-grid>
+    <view class="title">包间</view>
+    <t-grid class="content">
+
+    </t-grid>
+    <view class="title">活动区</view>
+    <t-grid class="content">
+
+    </t-grid>
+  </scroll-view>
+
 </view>

@@ -58,13 +58,13 @@
       <view slot="suffix" class="suffix">
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </view>
-    </t-input> -->
+    </t-input> 
     <t-input class="weui-cell__bd" disabled prefixIcon="clear" label="核销预约" id="6" bindtap='goMap' align="left">
       <view slot="suffix" class="suffix">
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </view>
     </t-input>
-    <!-- <t-input class="weui-cell__bd"  disabled prefixIcon="play-circle-stroke" label="开机计时" id="7" bindtap='goMap'  align="left">
+     <t-input class="weui-cell__bd"  disabled prefixIcon="play-circle-stroke" label="开机计时" id="7" bindtap='goMap'  align="left">
       <view slot="suffix" class="suffix">
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </view>

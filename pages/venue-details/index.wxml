@@ -1,100 +1,92 @@
 <view class="page">
-    <navigation-bar title="预约详情"></navigation-bar>
-
+  <navigation-bar title="预约详情"></navigation-bar>
   <view class="page__bd">
-    <view class='goods-name'>{{venueDetail.name}}</view>
     <image src="{{venueDetail.icon}}" class="goods-image" mode="widthFix" lazy-load="true" />
+    <view class='goods-name'>{{venueDetail.name}}</view>
 
-    <view wx:if="{{venueDetail.properties && venueDetail.properties.length > 0}}" class="size-label-box">
-      <block wx:for="{{venueDetail.properties}}" wx:for-item="property" wx:for-index="idx" wx:key="id">
-        <view class="label">{{property.name}}</view>
-        <view class="label-item-box">
-          <view class="label-item {{item.active ? 'active' : '' }}" wx:for="{{property.childsCurGoods}}" wx:key="id" bindtap="labelItemTap" data-propertyindex="{{idx}}" data-propertyid="{{property.id}}" data-propertyname="{{property.name}}" data-propertychildindex="{{index}}" data-propertychildid="{{item.id}}" data-propertychildname="{{item.name}}">
-            {{item.name}}
-          </view>
-        </view>
-      </block>
+    <t-calendar visible="{{calendarVisible}}" value="{{date}}" minDate="{{minDate}}" maxDate="{{maxDate}}"
+      bind:confirm="handleConfirm" />
+    <t-cell arrow title="预约时间" note="{{showDate}}" bind:tap="handleCalendar" />
+    <t-tabs bind:click="onTabsClick" value="{{session}}" theme="line" space-evenly="{{true}}">
+      <t-tab-panel disabled="{{isAfterNoomOrder}}"
+        label="{{'下午场('+venuePriceMap['1'].begin_hour+':00-'+venuePriceMap['1'].end_hour+':00)'}}" value="1" />
+      <t-tab-panel disabled="{{isYYNightOrder}}"
+        label="{{'夜晚场('+venuePriceMap['2'].begin_hour+':00-'+venuePriceMap['2'].end_hour+':00)'}}" value="2" />
+    </t-tabs>
+    <view class='goods-price'>价格:
+      <!-- <view class="orignal-price">¥{{venueDetail.orginalPrice}}</view> -->
+      ¥ {{venuePriceMap[session].price}}
     </view>
-    <view>
-      <t-calendar visible="{{calendarVisible}}" value="{{date}}" minDate="{{minDate}}" maxDate="{{maxDate}}" bind:confirm="handleConfirm" />
-      <t-cell arrow title="预约时间" note="{{showDate}}" bind:tap="handleCalendar" />
-      <t-tabs bind:click="onTabsClick" value="{{session}}" theme="line" space-evenly="{{true}}">
-        <t-tab-panel disabled="{{isAfterNoomOrder}}" label="{{'下午场('+venuePriceMap['1'].begin_hour+':00-'+venuePriceMap['1'].end_hour+':00)'}}" value="1" />
-        <t-tab-panel disabled="{{isYYNightOrder}}" label="{{'夜晚场('+venuePriceMap['2'].begin_hour+':00-'+venuePriceMap['2'].end_hour+':00)'}}" value="2" />
-      </t-tabs>
-      <view class='goods-price'>特价:
-        <!-- <view class="orignal-price">¥{{venueDetail.orginalPrice}}</view> -->
-        ¥ {{venuePriceMap[session].price}}
-      </view>
-      <view class="yd-view">
-        <t-button bindtap="goYY" disabled="{{isAfterNoomOrder && isYYNightOrder}}" theme="primary" class="yd-btn" block>
-          预约</t-button>
-      </view>
-
-      <t-popup class="to_pay" visible="{{visible}}" bind:visible-change="onVisibleChange" placement="{{'bottom'}}">
-        <view class="block">
-          <view class="header">
-            <view class="title">明细</view>
-          </view>
-          <t-input disabled label="房间名称" align="right">
-            <view slot="suffix" class="suffix">
-              <view class="weui-cell__ft">{{venueDetail.name}}</view>
-            </view>
-          </t-input>
-          <t-input disabled label="场次" value="" align="right">
-            <view slot="suffix" class="suffix">
-              <view class="weui-cell__ft">{{session==1?'下午场('+venuePriceMap['1'].begin_hour+':00-'+venuePriceMap['1'].end_hour+':00)':'夜晚场('+venuePriceMap['2'].begin_hour+':00-'+venuePriceMap['2'].end_hour+':00)'}}</view>
-            </view>
-          </t-input>
-
-          <t-input disabled label="可用券" value="{{use_coupon}}" bind:tap="openCouponList" align="right">
-            <view slot="suffix" class="suffix">
-              <view class="weui-cell__ft" wx:if="{{canUseCoupons.length==0}}">没有可用券</view>
-              <view wx:else="{{canUseCoupons.length==0}}" class='user_list_quan'>
-                <view class='coupon_dian' wx:if="true"></view>您有未使用的券
-                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-              </view>
-            </view>
-          </t-input>
-          <t-textarea value="{{remark}}" label="备注" placeholder="您可以填您想玩的游戏，我们帮您预热" style="height:50px" maxlength="200" disableDefaultPadding="{{true}}" indicator />
-
-          <view class="backgroud-color-fff"  >
-            <view class="yd-price"><span style="font-size: 0.9rem;">¥</span>{{venuePriceMap[session].price}}</view>
-            <t-button  bindtap="goPay" shape="round" t-class="yd-py-btn" block>去支付</t-button>
-          </view>
-        </view>
-      </t-popup>
-      <!--可用卡券集合<-->
-
-      <t-popup class="coupon_list" visible="{{couponVisible}}" bind:visible-change="onVisibleChange" placement="{{'bottom'}}">
-        <scroll-view class="block scroll_coupon" scroll-y="true" scroll-with-animation="true">
-          <view class="header">
-            <view class="title">可用卡券</view>
-          </view>
-          <text wx:if="{{canUseCoupons.length==0}}">没有可用的券</text>
-          <view wx:else="{{canUseCoupons.length==0}}">
-            <t-grid bindtap="onSelectCoupon" data-data="{{item}}" wx:for="{{canUseCoupons}}" class="{{item.status==1?'unuse_coupons_item':'use_coupons_item'}}" theme="card">
-
-              <!-- <t-radio class="coupon_radio" bind:change="{{changeCoupon}}" value="{{item}}" label="" placement="right" checked="{{item.checked}}"> -->
-              <view class="radio_item"> {{item.coupon_name}} </view>
-              <view class="radio_item"> {{item.expire_time}} 前有效 </view>
-              <!-- </t-radio> -->
-              <t-icon class="card-btn" name="{{selectedCoupon.id==item.id ? 'check-circle' : 'circle'}}"></t-icon>
-
-              <t-badge wx:if="{{item.coupon_type==1}}" count="优惠" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
-              <t-badge wx:if="{{item.coupon_type==2}}" count="包场" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
-              <t-badge wx:if="{{item.coupon_type==3}}" count="小时" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
-            </t-grid>
-          </view>
-
-
-        </scroll-view>
-        <view class="backgroud-color-fff">
-          <t-button bindtap="closeCouponListPop" shape="round" t-class="yd-price" block>取消</t-button>
-          <t-button bindtap="confirmCoupon" shape="round" t-class="yd-py-btn" block>确定</t-button>
-        </view>
-      </t-popup>
+    <view class="yd-view">
+      <t-button bindtap="goYY" disabled="{{isAfterNoomOrder && isYYNightOrder}}" theme="primary" class="yd-btn" block>
+        预约</t-button>
     </view>
+
+    <t-popup class="to_pay" visible="{{visible}}" bind:visible-change="onVisibleChange" placement="{{'bottom'}}">
+      <view class="block">
+        <view class="header">
+          <view class="title">明细</view>
+        </view>
+        <t-input disabled label="房间名称" align="right">
+          <view slot="suffix" class="suffix">
+            <view class="weui-cell__ft">{{venueDetail.name}}</view>
+          </view>
+        </t-input>
+        <t-input disabled label="场次" value="" align="right">
+          <view slot="suffix" class="suffix">
+            <view class="weui-cell__ft">
+              {{session==1?'下午场('+venuePriceMap['1'].begin_hour+':00-'+venuePriceMap['1'].end_hour+':00)':'夜晚场('+venuePriceMap['2'].begin_hour+':00-'+venuePriceMap['2'].end_hour+':00)'}}
+            </view>
+          </view>
+        </t-input>
+
+        <t-input disabled label="可用券" value="{{use_coupon}}" bind:tap="openCouponList" align="right">
+          <view slot="suffix" class="suffix">
+            <view class="weui-cell__ft" wx:if="{{canUseCoupons.length==0}}">没有可用券</view>
+            <view wx:else="{{canUseCoupons.length==0}}" class='user_list_quan'>
+              <view class='coupon_dian' wx:if="{{use_coupon!=''}}"></view>您有未使用的券
+              <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+          </view>
+        </t-input>
+        <t-textarea value="{{remark}}" label="备注" placeholder="您可以填您想玩的游戏，我们帮您预热" style="height:50px" maxlength="200"
+          disableDefaultPadding="{{true}}" indicator />
+
+        <view class="backgroud-color-fff" style="margin:20rpx">
+          <view class="yd-price"><span style="font-size: 0.9rem;">¥</span>{{venuePriceMap[session].price}}</view>
+          <t-button bindtap="goPay" shape="round" t-class="yd-py-btn" block>去支付</t-button>
+        </view>
+      </view>
+    </t-popup>
+    <!--可用卡券集合<-->
+    <t-popup class="coupon_list" visible="{{couponVisible}}" bind:visible-change="onVisibleChange"
+      placement="{{'bottom'}}">
+      <view class="header">
+        <view class="title">可用卡券</view>
+      </view>
+      <text wx:if="{{canUseCoupons.length==0}}">没有可用的券</text>
+      <scroll-view wx:else="{{canUseCoupons.length==0}}" bindscrolltolower="loadMoreCoupons" class="block scroll_coupon"
+        scroll-y="true" scroll-with-animation="true">
+        <t-grid bindtap="onSelectCoupon" data-data="{{item}}" wx:for="{{canUseCoupons}}"
+          class="{{item.status==1?'unuse_coupons_item':'use_coupons_item'}}" theme="card">
+          <view class="radio_item"> {{item.coupon_name}} <t-icon t-class="card-btn"
+              name="{{selectedCoupon.id==item.id ? 'check-circle' : 'circle'}}"></t-icon>
+          </view>
+          <view class="radio_item"> {{item.expire_time}} 前有效 </view>
+          <t-badge wx:if="{{item.coupon_type==1}}" count="优惠" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
+          <t-badge wx:if="{{item.coupon_type==2}}" count="包场" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
+          <t-badge wx:if="{{item.coupon_type==3}}" count="小时" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
+        </t-grid>
+      </scroll-view>
+      <view class="backgroud-color-fff margin-top">
+        <t-button bindtap="closeCouponListPop" shape="round" t-class="yd-price" block>取消</t-button>
+        <t-button bindtap="confirmCoupon" shape="round" style="backgroud-color:{{themeColor}}" t-class="yd-py-btn"
+          block>确定</t-button>
+      </view>
+
+
+
+    </t-popup>
   </view>
   <!--提示<-->
   <t-dialog visible="{{YDTipVisible}}" title="预约规则须知" confirm-btn="确认" bind:confirm="closeYDTip">
@@ -109,4 +101,3 @@
   </view>
   <t-toast id="t-toast" />
 </view>
-

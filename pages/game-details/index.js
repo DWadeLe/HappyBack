@@ -19,7 +19,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(e) {
-    debugger
+    
     this.setData({
       gameDetail:JSON.parse(e.data),
       colorMap:JSON.parse(e.colorMap)

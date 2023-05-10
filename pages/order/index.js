@@ -28,8 +28,12 @@ Page({
       "3": "机位结算"
     },
     statusMap: {
-      0: '未支付',
-      1: '已支付'
+      '0': '初始化',
+      '1': '未付款',
+      "2":"已支付",
+      "3":"已取消",
+      "4":"发起退款",
+      "5":"已退款",
     },
 
 
@@ -94,7 +98,7 @@ Page({
       page_size
     }
 
-    if (Number(payStatus) < 2)
+    if (Number(payStatus) < 0)
       param.status = payStatus
     
     WXAPI.queryOrder(userInfo.id, param).then(function (res) {
@@ -102,7 +106,7 @@ Page({
       var orderList = res;
       orderList.forEach(item => {
         item.close_time=(15*60*1000 -(now-new Date(item.order_time).getTime()))<=0?0:(15*60*1000  -(now-new Date(item.order_time).getTime()));
-        debugger
+        
         item.order_time = dateUtil.toDate(item.order_time);
         item.payment_time = dateUtil.toDate(item.payment_time);
       })

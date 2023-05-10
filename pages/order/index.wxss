@@ -22,3 +22,8 @@
   display: flex;
   justify-content: space-between;
 }
+.order_operation{
+   margin: 0 20rpx;
+   width: 60rpx;
+   height: 100rpx;
+}

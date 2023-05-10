@@ -32,7 +32,7 @@ Page({
 
     let that = this;
      
-    WXAPI.buyVip(e.id,{
+    WXAPI.buyVip(e.currentTarget.dataset.id,{
        user_id:this.data.userInfo.id
     }).then(function(res) {
       
@@ -40,6 +40,11 @@ Page({
          wx.showToast({
            title: '会员订购成功',
          })
+         setTimeout(function () {
+          wx.navigateTo({
+            url: "/pages/my/index"
+          })
+        }, 1000)
       }else{
         wx.showToast({
           title: '会员订购失败:'+res.msg,

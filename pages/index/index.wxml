@@ -16,25 +16,40 @@
         </block>
       </view>
     </view>
-      <!-- <view class="shop_name">{{shopDetail.name}}</view> -->
-      <t-grid theme="card" class="weui-cells weui-cells_after-title location_item" >
-        <t-input class="weui-cell__bd" prefixIcon="location" label=""   bindtap='goMap' value="{{shopDetail.address}}" align="left" >
-          <view slot="suffix" class="suffix">
-            <view class="weui-cell__ft weui-cell__ft_in-access">地图</view>
-          </view>
-        </t-input>
-        <t-input class="weui-cell__bd weui-cell__ft" disabled  prefixIcon="time" label="营业时间"    value="{{shopDetail.bussinessTime}}" align="right" />
-        <t-input class="weui-cell__bd weui-cell__ft" disabled  prefixIcon="call" label="联系电话" bindtap="onCopyText"   value="{{shopDetail.contractPhone}}" align="right" />
-        <view class="gamelib" ><t-link  bindtap="goGamelib" size="large" theme="primary" content="精选游戏库" suffixIcon="jump" hover /></view>
+    <!-- <t-grid theme="card" class="weui-cells weui-cells_after-title location_item">
+      <t-input class="weui-cell__bd" prefixIcon="location" label="" bindtap='goMap' value="{{shopDetail.address}}"
+        align="left">
+        <view slot="suffix" class="suffix">
+          <view class="weui-cell__ft weui-cell__ft_in-access">地图</view>
+        </view>
+      </t-input>
+      <t-input class="weui-cell__bd weui-cell__ft" disabled prefixIcon="time" label="营业时间"
+        value="{{shopDetail.bussinessTime}}" align="right" />
+      <t-input class="weui-cell__bd weui-cell__ft" disabled prefixIcon="call" label="联系电话" bindtap="onCopyText"
+        value="{{shopDetail.contractPhone}}" align="right" />
+      <view class="gamelib">
+        <t-link bindtap="goGamelib" size="large" theme="primary" content="精选游戏库" suffixIcon="jump" hover />
+      </view>
+    </t-grid> -->
+    <view style='float:left;width: {{parentWidth}}px;height: {{parentHeight}}px'>
+      <view class="item_style" style='margin: 20rpx 0 20rpx 20rpx;width: {{itemWidth}}px;height: {{itemHeight * 3}}px'>
+        11</view>
+      <view class="item_style" style='margin: 0 0 20rpx 20rpx;width: {{itemWidth}}px;height: {{itemHeight }}px'>44
+      </view>
+
+    </view>
+    <view style='float:left;width: {{parentWidth}}px;height: {{parentHeight}}px'>
+      <view class="item_style" style='margin: 20rpx 20rpx 20rpx 0;width: {{itemWidth}}px;height: {{itemHeight }}px'>22
+      </view>
+      <view class="item_style" style='margin: 0 20rpx 20rpx 0;width: {{itemWidth}}px;height: {{itemHeight * 3}}px'>
+        33</view>
+
+    </view>
 
 
-       
-      <!-- </t-grid>
-    <t-grid class="location_item" theme="card"> -->
-  </t-grid>
   </view>
   <view class='page__ft'>
-    
+
   </view>
 
 </view>

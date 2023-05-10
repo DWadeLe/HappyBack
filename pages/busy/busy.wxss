@@ -34,7 +34,6 @@
 
 .venue-item {
   width: 100%;
-  width: ;
   display: flex;
   padding: 5px;
   flex-direction: row;
@@ -47,6 +46,7 @@
 .venue-pic {
   width: 200px;
   height: 180px;
+  border-radius: 15rpx;
   flex-shrink: 0;
 }
 
