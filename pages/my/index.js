@@ -2,6 +2,8 @@ const app = getApp()
 const wxpay = require('../../utils/pay.js')
 const CONFIG = require('../../config.js')
 const WXAPI = require('../../wxapi/main')
+import Toast from 'tdesign-miniprogram/toast/index';
+
 Page({
   data: {
     select: ["select", "", ""],

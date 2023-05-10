@@ -2,6 +2,7 @@
 
 const WXAPI = require('../../wxapi/main')
 const app = getApp();
+import Toast from 'tdesign-miniprogram/toast/index';
 
 Page({
 

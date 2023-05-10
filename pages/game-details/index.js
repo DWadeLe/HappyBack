@@ -1,6 +1,7 @@
 // pages/game-details/index.js
 const colorUtil = require('../../utils/color')
 const app = getApp();
+import Toast from 'tdesign-miniprogram/toast/index';
 
 Page({
 

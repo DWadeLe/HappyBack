@@ -33,7 +33,8 @@
       </view>
 
     </t-popup>
-        <t-back-top wx:if="{{backTopVisible}}" text="顶部" />
+    <t-back-top wx:if="{{backTopVisible}}" text="顶部" />
+    <t-toast id="t-toast" />
 
   </t-pull-down-refresh>
 

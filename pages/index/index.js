@@ -32,14 +32,16 @@ Page({
     const statusBarHeight = systemInfo.statusBarHeight; // 状态栏高度
     const navBarHeight = 44; // 顶部导航栏高度
     const tabBarHeight = 50; // 底部导航栏高度，注意这个值是固定的
-
-    const contentHeight = screenHeight - statusBarHeight - navBarHeight - tabBarHeight;
+    /**
+     * 当我们自定义custiom的时候，底部导航栏不在可视区里面
+     * https://blog.csdn.net/qq_46199553/article/details/126030693
+     */
+    const contentHeight = windowHeight  - navBarHeight - statusBarHeight;
 
 
     var itemHeight = (contentHeight - margin * 3 -swiperHeight) / 4;
     var parentWidth= screenWidth / 2 ;
     var parentHeight= contentHeight - swiperHeight;
-    
     this.setData({
        itemWidth,
        itemHeight,

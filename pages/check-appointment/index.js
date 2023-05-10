@@ -4,6 +4,7 @@ const dateUtil = require('../../utils/date.js')
 
 const app = getApp();
 const WxParse = require('../../wxParse/wxParse.js');
+import Toast from 'tdesign-miniprogram/toast/index';
 
 Page({
 

@@ -28,4 +28,6 @@
       </view>
     </view>
   </t-grid>
+  <t-toast id="t-toast" />
+
 </view> 

@@ -5,6 +5,7 @@ const dateUtil = require('../../utils/date.js')
 const app = getApp();
 const WxParse = require('../../wxParse/wxParse.js');
 import drawQrcode from '../../utils/weapp.qrcode.min.js'
+import Toast from 'tdesign-miniprogram/toast/index';
 
 Page({
 

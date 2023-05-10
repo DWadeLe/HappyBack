@@ -1,13 +1,11 @@
 .goods-name {
   padding-left: 30rpx;
-  padding-top: 30rpx;
   height: 80rpx;
   line-height: 80rpx;
-  margin-bottom: 20rpx;
   border-bottom: 1rpx solid #eee0c0;
 }
 .goods-price {
-  color: #f48333;
+  color: var(--td-brand-color);
   margin-top: 30rpx;
   margin-left: 30rpx;
   border-bottom: 1px solid #eee0c0;

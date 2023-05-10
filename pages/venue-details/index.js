@@ -183,7 +183,10 @@ Page({
     const formattedDate = `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day}`;
     const format = (val) => {
       const date = new Date(val);
-      return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+      const year = date.getFullYear();
+      const month = date.getMonth() + 1;
+      const day = date.getDate();
+      return `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day}`;
     };
     this.setData({
       minDate: tomorrow.getTime(),

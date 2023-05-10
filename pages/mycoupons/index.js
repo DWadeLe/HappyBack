@@ -4,6 +4,8 @@ const dateUtil = require('../../utils/date.js')
 const CONFIG = require('../../config.js')
 const WXAPI = require('../../wxapi/main')//获取应用实例
 const date = require('../../utils/date.js')
+import Toast from 'tdesign-miniprogram/toast/index';
+
 Page({
   data: {
     coupons: [],

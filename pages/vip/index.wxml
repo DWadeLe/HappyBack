@@ -23,10 +23,8 @@
       </view>
     </view>
     <view class="flex_item">
-      <view class="float_right">
-        <t-button theme="primary" variant="outline" size="small" data-id="item.id" bindtap="goBuy" shape="round">购买
+        <t-button t-class="float_right" theme="primary" variant="outline" size="small" data-id="{{item.id}}" bindtap="goBuy" shape="round">购买
         </t-button>
-      </view>
     </view>
   </t-grid>
 

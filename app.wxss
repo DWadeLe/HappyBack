@@ -12,7 +12,7 @@
   background-color: #fff;
 }
 page {
-  --td-brand-color: #B3E5FC;
+  --td-brand-color: #f48333;
 }
 
 .float-left{

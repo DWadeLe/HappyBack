@@ -2,6 +2,7 @@
 const WXAPI = require('../../wxapi/main')
 const CONFIG = require('../../config.js')
 const dateUtil = require('../../utils/date.js')
+import Toast from 'tdesign-miniprogram/toast/index';
 
 const app = getApp()
 Page({
@@ -46,9 +47,11 @@ Page({
           })
         }, 1000)
       }else{
-        wx.showToast({
-          title: '会员订购失败:'+res.msg,
-        })
+        Toast({
+          context: that,
+          selector: '#t-toast',
+          message: "会员订购失败:"+res.message,
+        });
       }
        
       wx.hideNavigationBarLoading();

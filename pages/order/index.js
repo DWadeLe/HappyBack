@@ -1,4 +1,6 @@
 // pages/order/index.js
+import Toast from 'tdesign-miniprogram/toast/index';
+
 const app = getApp()
 const wxpay = require('../../utils/pay.js')
 const dateUtil = require('../../utils/date.js')
@@ -161,18 +163,35 @@ Page({
 
   toPay(e){
     var data=e.currentTarget.dataset.data;
-
-    WXAPI.queryOrder(data.order_no).then(function (res) {
-
+    var that=this;
+    debugger
+    WXAPI.payOrderOnline(data.order_no).then(function (res) {
 
       if(res.code==200){
           wx.showToast({
             "title":"支付订单成功"
           })
+          wx.requestPayment({
+            appid: "wxf83224ed1b5ec2f4",
+            timeStamp: "1414561699",
+            nonceStr: '5K8264ILTKCH16CQ2502SI8ZNMTM67VS',
+            package: 'prepay_id=wx201410272009395522657a690389285100',
+            signType: 'RSA',
+            paySign: 'oR9d8PuhnIc+YZ8cBHFCwfgpaK9gd7vaRvkYD7rthRAZ\/X+QBhcCYL21N7cHCTUxbQ+EAt6Uy+lwSN22f5YZvI45MLko8Pfso0jm46v5hqcVwrk6uddkGuT+Cdvu4WBqDzaDjnNa5UK3GfE1Wfl2gHxIIY5lLdUgWFts17D4WuolLLkiFZV+JSHMvH7eaLdT9N5GBovBwu5yYKUR7skR8Fu+LozcSqQixnlEZUfyE55feLOQTUYzLmR9pNtPbPsu6WVhbNHMS3Ss2+AehHvz+n64GDmXxbX++IOBvm2olHu3PsOUGRwhudhVf7UcGcunXt8cqNjKNqZLhLw4jq\/xDg==',
+            success(res) {
+              console.log(res)
+            },
+            fail(res) {
+              console.log(res)
+    
+            }
+          });
       }else{
-        wx.showToast({
-          "title":"支付订单失败:"+res.msg
-        })
+        Toast({
+          context: that,
+          selector: '#t-toast',
+          message: "支付订单失败:"+res.message,
+        });
       }
       wx.hideNavigationBarLoading();
     }).catch((e) => {
@@ -181,16 +200,19 @@ Page({
   },
   toCancel(e){
     var data=e.currentTarget.dataset.data;
+    var that=this;
     WXAPI.cancelOrder(data.order_no).then(function (res) {
-
+ 
       if(res.code==200){
           wx.showToast({
             "title":"取消订单成功"
           })
       }else{
-        wx.showToast({
-          "title":"取消订单失败:"+res.msg
-        })
+        Toast({
+          context: that,
+          selector: '#t-toast',
+          message: "取消订单失败:"+res.message,
+        });
       }
       wx.hideNavigationBarLoading();
     }).catch((e) => {

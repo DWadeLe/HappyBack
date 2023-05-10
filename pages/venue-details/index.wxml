@@ -68,7 +68,7 @@
       <scroll-view wx:else="{{canUseCoupons.length==0}}" bindscrolltolower="loadMoreCoupons" class="block scroll_coupon"
         scroll-y="true" scroll-with-animation="true">
         <t-grid bindtap="onSelectCoupon" data-data="{{item}}" wx:for="{{canUseCoupons}}"
-          class="{{item.status==1?'unuse_coupons_item':'use_coupons_item'}}" theme="card">
+          class="{{item.coupon_type==1?'unuse_coupons_item':'use_coupons_item use_coupons_shadow'}}" theme="card">
           <view class="radio_item"> {{item.coupon_name}} <t-icon t-class="card-btn"
               name="{{selectedCoupon.id==item.id ? 'check-circle' : 'circle'}}"></t-icon>
           </view>

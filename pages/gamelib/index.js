@@ -3,6 +3,7 @@ const WXAPI = require('../../wxapi/main')
 const colorUtil = require('../../utils/color')
 const dateUtil = require('../../utils/date')
 const app = getApp();
+import Toast from 'tdesign-miniprogram/toast/index';
 
 Page({
 

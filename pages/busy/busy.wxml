@@ -36,5 +36,7 @@
 
     </t-grid>
   </scroll-view>
+  <t-toast id="t-toast" />
+
 
 </view>

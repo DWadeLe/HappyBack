@@ -26,6 +26,7 @@
     </scroll-view>
 
     <t-back-top wx:if="{{backTopVisible}}" text="顶部" />
+    <t-toast id="t-toast" />
 
 
   </t-pull-down-refresh>
