@@ -1,24 +1,25 @@
 <!--pages/game-details/index.wxml-->
 <view class="page">
   <navigation-bar title="游戏详情"></navigation-bar>
-   
+
   <view class="page__bd">
-    <scroll-view>
-      <view class="swiper-container">
-        <swiper class="swiper_box" autoplay="true" bindchange="swiperchange">
-          <block wx:for="{{gameDetail.background_pic_list}}" wx:key="*this">
-            <swiper-item>
-              <image bindtap="tapBanner" data-id="{{item.businessId}}" src="{{item.picUrl}}" />
-            </swiper-item>
-          </block>
-        </swiper>
-        <view class="dots">
-          <block wx:for="{{gameDetail.background_pic_list}}" wx:key="*this">
-            <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
-          </block>
-        </view>
+    <view class="swiper-container">
+      <swiper class="swiper_box" autoplay="true" bindchange="swiperchange">
+        <block wx:for="{{gameDetail.background_pic_list}}" wx:key="*this">
+          <swiper-item>
+            <image bindtap="tapBanner" data-id="{{item.businessId}}" src="{{item.picUrl}}" />
+          </swiper-item>
+        </block>
+      </swiper>
+      <view class="dots">
+        <block wx:for="{{gameDetail.background_pic_list}}" wx:key="*this">
+          <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
+        </block>
       </view>
-      <!-- <view class="shop_name">{{gameDetail.name}}</view> -->
+    </view>
+    <!-- <view class="shop_name">{{gameDetail.name}}</view> -->
+    <scroll-view class="block " scroll-y="true" scroll-with-animation="true">
+
       <t-grid theme="card" class="game_detail_1">
         <view class="game_name">{{gameDetail.plat}} {{gameDetail.name}}</view>
         <view class="game_info1">{{gameDetail.release_time}}发售
@@ -37,9 +38,9 @@
       </t-grid>
       <t-grid theme="card" class="game_detail_2">
         <view class="game_desc_title">游戏介绍视频</view>
-        <image ></image>
         <view style="position: relative;">
-          <image bindtap="goUrl" data-url="{{gameDetail.introduce_url}}" src="{{gameDetail.introduce_pic}}" mode="aspectFill" style="width: 100%;"></image>
+          <image bindtap="goUrl" data-url="{{gameDetail.introduce_url}}" src="{{gameDetail.introduce_pic}}"
+            mode="aspectFill" style="width: 100%;"></image>
           <view style="position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);">
             <image src="../../images/bf.png" style="width: 50px; height: 50px;"></image>
           </view>
@@ -49,7 +50,8 @@
       <t-grid theme="card" class="game_detail_2">
         <view class="game_desc_title">攻略视频地址</view>
         <view style="position: relative;">
-          <image bindtap="goUrl" data-url="{{gameDetail.guideline_url}}" src="{{gameDetail.guideline_pic}}" mode="aspectFill" style="width: 100%;"></image>
+          <image bindtap="goUrl" data-url="{{gameDetail.guideline_url}}" src="{{gameDetail.guideline_pic}}"
+            mode="aspectFill" style="width: 100%;"></image>
           <view style="position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);">
             <image src="../../images/bf.png" style="width: 50px; height: 50px;"></image>
           </view>
