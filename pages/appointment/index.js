@@ -123,9 +123,6 @@ Page({
 
     
     var userInfo=wx.getStorageSync('userInfo');
-    that.setData({
-      appointmentList: []
-    })
     WXAPI.queryAppointmentByUser(userInfo.id, param).then(function (res) {
       var info = res;
       if (info && info.length > 0) {

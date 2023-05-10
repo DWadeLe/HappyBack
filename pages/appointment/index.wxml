@@ -11,6 +11,7 @@
       <t-tab-panel label="未生效" value="0" />
       <t-tab-panel label="已生效" value="1" />
       <t-tab-panel label="已取消" value="2" />
+      <t-tab-panel label="已使用" value="3" />
     </t-tabs>
     <scroll-view class="block " scroll-y="true" scroll-with-animation="true">
       <view wx:for="{{appointmentList}}" wx:key="*this" class="{{item.cancel==1?'appointment_item_shadow':''}}">
