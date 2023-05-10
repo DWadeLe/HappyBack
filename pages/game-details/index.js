@@ -1,5 +1,6 @@
 // pages/game-details/index.js
 const colorUtil = require('../../utils/color')
+const app = getApp();
 
 Page({
 
@@ -18,47 +19,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(e) {
+    debugger
     this.setData({
       gameDetail:JSON.parse(e.data),
       colorMap:JSON.parse(e.colorMap)
     })
 
-    const context1 = wx.createCanvasContext('preview1', this)
-    const context2 = wx.createCanvasContext('preview2', this)
-    context1.setFillStyle('#ff0000') // 设置颜色
-    context1.fillRect(0, 0, 100, 100) // 绘制矩形
-    context2.setFillStyle('#bb0000') // 设置颜色
-    context2.fillRect(0, 0, 100, 100) // 绘制矩形
-    context1.draw(false, () => {
-      // wx.canvasToTempFilePath({
-      //   x: 0,
-      //   y: 0,
-      //   width: 100,
-      //   height: 100,
-      //   canvasId: 'preview',
-      //   success(result) {
-      //     console.log(result.tempFilePath) // 将生成的图片路径输出到控制台
-      //   },
-      //   fail(error) {
-      //     console.error(error)
-      //   }
-      // }, this)
-    })
-    context2.draw(false, () => {
-      // wx.canvasToTempFilePath({
-      //   x: 0,
-      //   y: 0,
-      //   width: 100,
-      //   height: 100,
-      //   canvasId: 'preview',
-      //   success(result) {
-      //     console.log(result.tempFilePath) // 将生成的图片路径输出到控制台
-      //   },
-      //   fail(error) {
-      //     console.error(error)
-      //   }
-      // }, this)
-    })
   },
   getRandomColor(){
     var color=colorUtil.getRandomColor();
@@ -73,8 +39,19 @@ Page({
       let lastIndex;
       let bvid;
       try{
+        
         lastIndex= url.lastIndexOf("/");
-        bvid=url.substring(lastIndex + 1);
+        if(lastIndex==-1){
+          bvid=url;
+        }else if(lastIndex==url.length-1){
+
+          var url = url.substring(0,lastIndex);
+          lastIndex= url.lastIndexOf("/");
+          bvid= url.substring(lastIndex + 1);
+
+        }else{
+          bvid= url.substring(lastIndex + 1);
+        }
       }catch(e){
         console.log(url,e)
         wx.showToast({

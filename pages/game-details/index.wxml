@@ -1,7 +1,7 @@
 <!--pages/game-details/index.wxml-->
 <view class="page">
   <navigation-bar title="游戏详情"></navigation-bar>
-
+   
   <view class="page__bd">
     <scroll-view>
       <view class="swiper-container">
@@ -37,12 +37,12 @@
       </t-grid>
       <t-grid theme="card" class="game_detail_2">
         <view class="game_desc_title">游戏介绍视频</view>
-        <canvas bindtap="goUrl" data-url="{{gameDetail.introduce_url}}" canvas-id="preview1"></canvas>
+        <image bindtap="goUrl" data-url="{{gameDetail.introduce_url}}" src="{{gameDetail.introduce_pic}}"></image>
 
       </t-grid>
       <t-grid theme="card" class="game_detail_2">
         <view class="game_desc_title">攻略视频地址</view>
-        <canvas bindtap="goUrl" data-url="{{gameDetail.guideline_url}}" canvas-id="preview2"></canvas>
+        <image bindtap="goUrl" data-url="{{gameDetail.guideline_url}}" src="{{gameDetail.guideline_pic}}"></image>
 
       </t-grid>
     </scroll-view>

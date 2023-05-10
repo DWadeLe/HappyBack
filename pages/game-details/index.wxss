@@ -53,3 +53,8 @@ swiper-item image {
 .game_desc_title{
    font-size: 1.2rem;
 }
+
+.game_detail_2 image{
+  width: 750rpx;
+  height:525rpx;
+}

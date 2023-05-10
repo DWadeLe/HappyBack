@@ -28,7 +28,9 @@
           <view class="gamelib_tag_p">
             <t-tag class='gamelib_tag' wx:for="{{item.tag_list}}" wx:for-item="tag" wx:for-index="idx" style="background:{{colorMap[tag]}}"  shape="mark">{{tag}}</t-tag>
           </view>
-           
+           <view class="gamelib_price" style="color:{{themeColor}}">
+               <span style="font-size:0.9rem">¥</span>{{item.price}}
+          </view>
         </view>
       </view>
     </block>

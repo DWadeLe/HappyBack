@@ -2,6 +2,8 @@
 const WXAPI = require('../../wxapi/main')
 const colorUtil = require('../../utils/color')
 const dateUtil = require('../../utils/date')
+const app = getApp();
+
 Page({
 
   /**
@@ -46,8 +48,16 @@ Page({
       {
         value: 'release_time,1',
         label: '按发售时间早',
+      }, {
+        value: 'price,2',
+        label: '按价格高',
+      },
+      {
+        value: 'price,1',
+        label: '按价格低',
       }]
     },
+    themeColor:app.globalData.themeColor,
     gameType: 1,
     normalSearch: true,
     baseRefresh: {
@@ -76,7 +86,7 @@ Page({
       param.tag = tag
     if (sorter && sorter != "-1") {
       var index = sorter.indexOf(",");
-      param.order_by = sorter.substring(0, index - 1);
+      param.order_by = sorter.substring(0, index );
       param.order_type = sorter.substring(index + 1);
     }
     if (searchName && searchName != '')
