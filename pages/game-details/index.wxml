@@ -17,11 +17,10 @@
         </block>
       </view>
     </view>
-    <!-- <view class="shop_name">{{gameDetail.name}}</view> -->
-    <scroll-view class="block " scroll-y="true" scroll-with-animation="true">
+    <scroll-view scroll-y="true" scroll-with-animation="true">
 
       <t-grid theme="card" class="game_detail_1">
-        <view class="game_name">{{gameDetail.plat}} {{gameDetail.name}}</view>
+        <view class="game_name">{{gameDetail.name}}</view>
         <view class="game_info1">{{gameDetail.release_time}}发售
           {{gameDetail.developer!=null?gameDetail.developer+'开发':''}}
           {{gameDetail.issuer!=null?gameDetail.issuer+'发行':''}}</view>
@@ -33,7 +32,7 @@
       <t-grid theme="card" class="game_detail_2">
         <view class="game_desc_title">游戏介绍</view>
         <view class="game_desc">
-          <span autosize="true" value="">{{gameDetail.desc}}</span>
+          <span autosize="true" >{{gameDetail.desc}}</span>
         </view>
       </t-grid>
       <t-grid theme="card" class="game_detail_2">

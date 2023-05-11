@@ -23,7 +23,7 @@
       </view>
     </view>
     <view class="flex_item">
-        <t-button disabled="{{userInfo.vip && userInfo.vip_id!=item.id}}" t-class="float_right" theme="primary" variant="outline" size="small" data-id="{{item.id}}" bindtap="goBuy" shape="round">
+        <t-button disabled="{{userInfo.vip && userInfo.vip_id!=item.id}}" t-class="float_right" theme="primary"   data-id="{{item.id}}" bindtap="goBuy" shape="round">
           {{userInfo.vip_id==item.id?"续费":"购买"}}
 
         </t-button>

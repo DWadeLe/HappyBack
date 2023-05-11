@@ -54,7 +54,7 @@
 
         <view class="backgroud-color-fff" style="margin:20rpx">
           <view class="yd-price"><span style="font-size: 0.9rem;">¥</span>{{venuePriceMap[session].price}}</view>
-          <t-button bindtap="goPay" shape="round" t-class="yd-py-btn" block>去支付</t-button>
+          <t-button bindtap="goPay" theme="primary" shape="round" t-class="yd-py-btn" block>去支付</t-button>
         </view>
       </view>
     </t-popup>
@@ -79,8 +79,8 @@
         </t-grid>
       </scroll-view>
       <view class="backgroud-color-fff margin-top">
-        <t-button bindtap="closeCouponListPop" shape="round" t-class="yd-price" block>取消</t-button>
-        <t-button bindtap="confirmCoupon" shape="round" style="backgroud-color:{{themeColor}}" t-class="yd-py-btn"
+        <t-button bindtap="closeCouponListPop" shape="round" theme="primary" t-class="yd-price" block>取消</t-button>
+        <t-button bindtap="confirmCoupon" shape="round" theme="primary" t-class="yd-py-btn"
           block>确定</t-button>
       </view>
 

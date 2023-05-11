@@ -15,7 +15,8 @@
       <view wx:if="{{scanVisible}}" bindtap="scanCode" style="position:relative;height:{{0}}px; min-height:{{0}}px; line-height:{{menuHeight}}px; left:22px !important; top:{{top}}px; ">
         <image style="width: {{menuHeight}}px;height: {{menuHeight}}px;" src="../../images/nav/scan.png"></image>
     </view>
-    
+    <t-toast id="t-toast" />
+
 </view>
 
 

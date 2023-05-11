@@ -67,12 +67,13 @@ Component({
   methods: {
     scanCode() {
       // 扫一扫操作
+      var that=this;
       wx.scanCode({
         onlyFromCamera: false, // 是否只能从相机扫码，不允许从相册选择图片，默认是false
         success(res) {
           var result = res.result;
           Toast({
-            context: this,
+            context: that,
             selector: '#t-toast',
             message: "扫码成功",
             theme: 'success',

@@ -24,7 +24,7 @@
     <view class="flex_item">
       <view class="label"> </view>
       <view class="content">
-        <t-button bindtap="toConfirm" >核销</t-button>
+        <t-button bindtap="toConfirm" theme="primary">核销</t-button>
       </view>
     </view>
   </t-grid>

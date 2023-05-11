@@ -27,11 +27,11 @@
     </view>
     <view  class="flex_item">
       <view class="label">支付时间 </view>
-      <view class="content">{{orderDetail.pay_time}}</view>
+      <view class="content">{{orderDetail.payment_time}}</view>
     </view>
     <view  class="flex_item">
       <view class="label">实际付款</view>
-      <view class="content">¥{{orderDetail.count}}</view>
+      <view class="content">¥{{orderDetail.amount}}</view>
     </view>
   </t-grid>
 
