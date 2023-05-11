@@ -6,9 +6,10 @@
     loadingTexts="{{['下拉刷新', '松手刷新', '正在刷新', '刷新完成']}}" bind:refresh="onPullDownRefresh" bind:scroll="onScroll">
 
     <t-tabs bind:click="onTabsClick" value="{{payStatus}}" theme="line" space-evenly="{{true}}">
-      <t-tab-panel label="全部" value="-1" />
-      <t-tab-panel label="已支付" value="2" />
+      <t-tab-panel label="全部订单" value="-1" />
       <t-tab-panel label="待支付" value="1" />
+      <t-tab-panel label="待退款" value="4" />
+
     </t-tabs>
     <scroll-view class="block " scroll-y="true" scroll-with-animation="true">
       <t-grid class="order_item" theme="card" wx:for="{{orderList}}" wx:key="id" data-data="{{item}}"

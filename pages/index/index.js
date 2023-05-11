@@ -18,6 +18,21 @@ Page({
       itemHeight:null,
       parentWidth:null,
       parentHeight:null,
+      activityList:[
+         {
+          "id":1,
+          "picUrl":"../../images/banner/starkabi.jpg"
+         },
+         {
+          "id":2,
+          "picUrl":"../../images/banner/pikaqiu.jpg"
+         },
+         {
+          "id":3,
+          "picUrl":"../../images/banner/maliao.jpg"
+         },
+    ],
+    swiperCurrent:1
     }
   },
   onShow() {

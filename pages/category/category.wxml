@@ -7,13 +7,18 @@
       </t-tabs>
       <scrol-view  scroll-y="true" scroll-into-view="{{venueToView}}" bindscroll="scroll">
         <block wx:for="{{showData}}"  wx:key="id">
-            <view class='venue-item' bindtap="toDetailsTap" data-id="{{item.id}}" data-data="{{item}}">
-              <image class='venue-pic' mode='aspectFill' lazy-load="true" src="{{item.icon}}"></image>
-              <view class='venue-info'>
-                <text class='venueName'>{{item.name}}</text>
-                <text class='venueDesc'>{{item.desc}}</text>
-              </view>
-            </view>
+             <view style="float:left;margin: 20rpx 0 20rpx 20rpx;width:{{itemWidth}}px;height:{{1.5*itemWidth}}px">
+             <image src="{{item.icon}}" style="width:{{itemWidth}}px;height:{{1.5*itemWidth}}px"></image>
+             </view>
+             <view style="float:left;margin: 20rpx;width:{{itemWidth*2}}px;height:{{1.5*itemWidth}}px">
+                   <view style="font-size:0.9rem;font-weight:bold">{{item.name}}</view>
+                   <view style="font-size:0.7rem;font-weight:normal">{{item.desc}}</view>
+             
+             </view>
+             <view style="display: flex;ustify-content: center;float:left;margin: 20rpx 20rpx 20rpx 0;width:{{itemWidth}}px;height:{{1.5*itemWidth}}px">
+                  <t-button style="width:100rpx;height:50rpx;margin-top:{{buttonMarginTop}}px" size="small" theme="primary" bindtap="toDetailsTap" data-data="{{item}}">预约</t-button>
+             </view>
+
         </block>
       </scrol-view>
     </view>

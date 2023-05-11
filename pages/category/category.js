@@ -23,13 +23,24 @@ Page({
     categoryToView: "",
     hall:[],
     privateRoom:[],
-    showData:[]
+    showData:[],
+    itemWidth:"",
+    buttonMarginTop:""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    const systemInfo = wx.getSystemInfoSync();
+    var screenWidth = systemInfo.screenWidth;
+    var margin = screenWidth * 20 / 750;
+    var itemWidth = (screenWidth - 4 * margin) / 4;
+    var buttonMarginTop=(itemWidth * 1.5-margin *2)/2
+    this.setData({
+       itemWidth,
+       buttonMarginTop
+    })
     this.initData();
   },
   initData() {

@@ -4,7 +4,7 @@
   <view class="page__bd">
     <view class="swiper-container">
       <swiper class="swiper_box" autoplay="true" bindchange="swiperchange">
-        <block wx:for="{{bannerList}}" wx:key="*this">
+        <block wx:for="{{bannerList}}" wx:key="businessId">
           <swiper-item>
             <image bindtap="tapBanner" data-id="{{item.businessId}}" src="{{item.picUrl}}" />
           </swiper-item>
@@ -33,16 +33,29 @@
     </t-grid> -->
     <view style='float:left;width: {{parentWidth}}px;height: {{parentHeight}}px'>
       <view bindtap="goBuyVip" class="item_style" style='margin: 20rpx 0 20rpx 20rpx;width: {{itemWidth}}px;height: {{itemHeight * 3}}px'>
-        会员活动</view>
+        <image src="../../images/banner/pikaqiu.jpg" style="width: {{itemWidth}}px;height: {{itemHeight * 3}}px"></image>
+        </view>
       <view class="item_style" style='margin: 0 0 20rpx 20rpx;width: {{itemWidth}}px;height: {{itemHeight }}px'>地址 联系电话
       </view>
 
     </view>
     <view style='float:left;width: {{parentWidth}}px;height: {{parentHeight}}px'>
-      <view bindtap="goGamelib" class="item_style" style='margin: 20rpx 20rpx 20rpx 0;width: {{itemWidth}}px;height: {{itemHeight }}px'>游戏库TODO
+      <view bindtap="goGamelib" class="item_style" style='margin: 20rpx 20rpx 20rpx 0;width: {{itemWidth}}px;height: {{itemHeight }}px'>
+            <image src="../../images/banner/gamelib.jpg" style="width: {{itemWidth}}px;height: {{itemHeight }}px"></image>
       </view>
       <view class="item_style" style='margin: 0 20rpx 20rpx 0;width: {{itemWidth}}px;height: {{itemHeight * 3}}px'>
-        todo活动轮播</view>
+        <swiper class="swiper_box" vertical="true" autoplay="true" bindchange="swiperchange">
+        <block wx:for="{{activityList}}" wx:key="id">
+          <swiper-item>
+            <image bindtap="tapBanner" data-id="{{item.id}}" src="{{item.picUrl}}" style="width: {{itemWidth}}px;height: {{itemHeight * 3}}px" />
+          </swiper-item>
+        </block>
+      </swiper>
+      <view class="dots">
+        <block wx:for="{{activityList}}" wx:key="id">
+          <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
+        </block>
+      </view></view>
 
     </view>
 

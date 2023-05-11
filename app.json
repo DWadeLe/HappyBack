@@ -49,7 +49,6 @@
     "t-swiper-nav": "tdesign-miniprogram/swiper-nav/swiper-nav",
     "t-cell-group": "tdesign-miniprogram/cell-group/cell-group",
     "t-count-down": "tdesign-miniprogram/count-down/count-down",
-    "vant-icon": "@vant/weapp/dist/icon/index",
     "navigation-bar": "/components/navigation-bar/navigation-bar"
   },
   "window": {
@@ -95,17 +94,6 @@
       }
     ]
   },
-  "sitemapLocation": "sitemap.json",
-  "navigationBar": {
-    "backgroundColor": "#fff",
-    "textStyle": "black",
-    "custom": true,
-    "right": [{
-      "text": "",
-      "iconPath": "/images/nav/scan.png",
-      "iconSize": "26",
-      "pagePath": "",
-      "eventType": "scan"
-    }]
-  }
+  "sitemapLocation": "sitemap.json"
+  
 }
