@@ -128,7 +128,6 @@ Page({
       var info = res;
       if (info && info.length > 0) {
         info.forEach(item => {
-
           item.date = dateUtil.toDate(item.date).substring(0,10)
         })
         that.setData({

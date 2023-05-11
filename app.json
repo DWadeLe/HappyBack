@@ -13,7 +13,8 @@
     "pages/appointment/index",
     "pages/gamelib/index",
     "pages/game-details/index",
-    "pages/check-appointment/index"
+    "pages/check-appointment/index",
+    "pages/settlement/index"
   ],
   "usingComponents": {
     "t-button": "tdesign-miniprogram/button/button",
@@ -50,8 +51,6 @@
     "t-count-down": "tdesign-miniprogram/count-down/count-down",
     "vant-icon": "@vant/weapp/dist/icon/index",
     "navigation-bar": "/components/navigation-bar/navigation-bar"
-
-
   },
   "window": {
     "backgroundTextStyle": "light",

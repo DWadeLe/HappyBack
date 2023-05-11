@@ -14,78 +14,121 @@ Page({
     venueWrap: [],
     categorySelected: "",
     venueToView: "",
-    userInfo:{}
+    userInfo: {}, 
+    endTimeVisible: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     this.initData();
-    var userInfo=wx.getStorageSync('userInfo');
+    var userInfo = wx.getStorageSync('userInfo');
     this.setData({
-        userInfo
+      userInfo
     })
-    
-    },
-  startTime(e){
-    var that=this;
 
-    WXAPI.startTime(e.currentTarget.dataset.id).then(res=>{
-            if(res.code==200){
-              wx.showToast({
-                title: '开机成功',
-                icon: 'success'
-              })
-            }else{
-              wx.showToast({
-                title: '开机失败:'+res.msg,
-                icon: 'error'
-              })
-            }   
-            that.initData();
+  },
+  startTime(e) {
+    var that = this;
+
+    WXAPI.startTime(e.currentTarget.dataset.id).then(res => {
+      if (res.code == 200) {
+        Toast({
+          context: this,
+          selector: '#t-toast',
+          message: "开机成功",
+          theme: 'success',
+          direction: 'column',
+        });
+      } else {
+        Toast({
+          context: this,
+          selector: '#t-toast',
+          message: '开机失败:' + (res.msg || res.message),
+          theme: 'error',
+          direction: 'column',
+        });
+      }
+      that.initData();
 
     })
   },
-  endTime(e){
-    var that=this;
-    WXAPI.endTime(e.currentTarget.dataset.id).then(res=>{
-      if(res.code==200){
-        wx.showToast({
-          title: '关机成功',
-          icon: 'success'
+  confirmEndtime(e) {
+    var that = this;
+
+    WXAPI.endTime(e.currentTarget.dataset.id).then(res => {
+      if (res.order_no) {
+        Toast({
+          context: this,
+          selector: '#t-toast',
+          message: "关机成功",
+          theme: 'success',
+          direction: 'column',
+        });
+        wx.showLoading({
+          title: '前往结算页面中',
         })
-      }else{
-        wx.showToast({
-          title: '关机失败:'+res.msg,
-          icon: 'error'
-        })
-      }  
+
+        setTimeout(() => {
+          wx.hideLoading({
+            success: (res1) => {
+              wx.navigateTo({
+                url: `/pages/settlement/index?order_no=${res.order_no}`
+              })
+            },
+          })
+
+        }, 500)
+      } else {
+        Toast({
+          context: this,
+          selector: '#t-toast',
+          message: '开机失败:' + (res.msg || res.message),
+          theme: 'error',
+          direction: 'column',
+        });
+      }
       that.initData();
     })
   },
+  async endTime(e) {
+    var that = this;
+    try {
+      const res = await wx.showModal({
+        title: '确认',
+        content: '是否结束当前机位'
+      })
+      if (res.confirm) {
+        that.confirmEndtime(e)
+      } else if (res.cancel) {
+        return;
+      }
+    } catch (e) {
+      console.error(e)
+    }
+    
+  },
   initData() {
-
     let that = this;
     wx.showNavigationBarLoading();
     this.getVenueList();
-
   },
-  getVenueList: function() {
+  getVenueList: function () {
 
     let that = this;
 
     WXAPI.queryVenue({
-    }).then(function(res) {
-      var venueList=res;
+    }).then(function (res) {
+      var venueList = res;
       //mock 数据
-      venueList.forEach((item,index)=>{
-         item.icon="../../images/banner/banner"+(index%3+1)+".jpg";
+      venueList.forEach((item, index) => {
+        item.icon = "../../images/banner/banner" + (index % 3 + 1) + ".jpg";
       })
       that.setData({
         venueList: venueList,
       });
-      
+
       console.log(venueList);
 
       wx.hideNavigationBarLoading();
@@ -94,14 +137,14 @@ Page({
       wx.hideNavigationBarLoading();
     });
   },
-  toDetailsTap: function(e) {
+  toDetailsTap: function (e) {
     wx.navigateTo({
       url: "/pages/venue-details/index?id=" + e.currentTarget.dataset.id
     })
   },
-  scroll: function(e) {
+  scroll: function (e) {
 
-    if (this.categoryClick){
+    if (this.categoryClick) {
       this.categoryClick = false;
       return;
     }
@@ -150,13 +193,13 @@ Page({
         }
       }
 
-      if (isBreak){
+      if (isBreak) {
         break;
       }
 
 
     }
 
-  
+
   }
 })

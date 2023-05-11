@@ -66,6 +66,11 @@ Page({
       }
     })
   },
+  goBuyVip(){
+    wx.navigateTo({
+      url: "/pages/vip/index"
+    })
+  },
   toDetailsTap: function (e) {
     wx.navigateTo({
       url: "/pages/goods-details/index?id=" + e.currentTarget.dataset.id

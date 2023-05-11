@@ -19,7 +19,7 @@
           <text style="font-size:34rpx;">{{userNickName}}</text>
           <image wx:if="{{isVip}}" style="width:1rem;height:1rem;vertical-align:middle;margin-left:10rpx;"
             src="../../images/icon/VIP.svg"></image>
-            <t-button wx:if="{{!isVip}}" theme="primary" bindtap="goMap" id="2" variant="outline" size="small" shape="round">开通会员</t-button>
+            <t-button wx:if="{{!isVip}}" theme="primary" t-class="float-left" bindtap="goMap" id="2" variant="outline" size="small" shape="round">开通会员</t-button>
         </view>
       </view>
     </view>

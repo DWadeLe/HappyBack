@@ -160,6 +160,16 @@ Page({
       wx.hideNavigationBarLoading();
     });
   },
+  refreshData(){
+    this.setData({
+      orderList:[],
+      current_no: 0,
+      page_size: 10,
+      isLastPage:false
+    })
+    this.queryOrder(this.data.pageStatus);
+     
+  },
 
   toPay(e){
     var data=e.currentTarget.dataset.data;
@@ -193,6 +203,7 @@ Page({
           message: "支付订单失败:"+res.message,
         });
       }
+      this.refreshData();
       wx.hideNavigationBarLoading();
     }).catch((e) => {
       wx.hideNavigationBarLoading();
@@ -202,6 +213,27 @@ Page({
     var data=e.currentTarget.dataset.data;
     var that=this;
     WXAPI.cancelOrder(data.order_no).then(function (res) {
+ 
+      if(res.code==200){
+          wx.showToast({
+            "title":"取消订单成功"
+          })
+      }else{
+        Toast({
+          context: that,
+          selector: '#t-toast',
+          message: "取消订单失败:"+res.message,
+        });
+      }
+      wx.hideNavigationBarLoading();
+    }).catch((e) => {
+      wx.hideNavigationBarLoading();
+    });
+  },
+  toRefund(e){
+    var data=e.currentTarget.dataset.data;
+    var that=this;
+    WXAPI.refundOrder(data.order_no).then(function (res) {
  
       if(res.code==200){
           wx.showToast({

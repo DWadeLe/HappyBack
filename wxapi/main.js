@@ -8,7 +8,7 @@ const parseParamByJson = (param)=>{
 
      let returnParam='';
      for(let key in param){
-         returnParam+=`${key}=${param[key]}&`
+         returnParam+=`${key}=${encodeURIComponent(param[key])}&`
      }
 
      return returnParam;
@@ -16,7 +16,11 @@ const parseParamByJson = (param)=>{
 
 const request = async (url, needSubDomain, method, data) => {
   let _url = API_BASE_URL  + url
-  
+  if(method!='get'){
+     wx.showLoading({
+       title: '请求中',
+     })
+  }
   const result = await wx.cloud.callContainer({
       "config": {
         "env": "prod-8g7u9tmqac56ab70"
@@ -28,6 +32,11 @@ const request = async (url, needSubDomain, method, data) => {
       "method": method,
       "data": data
     })
+    if(method!='get'){
+      wx.hideLoading({
+        success: (res) => {},
+      })
+   }
     console.log(`url:${url}\n method:${method} \n data:${JSON.stringify(data)} \n result:${JSON.stringify(result.data)}`)
    return result.data;
     // wx.request({
@@ -101,9 +110,6 @@ module.exports = {
     return request (`/appointment/user/${userId}/record?`+parseParamByJson(param),false,'get',{
     })
   },
-  queryMobileLocation: (data) => {
-    return request('/common/mobile-segment/location', false, 'get', data)
-  },
   queryCouponsByUser: (user_id,param) => {
     return request(`/coupon/${user_id}/list?`+parseParamByJson(param), false, 'get', {})
   },
@@ -115,10 +121,10 @@ module.exports = {
     return request(`/appointment/${venue_id}`, false, 'post', param)
   },
   startTime(venue_id,param){
-    return request(`/venue/${venue_id}?`+parseParamByJson(param), false, 'post', {})
+    return request(`/venue/${venue_id}`, false, 'post', {})
   },
   endTime(venue_id,param){
-    return request(`/venue/${venue_id}?`+parseParamByJson(param), false, 'put', {})
+    return request(`/venue/${venue_id}`, false, 'put', {})
   },
 
   queryVIPList(){
@@ -130,16 +136,26 @@ module.exports = {
   cancelOrder(order_no){
     return request(`/order/${order_no}/cancel`, false, 'post',{})
   },
+  refundOrder(order_no){
+    return request(`/order/${order_no}/refund`, false, 'post',{})
+  },
+  updateOrder(order_no,param){
+    return request(`/order/${order_no}/update?`+parseParamByJson(param), false, 'post',{})
+  },
   payOrderOnline(order_no){
-    return request(`order/${order_no}/pay`, false, 'post',{})
-
+    return request(`/order/${order_no}/pay`, false, 'post',{})
+  },
+  payOrderOutline(order_no){
+    return request(`/order/${order_no}/paid`, false, 'post',{})
+  },
+  queryOrderByNo(order_no){
+    return request(`/order/${order_no}`, false, 'get',{})
   },
   verifAppointment(record_id){
     return request(`/appointment/verify/${record_id}`, false, 'post',{})
   },
   queryAppointmentById(record_id){
     return request(`/appointment/user/record/${record_id}`, false, 'get',{})
-
   }
   
   

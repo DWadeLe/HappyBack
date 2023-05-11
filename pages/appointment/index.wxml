@@ -16,15 +16,15 @@
     <scroll-view class="block " scroll-y="true" scroll-with-animation="true">
       <view wx:for="{{appointmentList}}" wx:key="id" class="{{item.cancel==1?'appointment_item_shadow':''}}">
 
-        <t-cell-group wx:for="{{appointmentList}}" class="appointment_item" theme="card">
+        <t-cell-group  class="appointment_item" theme="card">
           <t-cell title="{{item.venue_name}}" leftIcon="service" hover />
           <t-cell title="{{item.date}}({{sessionMap[item.session]}})" leftIcon="time" hover />
-          <t-cell bindtap="showQrcode" data-data="{{item}}" title="二维码" leftIcon="qrcode" hover />
+          <t-cell wx:if="{{item.cancel!=1}}" bindtap="showQrcode" data-data="{{item}}" title="二维码" leftIcon="qrcode" hover />
           <t-badge wx:if="{{item.status==0}}" count="未生效" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
           <t-badge wx:if="{{item.status==1}}" count="已生效" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
         </t-cell-group>
       </view>
-            <view style="height: 100px;width: 100%;"></view>
+      <view style="height: 100px;width: 100%;"></view>
 
     </scroll-view>
     <t-popup bindtap="closeQrCode" placement="center" visible="{{qrCodeVisible}}">

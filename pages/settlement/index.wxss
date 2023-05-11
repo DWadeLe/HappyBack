@@ -1,0 +1,103 @@
+/* pages/order/index.wxss */
+.title{
+    margin: 20px auto;
+}
+.order_item{
+  font-size: 30rpx;
+  line-height: 50rpx;
+  margin: 20rpx 20rpx 0 20rpx !important;
+}
+
+.float_right
+{
+   float:right;
+}
+.good_name{
+  font-weight: bold;
+}
+.order_count{
+  font-weight: bold;
+}
+.yd-py-btn{
+  margin-right: 25rpx;
+   float:right;
+   color: #fff !important;
+   background-color:  var(--td-brand-color) !important;
+}
+.yd-price{
+   text-align: center;
+   float: left;
+   color:  var(--td-brand-color);
+   font-size: 1.3rem;
+   font-weight: bold;
+}
+.unuse_coupons_item{
+ 
+  padding: 20rpx 50rpx;
+  background-color: #fff !important;
+  font-size: 30rpx;
+  line-height: 50rpx;
+  margin: 20rpx !important;
+}
+.use_coupons_item{
+  padding: 20rpx 50rpx;
+  font-size: 30rpx;
+  line-height: 50rpx;
+  margin: 20rpx !important;
+  
+}
+.use_coupons_shadow{
+  position: relative;
+}
+.use_coupons_shadow::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255,255,255,0.5);
+  z-index: 1;
+}
+.coupon_list{
+  z-index: 1000;
+}
+.to_pay{
+  z-index: 500;
+  background-color: #fff !important;
+
+}
+.backgroud-color-fff{
+  background-color: #fff !important;
+
+}
+.scroll_coupon{
+  position: fixed; /* 将元素固定在页面底部 */
+  bottom: 0px; /* 距离页面底部为0 */
+  left: 0; /* 距离页面左边界为0 */
+  width: 100%; /* 宽度占满整个页面 */
+}
+
+.t-radio--block{
+    padding: 0 !important;
+}
+.t-radio__border{
+   height: 0!important;
+}
+
+.coupon_radio .radio_item{
+   margin: 20rpx;
+}
+
+.coupon_dian{  display: inline-block; height: 10rpx; width: 10rpx; background: var(--td-brand-color); border-radius: 50%; margin-right: 8rpx;}
+.user_list_quan{ display:flex;align-items:center;color: #999; font-size: 24rpx;}
+
+.card-btn{
+  margin-right: 20rpx;
+  float: right;
+}
+.margin-top{
+  margin-top: 20rpx;
+}
+

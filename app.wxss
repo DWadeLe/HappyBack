@@ -32,7 +32,7 @@ page {
 .label{
    margin: 10rpx 10rpx 10rpx 0 ; 
 }
-.context{
+.content{
   margin: 10rpx 0 10rpx 0 ; 
 }
 .flex_item{

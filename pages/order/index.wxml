@@ -27,17 +27,18 @@
         </view>
         <view class="flex_item">
           <view class="" wx:if="{{item.status==1}}">
-            <t-button t-class="order_operation float_right" bindtap="toPay" data-data="{{item}}" theme="primary"
+            <t-button t-class="order_operation float-right" bindtap="toPay" data-data="{{item}}" theme="primary"
               variant="outline" size="small" shape="round">去支付</t-button>
-            <t-button t-class="order_operation float_right" bindtap="toCancel" data-data="{{item}}" theme="primary"
+            <t-button t-class="order_operation float-right" bindtap="toCancel" data-data="{{item}}" theme="primary"
               variant="outline" size="small" shape="round">取消</t-button>
           </view>
-          <view></view>
+          <view class="" wx:if="{{item.status==2 && userInfo.vip}}">
+            <t-button t-class="order_operation float_right" bindtap="toRefund" data-data="{{item}}" theme="primary"
+              variant="outline" size="small" shape="round">申请退款</t-button>
+          </view>
         </view>
-        <!-- <t-badge wx:if="{{payStatus==2 && item.status==0}}" count="未支付" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
-      <t-badge wx:if="{{payStatus==2 && item.status==1}}" count="已支付" offset="{{[0, 0]}}" shape="ribbon" slot="note" /> -->
       </t-grid>
-        <view style="height: 100px;width: 100%;"></view>
+      <view style="height: 100px;width: 100%;"></view>
 
     </scroll-view>
     <t-back-top wx:if="{{backTopVisible}}" text="顶部" />

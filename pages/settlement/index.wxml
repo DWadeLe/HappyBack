@@ -1,0 +1,106 @@
+<view class="page">
+  <navigation-bar title="结算详情"></navigation-bar>
+  <scroll-view class="block " scroll-y="true" scroll-with-animation="true">
+    <t-grid class="order_item" theme="card">
+      <view class="flex_item">
+        <view class="label">订单编号</view>
+        <view class="content"> {{orderDetail.order_no}}</view>
+      </view>
+      <view class="flex_item">
+        <view class="label">订单名称</view>
+        <view class="content"> ({{paymentVenueMap[orderDetail.payment_venue]}}){{orderDetail.goods_name}}</view>
+      </view>
+      <view class="flex_item">
+        <view class="label">下单时间 </view>
+        <view class="content"> {{orderDetail.order_time}}</view>
+      </view>
+      <view class="flex_item">
+        <view class="label">应付金额 </view>
+        <view class="content"> {{orderDetail.origin_amount}}</view>
+      </view>
+      <view class="flex_item">
+        <view class="label"><t-input label="实际金额" bindblur="changeAmount" disabled="{{!userInfo.admin}}" value="{{orderDetail.amount}}"> </t-input>
+        </view>
+      </view>
+      <view class="flex_item">
+        <view class="label"><t-input label="label" bindblur="changeMemo" disabled="{{!userInfo.admin}}" value="{{orderDetail.memo}}"> </t-input>
+        </view>
+      </view>
+      <view wx:if="{{orderDetail.status==1}}" class="flex_item">
+        <view class="label">订单状态 </view>
+        <view class="content">未支付</view>
+      </view>
+
+    </t-grid>
+    <t-grid class="order_item" theme="card" wx:if="{{orderDetail.status==2}}">
+      <view class="flex_item">
+        <view class="label">支付方式 </view>
+        <view class="content">{{orderMethodMap[orderDetail.payment_method]}}</view>
+      </view>
+      <view class="flex_item">
+        <view class="label">支付时间 </view>
+        <view class="content">{{orderDetail.pay_time}}</view>
+      </view>
+      <view class="flex_item">
+        <view class="label">实际付款</view>
+        <view class="content">¥{{orderDetail.count}}</view>
+      </view>
+    </t-grid>
+
+    <t-grid class="order_item" theme="card" wx:if="{{userInfo.admin}}">
+      <view class="flex_item">
+        <t-button wx:for="{{2}}" wx:for-index="idx" bindtap="payByManger" data-index="{{idx}}" >{{orderMethodMap[idx]}}</t-button>
+      </view>
+    </t-grid>
+    <t-grid class="order_item" theme="card" wx:if="{{!userInfo.admin}}">
+      <view class="flex_item" bindtap="showCouponsList">
+        <view class="label">可用券 </view>
+        <view class="content">{{selectedCouponName}}</view>
+        <view class="weui-cell__ft" wx:if="{{canUseCoupons.length==0}}">没有可用券</view>
+        <view wx:else="{{canUseCoupons.length==0 }}" class='user_list_quan'>
+          <view class='coupon_dian'></view>您有未使用的券
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </view>
+      </view>
+      <view class="flex_item">
+        <t-button bindtap="payByUser">去支付</t-button>
+      </view>
+    </t-grid>
+    <view style="height: 100px;width: 100%;"></view>
+
+  </scroll-view>
+  <t-dialog visible="{{showConfirm}}" title="修改确认" content="{{confirmContent}}" confirm-btn="确认" cancel-btn="取消"
+    bind:confirm="updateOrder" bind:cancel="closeDialog" />
+  <t-popup class="coupon_list" visible="{{couponVisible}}" bind:visible-change="onVisibleChange"
+    placement="{{'bottom'}}">
+    <view class="header">
+      <view class="title">可用卡券</view>
+    </view>
+    <text wx:if="{{canUseCoupons.length==0}}">没有可用的券</text>
+    <scroll-view wx:else="{{canUseCoupons.length==0}}" bindscrolltolower="loadMoreCoupons" class="block scroll_coupon"
+      scroll-y="true" scroll-with-animation="true">
+      <t-grid bindtap="onSelectCoupon" data-data="{{item}}" wx:for="{{canUseCoupons}}"
+        class="{{item.coupon_type==1?'unuse_coupons_item':'use_coupons_item use_coupons_shadow'}}" theme="card">
+        <view class="radio_item"> {{item.coupon_name}} <t-icon t-class="card-btn"
+            name="{{selectedCoupon.id==item.id ? 'check-circle' : 'circle'}}"></t-icon>
+        </view>
+        <view class="radio_item"> {{item.expire_time}} 前有效 </view>
+        <t-badge wx:if="{{item.coupon_type==1}}" count="优惠" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
+        <t-badge wx:if="{{item.coupon_type==2}}" count="包场" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
+        <t-badge wx:if="{{item.coupon_type==3}}" count="小时" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
+      </t-grid>
+    </scroll-view>
+    <view class="backgroud-color-fff margin-top">
+      <t-button bindtap="closeCouponListPop" shape="round" t-class="yd-price" block>取消</t-button>
+      <t-button bindtap="confirmCoupon" shape="round" t-class="yd-py-btn" block>确定</t-button>
+    </view>
+  </t-popup>
+  <t-popup bindtap="closeQrCode" placement="center" visible="{{qrCodeVisible}}">
+    <view>
+      <canvas style="width: 200px; height: 200px;text-align:center;" canvas-id="myQrcode"></canvas>
+    </view>
+
+  </t-popup>
+  <t-toast id="t-toast" />
+
+</view>

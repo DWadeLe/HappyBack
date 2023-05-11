@@ -1,28 +1,37 @@
 <view class="">
   <navigation-bar title="忙闲"></navigation-bar>
 
-  <!-- <scroll-view  scroll-y="true" scroll-y="false" bindscroll="scroll" scroll-into-view="{{venueToView}}">
-         <block wx:for="{{venueList}}" wx:key="id">
-            <view class='venue-item'  data-id="{{item.id}}">
-              <view class="venue-pic rectangle">
-                <view><image class='venue-pic' mode='aspectFill' lazy-load="true" src="{{item.icon}}"></image></view>
-              </view> 
-              <view class='venue-info'>
-                <text class='venueName'>{{item.name}}</text>
-                <text class='venueDesc'>{{item.desc}}</text>
-                <view >
-                  <t-tag v-if="item.status==0" icon="{{item.status==0?'check-rectangle':'time'}}" class="margin-16" theme="{{item.status==0?'success':'danger'}}">{{item.status==0?'空闲':'忙碌'}}</t-tag>
-                </view>
-                <view class='adminPart'>
-                    <t-button theme="primary" data-id="{{item.id}}" bindtap="startTime" wx-if="{{item.status==0 && userInfo.admin}}" >开始计时</t-button>
-                    <t-button theme="primary" data-id="{{item.id}}" bindtap="endTime" wx-if="{{item.status==1 && userInfo.admin}}">结束计时</t-button>
-                </view>
-              </view>
-            </view>
-        </block>
-      </scroll-view> -->
-
   <scroll-view scroll-y="true" scroll-y="false" bindscroll="scroll" scroll-into-view="{{venueToView}}">
+    <block wx:for="{{venueList}}" wx:key="id">
+      <view class='venue-item' data-id="{{item.id}}">
+        <view class="venue-pic rectangle">
+          <view>
+            <image class='venue-pic' mode='aspectFill' lazy-load="true" src="{{item.icon}}"></image>
+          </view>
+        </view>
+        <view class='venue-info'>
+          <view class="flex_item">
+            <view class="label">{{item.name}}</view>
+          </view>
+          <view class="flex_item">
+            <view class="label">{{item.desc}}</view>
+          </view>
+          <view class="flex_item">
+            <t-tag v-if="item.status==0" icon="{{item.status==0?'check-rectangle':'time'}}" class="margin-16"
+              theme="{{item.status==0?'success':'danger'}}">{{item.status==0?'空闲':'忙碌'}}</t-tag>
+          </view>
+          <view class='adminPart'>
+            <t-button t-class="float-right" theme="primary" data-id="{{item.id}}" bindtap="startTime"
+              wx-if="{{item.status==0 && userInfo.admin}}">开始计时</t-button>
+            <t-button t-class="float-right" theme="primary" data-id="{{item.id}}" bindtap="endTime"
+              wx-if="{{item.status==1 && userInfo.admin}}">结束计时</t-button>
+          </view>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+
+  <!-- <scroll-view scroll-y="true" scroll-y="false" bindscroll="scroll" scroll-into-view="{{venueToView}}">
     <view class="title">大厅</view>
     <t-grid class="content">
             
@@ -35,7 +44,7 @@
     <t-grid class="content">
 
     </t-grid>
-  </scroll-view>
+  </scroll-view> -->
   <t-toast id="t-toast" />
 
 

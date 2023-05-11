@@ -91,13 +91,11 @@
   <!--提示<-->
   <t-dialog visible="{{YDTipVisible}}" title="预约规则须知" confirm-btn="确认" bind:confirm="closeYDTip">
     <scroll-view slot="content" scroll-y class="long-content">
-      <view class="content-container">"预约规则内容
+      <view class="content-container">"1,非vip用户概不退换
+                                       2,预约支持转卖
       </view>
     </scroll-view>
   </t-dialog>
 
-  <view class='page__ft'>
-
-  </view>
   <t-toast id="t-toast" />
 </view>

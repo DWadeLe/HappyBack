@@ -20,16 +20,16 @@
     </view>
 
   </t-grid>
-  <t-grid class="order_item" theme="card" wx:if="orderDetail.status==2">
+  <t-grid class="order_item" theme="card" wx:if="{{orderDetail.status==2}}">
     <view class="flex_item">
       <view class="label">支付方式 </view>
       <view class="content">{{orderMethodMap[orderDetail.payment_method]}}</view>
     </view>
-    <view wx:if="{{orderDetail.status==1}}" class="flex_item">
+    <view  class="flex_item">
       <view class="label">支付时间 </view>
       <view class="content">{{orderDetail.pay_time}}</view>
     </view>
-    <view wx:if="{{orderDetail.status==1}}" class="flex_item">
+    <view  class="flex_item">
       <view class="label">实际付款</view>
       <view class="content">¥{{orderDetail.count}}</view>
     </view>

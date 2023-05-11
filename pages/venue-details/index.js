@@ -109,10 +109,15 @@ Page({
     //TODO 调用微信支付接口
 
     WXAPI.appoint(venueDetail.id, param).then(res => {
-      if(res.status==400){
-         wx.showToast({
-           title: '预约异常:'+res.message,
-         })
+      if(res.error){
+        Toast({
+          context: this,
+          selector: '#t-toast',
+          message: "预约异常:"+res.message,
+          theme: 'error',
+          direction: 'column',
+        });
+        return
          return;
       }
 
@@ -178,9 +183,6 @@ Page({
     d7ays.setDate(d7ays.getDate() + 7);
 
     // 不同会员有不同的预约时间
-
-
-    const formattedDate = `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day}`;
     const format = (val) => {
       const date = new Date(val);
       const year = date.getFullYear();
@@ -190,11 +192,11 @@ Page({
     };
     this.setData({
       minDate: tomorrow.getTime(),
-      maxDate: d7ays.getTime(),
+      maxDate: this.data.userInfo.vip?d7ays.getTime():tomorrow.getTime(),
       date: tomorrow.getTime(),
       showDate: format(tomorrow)
     })
-    this.queryAppiontment(formattedDate);
+    this.queryAppiontment(format(tomorrow));
     WXAPI.queryVenuePrice(this.data.venueDetail.id).then(function (res) {
 
       var info = res;

@@ -57,11 +57,10 @@
           </view>
         </view>
       </t-grid>
+      <view style="height: 100px;width: 100%;"></view>
+
     </scroll-view>
 
-  </view>
-
-  <view class='page__ft'>
   </view>
 
 </view>

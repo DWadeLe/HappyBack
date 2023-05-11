@@ -32,7 +32,7 @@
       </view>
     </t-grid> -->
     <view style='float:left;width: {{parentWidth}}px;height: {{parentHeight}}px'>
-      <view  class="item_style" style='margin: 20rpx 0 20rpx 20rpx;width: {{itemWidth}}px;height: {{itemHeight * 3}}px'>
+      <view bindtap="goBuyVip" class="item_style" style='margin: 20rpx 0 20rpx 20rpx;width: {{itemWidth}}px;height: {{itemHeight * 3}}px'>
         会员活动</view>
       <view class="item_style" style='margin: 0 0 20rpx 20rpx;width: {{itemWidth}}px;height: {{itemHeight }}px'>地址 联系电话
       </view>
@@ -46,9 +46,6 @@
 
     </view>
 
-
-  </view>
-  <view class='page__ft'>
 
   </view>
 
