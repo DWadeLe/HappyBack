@@ -64,6 +64,7 @@ swiper-item image {
 .goods-box .img-box image{
    width: 339rpx;
    height: 339rpx;
+   border-radius: 15rpx;
 }
 .goods-box .goods-title{
   width: 280rpx;

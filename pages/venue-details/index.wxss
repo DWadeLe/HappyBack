@@ -12,7 +12,9 @@
 }
 .goods-image {
   width:750rpx;
+  height:475rpx;
   display:block;
+  border-radius: 15rpx;
 }
 .size-label-box  .label{
   font-size:26rpx;
