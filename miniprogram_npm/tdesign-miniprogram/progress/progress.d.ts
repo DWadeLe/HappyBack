@@ -12,7 +12,9 @@ export default class Progress extends SuperComponent {
         heightBar: string;
         computedStatus: string;
         computedProgress: number;
+        isIOS: boolean;
     };
+    attached(): void;
     observers: {
         percentage(percentage: any): void;
         color(color: any): void;

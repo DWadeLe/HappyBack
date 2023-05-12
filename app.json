@@ -1,5 +1,4 @@
 {
-  "style": "v2",
   "pages": [
     "pages/index/index",
     "pages/busy/busy",
@@ -49,7 +48,12 @@
     "t-swiper-nav": "tdesign-miniprogram/swiper-nav/swiper-nav",
     "t-cell-group": "tdesign-miniprogram/cell-group/cell-group",
     "t-count-down": "tdesign-miniprogram/count-down/count-down",
-    "navigation-bar": "/components/navigation-bar/navigation-bar"
+    "navigation-bar": "/components/navigation-bar/navigation-bar",
+    "t-notice-bar": "tdesign-miniprogram/notice-bar/notice-bar",
+    "t-picker": "tdesign-miniprogram/picker/picker",
+    "t-picker-item": "tdesign-miniprogram/picker-item/picker-item",
+    "van-checkbox": "@vant/weapp/checkbox/index"
+
   },
   "window": {
     "backgroundTextStyle": "light",
@@ -81,10 +85,10 @@
         "text": "预约"
       },
       {
-        "pagePath": "pages/busy/busy",
+        "pagePath": "pages/gamelib/index",
         "iconPath": "images/nav/busyorno.png",
         "selectedIconPath": "images/nav/busyorno-select.png",
-        "text": "忙闲"
+        "text": "游戏库"
       },
       {
         "pagePath": "pages/my/index",

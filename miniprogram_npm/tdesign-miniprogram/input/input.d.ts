@@ -29,5 +29,6 @@ export default class Input extends SuperComponent {
         onSuffixIconClick(): void;
         clearInput(e: any): void;
         onKeyboardHeightChange(e: any): void;
+        onNickNameReview(e: any): void;
     };
 }

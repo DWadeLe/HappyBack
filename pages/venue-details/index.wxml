@@ -13,6 +13,20 @@
       <t-tab-panel disabled="{{isYYNightOrder}}"
         label="{{'夜晚场('+venuePriceMap['2'].begin_hour+':00-'+venuePriceMap['2'].end_hour+':00)'}}" value="2" />
     </t-tabs>
+    <t-cell class="mb-16" title="选择场次" arrow hover  bind:click="onSessionPicker" />
+        <t-picker
+            visible="{{sessionVisible}}"
+            value="{{sessionValue}}"
+            data-key="value"
+            title="选择场次"
+            cancelBtn="取消"
+            confirmBtn="确认"
+            bindconfirm="sessionConfirm"
+            bindcancel="sessionPickerCancel"
+          >
+      <t-picker-item options="{{sessionOptions}}" />
+    </t-picker>
+
     <view class='goods-price'>价格:
       <!-- <view class="orignal-price">¥{{venueDetail.orginalPrice}}</view> -->
       ¥ {{venuePriceMap[session].price}}
@@ -32,13 +46,19 @@
             <view class="weui-cell__ft">{{venueDetail.name}}</view>
           </view>
         </t-input>
-        <t-input disabled label="场次" value="" align="right">
-          <view slot="suffix" class="suffix">
-            <view class="weui-cell__ft">
-              {{session==1?'下午场('+venuePriceMap['1'].begin_hour+':00-'+venuePriceMap['1'].end_hour+':00)':'夜晚场('+venuePriceMap['2'].begin_hour+':00-'+venuePriceMap['2'].end_hour+':00)'}}
-            </view>
-          </view>
-        </t-input>
+        <t-cell class="mb-16" title="选择场次" arrow hover />
+        <t-picker
+            visible="{{sessionVisible}}"
+            value="{{sessionValue}}"
+            data-key="value"
+            title="选择场次"
+            cancelBtn="取消"
+            confirmBtn="确认"
+            bindconfirm="sessionConfirm"
+            bindcancel="sessionPickerCancel"
+          >
+      <t-picker-item options="{{sessionOptions}}" />
+    </t-picker>
 
         <t-input disabled label="可用券" value="{{use_coupon}}" bind:tap="openCouponList" align="right">
           <view slot="suffix" class="suffix">
@@ -51,9 +71,14 @@
         </t-input>
         <t-textarea value="{{remark}}" label="备注" placeholder="您可以填您想玩的游戏，我们帮您预热" style="height:50px" maxlength="200"
           disableDefaultPadding="{{true}}" indicator />
+        
+        <text style="color: red;text-align: center;">非vip用户概不退换，预约支持转卖，请知晓。</text>
 
         <view class="backgroud-color-fff" style="margin:20rpx">
           <view class="yd-price"><span style="font-size: 0.9rem;">¥</span>{{venuePriceMap[session].price}}</view>
+            <van-checkbox value="{{ isReadTip }}" shape="square" >
+             我已知晓
+            </van-checkbox>
           <t-button bindtap="goPay" theme="primary" shape="round" t-class="yd-py-btn" block>去支付</t-button>
         </view>
       </view>
@@ -88,14 +113,6 @@
 
     </t-popup>
   </view>
-  <!--提示<-->
-  <t-dialog visible="{{YDTipVisible}}" title="预约规则须知" confirm-btn="确认" bind:confirm="closeYDTip">
-    <scroll-view slot="content" scroll-y class="long-content">
-      <view class="content-container">"1,非vip用户概不退换
-                                       2,预约支持转卖
-      </view>
-    </scroll-view>
-  </t-dialog>
 
   <t-toast id="t-toast" />
 </view>

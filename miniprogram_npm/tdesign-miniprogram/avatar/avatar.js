@@ -30,7 +30,7 @@ let Avatar = class Avatar extends SuperComponent {
             classPrefix: name,
             isShow: true,
             zIndex: 0,
-            bordered: false,
+            borderedWithGroup: false,
         };
         this.relations = {
             '../avatar-group/avatar-group': {
@@ -40,7 +40,7 @@ let Avatar = class Avatar extends SuperComponent {
                     this.parent = parent;
                     this.setData({
                         size: (_a = this.data.size) !== null && _a !== void 0 ? _a : parent.data.size,
-                        bordered: true,
+                        borderedWithGroup: true,
                     });
                 },
             },

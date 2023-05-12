@@ -1,5 +1,9 @@
 {
   "dependencies": {
-    "tdesign-miniprogram": "^1.1.3",
+    "@vant/weapp": "^1.10.17",
+    "tdesign-miniprogram": "^1.1.3"
+  },
+  "devDependencies": {
+    "miniprogram-api-typings": "^3.9.1"
   }
 }

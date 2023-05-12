@@ -25,28 +25,122 @@ Page({
     privateRoom:[],
     showData:[],
     itemWidth:"",
-    buttonMarginTop:""
+    buttonMarginTop:"",
+    userInfo:{}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+
+    this.setData({
+      userInfo:wx.getStorageSync('userInfo')
+    })
     const systemInfo = wx.getSystemInfoSync();
     var screenWidth = systemInfo.screenWidth;
     var margin = screenWidth * 20 / 750;
     var itemWidth = (screenWidth - 4 * margin) / 4;
     var buttonMarginTop=(itemWidth * 1.5-margin *2)/2
+    if(this.data.userInfo.admin)
+       buttonMarginTop=(itemWidth * 1.5-margin *2)/3;
+    
+
     this.setData({
        itemWidth,
        buttonMarginTop
     })
     this.initData();
   },
-  initData() {
+  startTime(e) {
+    var that = this;
 
+    WXAPI.startTime(e.currentTarget.dataset.id).then(res => {
+      if (res.code == 200) {
+        Toast({
+          context: this,
+          selector: '#t-toast',
+          message: "开机成功",
+          theme: 'success',
+          direction: 'column',
+        });
+      } else {
+        Toast({
+          context: this,
+          selector: '#t-toast',
+          message: '开机失败:' + (res.msg || res.message),
+          theme: 'error',
+          direction: 'column',
+        });
+      }
+      that.initData();
+
+    })
+  },
+  confirmEndtime(e) {
+    var that = this;
+
+    WXAPI.endTime(e.currentTarget.dataset.id).then(res => {
+      if (res.order_no) {
+        Toast({
+          context: this,
+          selector: '#t-toast',
+          message: "关机成功",
+          theme: 'success',
+          direction: 'column',
+        });
+        wx.showLoading({
+          title: '前往结算页面中',
+        })
+
+        setTimeout(() => {
+          wx.hideLoading({
+            success: (res1) => {
+              wx.navigateTo({
+                url: `/pages/settlement/index?order_no=${res.order_no}`
+              })
+            },
+          })
+
+        }, 500)
+      } else {
+        Toast({
+          context: this,
+          selector: '#t-toast',
+          message: '开机失败:' + (res.msg || res.message),
+          theme: 'error',
+          direction: 'column',
+        });
+      }
+      that.initData();
+    })
+  },
+  async endTime(e) {
+    var that = this;
+    try {
+      const res = await wx.showModal({
+        title: '确认',
+        content: '是否结束当前机位'
+      })
+      if (res.confirm) {
+        that.confirmEndtime(e)
+      } else if (res.cancel) {
+        return;
+      }
+    } catch (e) {
+      console.error(e)
+    }
+    
+  },
+  initData() {
+    let that = this;
     wx.showNavigationBarLoading();
-    this.getGoodsList()
+    this.getGoodsList();
+  },
+  toDetailsTap: function (e) {
+    wx.navigateTo({
+      url: "/pages/venue-details/index?id=" + e.currentTarget.dataset.id
+    })
   },
   getGoodsList: function() {
     let that = this;
@@ -75,12 +169,6 @@ Page({
 
       wx.hideNavigationBarLoading();
     });
-  },
-  toDetailsTap: function(e) {
-    
-    wx.navigateTo({
-      url: "/pages/venue-details/index?data=" + JSON.stringify(e.currentTarget.dataset.data)
-    })
   },
   onCategoryClick: function(e) {
     

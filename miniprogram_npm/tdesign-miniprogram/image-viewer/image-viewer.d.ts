@@ -46,7 +46,8 @@ export default class ImageViewer extends SuperComponent {
         currentSwiperIndex: number;
         windowHeight: number;
         windowWidth: number;
-        imagesShape: {};
+        swiperStyle: {};
+        imagesStyle: {};
     };
     options: {
         multipleSlots: boolean;

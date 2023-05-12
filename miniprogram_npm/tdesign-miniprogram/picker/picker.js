@@ -29,10 +29,18 @@ let Picker = class Picker extends SuperComponent {
             value() {
                 this.updateChildren();
             },
+            keys(obj) {
+                this.setData({
+                    labelAlias: obj.label || 'label',
+                    valueAlias: obj.value || 'value',
+                });
+            },
         };
         this.data = {
             prefix,
             classPrefix: name,
+            labelAlias: 'label',
+            valueAlias: 'value',
         };
         this.methods = {
             updateChildren() {
@@ -40,7 +48,6 @@ let Picker = class Picker extends SuperComponent {
                 this.$children.forEach((child, index) => {
                     child.setData({
                         value: (value === null || value === void 0 ? void 0 : value[index]) || '',
-                        siblingCount: this.$children.length,
                     });
                     child.update();
                 });

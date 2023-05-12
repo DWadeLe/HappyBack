@@ -42,6 +42,7 @@
   color: var(--td-empty-description-color, var(--td-font-gray-3, rgba(0, 0, 0, 0.4)));
   font-size: var(--td-empty-description-font-size, var(--td-font-size-base, 28rpx));
   line-height: var(--td-empty-description-line-height, 44rpx);
+  white-space: pre-wrap;
 }
 .t-empty__description + .t-empty__actions:not(:empty) {
   margin-top: var(--td-empty-action-margin-top, var(--td-spacer-4, 64rpx));

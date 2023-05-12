@@ -21,6 +21,9 @@ let Link = class Link extends SuperComponent {
             `${prefix}-class-suffix-icon`,
         ];
         this.properties = props;
+        this.options = {
+            multipleSlots: true,
+        };
         this.data = {
             prefix,
             classPrefix: name,

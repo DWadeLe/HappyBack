@@ -18,7 +18,6 @@ Page({
     isAfterNoomOrder: false,
     session: 1,
     visible: false,
-    YDTipVisible: false,
     isReadTip: false,
     calendarVisible: false,
     date: null,
@@ -36,7 +35,10 @@ Page({
     confirmCoupon: null,
     remark: "",
     userInfo: {},
-    themeColor: app.globalData.themeColor
+    themeColor: app.globalData.themeColor,
+    sessionVisible:false,
+    sessionValue:'',
+    sessionOptions:[]
   },
   watch: {
 
@@ -86,13 +88,14 @@ Page({
       visible: true
     })
   },
-
+  onSessionPicker(){
+    this.setData({
+      sessionVisible: false,
+    })
+  },
   goPay() {
     let isReadTip = this.data.isReadTip;
     if (!isReadTip) {
-      this.setData({
-        YDTipVisible: true
-      });
       return;
     }
     var { remark, userInfo, venueDetail, selectedCoupon, session, showDate } = this.data;
@@ -143,21 +146,19 @@ Page({
 
   },
 
-  closeYDTip() {
+
+  sessionConfirm(e) {
+    const { key } = e.currentTarget.dataset;
+    const { value } = e.detail;
+    
     this.setData({
-      YDTipVisible: false,
-      isReadTip: true
-    });
-  },
-  onTabsChange(event) {
-    this.setData({
-      session: event.detail.value
+      session:value,
+      sessionValue:label
     })
   },
-
-  onTabsClick(event) {
+  sessionPickerCancel(){
     this.setData({
-      session: event.detail.value
+       sessionVisible:false
     })
   },
   onLoad(e) {
@@ -201,12 +202,18 @@ Page({
 
       var info = res;
       var venuePriceMap = {};
+      var sessionOptions=[];
+
       info.forEach(item => {
         venuePriceMap[item.type] = item;
+        sessionOptions.push({
+          value:item.type,
+          label:`(${item.type==1?'下午场':'夜晚场'})${item.begin_hour}:00-${item.end_hour}:00`
+       })
       });
-
       that.setData({
-        venuePriceMap
+        venuePriceMap,
+        sessionOptions
       })
 
       wx.hideNavigationBarLoading();

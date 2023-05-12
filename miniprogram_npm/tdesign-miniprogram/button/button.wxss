@@ -443,9 +443,6 @@
   align-items: center;
   justify-content: center;
 }
-.t-button__loading--indicator {
-  color: var(--td-font-white-1, #ffffff);
-}
 .t-button.t-button--hover::after {
   z-index: -1;
 }

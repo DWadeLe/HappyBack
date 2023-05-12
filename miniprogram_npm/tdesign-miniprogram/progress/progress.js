@@ -26,6 +26,7 @@ let Progress = class Progress extends SuperComponent {
             heightBar: '',
             computedStatus: '',
             computedProgress: 0,
+            isIOS: false,
         };
         this.observers = {
             percentage(percentage) {
@@ -73,6 +74,19 @@ let Progress = class Progress extends SuperComponent {
                 }
             },
         };
+    }
+    attached() {
+        wx.getSystemInfo({
+            success: (res) => {
+                const isIOS = !!(res.system.toLowerCase().search('ios') + 1);
+                this.setData({
+                    isIOS,
+                });
+            },
+            fail: (err) => {
+                console.error('progress 获取系统信息失败', err);
+            },
+        });
     }
 };
 Progress = __decorate([

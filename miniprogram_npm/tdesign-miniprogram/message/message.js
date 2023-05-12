@@ -24,7 +24,7 @@ let Message = class Message extends SuperComponent {
             `${prefix}-class`,
             `${prefix}-class-content`,
             `${prefix}-class-icon`,
-            `${prefix}-class-action`,
+            `${prefix}-class-link`,
             `${prefix}-class-close-btn`,
         ];
         this.options = {
@@ -42,12 +42,12 @@ let Message = class Message extends SuperComponent {
         };
         this.observers = {
             marquee(val) {
-                if (JSON.stringify(val) === '{}') {
+                if (JSON.stringify(val) === '{}' || JSON.stringify(val) === 'true') {
                     this.setData({
                         marquee: {
                             speed: 50,
                             loop: -1,
-                            delay: 5000,
+                            delay: 0,
                         },
                     });
                 }
@@ -87,10 +87,11 @@ let Message = class Message extends SuperComponent {
         this.clearMessageAnimation();
     }
     checkAnimation() {
-        if (!this.properties.marquee) {
+        const { marquee } = this.properties;
+        if (!marquee || marquee.loop === 0) {
             return;
         }
-        const speeding = this.properties.marquee.speed;
+        const speeding = marquee.speed;
         if (this.data.loop > 0) {
             this.data.loop -= 1;
         }
@@ -128,7 +129,7 @@ let Message = class Message extends SuperComponent {
     }
     show() {
         const { duration, marquee, offset } = this.properties;
-        this.setData({ visible: true, loop: marquee.loop });
+        this.setData({ visible: true, loop: marquee.loop || this.data.loop });
         this.reset();
         this.checkAnimation();
         if (duration && duration > 0) {

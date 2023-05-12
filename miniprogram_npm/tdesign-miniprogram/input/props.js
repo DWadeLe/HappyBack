@@ -37,6 +37,7 @@ const props = {
     },
     maxlength: {
         type: Number,
+        value: -1,
     },
     placeholder: {
         type: String,

@@ -107,6 +107,9 @@ let Input = class Input extends SuperComponent {
             onKeyboardHeightChange(e) {
                 this.triggerEvent('keyboardheightchange', e.detail);
             },
+            onNickNameReview(e) {
+                this.triggerEvent('nicknamereview', e.detail);
+            },
         };
     }
 };

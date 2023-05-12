@@ -2,6 +2,9 @@ import { SuperComponent } from '../common/src/index';
 export default class Link extends SuperComponent {
     externalClasses: string[];
     properties: import("./type").TdLinkProps;
+    options: {
+        multipleSlots: boolean;
+    };
     data: {
         prefix: string;
         classPrefix: string;

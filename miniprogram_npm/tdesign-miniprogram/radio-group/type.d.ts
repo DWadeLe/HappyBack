@@ -19,7 +19,7 @@ export interface TdRadioGroupProps<T = RadioValue> {
     };
     icon?: {
         type: null;
-        value?: 'fill-circle' | 'stroke-line' | Array<string>;
+        value?: 'circle' | 'line' | 'dot' | Array<string>;
     };
     keys?: {
         type: ObjectConstructor;

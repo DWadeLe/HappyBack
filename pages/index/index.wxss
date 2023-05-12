@@ -11,6 +11,7 @@ swiper-item image {
   width: 750rpx;
   height:475rpx;
   border-radius: 15rpx;
+  margin:20rpx 20rpx 0 20rpx;
 }
 
 .swiper-container .dots{  

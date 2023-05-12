@@ -61,6 +61,10 @@ export interface TdButtonProps {
         type: StringConstructor;
         value?: 'contact' | 'share' | 'getPhoneNumber' | 'getUserInfo' | 'launchApp' | 'openSetting' | 'feedback' | 'chooseAvatar';
     };
+    hoverClass?: {
+        type: StringConstructor;
+        value?: string;
+    };
     hoverStopPropagation?: {
         type: BooleanConstructor;
         value?: boolean;

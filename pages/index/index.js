@@ -54,7 +54,7 @@ Page({
     const contentHeight = windowHeight  - navBarHeight - statusBarHeight;
 
 
-    var itemHeight = (contentHeight - margin * 3 -swiperHeight) / 4;
+    var itemHeight = (contentHeight - margin * 4 -swiperHeight) / 4;
     var parentWidth= screenWidth / 2 ;
     var parentHeight= contentHeight - swiperHeight;
     this.setData({
@@ -143,7 +143,7 @@ Page({
   goGamelib(e) {
 
 
-    wx.navigateTo({
+    wx.switchTab({
       url: '/pages/gamelib/index',
     })
 

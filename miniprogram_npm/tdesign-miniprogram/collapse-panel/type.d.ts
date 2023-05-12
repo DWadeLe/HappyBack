@@ -3,10 +3,6 @@ export interface TdCollapsePanelProps {
         type: StringConstructor;
         value?: string;
     };
-    style?: {
-        type: StringConstructor;
-        value?: string;
-    };
     disabled?: {
         type: BooleanConstructor;
         value?: boolean;
@@ -20,6 +16,10 @@ export interface TdCollapsePanelProps {
         value?: ['t-class', 't-class-header', 't-class-content'];
     };
     header?: {
+        type: StringConstructor;
+        value?: string;
+    };
+    headerLeftIcon?: {
         type: StringConstructor;
         value?: string;
     };

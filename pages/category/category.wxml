@@ -1,25 +1,33 @@
 <view class="">
-    <navigation-bar title="预约"></navigation-bar>
+  <navigation-bar title="预约"></navigation-bar>
 
-    <view>
-      <t-tabs value="{{categorySelected}}" bind:change="onCategoryClick" bind:click="onCategoryClick" theme="card">
-          <t-tab-panel wx:for="{{categories}}"  wx:key="scrollId" label="{{item.name}}" value="{{item.scrollId}}" />
-      </t-tabs>
-      <scrol-view  scroll-y="true" scroll-into-view="{{venueToView}}" bindscroll="scroll">
-        <block wx:for="{{showData}}"  wx:key="id">
-             <view style="float:left;margin: 20rpx 0 20rpx 20rpx;width:{{itemWidth}}px;height:{{1.5*itemWidth}}px">
-             <image src="{{item.icon}}" style="width:{{itemWidth}}px;height:{{1.5*itemWidth}}px"></image>
-             </view>
-             <view style="float:left;margin: 20rpx;width:{{itemWidth*2}}px;height:{{1.5*itemWidth}}px">
-                   <view style="font-size:0.9rem;font-weight:bold">{{item.name}}</view>
-                   <view style="font-size:0.7rem;font-weight:normal">{{item.desc}}</view>
-             
-             </view>
-             <view style="display: flex;ustify-content: center;float:left;margin: 20rpx 20rpx 20rpx 0;width:{{itemWidth}}px;height:{{1.5*itemWidth}}px">
-                  <t-button style="width:100rpx;height:50rpx;margin-top:{{buttonMarginTop}}px" size="small" theme="primary" bindtap="toDetailsTap" data-data="{{item}}">预约</t-button>
-             </view>
+  <view>
+    <t-tabs value="{{categorySelected}}" bind:change="onCategoryClick" bind:click="onCategoryClick" theme="card">
+      <t-tab-panel wx:for="{{categories}}" wx:key="scrollId" label="{{item.name}}" value="{{item.scrollId}}" />
+    </t-tabs>
+    <scrol-view scroll-y="true" scroll-into-view="{{venueToView}}" bindscroll="scroll">
+      <block wx:for="{{showData}}" wx:key="id">
+        <view style="float:left;margin: 20rpx 0 20rpx 20rpx;width:{{itemWidth}}px;height:{{1.5*itemWidth}}px">
+          <image src="{{item.icon}}" style="border-radius:15rpx;width:{{itemWidth}}px;height:{{1.5*itemWidth}}px">
+          </image>
+        </view>
+        <view style="float:left;margin: 20rpx;width:{{itemWidth*2}}px;height:{{1.5*itemWidth}}px">
+          <view class="content" style="font-size:0.9rem;font-weight:bold">{{item.name}}</view>
+          <view class="content" style="font-size:0.7rem;font-weight:normal;background-color: grey;border-radius: 32rpx;width: 100rpx;">
+          PS,XBOX</view>
+          <view class="content" style="font-size:0.7rem;font-weight:normal">适合2-3人</view>
+        </view>
+        <view
+          style="display: flex;flex-direction: column;align-items: center;float:left;margin: 20rpx 20rpx 20rpx 0;width:{{itemWidth}}px;height:{{1.5*itemWidth}}px">
+          <t-button style="width:100rpx;height:50rpx;margin-top:{{buttonMarginTop}}px" size="small" theme="primary"
+            bindtap="toDetailsTap" data-data="{{item}}">预约</t-button>
+          <t-button style="width:100rpx;height:50rpx;font-size:23rpx;margin-top:{{buttonMarginTop}}px" theme="primary" size="small"
+            data-id="{{item.id}}" bindtap="startTime" wx:if="{{item.status==0 && userInfo.admin}}">开始计时</t-button>
+          <t-button style="width:100rpx;height:50rpx;font-size:23rpx;margin-top:{{buttonMarginTop}}px" theme="primary" size="small"
+            data-id="{{item.id}}" bindtap="endTime" wx:if="{{item.status==1 && userInfo.admin}}">结束计时</t-button>
+        </view>
 
-        </block>
-      </scrol-view>
-    </view>
+      </block>
+    </scrol-view>
+  </view>
 </view>

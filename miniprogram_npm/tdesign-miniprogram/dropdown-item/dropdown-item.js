@@ -36,6 +36,7 @@ let DropdownMenuItem = class DropdownMenuItem extends SuperComponent {
             overlay: menuProps.showOverlay.value,
             labelAlias: 'label',
             valueAlias: 'value',
+            computedLabel: '',
         };
         this.relations = {
             '../dropdown-menu/dropdown-menu': {
@@ -72,11 +73,11 @@ let DropdownMenuItem = class DropdownMenuItem extends SuperComponent {
                 const target = options.find((item) => item[valueAlias] === v);
                 if (target) {
                     this.setData({
-                        label: target[labelAlias],
+                        computedLabel: target[labelAlias],
                     });
                 }
             },
-            label() {
+            'label, computedLabel'() {
                 var _a;
                 (_a = this.$parent) === null || _a === void 0 ? void 0 : _a.getAllItems();
             },

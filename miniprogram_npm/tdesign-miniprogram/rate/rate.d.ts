@@ -14,6 +14,7 @@ export default class Rate extends SuperComponent {
         tipsLeft: number;
         actionType: string;
         scaleIndex: number;
+        isVisibleToScreenReader: boolean;
     };
     methods: {
         onTouch(e: WechatMiniprogram.TouchEvent, eventType: 'tap' | 'move'): void;
@@ -23,5 +24,6 @@ export default class Rate extends SuperComponent {
         onTouchEnd(): void;
         hideTips(): void;
         onSelect(e: WechatMiniprogram.TouchEvent): void;
+        showAlertText(): void;
     };
 }

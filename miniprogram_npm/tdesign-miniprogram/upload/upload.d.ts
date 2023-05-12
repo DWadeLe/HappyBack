@@ -20,8 +20,7 @@ export default class Upload extends SuperComponent {
         event: string;
     }[];
     observers: {
-        files(files: UploadFile): void;
-        max(max: any): void;
+        'files, max'(files: UploadFile, max: number): void;
         gridConfig(): void;
     };
     lifetimes: {

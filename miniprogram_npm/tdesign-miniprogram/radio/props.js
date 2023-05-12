@@ -1,7 +1,7 @@
 const props = {
     placement: {
         type: String,
-        value: 'left',
+        value: null,
     },
     allowUncheck: {
         type: Boolean,

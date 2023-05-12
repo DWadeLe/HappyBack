@@ -51,4 +51,8 @@ export interface TdSearchProps {
         type: BooleanConstructor;
         value?: boolean;
     };
+    type: {
+        type: StringConstructor;
+        value?: string;
+    };
 }

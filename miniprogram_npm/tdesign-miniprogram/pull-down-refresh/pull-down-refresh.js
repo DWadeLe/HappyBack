@@ -19,7 +19,7 @@ let PullDownRefresh = class PullDownRefresh extends SuperComponent {
         this.loadingBarHeight = 200;
         this.maxRefreshAnimateTimeFlag = 0;
         this.closingAnimateTimeFlag = 0;
-        this.externalClasses = [`${prefix}-class`, `${prefix}-class-loading`, `${prefix}-class-tex`, `${prefix}-class-indicator`];
+        this.externalClasses = [`${prefix}-class`, `${prefix}-class-loading`, `${prefix}-class-text`, `${prefix}-class-indicator`];
         this.options = {
             multipleSlots: true,
         };
@@ -41,7 +41,12 @@ let PullDownRefresh = class PullDownRefresh extends SuperComponent {
         this.lifetimes = {
             attached() {
                 const { screenWidth } = wx.getSystemInfoSync();
-                const { maxBarHeight, loadingBarHeight } = this.properties;
+                const { maxBarHeight, loadingBarHeight, loadingTexts } = this.properties;
+                this.setData({
+                    loadingTexts: Array.isArray(loadingTexts) && loadingTexts.length >= 4
+                        ? loadingTexts
+                        : ['下拉刷新', '松手刷新', '正在刷新', '刷新完成'],
+                });
                 this.pixelRatio = 750 / screenWidth;
                 if (maxBarHeight) {
                     this.maxBarHeight = this.toRpx(maxBarHeight);

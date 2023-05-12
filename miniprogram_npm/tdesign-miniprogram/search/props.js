@@ -46,5 +46,9 @@ const props = {
         type: Boolean,
         value: true,
     },
+    type: {
+        type: String,
+        value: 'text',
+    },
 };
 export default props;

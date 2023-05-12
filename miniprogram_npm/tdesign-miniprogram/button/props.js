@@ -52,6 +52,10 @@ const props = {
     openType: {
         type: String,
     },
+    hoverClass: {
+        type: String,
+        value: '',
+    },
     hoverStopPropagation: {
         type: Boolean,
         value: false,

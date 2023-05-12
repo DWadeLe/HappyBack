@@ -1,3 +1,9 @@
 {
-  "navigationBarTitleText": "精选游戏库"
+  "navigationBarTitleText": "精选游戏库",
+  "usingComponents": {
+    "van-dropdown-menu": "@vant/weapp/dropdown-menu/index",
+    "van-dropdown-item": "@vant/weapp/dropdown-item/index",
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index"
+  }
 }

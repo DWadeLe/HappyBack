@@ -217,3 +217,17 @@ export const calcIcon = (icon, defaultIcon) => {
     }
     return null;
 };
+export const isOverSize = (size, sizeLimit) => {
+    var _a;
+    if (!sizeLimit)
+        return false;
+    const base = 1000;
+    const unitMap = {
+        B: 1,
+        KB: base,
+        MB: base * base,
+        GB: base * base * base,
+    };
+    const computedSize = typeof sizeLimit === 'number' ? sizeLimit * base : (sizeLimit === null || sizeLimit === void 0 ? void 0 : sizeLimit.size) * unitMap[(_a = sizeLimit === null || sizeLimit === void 0 ? void 0 : sizeLimit.unit) !== null && _a !== void 0 ? _a : 'KB'];
+    return size > computedSize;
+};

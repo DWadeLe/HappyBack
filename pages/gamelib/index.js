@@ -15,50 +15,64 @@ Page({
     ],
     tag: {
       value: "-1",
-      options: [{
-        value: '-1',
-        label: '分类',
-      },
-      {
-        value: '动作',
-        label: '动作',
-      },
-      {
-        value: '剧情',
-        label: '剧情',
-      }]
+      options: [
+        { text: '全部', value: '-1' }, {
+          value: '0',
+          text: '新上架',
+          icon: "/images/icon/hot.png"
+        },
+        { text: '聚会', value: '聚会' },
+        { text: '动作', value: '动作' },
+        { text: '角色扮演', value: '角色扮演' },
+        { text: '冒险', value: '冒险' },
+        { text: '射击', value: '射击' },
+        { text: '策略', value: '策略' },
+        { text: '横版过关', value: '横版过关' },
+        { text: '益智', value: '益智' },
+        { text: '模拟', value: '模拟' },
+        { text: '体育', value: '体育' },
+        { text: '即时战略', value: '即时战略' },
+        { text: '音乐', value: '音乐' },
+        { text: '赛车', value: '赛车' },
+        { text: '训练', value: '训练' },
+        { text: '国行', value: '国行' },
+        { text: '恋爱', value: '恋爱' },
+        { text: '文字冒险', value: '文字冒险' },
+        { text: '像素', value: '像素' },
+        { text: '解谜', value: '解谜' },
+        { text: '街机', value: '街机' },
+        { text: '恐怖', value: '恐怖' },
+        { text: '独立', value: '独立' },
+        { text: '休闲', value: '休闲' },
+        { text: '桌游', value: '桌游' },
+        { text: '飞行', value: '飞行' },
+        { text: '球类', value: '球类' },
+        { text: '体感', value: '体感' }
+      ]
+
+    },
+    activeTitleStyle:{
+      fontSize:"1.5rem",
+      fontWeight:"bold"
     },
     colorMap: {},
     sorter: {
       value: "-1",
       options: [{
         value: '-1',
-        label: '排序',
+        text: '排序',
       },
       {
         value: 'score,2',
-        label: '按评分高',
+        text: '评分',
       },
       {
-        value: 'score,1',
-        label: '按评分低',
-      }, {
         value: 'release_time,2',
-        label: '按发售时间晚',
-      },
-      {
-        value: 'release_time,1',
-        label: '按发售时间早',
-      }, {
-        value: 'price,2',
-        label: '按价格高',
-      },
-      {
-        value: 'price,1',
-        label: '按价格低',
-      }]
+        text: '发售时间',
+      }
+      ]
     },
-    themeColor:app.globalData.themeColor,
+    themeColor: app.globalData.themeColor,
     gameType: 1,
     normalSearch: true,
     baseRefresh: {
@@ -71,6 +85,13 @@ Page({
     current_no: 0,
     page_size: 10,
     isLastPage: false,
+    vipTip: false,
+    vipTipTop: app.globalData.navBarHeight
+  },
+  closeNoticeNar() {
+    this.setData({
+      vipTip: false
+    })
   },
   selectCondition(callback) {
     var param = {};
@@ -83,17 +104,24 @@ Page({
       gameList: [],
       isLastPage: false
     })
-    if (tag && tag != "-1")
+    if (tag && tag != "-1") {
       param.tag = tag
+      if (tag == 0) {
+        this.setData({
+          vipTip: true
+        })
+      }
+    }
+
     if (sorter && sorter != "-1") {
       var index = sorter.indexOf(",");
-      param.order_by = sorter.substring(0, index );
+      param.order_by = sorter.substring(0, index);
       param.order_type = sorter.substring(index + 1);
     }
     if (searchName && searchName != '')
       param.name = searchName
-    param.type=this.data.gameType
-    this.getGameList(param,callback);
+    param.type = this.data.gameType
+    this.getGameList(param, callback);
   },
 
 

@@ -63,6 +63,7 @@ export default class DropdownMenuItem extends SuperComponent {
         overlay: boolean;
         labelAlias: string;
         valueAlias: string;
+        computedLabel: string;
     };
     relations: RelationsOptions;
     controlledProps: {
@@ -72,7 +73,7 @@ export default class DropdownMenuItem extends SuperComponent {
     observers: {
         keys(obj: any): void;
         value(v: any): void;
-        label(): void;
+        'label, computedLabel'(): void;
         show(visible: any): void;
     };
     methods: {

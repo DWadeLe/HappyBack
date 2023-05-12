@@ -21,7 +21,8 @@ let ImageViewer = class ImageViewer extends SuperComponent {
             currentSwiperIndex: 0,
             windowHeight: 0,
             windowWidth: 0,
-            imagesShape: {},
+            swiperStyle: {},
+            imagesStyle: {},
         };
         this.options = {
             multipleSlots: true,
@@ -90,9 +91,13 @@ let ImageViewer = class ImageViewer extends SuperComponent {
             onImageLoadSuccess(e) {
                 const { detail: { width, height }, currentTarget: { dataset: { index }, }, } = e;
                 const { mode, styleObj } = this.calcImageDisplayStyle(width, height);
-                const origin = this.data.imagesShape;
+                const originImagesStyle = this.data.imagesStyle;
+                const originSwiperStyle = this.data.swiperStyle;
                 this.setData({
-                    imagesShape: Object.assign(Object.assign({}, origin), { [index]: {
+                    swiperStyle: Object.assign(Object.assign({}, originSwiperStyle), { [index]: {
+                            style: `height: ${styleObj.height}`,
+                        } }),
+                    imagesStyle: Object.assign(Object.assign({}, originImagesStyle), { [index]: {
                             mode,
                             style: styles(Object.assign({}, styleObj)),
                         } }),

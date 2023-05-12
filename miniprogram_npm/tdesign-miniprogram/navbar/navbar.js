@@ -101,7 +101,8 @@ let Navbar = class Navbar extends SuperComponent {
                     boxStyleList.push(`--td-navbar-right:${res.windowWidth - rect.left}px`);
                 }
                 boxStyleList.push(`--td-navbar-capsule-height: ${rect.height}px`);
-                boxStyleList.push(`--td-navbar-capsule-width:${rect.width}px`);
+                boxStyleList.push(`--td-navbar-capsule-width: ${rect.width}px`);
+                boxStyleList.push(`--td-navbar-height: ${(rect.top - statusBarHeight) * 2 + rect.height}px`);
                 this.setData({
                     boxStyle: `${boxStyleList.join('; ')}`,
                 });

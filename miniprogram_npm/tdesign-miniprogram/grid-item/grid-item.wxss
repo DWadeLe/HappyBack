@@ -70,12 +70,12 @@
   height: var(--td-grid-item-image-width, 96rpx);
 }
 .t-grid-item__image:not(:empty).t-grid-item__image--small {
-  width: 64rpx;
-  height: 64rpx;
+  width: var(--td-grid-item-image-small-width, 64rpx);
+  height: var(--td-grid-item-image-small-width, 64rpx);
 }
 .t-grid-item__image:not(:empty).t-grid-item__image--middle {
-  width: 80rpx;
-  height: 80rpx;
+  width: var(--td-grid-item-image-middle-width, 80rpx);
+  height: var(--td-grid-item-image-middle-width, 80rpx);
 }
 .t-grid-item__image:not(:empty) .t-grid__image {
   width: 100%;
@@ -102,9 +102,11 @@
   line-height: var(--td-grid-item-text-line-height, 44rpx);
   padding-top: var(--td-grid-item-text-padding-top, 16rpx);
 }
-.t-grid-item__text--small,
+.t-grid-item__text--small {
+  font-size: var(--td-grid-item-text-small-font-size, 24rpx);
+}
 .t-grid-item__text--middle {
-  font-size: 24rpx;
+  font-size: var(--td-grid-item-text-middle-font-size, 24rpx);
 }
 .t-grid-item__text--horizontal {
   padding-top: 0;

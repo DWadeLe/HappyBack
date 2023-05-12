@@ -6,7 +6,7 @@ export default class TCalendar {
     minDate: Date;
     maxDate: Date;
     format: (day: TDate) => TDate;
-    constructor(options: any);
+    constructor(options?: {});
     getTrimValue(): Date | Date[];
     getDays(): any[];
     getMonths(): any[];

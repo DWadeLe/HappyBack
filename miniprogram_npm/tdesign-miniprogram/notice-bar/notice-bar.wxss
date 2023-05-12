@@ -38,6 +38,7 @@
   color: var(--td-notice-bar-font-color, var(--td-font-gray-1, rgba(0, 0, 0, 0.9)));
 }
 .t-notice-bar__content {
+  display: inline-block;
   white-space: nowrap;
 }
 .t-notice-bar__content-wrapable {

@@ -31,11 +31,11 @@ let CheckBoxGroup = class CheckBoxGroup extends SuperComponent {
             value() {
                 this.updateChildren();
             },
-        };
-        this.lifetimes = {
-            attached() {
+            options() {
                 this.initWithOptions();
             },
+        };
+        this.lifetimes = {
             ready() {
                 this.setCheckall();
             },
@@ -81,7 +81,9 @@ let CheckBoxGroup = class CheckBoxGroup extends SuperComponent {
                     const items = this.getChilds();
                     newValue =
                         !checked && indeterminate
-                            ? items.map((item) => item.data.value)
+                            ? items
+                                .filter(({ data }) => !(data.disabled && !newValue.includes(data.value)))
+                                .map((item) => item.data.value)
                             : items
                                 .filter(({ data }) => {
                                 if (data.disabled) {
@@ -101,7 +103,7 @@ let CheckBoxGroup = class CheckBoxGroup extends SuperComponent {
                 this._trigger('change', { value: newValue });
             },
             initWithOptions() {
-                const { options } = this.data;
+                const { options, value } = this.data;
                 if (!(options === null || options === void 0 ? void 0 : options.length) || !Array.isArray(options))
                     return;
                 const checkboxOptions = options.map((item) => {
@@ -110,8 +112,9 @@ let CheckBoxGroup = class CheckBoxGroup extends SuperComponent {
                         ? {
                             label: `${item}`,
                             value: item,
+                            checked: value === null || value === void 0 ? void 0 : value.includes(item),
                         }
-                        : Object.assign({}, item);
+                        : Object.assign(Object.assign({}, item), { checked: value === null || value === void 0 ? void 0 : value.includes(item.value) });
                 });
                 this.setData({
                     checkboxOptions,

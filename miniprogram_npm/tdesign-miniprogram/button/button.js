@@ -17,6 +17,9 @@ let Button = class Button extends SuperComponent {
         this.externalClasses = [`${prefix}-class`, `${prefix}-class-icon`, `${prefix}-class-loading`];
         this.behaviors = canIUseFormFieldButton() ? ['wx://form-field-button'] : [];
         this.properties = props;
+        this.options = {
+            multipleSlots: true,
+        };
         this.data = {
             prefix,
             className: '',
@@ -81,7 +84,7 @@ let Button = class Button extends SuperComponent {
                 this.triggerEvent('chooseavatar', e.detail);
             },
             handleTap(e) {
-                if (this.data.disabled)
+                if (this.data.disabled || this.data.loading)
                     return;
                 this.triggerEvent('tap', e);
             },

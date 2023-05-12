@@ -1,6 +1,6 @@
 import { getDateRect, isSameDate, getMonthDateRect, isValidDate, getDate } from '../date';
 export default class TCalendar {
-    constructor(options) {
+    constructor(options = {}) {
         this.type = 'single';
         Object.assign(this, options);
         if (!this.minDate)

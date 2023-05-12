@@ -8,10 +8,13 @@ export default class Picker extends SuperComponent {
     relations: RelationsOptions;
     observers: {
         value(): void;
+        keys(obj: any): void;
     };
     data: {
         prefix: string;
         classPrefix: string;
+        labelAlias: string;
+        valueAlias: string;
     };
     methods: {
         updateChildren(): void;

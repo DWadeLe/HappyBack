@@ -99,10 +99,13 @@
   overflow: scroll;
   box-sizing: border-box;
 }
+.t-dropdown-item__radio-group,
 .t-dropdown-item__checkbox-group {
   display: grid;
-  padding: 32rpx;
   grid-gap: 24rpx;
+}
+.t-dropdown-item__checkbox-group {
+  padding: 32rpx;
 }
 .t-dropdown-item__tree-item {
   height: var(--td-tree-item-height, 96rpx);

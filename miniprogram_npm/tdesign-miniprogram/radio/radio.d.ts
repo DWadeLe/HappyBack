@@ -2,13 +2,13 @@ import { SuperComponent, RelationsOptions } from '../common/src/index';
 export default class Radio extends SuperComponent {
     externalClasses: string[];
     behaviors: string[];
-    parent: any;
     relations: RelationsOptions;
     options: {
         multipleSlots: boolean;
     };
     lifetimes: {
         attached(): void;
+        ready(): void;
     };
     properties: {
         borderless: {
@@ -91,6 +91,7 @@ export default class Radio extends SuperComponent {
         slotIcon: boolean;
         optionLinked: boolean;
         iconVal: any[];
+        _placement: string;
     };
     methods: {
         handleTap(e: any): void;

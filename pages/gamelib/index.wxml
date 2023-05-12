@@ -1,23 +1,26 @@
 <view class="page">
   <navigation-bar title="游戏库"></navigation-bar>
-
+  <t-notice-bar bindtap="closeNoticeNar" style="z-index:10000;position: absolute;top:{{vipTipTop}}px;left:0;width: 100%;height: 60rpx;" visible="{{vipTip}}" marquee="{{true}}" prefixIcon="{{false}}" suffixIcon="close" content="三档会员每款游戏到店免费体验三小时">
+    <view slot="prefix-icon">
+      <t-icon name="error-circle-filled"></t-icon>
+    </view>
+  </t-notice-bar>
   <t-pull-down-refresh value="{{baseRefresh.value}}" loadingProps="{{loadingProps}}"
     loadingTexts="{{['下拉刷新', '松手刷新', '正在刷新', '刷新完成']}}" bind:refresh="onPullDownRefresh" bind:scroll="onScroll">
 
-    <t-tabs style="background-color:rgb(0, 0, 0,0.1);" bind:click="onTabsClick" value="{{gameType}}" theme="line"
-      space-evenly="{{true}}">
-      <t-tab-panel label="Switch" value="1" />
-      <t-tab-panel label="PS" value="2" />
-      <t-tab-panel label="Xbox" value="3" />
-      <t-tab-panel label="购买" value="4" />
-    </t-tabs>
+    <van-tabs tab-active-class="tab-active-class" border="{{true}}" color="var(--td-brand-color)"  bind:click="onTabsClick" active="{{gameType}}" type="line">
+      <van-tab title-style="{{gameType === 1 ? 'activeTitleStyle' : ''}}" title="Switch" value="1" />
+      <van-tab title-style="{{gameType === 2 ? 'activeTitleStyle' : ''}}" title="PS" value="2" />
+      <van-tab title-style="{{gameType === 3 ? 'activeTitleStyle' : ''}}" title="Xbox" value="3" />
+      <van-tab title-style="{{gameType === 4 ? 'activeTitleStyle' : ''}}" title="购买" value="4" />
+    </van-tabs>
     <view wx:if="{{normalSearch}}" class="search_parent">
-      <t-dropdown-menu style="width: 60%!important;">
-        <t-dropdown-item style="border: 1rpx solid black !important;" options="{{tag.options}}" value="{{tag.value}}"
+      <van-dropdown-menu safe-area-tab-bar="{{true}}" style="height:60rpx;width: 60%!important;">
+      <van-dropdown-item optionsColumns="3" 	 options="{{tag.options}}" value="{{tag.value}}"
           bindchange="onTagChange" />
-        <t-dropdown-item style="border: 1rpx solid black !important;" options="{{sorter.options}}"
+        <van-dropdown-item optionsColumns="1"  options="{{sorter.options}}"
           value="{{sorter.value}}" bindchange="onSorterChange" />
-      </t-dropdown-menu>
+      </van-dropdown-menu>
       <t-search shape="square" class="search_normal_btn" bindtap="showHighSearch" placeholder="搜一搜" />
     </view>
     <view wx:else="{{normalSearch}}" class="search_parent">

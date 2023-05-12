@@ -6,6 +6,9 @@ export default class Button extends SuperComponent {
     externalClasses: string[];
     behaviors: string[];
     properties: TdButtonProps;
+    options: {
+        multipleSlots: boolean;
+    };
     data: {
         prefix: string;
         className: string;
