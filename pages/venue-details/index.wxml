@@ -7,12 +7,6 @@
     <t-calendar visible="{{calendarVisible}}" value="{{date}}" minDate="{{minDate}}" maxDate="{{maxDate}}"
       bind:confirm="handleConfirm" />
     <t-cell arrow title="预约时间" note="{{showDate}}" bind:tap="handleCalendar" />
-    <t-tabs bind:click="onTabsClick" value="{{session}}" theme="line" space-evenly="{{true}}">
-      <t-tab-panel disabled="{{isAfterNoomOrder}}"
-        label="{{'下午场('+venuePriceMap['1'].begin_hour+':00-'+venuePriceMap['1'].end_hour+':00)'}}" value="1" />
-      <t-tab-panel disabled="{{isYYNightOrder}}"
-        label="{{'夜晚场('+venuePriceMap['2'].begin_hour+':00-'+venuePriceMap['2'].end_hour+':00)'}}" value="2" />
-    </t-tabs>
     <t-cell class="mb-16" title="选择场次" arrow hover  bind:click="onSessionPicker" />
         <t-picker
             visible="{{sessionVisible}}"
@@ -46,7 +40,7 @@
             <view class="weui-cell__ft">{{venueDetail.name}}</view>
           </view>
         </t-input>
-        <t-cell class="mb-16" title="选择场次" arrow hover />
+        <t-cell class="mb-16" title="选择场次" bindtap="openSession" arrow hover />
         <t-picker
             visible="{{sessionVisible}}"
             value="{{sessionValue}}"

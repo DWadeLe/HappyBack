@@ -51,10 +51,6 @@ Page({
       ]
 
     },
-    activeTitleStyle:{
-      fontSize:"1.5rem",
-      fontWeight:"bold"
-    },
     colorMap: {},
     sorter: {
       value: "-1",

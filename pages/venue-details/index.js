@@ -90,7 +90,7 @@ Page({
   },
   onSessionPicker(){
     this.setData({
-      sessionVisible: false,
+      sessionVisible: true,
     })
   },
   goPay() {
@@ -153,7 +153,8 @@ Page({
     
     this.setData({
       session:value,
-      sessionValue:label
+      sessionValue:label,
+      sessionVisible:false
     })
   },
   sessionPickerCancel(){
