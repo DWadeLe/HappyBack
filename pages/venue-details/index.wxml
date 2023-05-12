@@ -70,7 +70,7 @@
 
         <view class="backgroud-color-fff" style="margin:20rpx">
           <view class="yd-price"><span style="font-size: 0.9rem;">¥</span>{{venuePriceMap[session].price}}</view>
-            <van-checkbox style="width: 100rpx;height: 50rpx;" value="{{ isReadTip }}" shape="square" >
+            <van-checkbox checked-color="var(--td-brand-color)"	 style="width: 100rpx;height: 50rpx;" value="{{ isReadTip }}" shape="square" >
              我已知晓
             </van-checkbox>
           <t-button bindtap="goPay" theme="primary" shape="round" t-class="yd-py-btn" block>去支付</t-button>
