@@ -101,7 +101,7 @@ Page({
     var that = this
     var data =that.data.orderDetail
     var type =e.currentTarget.dataset.index;
-    debugger
+    
     //线上
     if (type == 0) {
       var content="/pages/settlement/index?order_no="+data.order_no;

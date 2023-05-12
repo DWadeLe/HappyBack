@@ -1,16 +1,16 @@
 <view class="page">
   <navigation-bar title="预约详情"></navigation-bar>
   <view class="page__bd">
-    <image src="{{venueDetail.icon}}" class="goods-image" mode="widthFix" lazy-load="true" />
+    <image src="{{venueDetail.icon}}" class="goods-image" mode="aspectFit" lazy-load="true" />
     <view class='goods-name'>{{venueDetail.name}}</view>
 
     <t-calendar visible="{{calendarVisible}}" value="{{date}}" minDate="{{minDate}}" maxDate="{{maxDate}}"
       bind:confirm="handleConfirm" />
     <t-cell arrow title="预约时间" note="{{showDate}}" bind:tap="handleCalendar" />
-    <t-cell class="mb-16" title="选择场次" arrow hover  bind:click="onSessionPicker" />
+    <t-cell class="mb-16" title="选择场次" arrow hover note="{{sessionShow}}"  bind:click="onSessionPicker" />
         <t-picker
             visible="{{sessionVisible}}"
-            value="{{sessionValue}}"
+            value="{{session}}"
             data-key="value"
             title="选择场次"
             cancelBtn="取消"
@@ -40,10 +40,10 @@
             <view class="weui-cell__ft">{{venueDetail.name}}</view>
           </view>
         </t-input>
-        <t-cell class="mb-16" title="选择场次" bindtap="openSession" arrow hover />
+        <t-cell class="mb-16" title="选择场次"  note="{{sessionShow}}" arrow hover />
         <t-picker
             visible="{{sessionVisible}}"
-            value="{{sessionValue}}"
+            value="{{session}}"
             data-key="value"
             title="选择场次"
             cancelBtn="取消"

@@ -174,7 +174,7 @@ Page({
   toPay(e){
     var data=e.currentTarget.dataset.data;
     var that=this;
-    debugger
+    
     WXAPI.payOrderOnline(data.order_no).then(function (res) {
 
       if(res.code==200){

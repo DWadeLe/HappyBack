@@ -37,8 +37,8 @@ Page({
     userInfo: {},
     themeColor: app.globalData.themeColor,
     sessionVisible:false,
-    sessionValue:'',
-    sessionOptions:[]
+    sessionOptions:[],
+    sessionShow:""
   },
   watch: {
 
@@ -149,11 +149,11 @@ Page({
 
   sessionConfirm(e) {
     const { key } = e.currentTarget.dataset;
-    const { value } = e.detail;
+    const { value,label } = e.detail;
     
     this.setData({
       session:value,
-      sessionValue:label,
+      sessionShow:label,
       sessionVisible:false
     })
   },
@@ -207,14 +207,20 @@ Page({
 
       info.forEach(item => {
         venuePriceMap[item.type] = item;
+        if(item.type>2){
+          return
+        }
         sessionOptions.push({
           value:item.type,
           label:`(${item.type==1?'下午场':'夜晚场'})${item.begin_hour}:00-${item.end_hour}:00`
        })
       });
+
+      var sesionJson=venuePriceMap[that.data.session];
       that.setData({
         venuePriceMap,
-        sessionOptions
+        sessionOptions,
+        sessionShow:`(${sesionJson.type==1?'下午场':'夜晚场'})${sesionJson.begin_hour}:00-${sesionJson.end_hour}:00`
       })
 
       wx.hideNavigationBarLoading();

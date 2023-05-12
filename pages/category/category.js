@@ -139,7 +139,7 @@ Page({
   },
   toDetailsTap: function (e) {
     wx.navigateTo({
-      url: "/pages/venue-details/index?id=" + e.currentTarget.dataset.id
+      url: "/pages/venue-details/index?data=" + JSON.stringify(e.currentTarget.dataset.data)
     })
   },
   getGoodsList: function() {

@@ -9,8 +9,8 @@
   height:525rpx;
 }
 swiper-item image {
-  width: 750rpx;
-  height:525rpx;
+  width: 750rpx !important;
+  height:525rpx important;
   border-radius: 15rpx;
 }
 
