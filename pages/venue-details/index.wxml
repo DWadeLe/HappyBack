@@ -31,10 +31,12 @@
     </view>
 
     <t-popup class="to_pay" visible="{{visible}}" bind:visible-change="onVisibleChange" placement="{{'bottom'}}">
-      <view class="block">
+      
         <view class="header">
           <view class="title">明细</view>
         </view>
+        <scroll-view scroll-y="true" scroll-with-animation="true">
+        <t-grid theme="card">
         <t-input disabled label="房间名称" align="right">
           <view slot="suffix" class="suffix">
             <view class="weui-cell__ft">{{venueDetail.name}}</view>
@@ -52,7 +54,7 @@
             bindcancel="sessionPickerCancel"
           >
       <t-picker-item options="{{sessionOptions}}" />
-    </t-picker>
+      </t-picker>
 
         <t-input disabled label="可用券" value="{{use_coupon}}" bind:tap="openCouponList" align="right">
           <view slot="suffix" class="suffix">
@@ -63,19 +65,24 @@
             </view>
           </view>
         </t-input>
-        <t-textarea value="{{remark}}" label="备注" placeholder="您可以填您想玩的游戏，我们帮您预热" style="height:50px" maxlength="200"
+        <t-textarea value="{{remark}}" label="备注" placeholder="您可以填您想玩的游戏，我们帮您预热" style="height:400rpx" maxlength="200"
           disableDefaultPadding="{{true}}" indicator />
-        
-        <text style="color: red;text-align: center;">非vip用户概不退换，预约支持转卖，请知晓。</text>
+          <t-divider />
+          <view style="margin:20rpx;color: red;text-align: center;">非vip用户概不退换，预约支持转卖，请知晓。</view>
 
         <view class="backgroud-color-fff" style="margin:20rpx">
           <view class="yd-price"><span style="font-size: 0.9rem;">¥</span>{{venuePriceMap[session].price}}</view>
-            <van-checkbox checked-color="var(--td-brand-color)"	 style="width: 100rpx;height: 50rpx;" value="{{ isReadTip }}" shape="square" >
-             我已知晓
+                        <t-button disabled="{{!isReadTip}}" bindtap="goPay" theme="primary" shape="round" t-class="yd-py-btn" block>去支付</t-button>
+
+            <van-checkbox bindtap="letMeKnow" custom-class="i-know" direction="horizontal" checked-color="var(--td-brand-color)"	 style="width: 100rpx;height: 50rpx;" value="{{ isReadTip }}" shape="square" >
+            我已知晓
             </van-checkbox>
-          <t-button bindtap="goPay" theme="primary" shape="round" t-class="yd-py-btn" block>去支付</t-button>
         </view>
-      </view>
+        </t-grid>
+              </scroll-view>
+
+            
+          
     </t-popup>
     <!--可用卡券集合<-->
     <t-popup class="coupon_list" visible="{{couponVisible}}" bind:visible-change="onVisibleChange"
@@ -87,7 +94,7 @@
       <scroll-view wx:else="{{canUseCoupons.length==0}}" bindscrolltolower="loadMoreCoupons" class="block scroll_coupon"
         scroll-y="true" scroll-with-animation="true">
         <t-grid bindtap="onSelectCoupon" data-data="{{item}}" wx:for="{{canUseCoupons}}"
-          class="{{item.coupon_type==1?'unuse_coupons_item':'use_coupons_item use_coupons_shadow'}}" theme="card">
+          class="{{item.coupon_type==1?'unuse_coupons_item':'use_coupons_item'}}" theme="card">
           <view class="radio_item"> {{item.coupon_name}} <t-icon t-class="card-btn"
               name="{{selectedCoupon.id==item.id ? 'check-circle' : 'circle'}}"></t-icon>
           </view>
@@ -98,7 +105,7 @@
         </t-grid>
       </scroll-view>
       <view class="backgroud-color-fff margin-top">
-        <t-button bindtap="closeCouponListPop" shape="round" theme="primary" t-class="yd-price" block>取消</t-button>
+        <t-button bindtap="closeCouponListPop" shape="round" theme="primary" t-class="selectcoupons-cancel" block>取消</t-button>
         <t-button bindtap="confirmCoupon" shape="round" theme="primary" t-class="yd-py-btn"
           block>确定</t-button>
       </view>

@@ -9,6 +9,7 @@
     "pages/order/index",
     "pages/order-details/index",
     "pages/vip/index",
+    "pages/buy-vip/index",
     "pages/appointment/index",
     "pages/gamelib/index",
     "pages/game-details/index",
@@ -86,8 +87,8 @@
       },
       {
         "pagePath": "pages/gamelib/index",
-        "iconPath": "images/nav/busyorno.png",
-        "selectedIconPath": "images/nav/busyorno-select.png",
+        "iconPath": "images/nav/gamelib-off.png",
+        "selectedIconPath": "images/nav/gamelib-on.png",
         "text": "游戏库"
       },
       {

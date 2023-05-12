@@ -153,7 +153,8 @@
 }
 
 .yd-py-btn{
-  margin-right: 25rpx;
+  margin: 0 0 20rpx 0;
+  width: 40% !important;
    float:right;
    color: #fff !important;
    background-color:  var(--td-brand-color) !important;
@@ -164,6 +165,15 @@
    color:  var(--td-brand-color);
    font-size: 1.3rem;
    font-weight: bold;
+}
+.selectcoupons-cancel{
+  float: left;
+  background-color:  #fff !important;
+  color:var(--td-brand-color) !important;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-align: center;
+  width: 40% !important;
 }
 .unuse_coupons_item{
  
@@ -233,5 +243,14 @@
   float: right;
 }
 .margin-top{
-  margin-top: 20rpx;
+  margin-top: 5rpx;
+}
+.i-know{
+  
+  width: 200rpx !important;
+  height: 50rpx !important;
+  margin-right:0rpx;
+  float: right;
+  line-height: 50rpx !important;
+
 }

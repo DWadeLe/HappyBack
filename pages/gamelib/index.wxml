@@ -16,9 +16,9 @@
     </van-tabs>
     <view wx:if="{{normalSearch}}" class="search_parent">
       <van-dropdown-menu safe-area-tab-bar="{{true}}" style="height:60rpx;width: 60%!important;">
-      <van-dropdown-item optionsColumns="3" 	 options="{{tag.options}}" value="{{tag.value}}"
+      <van-dropdown-item  	options="{{tag.options}}" value="{{tag.value}}"
           bindchange="onTagChange" />
-        <van-dropdown-item optionsColumns="1"  options="{{sorter.options}}"
+        <van-dropdown-item   options="{{sorter.options}}"
           value="{{sorter.value}}" bindchange="onSorterChange" />
       </van-dropdown-menu>
       <t-search shape="square" class="search_normal_btn" bindtap="showHighSearch" placeholder="搜一搜" />

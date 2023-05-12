@@ -60,3 +60,7 @@ swiper-item image {
   height:525rpx;
   border-radius: 15rpx;
 }
+
+scroll-view{
+  height: 99vh;
+}

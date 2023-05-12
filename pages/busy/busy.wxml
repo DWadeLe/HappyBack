@@ -22,16 +22,16 @@
           </view>
           <view class='adminPart'>
             <t-button t-class="float-right" theme="primary" size="small" data-id="{{item.id}}" bindtap="startTime"
-              wx:if="{{item.status==0 && userInfo.admin}}">开始计时</t-button>
+              wx-if="{{item.status==0 && userInfo.admin}}">开始计时</t-button>
             <t-button t-class="float-right" theme="primary" size="small" data-id="{{item.id}}" bindtap="endTime"
-              wx:if="{{item.status==1 && userInfo.admin}}">结束计时</t-button>
+              wx-if="{{item.status==1 && userInfo.admin}}">结束计时</t-button>
           </view>
         </view>
       </view>
     </block>
   </scroll-view>
 
-  <!-- <scroll-view scroll-y="true" scroll-y="false" bindscroll="scroll" scroll-into-view="{{venueToView}}">
+   <scroll-view scroll-y="true" scroll-y="false" bindscroll="scroll" scroll-into-view="{{venueToView}}">
     <view class="title">大厅</view>
     <t-grid class="content">
             
@@ -44,7 +44,7 @@
     <t-grid class="content">
 
     </t-grid>
-  </scroll-view> -->
+  </scroll-view> 
   <t-toast id="t-toast" />
 
 

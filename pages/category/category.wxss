@@ -71,3 +71,7 @@
 .venueDesc {
     font-size: 17rpx;
 }
+
+.appointment-btn{
+    
+}

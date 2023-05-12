@@ -87,7 +87,7 @@
   
 }
 .search_normal_btn{
-  padding:20rpx 20rpx 20rpx 40rpx !important;
+  padding:20rpx !important;
   background-color: #fff !important;
   height:60rpx;
 }

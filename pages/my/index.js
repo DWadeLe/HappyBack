@@ -88,6 +88,11 @@ Page({
     this.getCanUseCouponSize(wx.getStorageSync('userInfo').id);
 
   },
+  goVipCneter(){
+       wx.navigateTo({
+        url:"/pages/vip/index"
+       })
+  },
   getCanUseCouponSize(userId){
     var that=this;
     WXAPI.queryCouponsByUser(userId,{

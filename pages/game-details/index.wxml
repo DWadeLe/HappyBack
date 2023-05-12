@@ -2,7 +2,8 @@
 <view class="page">
   <navigation-bar title="游戏详情"></navigation-bar>
 
-  <view >
+      <scroll-view scroll-y="{{true}}" scroll-with-animation="{{true}}">
+
     <view class="swiper-container">
       <swiper class="swiper_box" autoplay="true" bindchange="swiperchange">
         <block wx:for="{{gameDetail.background_pic_list}}" wx:key="*this">
@@ -17,7 +18,6 @@
         </block>
       </view>
     </view>
-    <scroll-view scroll-y="true" scroll-with-animation="true">
 
       <t-grid theme="card" class="game_detail_1">
         <view class="game_name">{{gameDetail.name}}</view>
@@ -35,21 +35,21 @@
           <span autosize="true" >{{gameDetail.desc}}</span>
         </view>
       </t-grid>
-      <t-grid theme="card" class="game_detail_2">
+      <t-grid bindtap="goUrl" data-url="{{gameDetail.introduce_url}}"  theme="card" class="game_detail_2">
         <view class="game_desc_title">游戏介绍视频</view>
         <view style="position: relative;">
-          <image bindtap="goUrl" data-url="{{gameDetail.introduce_url}}" src="{{gameDetail.introduce_pic}}"
-            mode="aspectFill" style="width: 100%;border-radius: 15rpx;"></image>
+          <image 
+            mode="aspectFill" src="{{gameDetail.introduce_pic}}" style="width: 100%;border-radius: 15rpx;"></image>
           <view style="position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);">
             <image src="../../images/bf.png" style="width: 50px; height: 50px;border-radius: 15rpx;"></image>
           </view>
         </view>
 
       </t-grid>
-      <t-grid theme="card" class="game_detail_2">
+      <t-grid bindtap="goUrl" data-url="{{gameDetail.guideline_url}}" theme="card" class="game_detail_2">
         <view class="game_desc_title">攻略视频地址</view>
         <view style="position: relative;">
-          <image bindtap="goUrl" data-url="{{gameDetail.guideline_url}}" src="{{gameDetail.guideline_pic}}"
+          <image  src="{{gameDetail.guideline_pic}}"
             mode="aspectFill" style="width: 100%;;border-radius: 15rpx;"></image>
           <view style="position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);">
             <image src="../../images/bf.png" style="width: 50px; height: 50px;border-radius: 15rpx;"></image>
@@ -60,7 +60,5 @@
 
     </scroll-view>
 
-  </view>
-
-</view>
 <t-toast id="t-toast" />
+</view>

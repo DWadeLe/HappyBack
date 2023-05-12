@@ -1,8 +1,8 @@
 <!--pages/vip/index.wxml-->
 <view class="page">
-    <navigation-bar title="VIP详情"></navigation-bar>
+    <navigation-bar title="VIP套餐"></navigation-bar>
 
-  <t-grid t-class="stadard_card" wx:if="{{item.id==userInfo.vip_id}}" theme="card" wx:for="{{vipList}}">
+  <t-grid t-class="stadard_card" theme="card" wx:for="{{vipList}}">
     <view class="flex_item">
       <view class="label">会员名称</view>
       <view class="content"> {{item.name}}</view>

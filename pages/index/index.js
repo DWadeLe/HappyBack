@@ -83,7 +83,7 @@ Page({
   },
   goBuyVip(){
     wx.navigateTo({
-      url: "/pages/vip/index"
+      url: "/pages/buy-vip/index"
     })
   },
   toDetailsTap: function (e) {

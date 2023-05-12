@@ -57,12 +57,24 @@ Page({
   confirmCoupon() {
     // 把选中的券名字显示在上面
     var { selectedCoupon } = this.data;
-    this.setData({
-      use_coupon: selectedCoupon.coupon_name,
-      confirmCoupon: selectedCoupon,
-      couponVisible: false,
-      visible: true
-    })
+    if(selectedCoupon){
+      this.setData({
+        use_coupon: selectedCoupon.coupon_name,
+        confirmCoupon: selectedCoupon,
+        couponVisible: false,
+        visible: true
+      })
+    }else{
+      Toast({
+        context: this,
+        selector: '#t-toast',
+        message: "请选择一张卡券",
+        theme: 'warning',
+        direction: 'column',
+      });
+      return
+    }
+    
   },
   onSelectCoupon(e) {
     const data = e.currentTarget.dataset.data;
@@ -121,7 +133,6 @@ Page({
           direction: 'column',
         });
         return
-         return;
       }
 
       wx.requestPayment({
@@ -311,6 +322,12 @@ Page({
       })
 
     })
+  },
+
+  letMeKnow(){
+     this.setData({
+      isReadTip:!this.data.isReadTip
+     })
   },
   onShow() {
 

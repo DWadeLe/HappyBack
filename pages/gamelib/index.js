@@ -102,11 +102,13 @@ Page({
     })
     if (tag && tag != "-1") {
       param.tag = tag
-      if (tag == 0) {
         this.setData({
-          vipTip: true
+          vipTip: tag=='0'
         })
-      }
+    }else{
+      this.setData({
+        vipTip: false
+      })
     }
 
     if (sorter && sorter != "-1") {
@@ -160,7 +162,7 @@ Page({
   },
   onTagChange(e) {
     var tag = this.data.tag;
-    tag.value = e.detail.value;
+    tag.value = e.detail;
     this.setData({
       tag
     });
@@ -168,7 +170,7 @@ Page({
   },
   onSorterChange(e) {
     var sorter = this.data.sorter;
-    sorter.value = e.detail.value;
+    sorter.value = e.detail;
     this.setData({
       sorter
     });

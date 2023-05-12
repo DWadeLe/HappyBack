@@ -2,7 +2,7 @@
 const WXAPI = require('../../wxapi/main')
 const CONFIG = require('../../config.js')
 const dateUtil = require('../../utils/date.js')
-import Toast from 'tdesign-miniprogram/toast/index';
+import Toast from 'tdesign-miniprogram/toast';
 
 const app = getApp()
 Page({
@@ -115,13 +115,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    
     this.setData({
       userInfo: wx.getStorageSync("userInfo")
 
     })
     this.queryVIPList();
-    
   },
 
   /**

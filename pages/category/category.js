@@ -37,13 +37,12 @@ Page({
     this.setData({
       userInfo:wx.getStorageSync('userInfo')
     })
+      
     const systemInfo = wx.getSystemInfoSync();
     var screenWidth = systemInfo.screenWidth;
     var margin = screenWidth * 20 / 750;
     var itemWidth = (screenWidth - 4 * margin) / 4;
-    var buttonMarginTop=(itemWidth * 1.5-margin *2)/2
-    if(this.data.userInfo.admin)
-       buttonMarginTop=(itemWidth * 1.5-margin *2)/3;
+    var buttonMarginTop=(itemWidth * 1.5-margin *2)/3
     
 
     this.setData({
