@@ -1,9 +1,88 @@
-/* pages/vip/index.wxss */
-.go_buy_vip{
+
+
+.qy_parent{
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  margin: 20px 0;
+    flex-wrap: wrap;
+}
+.qy_item{
+  flex-basis: 25%;
+    height: 200rpx;
+    display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   
+}
+.qy_desc{
+   color:white
+}
+.qy_card{
+   margin:20rpx !important;
+   position: relative;
+   background-color: #272b2e !important;
+}
+.qy_icon image{
+  height: 50rpx;
+  width: 50rpx;
+}
+
+.qy_label{
+  float:left;
+  font-size:1.5rem;
+  margin-left:20rpx ;
+}
+
+.qy_card_item{
+  margin:20rpx !important;
+  flex-basis: 25%;
+    display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   
+  position: relative;
+  background-color: #272b2e !important;
+}
+.qy_buy_item{
+  position: relative;
+  background-color: #272b2e !important;
+  font-size: 4vw;
+}
+.qy_buy_item view{
+   padding: 20rpx;
+   width: 95%;
+   /* text-align: center; */
+}
+.qy_buy_title{
+   padding: 0 20rpx !important;
+   height: 50rpx;
+   color:var(--td-brand-color) !important;
+}
+.qy_buy_item image{
+   height: 30rpx;
+   width: 30rpx;
+}
+.qy_buy_card{
+  background-color: #272b2e !important;
+  color:var(--td-brand-color) !important;
+  margin: 20rpx !important;
+}
+
+scroll-view{
+  height: 90vh;
+}
+
+.vip_content view:not(.qy_buy_title) {
+  /* 在这里描述CSS样式 */
+  color:white !important;
+}
+
+.buy_vip_btn{
+   color:black !important;
+   background-color:var(--td-brand-color) !important;
+   font-size: 1rem !important;
+   width: 80% !important;
+   margin: 0 !important;
+   height: 70rpx!important;
+   font-weight: bold;
 }

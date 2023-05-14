@@ -3,6 +3,7 @@
 .search_parent{
   display: flex;
   flex-direction: row;
+  background: white;
 }
 .search_btn{
   width: 40%!important;
@@ -78,13 +79,14 @@
 
 }
 .cacel_btn{
-    width: 25% !important;
-    margin: 0 !important;
-    padding:20rpx 20rpx 20rpx 40rpx !important;
+    width: 20% !important;
+    padding: 20rpx!important;
     text-align: center;
     float: right;
-    background-color: #fff;
-  
+    background-color: var(--td-brand-color) !important;
+    color: #fff !important;
+    height:60rpx;
+    margin: 10rpx;
 }
 .search_normal_btn{
   padding:20rpx !important;
@@ -92,8 +94,8 @@
   height:60rpx;
 }
 .search_btn{
-    padding:20rpx 20rpx 20rpx 40rpx !important;
-    width: 75% !important;
+    padding: 20rpx 20rpx 0 20rpx!important;
+    width: 70% !important;
     float: left;
     height:60rpx;
 }
@@ -105,3 +107,10 @@
    font-size: 1.1rem!important;
    color: var(--td-brand-color) !important;
 }	
+van-dropdown-item .van-dropdown-item__option{
+   width: 25%!important;
+   float: left;
+}
+.my-cell {
+  display: inline-block !important;
+}

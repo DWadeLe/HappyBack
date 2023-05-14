@@ -37,6 +37,7 @@ Page({
       "4":"发起退款",
       "5":"已退款",
     },
+    userInfo:{}
 
 
   },
@@ -270,8 +271,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
+    
     this.setData({
-      orderList:[]
+      orderList:[],
+      userInfo:wx.getStorageSync('userInfo')
    })
     this.queryOrder(this.data.payStatus);
   },

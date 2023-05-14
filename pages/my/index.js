@@ -3,6 +3,7 @@ const wxpay = require('../../utils/pay.js')
 const CONFIG = require('../../config.js')
 const WXAPI = require('../../wxapi/main')
 import Toast from 'tdesign-miniprogram/toast/index';
+const dateUtil = require('../../utils/date')
 
 Page({
   data: {
@@ -140,6 +141,7 @@ Page({
           callback();
           return;
       }
+      userInfo.vip_expire_time=dateUtil.toDate(userInfo.vip_expire_time)
       that.setData({
         userInfo: userInfo,
         isVip: userInfo.vip,
