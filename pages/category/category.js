@@ -57,7 +57,7 @@ Page({
     WXAPI.startTime(e.currentTarget.dataset.id).then(res => {
       if (res.code == 200) {
         Toast({
-          context: this,
+          context: that,
           selector: '#t-toast',
           message: "开机成功",
           theme: 'success',
@@ -65,7 +65,7 @@ Page({
         });
       } else {
         Toast({
-          context: this,
+          context: that,
           selector: '#t-toast',
           message: '开机失败:' + (res.msg || res.message),
           theme: 'error',
@@ -82,7 +82,7 @@ Page({
     WXAPI.endTime(e.currentTarget.dataset.id).then(res => {
       if (res.order_no) {
         Toast({
-          context: this,
+          context: that,
           selector: '#t-toast',
           message: "关机成功",
           theme: 'success',
@@ -104,7 +104,7 @@ Page({
         }, 500)
       } else {
         Toast({
-          context: this,
+          context: that,
           selector: '#t-toast',
           message: '开机失败:' + (res.msg || res.message),
           theme: 'error',
