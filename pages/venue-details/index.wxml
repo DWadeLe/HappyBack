@@ -7,17 +7,9 @@
     <t-calendar visible="{{calendarVisible}}" value="{{date}}" minDate="{{minDate}}" maxDate="{{maxDate}}"
       bind:confirm="handleConfirm" />
     <t-cell arrow title="预约时间" note="{{showDate}}" bind:tap="handleCalendar" />
-    <t-cell class="mb-16" title="选择场次" arrow hover note="{{sessionShow}}"  bind:click="onSessionPicker" />
-        <t-picker
-            visible="{{sessionVisible}}"
-            value="{{session}}"
-            data-key="value"
-            title="选择场次"
-            cancelBtn="取消"
-            confirmBtn="确认"
-            bindconfirm="sessionConfirm"
-            bindcancel="sessionPickerCancel"
-          >
+    <t-cell class="mb-16" title="选择场次" arrow hover note="{{sessionShow}}" bind:click="onSessionPicker" />
+    <t-picker visible="{{sessionVisible}}" value="{{session}}" data-key="value" title="选择场次" cancelBtn="取消"
+      confirmBtn="确认" bindconfirm="sessionConfirm" bindcancel="sessionPickerCancel">
       <t-picker-item options="{{sessionOptions}}" />
     </t-picker>
 
@@ -31,58 +23,53 @@
     </view>
 
     <t-popup class="to_pay" visible="{{visible}}" bind:visible-change="onVisibleChange" placement="{{'bottom'}}">
-      
-        <view class="header">
-          <view class="title">明细</view>
-        </view>
-        <scroll-view scroll-y="true" scroll-with-animation="true">
-        <t-grid theme="card">
-        <t-input disabled label="房间名称" align="right">
-          <view slot="suffix" class="suffix">
-            <view class="weui-cell__ft">{{venueDetail.name}}</view>
-          </view>
-        </t-input>
-        <t-cell class="mb-16" title="选择场次"  note="{{sessionShow}}" arrow hover />
-        <t-picker
-            visible="{{sessionVisible}}"
-            value="{{session}}"
-            data-key="value"
-            title="选择场次"
-            cancelBtn="取消"
-            confirmBtn="确认"
-            bindconfirm="sessionConfirm"
-            bindcancel="sessionPickerCancel"
-          >
-      <t-picker-item options="{{sessionOptions}}" />
-      </t-picker>
 
-        <t-input disabled label="可用券" value="{{use_coupon}}" bind:tap="openCouponList" align="right">
-          <view slot="suffix" class="suffix">
-            <view class="weui-cell__ft" wx:if="{{canUseCoupons.length==0}}">没有可用券</view>
-            <view wx:else="{{canUseCoupons.length==0 }}" class='user_list_quan'>
-              <view class='coupon_dian' ></view>您有未使用的券
-              <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      <view class="header">
+        <view class="title">明细</view>
+      </view>
+      <scroll-view scroll-y="true" scroll-with-animation="true">
+        <t-grid theme="card">
+          <t-input disabled label="房间名称" align="right">
+            <view slot="suffix" class="suffix">
+              <view class="weui-cell__ft">{{venueDetail.name}}</view>
             </view>
-          </view>
-        </t-input>
-        <t-textarea value="{{remark}}" label="备注" placeholder="您可以填您想玩的游戏，我们帮您预热" style="height:400rpx" maxlength="200"
-          disableDefaultPadding="{{true}}" indicator />
+          </t-input>
+          <t-cell class="mb-16" title="选择场次" note="{{sessionShow}}" arrow hover />
+          <t-picker visible="{{sessionVisible}}" value="{{session}}" data-key="value" title="选择场次" cancelBtn="取消"
+            confirmBtn="确认" bindconfirm="sessionConfirm" bindcancel="sessionPickerCancel">
+            <t-picker-item options="{{sessionOptions}}" />
+          </t-picker>
+
+          <t-input disabled label="可用券" value="{{use_coupon}}" bind:tap="openCouponList" align="right">
+            <view slot="suffix" class="suffix">
+              <view class="weui-cell__ft" wx:if="{{canUseCoupons.length==0}}">没有可用券</view>
+              <view wx:else="{{canUseCoupons.length==0 }}" class='user_list_quan'>
+                <view class='coupon_dian'></view>您有未使用的券
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+              </view>
+            </view>
+          </t-input>
+          <t-textarea value="{{remark}}" label="备注" placeholder="您可以填您想玩的游戏，我们帮您预热" style="height:400rpx"
+            maxlength="200" disableDefaultPadding="{{true}}" indicator />
           <t-divider />
           <view style="margin:20rpx;color: red;text-align: center;">非vip用户概不退换，预约支持转卖，请知晓。</view>
 
-        <view class="backgroud-color-fff" style="margin:20rpx">
-          <view class="yd-price"><span style="font-size: 0.9rem;">¥</span>{{venuePriceMap[session].price}}</view>
-                        <t-button disabled="{{!isReadTip}}" bindtap="goPay" theme="primary" shape="round" t-class="yd-py-btn" block>去支付</t-button>
+          <view class="backgroud-color-fff" style="margin:20rpx">
+            <view class="yd-price"><span style="font-size: 0.9rem;">¥</span>{{venuePriceMap[session].price}}</view>
+            <t-button disabled="{{!isReadTip}}" bindtap="goPay" theme="primary" shape="round" t-class="yd-py-btn" block>
+              去支付</t-button>
 
-            <van-checkbox bindtap="letMeKnow" custom-class="i-know" direction="horizontal" checked-color="var(--td-brand-color)"	 style="width: 100rpx;height: 50rpx;" value="{{ isReadTip }}" shape="square" >
-            我已知晓
+            <van-checkbox bindtap="letMeKnow" custom-class="i-know" direction="horizontal"
+              checked-color="var(--td-brand-color)" style="width: 100rpx;height: 50rpx;" value="{{ isReadTip }}"
+              shape="square">
+              我已知晓
             </van-checkbox>
-        </view>
+          </view>
         </t-grid>
-              </scroll-view>
+      </scroll-view>
 
-            
-          
+
+
     </t-popup>
     <!--可用卡券集合<-->
     <t-popup class="coupon_list" visible="{{couponVisible}}" bind:visible-change="onVisibleChange"
@@ -105,9 +92,9 @@
         </t-grid>
       </scroll-view>
       <view class="backgroud-color-fff margin-top">
-        <t-button bindtap="closeCouponListPop" shape="round" theme="primary" t-class="selectcoupons-cancel" block>取消</t-button>
-        <t-button bindtap="confirmCoupon" shape="round" theme="primary" t-class="yd-py-btn"
-          block>确定</t-button>
+        <t-button bindtap="closeCouponListPop" shape="round" theme="primary" t-class="selectcoupons-cancel" block>取消
+        </t-button>
+        <t-button bindtap="confirmCoupon" shape="round" theme="primary" t-class="yd-py-btn" block>确定</t-button>
       </view>
 
 

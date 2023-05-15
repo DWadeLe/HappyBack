@@ -1,0 +1,32 @@
+/* pages/order/index.wxss */
+.title{
+  margin: 20px auto;
+}
+.vip_item{
+font-size: 30rpx;
+line-height: 50rpx;
+margin: 20rpx 20rpx 0 20rpx !important;
+}
+
+.float_right
+{
+ float:right;
+}
+.good_name{
+font-weight: bold;
+}
+.vip_count{
+font-weight: bold;
+}
+.flex_item{
+display: flex;
+justify-content: space-between;
+}
+.vip_operation{
+  position: absolute;
+ height: 60rpx;
+ width: 70%;
+ margin:10rpx 15%;
+ left:0;
+ bottom: 0;
+}
