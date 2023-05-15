@@ -178,7 +178,7 @@ Page({
 
   },
   onTabsClick(e) {
-    var gameType = e.detail.value;
+    var gameType = e.detail.name;
     this.setData({
       gameType,
       current_no: 0,

@@ -3,7 +3,7 @@ const app = getApp()
 const wxpay = require('../../utils/pay.js')
 const dateUtil = require('../../utils/date.js')
 const CONFIG = require('../../config.js')
-const WXAPI = require('../../wxapi/main')
+const WXAPI = require('../../wxapi/main.js')
 Page({
 
   /**
@@ -52,7 +52,7 @@ Page({
 
     let that = this;
 
-    WXAPI.buyVip(this.data.orderMethodMap.id, {
+    WXAPI.buyVip(this.data.vipDetail.id, {
       user_id: this.data.userInfo.id
     }).then(function (res) {
 
@@ -117,6 +117,36 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
+    const systemInfo = wx.getSystemInfoSync();
+    //屏幕高，屏幕宽，可视区高度，状态栏高，像素比
+    var { screenHeight, screenWidth, windowHeight, statusBarHeight, pixelRatio } = systemInfo;
+    var margin = screenWidth * 20 / 750;
+    var itemWidth = (screenWidth - 3 * margin) / 2;
+    var swiperHeight = 475 * screenWidth / 750;
+    const navBarHeight = 44; // 顶部导航栏高度
+    const tabBarHeight = 50; // 底部导航栏高度，注意这个值是固定的
+    /**
+     * 当我们自定义custiom的时候，底部导航栏不在可视区里面
+     * https://blog.csdn.net/qq_46199553/article/details/126030693
+     */
+    const contentHeight = windowHeight - navBarHeight - statusBarHeight;
+    var vip_title_top = navBarHeight + statusBarHeight + 10 * screenWidth / 750
+    var vip_title_left = (screenWidth - (300 * screenWidth/750))/ 2 
+    var vip_desc_title_left = (screenWidth  - (400 * screenWidth/750))/ 2
+    var qy_item_width = screenWidth - 20 * 2 * screenWidth / 750
+    var vip_desc_center_left=(screenWidth -(520 * screenWidth/750))/2
+    var vip_center_left=(screenWidth -(420 * screenWidth/750))/2
+    this.setData({
+      vip_title_top,
+      vip_title_left,
+      vip_desc_title_left,
+      vip_desc_center_left,
+      vip_center_left,
+      qy_item_width,
+      userInfo: wx.getStorageSync("userInfo")
+
+    })
+
   },
 
   /**

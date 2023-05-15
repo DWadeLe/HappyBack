@@ -1,0 +1,131 @@
+/* pages/order/index.wxss */
+.page{
+  background-color: black !important;
+}
+
+
+.title{
+  margin: 20px auto;
+}
+.vip_item{
+font-size: 30rpx;
+line-height: 50rpx;
+margin: 20rpx 20rpx 0 20rpx !important;
+color: white !important;
+background-color: #272b2e !important;
+}
+
+.float_right
+{
+ float:right;
+}
+.good_name{
+font-weight: bold;
+}
+.vip_count{
+font-weight: bold;
+}
+.flex_item{
+display: flex;
+justify-content: space-between;
+}
+.vip_operation{
+ position: fixed !important;
+ height: 100rpx;
+ width: 94%;
+ margin:20rpx 3%;
+ left:0;
+ bottom: 20rpx;
+ color:#fff !important;
+ background-color: var(--td-brand-color) !important;
+ z-index: 6000 !important;
+}
+
+
+.qy_parent{
+  display: flex;
+    flex-wrap: wrap;
+}
+.qy_item{
+  flex-basis: 25%;
+    height: 200rpx;
+    display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   
+}
+.qy_desc{
+   color:white
+}
+.qy_card{
+   margin:20rpx !important;
+   position: relative;
+   background-color: #272b2e !important;
+}
+.qy_icon image{
+  height: 50rpx;
+  width: 50rpx;
+}
+
+.qy_label{
+  float:left;
+  font-size:1.5rem;
+  margin-left:20rpx ;
+  color: #fff;
+}
+
+.qy_card_item{
+  margin:20rpx !important;
+  flex-basis: 25%;
+    display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   
+  position: relative;
+  background-color: #272b2e !important;
+}
+.qy_buy_item{
+  position: relative;
+  background-color: #272b2e !important;
+  font-size: 4vw;
+}
+.qy_buy_item view{
+   padding: 20rpx;
+   width: 95%;
+   /* text-align: center; */
+}
+.qy_buy_title{
+   padding: 0 20rpx !important;
+   height: 50rpx;
+   color:var(--td-brand-color) !important;
+}
+.qy_buy_item image{
+   height: 30rpx;
+   width: 30rpx;
+}
+.qy_buy_card{
+  background-color: #272b2e !important;
+  color:var(--td-brand-color) !important;
+  margin: 20rpx !important;
+}
+
+scroll-view{
+  height: 90vh;
+}
+
+.vip_content view:not(.qy_buy_title) {
+  /* 在这里描述CSS样式 */
+  color:white !important;
+}
+
+.buy_vip_btn{
+   color:black !important;
+   background-color:var(--td-brand-color) !important;
+   font-size: 1rem !important;
+   width: 80% !important;
+   margin: 0 !important;
+   height: 70rpx!important;
+   font-weight: bold;
+}

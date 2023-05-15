@@ -88,19 +88,11 @@ Page({
           theme: 'success',
           direction: 'column',
         });
-        wx.showLoading({
-          title: '前往结算页面中',
-        })
 
         setTimeout(() => {
-          wx.hideLoading({
-            success: (res1) => {
               wx.navigateTo({
                 url: `/pages/settlement/index?order_no=${res.order_no}`
               })
-            },
-          })
-
         }, 500)
       } else {
         Toast({

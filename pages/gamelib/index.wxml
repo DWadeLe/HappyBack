@@ -9,10 +9,10 @@
     loadingTexts="{{['下拉刷新', '松手刷新', '正在刷新', '刷新完成']}}" bind:refresh="onPullDownRefresh" bind:scroll="onScroll">
 
     <van-tabs tab-active-class="tab-active-class" border="{{true}}" color="var(--td-brand-color)"  bind:click="onTabsClick" active="{{gameType}}" type="line">
-      <van-tab  title="Switch" value="1" />
-      <van-tab  title="PS" value="2" />
-      <van-tab  title="Xbox" value="3" />
-      <van-tab  title="购买" value="4" />
+      <van-tab  title="Switch" name="1" />
+      <van-tab  title="PS" name="2" />
+      <van-tab  title="Xbox" name="3" />
+      <van-tab  title="购买" name="4" />
     </van-tabs>
     <view wx:if="{{normalSearch}}" class="search_parent">
       <van-dropdown-menu safe-area-tab-bar="{{true}}" cell-class-name="my-cell" style="height:50rpx;width: 60%!important;">

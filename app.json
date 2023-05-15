@@ -10,6 +10,7 @@
     "pages/order-details/index",
     "pages/vip/index",
     "pages/buy-vip/index",
+    "pages/vip-details/index",
     "pages/appointment/index",
     "pages/gamelib/index",
     "pages/game-details/index",

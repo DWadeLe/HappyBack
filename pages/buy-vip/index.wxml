@@ -34,10 +34,10 @@
 
     <view style="postion:relative;margin:50rpx 20rpx">
       <view
-        style="position:absolute;width:60%;height:50rpx;margin:20rpx 20%;border:1rpx solid white;border-radius:15rpx;z-index:50">
+        style="position:relative;width:420rpx;height:50rpx;left:{{vip_center_left}}px;border:1rpx solid white;border-radius:15rpx;z-index:50">
       </view>
       <view
-        style="position:relative;color:white;height:75rpx;width:128px;left:{{vip_title_left}}px;background-color:black;top:-25rpx;font-size:32px;z-index:100">
+        style="position:relative;color:white;height:75rpx;width:300rpx;text-align:center;left:{{vip_title_left}}px;background-color:black;top:-100rpx;font-size:60rpx;z-index:100">
         会员权益</view>
     </view>
     <t-grid t-class="qy_card" theme="card">
@@ -96,7 +96,7 @@
           <image src="../../images/{{item.level==3?'yes':'no'}}.png"></image>
         </view>
         <view>¥199</view>
-        <view><button class="buy_vip_btn" data-id="{{item.id}}" bindtap="goBuy">办卡</button></view>
+        <view><button class="buy_vip_btn" data-data="{{item}}" bindtap="goBuy">办卡</button></view>
       </t-grid-item>
 
     </t-grid>
@@ -106,10 +106,10 @@
 
     <view style="postion:relative;margin:50rpx 20rpx">
       <view
-        style="position:absolute;width:60%;height:50rpx;margin:20rpx 20%;border:1rpx solid white;border-radius:15rpx;z-index:50">
+        style="position:relative;width:520rpx;height:50rpx;left:{{vip_desc_center_left}}px;border:1rpx solid white;border-radius:15rpx;z-index:50">
       </view>
       <view
-        style="position:relative;color:white;height:75rpx;width:192px;left:{{vip_desc_title_left}}px;background-color:black;top:-25rpx;font-size:32px;z-index:100">
+        style="position:relative;color:white;height:75rpx;width:400rpx;text-align:center;left:{{vip_desc_title_left}}px;background-color:black;top:-100rpx;font-size:60rpx;z-index:100">
         会员权益说明</view>
     </view>
     <view class="qy_label">每月领券</view>

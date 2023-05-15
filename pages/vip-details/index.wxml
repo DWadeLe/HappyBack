@@ -1,14 +1,15 @@
 <view class="page">
-  <navigation-bar title="{{vipDetail.name}详情"></navigation-bar>
-
-  <t-grid class="order_item" theme="card">
+  <navigation-bar title="{{vipDetail.name}}"></navigation-bar>
+ <scroll-view scroll-y="{{true}}">
+  
+  <t-grid class="vip_item" theme="card">
     <view class="flex_item">
       <view class="label">会员价格</view>
       <view class="content"> {{vipDetail.price}}</view>
     </view>
     <view class="flex_item">
       <view class="label">会员折扣</view>
-      <view class="content">  {{vipDetail.price *10}}折</view>
+      <view class="content">  {{vipDetail.discount *10}}折</view>
     </view>
     <view class="flex_item">
       <view class="label">会员权益 </view>
@@ -18,10 +19,14 @@
   </t-grid>
      <!-- 会员权益说明 start -->
 
-    <view  style="postion:relative;margin:50rpx 20rpx">
-          <view style="position:absolute;width:60%;height:50rpx;margin:20rpx 20%;border:1rpx solid white;border-radius:15rpx;z-index:50"></view>
-          <view style="position:relative;color:white;height:75rpx;width:192px;left:{{vip_desc_title_left}}px;background-color:black;top:-25rpx;font-size:32px;z-index:100">会员权益说明</view>
-   </view>
+     <view style="postion:relative;margin:50rpx 20rpx">
+      <view
+        style="position:relative;width:520rpx;height:50rpx;left:{{vip_desc_center_left}}px;border:1rpx solid white;border-radius:15rpx;z-index:50">
+      </view>
+      <view
+        style="position:relative;color:white;height:75rpx;width:400rpx;text-align:center;left:{{vip_desc_title_left}}px;background-color:black;top:-100rpx;font-size:60rpx;z-index:100">
+        会员权益说明</view>
+    </view>
    <view class="qy_label">每月领券</view>
     <t-grid t-class="qy_card_item" style="width:{{qy_item_width}}px !important;" theme="card" >
         <image src="../../images/not_found.png" mode="heightFix"></image>
@@ -40,6 +45,9 @@
     </t-grid>
     <!-- 会员权益说明 end -->
   <t-button t-class="vip_operation" bindtap="toPay"  theme="primary" variant="outline"
-          shape="round">开通</t-button>
+          shape="round">立即开通</t-button>
+
+
+          </scroll-view>
 
 </view>
