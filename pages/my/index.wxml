@@ -19,7 +19,7 @@
           <text style="font-size:34rpx;">{{userNickName}}</text>
           <image wx:if="{{isVip}}" style="width:1rem;height:1rem;vertical-align:middle;margin-left:10rpx;"
             src="../../images/icon/VIP.svg" bindtap="goVipCneter"></image>
-          <view><t-button wx:if="{{!isVip}}" theme="primary"  bindtap="goMap" id="2" variant="outline" size="small" shape="round">开通会员</t-button></view>
+          <view><t-button wx:if="{{!isVip}}" theme="primary"  bindtap="goMap" id="2" variant="outline" size="small" shape="rectangle">开通会员</t-button></view>
         </view>
         <view class='expire_time' wx:if="{{isVip}}">
           <view style="font-size:20rpx;color:var(--td-brand-color);" bindtap="goVipCneter">有效期至{{userInfo.vip_expire_time}}</view>

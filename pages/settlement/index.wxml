@@ -19,8 +19,8 @@
       </t-grid>
     </scroll-view>
     <view class="backgroud-color-fff margin-top">
-      <t-button bindtap="closeCouponListPop" shape="round" t-class="yd-price" block>取消</t-button>
-      <t-button bindtap="confirmCoupon" shape="round" t-class="yd-py-btn" block>确定</t-button>
+      <t-button bindtap="closeCouponListPop" shape="rectangle" t-class="yd-price" block>取消</t-button>
+      <t-button bindtap="confirmCoupon" shape="rectangle" t-class="yd-py-btn" block>确定</t-button>
     </view>
   </t-popup>
   <t-popup bindtap="closeQrCode" placement="center" visible="{{qrCodeVisible}}">

@@ -12,10 +12,10 @@
           </image>
         </view>
         <view style="color:black;float:left;margin: 20rpx;width:{{itemWidth*2}}px;height:{{1.5*itemWidth}}px">
-          <view class="content" style="font-size:0.9rem;font-weight:bold">{{item.name}}</view>
-          <view class="content" style="text-align:center;font-size:0.7rem;font-weight:normal;background-color: #f6f6f6;border-radius: 32rpx;width: 150rpx;">
+          <view  style="font-size:0.9rem;font-weight:bold">{{item.name}}</view>
+          <view  style="color:var(--td-brand-color);text-align:center;font-size:0.7rem;font-weight:normal;background-color: #f6f6f6;border-radius: 32rpx;width: 150rpx;">
           PS,XBOX</view>
-          <view class="content" style="font-size:0.7rem;font-weight:normal">适合2-3人</view>
+          <view  style="font-size:0.7rem;font-weight:normal">适合2-3人</view>
         </view>
         <view
           style="display: flex;flex-direction: column;align-items: center;float:left;margin: 20rpx 20rpx 20rpx 0;width:{{itemWidth}}px;height:{{1.5*itemWidth}}px">

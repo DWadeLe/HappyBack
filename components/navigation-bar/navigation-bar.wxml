@@ -4,7 +4,7 @@
 <!-- 自定义顶部栏 -->
 <view class="nav-bar" style="height:{{navBarHeight}}px;">
     <view wx:if="{{isCanBack}}" bindtap="back" style="position:relative;height:{{0}}px; min-height:{{0}}px; line-height:{{menuHeight}}px; left:22px; top:{{top}}px;">
-        <image  style="width: {{menuHeight-5}}px;height: {{menuHeight-5}}px;" src="../../images/icon/back.svg"></image> 
+        <image  style="width: {{menuHeight-4}}px;height: {{menuHeight-4}}px;" src="../../images/icon/back.svg"></image> 
     </view>
     <!-- 标题 -->
     <view   style="position:relative;height:{{0}}px; min-height:{{0}}px; line-height:{{menuHeight}}px; left:{{centerLeft}}px; top:{{top}}px;">

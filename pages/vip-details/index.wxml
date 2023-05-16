@@ -45,7 +45,7 @@
     </t-grid>
     <!-- 会员权益说明 end -->
   <t-button t-class="vip_operation" bindtap="toPay"  theme="primary" variant="outline"
-          shape="round">立即开通</t-button>
+          shape="rectangle">立即开通</t-button>
 
 
           </scroll-view>

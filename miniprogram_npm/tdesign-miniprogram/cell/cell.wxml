@@ -18,7 +18,7 @@
     <slot name="left-icon" />
     <t-image
       wx:if="{{ image }}"
-      shape="round"
+      shape="rectangle"
       t-class="{{classPrefix}}__left-image {{prefix}}-class-image"
       src="{{ image }}"
     />

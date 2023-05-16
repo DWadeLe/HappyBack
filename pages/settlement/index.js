@@ -15,9 +15,8 @@ Page({
     orderDetail: {},
     userInfo: {},
     orderMethodMap: {
-      1:"现金",
-      2:"用券抵扣",
-      3:"现金+券"
+      0: "线上支付",
+      1: "线下支付"
     },
     paymentVenueMap: {
       "1": "开通会员",

@@ -81,7 +81,7 @@ Page({
   },
   jumpToUrl(e){
     wx.navigateTo({
-      url: e.currentTarget.dataset.jumpUrl
+      url: e.currentTarget.dataset.url
     })
   },
   goBuyVip(){

@@ -108,7 +108,7 @@
    color: var(--td-brand-color) !important;
 }	
 van-dropdown-item .van-dropdown-item__option{
-   width: 25%!important;
+   width: 33%!important;
    float: left;
 }
 .my-cell {

@@ -19,7 +19,7 @@
         <t-cell-group  class="appointment_item" theme="card">
           <t-cell title="{{item.venue_name}}" leftIcon="service" hover />
           <t-cell title="{{item.date}}({{sessionMap[item.session]}})" leftIcon="time" hover />
-          <t-cell wx:if="{{item.status==0}}" bindtap="showQrcode" data-data="{{item}}" title="二维码" leftIcon="qrcode" hover />
+          <t-cell wx:if="{{item.status==1}}" bindtap="showQrcode" data-data="{{item}}" title="二维码" leftIcon="qrcode" hover />
           <t-badge wx:if="{{item.status==0}}" count="未生效" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
           <t-badge wx:if="{{item.status==1}}" count="已生效" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
           <t-badge wx:if="{{item.status==2}}" count="已取消" offset="{{[0, 0]}}" shape="ribbon" slot="note" />

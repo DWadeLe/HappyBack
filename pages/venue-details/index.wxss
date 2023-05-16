@@ -3,6 +3,8 @@
   height: 80rpx;
   line-height: 80rpx;
   border-bottom: 1rpx solid #eee0c0;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 .goods-price {
   color: var(--td-brand-color);
@@ -153,7 +155,7 @@
 }
 
 .yd-py-btn{
-  margin: 0 0 20rpx 0;
+  margin: 0;
   width: 40% !important;
    float:right;
    color: #fff !important;
@@ -253,4 +255,11 @@
   float: right;
   line-height: 50rpx !important;
 
+}
+.grey_py_btn{
+  margin: 0;
+  width: 40% !important;
+   float:right;
+  background-color: grey !important;
+  color:white !important;
 }

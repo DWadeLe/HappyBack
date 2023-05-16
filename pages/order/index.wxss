@@ -25,5 +25,12 @@
 .order_operation{
    margin: 0 20rpx;
    height: 60rpx;
-   width: 200rpx;
+   /* width: 200rpx; */
+   float: right;
+}
+.order-count-down {
+  color: #e34d59 !important;
+  font-size: 36rpx;
+  line-height: 48rpx;
+  vertical-align: middle;
 }
