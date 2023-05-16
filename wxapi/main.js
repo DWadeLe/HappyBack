@@ -16,9 +16,12 @@ const parseParamByJson = (param)=>{
 
 const request = async (url, needSubDomain, method, data) => {
   let _url = API_BASE_URL  + url
-     wx.showLoading({
-       title: '请求中',
-     })
+  if(method!='get'){
+    wx.showLoading({
+      title: '请求中',
+    })
+  }
+     
   const result = await wx.cloud.callContainer({
       "config": {
         "env": "prod-8g7u9tmqac56ab70"
@@ -30,9 +33,12 @@ const request = async (url, needSubDomain, method, data) => {
       "method": method,
       "data": data
     })
+    if(method!='get'){
       wx.hideLoading({
         success: (res) => {},
       })
+    }
+      
     console.log(`url:${url}\n method:${method} \n data:${JSON.stringify(data)} \n result:${JSON.stringify(result.data)}`)
    return result.data;
     // wx.request({
@@ -94,9 +100,7 @@ module.exports = {
     return request(`/order/${user_id}/list?`+parseParamByJson(param), false, 'get', null)
   },
   queryAppointment:(venue_id,date)=>{
-    return request('/appointment/venue/'+venue_id+'/record',false,'get',{
-      date:date
-    })
+    return request('/appointment/venue/'+venue_id+'/record?date='+date,false,'get',null)
   },
   queryVenuePrice:(venue_id)=>{
     return request(`/venue/${venue_id}/price/list`,false,'get',{

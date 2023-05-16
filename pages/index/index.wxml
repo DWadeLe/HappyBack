@@ -40,7 +40,7 @@
         <text style="position:absolute;top: {{itemHeight/3}}px;left:{{parentWidth/2 - fontSize*2 }}px;text-align:right">游戏库</text>
 
       </view>
-      <view class="item_style" style='margin: 0 10rpx 20rpx 20rpx;width: {{itemWidth}}px;height: {{itemHeight }}px'>
+      <view bindtap="onCopyText" class="item_style" style='margin: 0 10rpx 20rpx 20rpx;width: {{itemWidth}}px;height: {{itemHeight }}px'>
         <image
           src="https://7072-prod-8g7u9tmqac56ab70-1318102458.tcb.qcloud.la/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230516083943.jpg?sign=33313af956a610e0c62aa92a004d1824&t=1684209391"
           style="width: {{itemWidth}}px;height: {{itemHeight }}px"></image>
@@ -60,7 +60,7 @@
       <view class="item_style" style='margin: 0 20rpx 20rpx 10rpx;width: {{itemWidth}}px;height: {{itemHeight * 3}}px'>
         <swiper style="width: {{itemWidth}}px;height: {{itemHeight * 3}}px" vertical="true" autoplay="true" bindchange="swiperchange">
           <block wx:for="{{activityList}}" wx:key="id">
-            <swiper-item style="position: relative;">
+            <swiper-item style="position: relative;" bindtap="jumpToUrl" data-url="{{item.jumpUrl}}">
               <image bindtap="tapBanner" data-id="{{item.id}}" src="{{item.picUrl}}"
                 style="width: {{itemWidth}}px;height: {{itemHeight * 3}}px" />
               <text

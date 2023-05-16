@@ -11,9 +11,9 @@
           <image src="{{item.icon}}" style="border-radius:15rpx;width:{{itemWidth}}px;height:{{1.5*itemWidth}}px">
           </image>
         </view>
-        <view style="float:left;margin: 20rpx;width:{{itemWidth*2}}px;height:{{1.5*itemWidth}}px">
+        <view style="color:black;float:left;margin: 20rpx;width:{{itemWidth*2}}px;height:{{1.5*itemWidth}}px">
           <view class="content" style="font-size:0.9rem;font-weight:bold">{{item.name}}</view>
-          <view class="content" style="font-size:0.7rem;font-weight:normal;background-color: grey;border-radius: 32rpx;width: 100rpx;">
+          <view class="content" style="text-align:center;font-size:0.7rem;font-weight:normal;background-color: #f6f6f6;border-radius: 32rpx;width: 150rpx;">
           PS,XBOX</view>
           <view class="content" style="font-size:0.7rem;font-weight:normal">适合2-3人</view>
         </view>

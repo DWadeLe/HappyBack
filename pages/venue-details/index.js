@@ -43,13 +43,19 @@ Page({
   watch: {
 
     date: function (_this, newValue) {
-      const date = new Date(newValue);
-      const year = date.getFullYear();
-      var month = date.getMonth() + 1
-      var day = date.getDate();
-
+      // const date = new Date(newValue);
+      // const year = date.getFullYear();
+      // var month = date.getMonth() + 1
+      // var day = date.getDate();
+      const format = (val) => {
+        const date = new Date(val);
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+        return `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day}`;
+      };
       _this.setData({
-        showDate: `${year}-${month}-${day}`
+        showDate: format(newValue)
       });
     }
 

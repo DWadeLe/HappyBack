@@ -25,7 +25,8 @@ Page({
       {
        "id":1,
        "name":"会员专区",
-       "picUrl":"https://7072-prod-8g7u9tmqac56ab70-1318102458.tcb.qcloud.la/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230516102005.jpg?sign=42fe58f8fd1b4b2f59d26cb580a94ac6&t=1684203675"
+       "picUrl":"https://7072-prod-8g7u9tmqac56ab70-1318102458.tcb.qcloud.la/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230516102005.jpg?sign=42fe58f8fd1b4b2f59d26cb580a94ac6&t=1684203675",
+       "jumpUrl":"/pages/buy-vip/index"
       },
  ],
   },
@@ -76,6 +77,11 @@ Page({
           icon: 'success'
         })
       }
+    })
+  },
+  jumpToUrl(e){
+    wx.navigateTo({
+      url: e.currentTarget.dataset.jumpUrl
     })
   },
   goBuyVip(){
