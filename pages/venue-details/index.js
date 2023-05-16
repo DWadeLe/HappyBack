@@ -165,6 +165,7 @@ Page({
 
 
   sessionConfirm(e) {
+    debugger
     const { key } = e.currentTarget.dataset;
     const { value,label } = e.detail;
     
@@ -229,7 +230,7 @@ Page({
         }
         sessionOptions.push({
           value:item.type,
-          label:`(${item.type==1?'下午场':'夜晚场'})${item.begin_hour}:00-${item.end_hour}:00`
+          text:`(${item.type==1?'下午场':'夜晚场'})${item.begin_hour}:00-${item.end_hour}:00`
        })
       });
 

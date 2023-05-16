@@ -54,6 +54,7 @@
     "t-notice-bar": "tdesign-miniprogram/notice-bar/notice-bar",
     "t-picker": "tdesign-miniprogram/picker/picker",
     "t-picker-item": "tdesign-miniprogram/picker-item/picker-item",
+    "van-picker": "@vant/weapp/picker/index",
     "van-checkbox": "@vant/weapp/checkbox/index"
 
   },
