@@ -265,12 +265,26 @@ Page({
       if (info && info.length > 0) {
         info.forEach(item => {
           if (item.session == 1) {
+            var sessionOptions=that.data.sessionOptions;
+            sessionOptions.forEach(it=>{
+               if(it.value==item.session){
+                   it.disabled=true
+               }
+            })
             that.setData({
               isAfterNoomOrder: true,
+              sessionOptions
             });
           } else {
+            var sessionOptions=that.data.sessionOptions;
+            sessionOptions.forEach(it=>{
+               if(it.value==item.session){
+                   it.disabled=true
+               }
+            })
             that.setData({
               isYYNightOrder: true,
+              sessionOptions
             });
           }
 
