@@ -26,7 +26,7 @@
           <t-button style="width:100rpx;height:50rpx;font-size:23rpx;margin-top:{{buttonMarginTop}}px" theme="primary" size="small"
             data-id="{{item.id}}" bindtap="endTime" wx:if="{{item.status==1 && userInfo.admin}}">结束计时</t-button>
             <t-button style="color:white;background-color:{{item.status==0?'green':'red'}};width:100rpx;height:50rpx;margin-top:{{buttonMarginTop}}px"  size="small"
-             >{{item.status==0?'空闲':'忙碌'}}</t-button>
+             >{{item.status==0?'当前空闲':'当前忙碌'}}</t-button>
         </view>
 
       </block>

@@ -33,15 +33,16 @@
     </t-grid> -->
     <view style='float:left;width: {{parentWidth}}px;height: {{parentHeight}}px'>
       <view bindtap="goGamelib" class="item_style" style='margin: 20rpx 0 20rpx 20rpx;width: {{itemWidth}}px;height: {{itemHeight * 3}}px'>
-        <image src="../../images/banner/gamelib.png" style="width: {{itemWidth}}px;height: {{itemHeight * 3}}px"></image>
+        <image src="https://7072-prod-8g7u9tmqac56ab70-1318102458.tcb.qcloud.la/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230516083927.jpg?sign=925369732e21ec706f0956af7f906195&t=1684202544" style="width: {{itemWidth}}px;height: {{itemHeight * 3}}px"></image>
         </view>
-      <view class="item_style" style='margin: 0 0 20rpx 20rpx;width: {{itemWidth}}px;height: {{itemHeight }}px'>地址 联系电话
+      <view class="item_style" style='margin: 0 0 20rpx 20rpx;width: {{itemWidth}}px;height: {{itemHeight }}px'>
+                  <image src="https://7072-prod-8g7u9tmqac56ab70-1318102458.tcb.qcloud.la/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230516083943.jpg?sign=563cd6890f9f0eb3957be17cd4228742&t=1684202581" style="width: {{itemWidth}}px;height: {{itemHeight }}px"></image>
       </view>
 
     </view>
     <view style='float:left;width: {{parentWidth}}px;height: {{parentHeight}}px'>
       <view bindtap="goBuyVip" class="item_style" style='margin: 20rpx 20rpx 20rpx 0;width: {{itemWidth}}px;height: {{itemHeight }}px'>
-            <image src="../../images/banner/gamelib.jpg" style="width: {{itemWidth}}px;height: {{itemHeight }}px"></image>
+            <image src="https://7072-prod-8g7u9tmqac56ab70-1318102458.tcb.qcloud.la/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230516083921.png?sign=1af44bf50dbeec44d5c123adde440058&t=1684202468" style="width: {{itemWidth}}px;height: {{itemHeight }}px"></image>
       </view>
       <view class="item_style" style='margin: 0 20rpx 20rpx 0;width: {{itemWidth}}px;height: {{itemHeight * 3}}px'>
         <swiper class="swiper_box" vertical="true" autoplay="true" bindchange="swiperchange">
