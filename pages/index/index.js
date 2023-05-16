@@ -14,26 +14,20 @@ Page({
       address: "四川成都市双流区观东一街666号4栋1单元213",
       bussinessTime: "12:00-22:00",
       contractPhone: "18512321654",
-      itemWidth:null,
-      itemHeight:null,
-      parentWidth:null,
-      parentHeight:null,
-      activityList:[
-         {
-          "id":1,
-          "picUrl":"../../images/banner/starkabi.jpg"
-         },
-         {
-          "id":2,
-          "picUrl":"../../images/banner/pikaqiu.jpg"
-         },
-         {
-          "id":3,
-          "picUrl":"../../images/banner/maliao.jpg"
-         },
-    ],
-    swiperCurrent:1
-    }
+     
+      
+    },
+    itemWidth:null,
+    itemHeight:null,
+    parentWidth:null,
+    parentHeight:null,
+    activityList:[
+      {
+       "id":1,
+       "name":"会员专区",
+       "picUrl":"https://7072-prod-8g7u9tmqac56ab70-1318102458.tcb.qcloud.la/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230516102005.jpg?sign=42fe58f8fd1b4b2f59d26cb580a94ac6&t=1684203675"
+      },
+ ],
   },
   onShow() {
 
@@ -52,7 +46,7 @@ Page({
      * https://blog.csdn.net/qq_46199553/article/details/126030693
      */
     const contentHeight = windowHeight  - navBarHeight - statusBarHeight;
-
+    const fontSize= 48 * screenWidth /750
 
     var itemHeight = (contentHeight - margin * 4 -swiperHeight) / 4;
     var parentWidth= screenWidth / 2 ;
@@ -61,8 +55,11 @@ Page({
        itemWidth,
        itemHeight,
        parentWidth,
-       parentHeight
+       parentHeight,
+       margin,
+       fontSize
     })
+    console.log(itemWidth,itemHeight)
 
   },
   swiperchange: function (e) { // banner滚动事件

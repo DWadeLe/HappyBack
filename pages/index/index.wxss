@@ -7,9 +7,13 @@
   width: 750rpx;
   height:475rpx;
 }
-swiper-item image {
+.swiper-container swiper-item {
   width: 750rpx;
   height:475rpx;
+}
+.swiper-container swiper-item image {
+  width: 710rpx;
+  height:455rpx;
   border-radius: 15rpx;
   margin:20rpx 20rpx 0 20rpx;
 }
@@ -114,7 +118,18 @@ swiper-item image {
 }
 
 .item_style{
-  background-color: #B3E5FC;
-  border-radius: 15rpx;
+  background-color: #f6f6f6;
   float: left;
+  position:relative !important;
+}
+.item_style image{
+  border-radius: 15rpx !important;
+}
+
+.item_style text{
+  letter-spacing:24rpx !important;
+  z-index: 20000 !important;
+  color:#fff;
+  font-size: 48rpx;
+  font-weight: bold;
 }
