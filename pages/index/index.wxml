@@ -64,7 +64,7 @@
               <image bindtap="tapBanner" data-id="{{item.id}}" src="{{item.picUrl}}"
                 style="width: {{itemWidth}}px;height: {{itemHeight * 3}}px" />
               <text
-                style="position:absolute;bottom: {{itemHeight/3}}px;left:{{parentWidth/2 - fontSize*(0.5+(item.name.length-1) * 0.75) }}px;text-align:right">{{item.name?item.name:''}}</text>
+                style="position:absolute;bottom: {{itemHeight/3-margin}}px;left:{{parentWidth/2 - fontSize*(0.5+(item.name.length-1) * 0.75) }}px;text-align:right">{{item.name?item.name:''}}</text>
             </swiper-item>
           </block>
         </swiper>
