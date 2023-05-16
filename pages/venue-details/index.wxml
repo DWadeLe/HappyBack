@@ -12,6 +12,7 @@
       confirmBtn="确认" bindconfirm="sessionConfirm" bindcancel="sessionPickerCancel">
       <t-picker-item options="{{sessionOptions}}" />
     </t-picker> -->
+      <t-popup class="to_pay" visible="{{sessionVisible}}" placement="{{'bottom'}}">
       <van-picker
             show-toolbar
             title="选择场次"
@@ -19,6 +20,7 @@
             bind:cancel="sessionPickerCancel"
             bind:confirm="sessionConfirm"
       />
+      </t-popup>
     <view class='goods-price'>价格:
       <!-- <view class="orignal-price">¥{{venueDetail.orginalPrice}}</view> -->
       ¥ {{venuePriceMap[session].price}}

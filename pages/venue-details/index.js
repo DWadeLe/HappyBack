@@ -165,13 +165,11 @@ Page({
 
 
   sessionConfirm(e) {
-    debugger
-    const { key } = e.currentTarget.dataset;
-    const { value,label } = e.detail;
+    const { value,text } = e.detail.value;
     
     this.setData({
       session:value,
-      sessionShow:label,
+      sessionShow:text,
       sessionVisible:false
     })
   },
