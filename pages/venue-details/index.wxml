@@ -26,7 +26,7 @@
       ¥ {{venuePriceMap[session].price}}
     </view>
     <view class="yd-view">
-      <t-button bindtap="goYY" disabled="{{isAfterNoomOrder && isYYNightOrder}}" theme="primary" class="yd-btn" block>
+      <t-button bindtap="goYY" hover-class="default-t-button-hover" disabled="{{isAfterNoomOrder && isYYNightOrder}}"  class="yd-btn" block>
         预约</t-button>
     </view>
 
@@ -57,17 +57,17 @@
           <t-divider />
           <view style="margin:20rpx;color: red;text-align: center;">非vip用户概不退换，预约支持转卖，请知晓。</view>
 
-          <view class="backgroud-color-fff" style="margin:20rpx;display: flex;vertical-align:middle;justify-content: space-between;align-items: center;">
+          <view class="backgroud-color-fff" style="margin:20rpx;text-align: right;">
             <view class="yd-price"><span style="font-size: 0.9rem;">¥</span>{{venuePriceMap[session].price}}</view>
-            
-
-            <van-checkbox bindtap="letMeKnow" custom-class="i-know" direction="horizontal"
+            <view class="yd-item"> <van-checkbox bindtap="letMeKnow" custom-class="i-know" direction="horizontal"
               checked-color="var(--td-brand-color)" style="width: 100rpx;height: 50rpx;" value="{{ isReadTip }}"
               shape="square">
               我已知晓
-            </van-checkbox>
-            <t-button disabled="{{!isReadTip}}" bindtap="goPay"  shape="rectangle" t-class="{{isReadTip?'yd-py-btn':'grey_py_btn'}}" block>
+            </van-checkbox> <t-button disabled="{{!isReadTip}}" hover-class="default-t-button-hover" bindtap="goPay"  shape="rectangle" t-class="{{isReadTip?'yd-py-btn':'grey_py_btn'}}" block>
               去支付</t-button>
+           </view>
+           
+            
           </view>
         </t-grid>
       </scroll-view>
@@ -96,9 +96,9 @@
         </t-grid>
       </scroll-view>
       <view class="backgroud-color-fff margin-top">
-        <t-button bindtap="closeCouponListPop" shape="rectangle" theme="primary" t-class="selectcoupons-cancel" block>取消
+        <t-button bindtap="closeCouponListPop" hover-class="default-t-button-hover" shape="rectangle" theme="primary" t-class="selectcoupons-cancel" block>取消
         </t-button>
-        <t-button bindtap="confirmCoupon" shape="rectangle" theme="primary" t-class="yd-py-btn" block>确定</t-button>
+        <t-button bindtap="confirmCoupon" hover-class="default-t-button-hover" shape="rectangle" theme="primary" t-class="yd-py-btn" block>确定</t-button>
       </view>
 
 

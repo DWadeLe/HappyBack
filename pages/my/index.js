@@ -26,7 +26,8 @@ Page({
     userInfo: {},
     haveCoupons:false,
       title: "个人中心", // 导航栏标题
-    top_color_height:app.globalData.navBarHeight
+    top_color_height:app.globalData.navBarHeight,
+    isWillExpire:false,
   },
   onLoad() {
 
@@ -118,7 +119,7 @@ Page({
 
     var typeMap = {
       "1": "/pages/order/index",
-      "2": "/pages/vip/index",
+      "2": "/pages/buy-vip/index",
       "3": "/pages/mycoupons/index",
       "4": "/pages/appointment/index",
       // "5": "/pages/helporder/index",
@@ -141,10 +142,12 @@ Page({
           callback();
           return;
       }
-      userInfo.vip_expire_time=dateUtil.toDate(userInfo.vip_expire_time)
+      userInfo.vip_expire_time=dateUtil.toDateShort(userInfo.vip_expire_time)
+      
       that.setData({
         userInfo: userInfo,
         isVip: userInfo.vip,
+        isWillExpire:dateUtil.isNowNear(userInfo.vip_expire_time,7)
       });
       wx.setStorageSync("userInfo",userInfo);
 

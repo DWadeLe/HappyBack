@@ -16,7 +16,7 @@
     </van-tabs>
     <view wx:if="{{normalSearch}}" class="search_parent">
       <van-dropdown-menu safe-area-tab-bar="{{true}}" cell-class-name="my-cell" style="height:50rpx;width: 60%!important;">
-      <van-dropdown-item  class="tag-dropdown"	options="{{tag.options}}" value="{{tag.value}}"
+      <van-dropdown-item  	options="{{tag.options}}" value="{{tag.value}}"
           bindchange="onTagChange" />
         <van-dropdown-item   options="{{sorter.options}}"
           value="{{sorter.value}}" bindchange="onSorterChange" />
@@ -26,7 +26,7 @@
     <view wx:else="{{normalSearch}}" class="search_parent">
       <t-search shape="square" class="search_btn" bindtap="search" bind:blur="selectCondition"
         model:value="{{searchName}}" placeholder="请输入搜索的关键字" />
-      <t-button t-class="cacel_btn" bindtap="hideHighSearch">取消</t-button>
+      <t-button hover-class="default-t-button-hover" t-class="cacel_btn" bindtap="hideHighSearch">取消</t-button>
     </view>
     <scroll-view class="block " scroll-y="true" scroll-with-animation="true">
       <block wx:for="{{gameList}}" wx:key="id">

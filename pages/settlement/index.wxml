@@ -19,8 +19,8 @@
       </t-grid>
     </scroll-view>
     <view class="backgroud-color-fff margin-top">
-      <t-button bindtap="closeCouponListPop" shape="rectangle" t-class="yd-price" block>取消</t-button>
-      <t-button bindtap="confirmCoupon" shape="rectangle" t-class="yd-py-btn" block>确定</t-button>
+      <t-button hover-class="default-t-button-hover" bindtap="closeCouponListPop" shape="rectangle" t-class="yd-price" block>取消</t-button>
+      <t-button hover-class="default-t-button-hover" bindtap="confirmCoupon" shape="rectangle" t-class="yd-py-btn" block>确定</t-button>
     </view>
   </t-popup>
   <t-popup bindtap="closeQrCode" placement="center" visible="{{qrCodeVisible}}">
@@ -87,7 +87,7 @@
     <t-grid class="order_item" theme="card"
       wx:if="{{userInfo.admin && (orderDetail.status==0 || orderDetail.status==1) }}">
       <view class="flex_item">
-        <t-button wx:for="{{2}}" t-class="order_button" wx:for-index="idx" bindtap="payByManger" data-index="{{idx}}">{{orderMethodMap[idx]}}
+        <t-button wx:for="{{2}}" hover-class="default-t-button-hover" t-class="order_button" wx:for-index="idx" bindtap="payByManger" data-index="{{idx}}">{{orderMethodMap[idx]}}
         </t-button>
       </view>
     </t-grid>
@@ -103,7 +103,7 @@
         </view>
       </view>
       <view class="flex_item">
-        <t-button bindtap="payByUser" t-class="order_button" theme="primary">去支付</t-button>
+        <t-button bindtap="payByUser" hover-class="default-t-button-hover" t-class="order_button" theme="primary">去支付</t-button>
       </view>
     </t-grid>
     <view style="height: 100px;width: 100%;"></view>
