@@ -108,7 +108,7 @@ Page({
       var now=new Date().getTime();
       var orderList = res;
       orderList.forEach(item => {
-        item.close_time=(15*60*1000 -(now-new Date(item.order_time).getTime()))<=0?0:(15*60*1000  -(now-new Date(item.order_time).getTime()));
+        item.close_time=new Date(item.expire_time).getTime()-now;
         
         item.order_time = dateUtil.toDate(item.order_time);
         item.payment_time = dateUtil.toDate(item.payment_time);
@@ -219,6 +219,7 @@ Page({
           wx.showToast({
             "title":"取消订单成功"
           })
+          that.refreshData();
       }else{
         Toast({
           context: that,

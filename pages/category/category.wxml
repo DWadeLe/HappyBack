@@ -11,19 +11,19 @@
           <image src="{{item.icon}}" style="border-radius:15rpx;width:{{itemWidth}}px;height:{{1.5*itemWidth}}px">
           </image>
         </view>
-        <view style="color:black;float:left;margin: 20rpx;width:{{itemWidth*2}}px;height:{{1.5*itemWidth}}px">
+        <view class="center-item" style="color:black;float:left;margin: 20rpx;width:{{itemWidth*2}}px;height:{{1.5*itemWidth}}px">
           <view  style="font-size:0.9rem;font-weight:bold">{{item.name}}</view>
-          <view  style="color:var(--td-brand-color);text-align:center;font-size:0.7rem;font-weight:normal;background-color: #f6f6f6;border-radius: 32rpx;width: 150rpx;">
+          <view  style="color:var(--td-brand-color);text-align:center;font-size:0.7rem;font-weight:normal;background-color: #f6f6f6;border-radius: 10rpx;width: 150rpx;">
           PS,XBOX</view>
           <view  style="font-size:0.7rem;font-weight:normal">适合2-3人</view>
         </view>
         <view
           style="display: flex;flex-direction: column;align-items: center;float:left;margin: 20rpx 20rpx 20rpx 0;width:{{itemWidth}}px;height:{{1.5*itemWidth}}px">
-          <t-button wx:if="{{!userInfo.admin}}" style="width:100rpx;height:50rpx;margin-top:{{buttonMarginTop}}px" size="small" theme="primary"
+          <t-button hover-class="default-t-button-hover" wx:if="{{!userInfo.admin}}" style="width:100rpx;height:50rpx;margin-top:{{buttonMarginTop}}px" size="small" theme="primary"
             bindtap="toDetailsTap" data-data="{{item}}">预约</t-button>
-          <t-button style="width:100rpx;height:50rpx;font-size:23rpx;margin-top:{{buttonMarginTop}}px" theme="primary" size="small"
+          <t-button hover-class="default-t-button-hover" style="width:100rpx;height:50rpx;font-size:23rpx;margin-top:{{buttonMarginTop}}px" theme="primary" size="small"
             data-id="{{item.id}}" bindtap="startTime" wx:if="{{item.status==0 && userInfo.admin}}">开始计时</t-button>
-          <t-button style="width:100rpx;height:50rpx;font-size:23rpx;margin-top:{{buttonMarginTop}}px" theme="primary" size="small"
+          <t-button hover-class="default-t-button-hover" style="width:100rpx;height:50rpx;font-size:23rpx;margin-top:{{buttonMarginTop}}px" theme="primary" size="small"
             data-id="{{item.id}}" bindtap="endTime" wx:if="{{item.status==1 && userInfo.admin}}">结束计时</t-button>
             <t-button style="color:white;font-size:23rpx;background-color:{{item.status==0?'green':'red'}};width:100rpx;height:50rpx;margin-top:{{buttonMarginTop}}px"  size="small"
              >{{item.status==0?'当前空闲':'当前忙碌'}}</t-button>

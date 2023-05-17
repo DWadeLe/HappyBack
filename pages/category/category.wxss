@@ -71,6 +71,6 @@
     font-size: 17rpx;
 }
 
-.appointment-btn{
-    
+.center-item view{
+    margin: 0 0 40rpx 0;
 }

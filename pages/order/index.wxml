@@ -24,18 +24,18 @@
         </view>
         <view class="flex_item" wx:if="{{item.status==1}}">
           <view>订单即将关闭</view>
-          <t-count-down       t-class-count="order-count-down"  time="{{ item.close_time }}" />
+          <t-count-down     theme="square" content="default"  t-class-count="order-count-down"  time="{{ item.close_time }}" />
         </view>
-        <view class="flex_item">
-          <block class="float-right" wx:if="{{item.status==1}}">
-            <t-button t-class="order_operation" shape="rectangle" bindtap="toPay" data-data="{{item}}" theme="primary"
+        <view class="">
+          <block wx:if="{{item.status==1}}">
+            <t-button hover-class="default-t-button-hover" t-class="order_operation" shape="rectangle" bindtap="toPay" data-data="{{item}}" 
               variant="outline"  >去支付</t-button>
-            <t-button t-class="order_operation" shape="rectangle" bindtap="toCancel" data-data="{{item}}" theme="primary"
+            <t-button hover-class="default-t-button-hover" t-class="order_operation" shape="rectangle" bindtap="toCancel" data-data="{{item}}" 
               variant="outline"  >取消</t-button>
           </block>
           <block  wx:if="{{item.status==2 && userInfo.vip && item.payment_venue==2}}">
-            <t-button t-class="order_operation float_right" shape="rectangle" bindtap="toRefund" data-data="{{item}}" theme="primary"
-              variant="outline" size="small" shape="rectangle">申请退款</t-button>
+            <t-button hover-class="default-t-button-hover" t-class="order_operation" shape="rectangle" bindtap="toRefund" data-data="{{item}}" 
+              variant="outline"  >申请退款</t-button>
           </block>
         </view>
       </t-grid>

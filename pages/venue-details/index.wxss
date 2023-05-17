@@ -96,12 +96,15 @@
 }
 .yd-view{
   position: fixed; /* 将元素固定在页面底部 */
-  bottom: 40rpx; /* 距离页面底部为0 */
-  left: 10rpx; /* 距离页面左边界为0 */
-  width: 100%; /* 宽度占满整个页面 */
+  bottom: 20rpx; /* 距离页面底部为0 */
+  left: 0; /* 距离页面左边界为0 */
+  width: 90%; /* 宽度占满整个页面 */
+  margin: 0 5%;
+
 }
 .yd-btn{
    background-color:  var(--td-brand-color) !important;
+   color: white !important;
 }
 .orignal-price{
   transform: skew(-10deg); /* 将文字倾斜10度 */
@@ -157,7 +160,7 @@
 .yd-py-btn{
   margin: 0;
   width: 40% !important;
-   float:right;
+   float:right !important;
    color: #fff !important;
    background-color:  var(--td-brand-color) !important;
 }
@@ -167,6 +170,15 @@
    color:  var(--td-brand-color);
    font-size: 1.3rem;
    font-weight: bold;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.yd-item{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  float: right;
 }
 .selectcoupons-cancel{
   float: left;
@@ -251,15 +263,15 @@
   
   width: 200rpx !important;
   height: 50rpx !important;
-  margin-right:0rpx;
-  float: right;
+  margin:0rpx !important;
+  float: right !important;
   line-height: 50rpx !important;
 
 }
 .grey_py_btn{
   margin: 0;
   width: 40% !important;
-   float:right;
+   float:right !important;
   background-color: grey !important;
   color:white !important;
 }

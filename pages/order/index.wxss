@@ -23,10 +23,12 @@
   justify-content: space-between;
 }
 .order_operation{
-   margin: 0 20rpx;
+   margin: 0 20rpx 20rpx 0;
    height: 60rpx;
    /* width: 200rpx; */
    float: right;
+   background-color: var(--td-brand-color) !important;
+   color:white !important;
 }
 .order-count-down {
   color: #e34d59 !important;
