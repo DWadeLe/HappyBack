@@ -24,7 +24,7 @@
         </view>
         <view class="flex_item" wx:if="{{item.status==1}}">
           <view>订单即将关闭</view>
-          <t-count-down       t-class-count="order-count-down"  time="{{ item.close_time }}" />
+          <t-count-down     theme="square" content="default"  t-class-count="order-count-down"  time="{{ item.close_time }}" />
         </view>
         <view class="">
           <block wx:if="{{item.status==1}}">

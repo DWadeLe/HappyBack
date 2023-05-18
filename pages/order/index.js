@@ -219,6 +219,7 @@ Page({
           wx.showToast({
             "title":"取消订单成功"
           })
+          that.refreshData();
       }else{
         Toast({
           context: that,

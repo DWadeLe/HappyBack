@@ -112,9 +112,8 @@ van-dropdown-item .van-dropdown-item__option{
    float: left;
 }
 van-dropdown-item .van-dropdown-item__title{
-   width: 70% !important;
-}
+  width: 150%!important;
 
-.my-cell {
+}.my-cell {
   display: inline-block !important;
 }
