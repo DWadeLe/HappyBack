@@ -54,5 +54,6 @@ function isNowNear(timeStr,day){
 
 module.exports = {
     toDate: toDate,
-    toDateShort:toDateShort
+    toDateShort:toDateShort,
+    isNowNear:isNowNear
   }

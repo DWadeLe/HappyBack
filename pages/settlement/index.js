@@ -41,7 +41,7 @@ Page({
     selectedCoupon: {},
     //选中后确认的
     confirmCoupon: {},
-    
+    interval:null,
 
   },
   async changeAmount(event) {
@@ -90,6 +90,11 @@ Page({
       })
       if (res.confirm) {
         that.updateOrder({memo:event.detail.value})
+        var orderDetail=that.data.orderDetail
+        orderDetail.memo=event.detail.value
+        that.setData({
+          orderDetail
+        })
       } else if (res.cancel) {
         return;
       }
@@ -144,8 +149,11 @@ Page({
   payByUser(){
     var that=this
     var data =that.data.orderDetail
+    var coupon_id = that.data.selectedCoupon.id
 
-    WXAPI.payOrderOutline(data.order_no).then(res => {
+    WXAPI.payOrderOnline(data.order_no,{
+      coupon_id
+    }).then(res => {
       if(res.code==200){
         wx.requestPayment({
           appid: "wxf83224ed1b5ec2f4",
@@ -201,11 +209,13 @@ Page({
       userInfo: wx.getStorageSync("userInfo")
     })
     this.queryCurrentOrder(e.order_no);
-
+    var that=this;
     if(this.data.userInfo.admin){
-       setInterval(()=>{
-        this.queryCurrentOrder(e.order_no)
-       },10000)
+       that.setData({
+        interval:setInterval(()=>{
+          this.queryCurrentOrder(that.data.orderDetail.order_no)
+         },1000)
+       })
     }else{
       //不是管理员扫码默认来付钱的
       this.queryCanUseCoupon();
@@ -249,9 +259,23 @@ Page({
       visible: true
     })
   },
+  onSelectCoupon(e) {
+    const data = e.currentTarget.dataset.data;
+    
+    if(this.data.selectedCoupon && data.id==this.data.selectedCoupon.id){
+      //取消
+      this.setData({
+        selectedCoupon: null
+      });
+      return;
+    }
+    this.setData({
+      selectedCoupon: data
+    });
+  },
   queryCanUseCoupon() {
     var that = this;
-    let { coupons_current_no, coupons_page_size, isLastPage } = this.data;
+    let { coupons_current_no, coupons_page_size, isLastPage,_canUseCoupons } = this.data;
     if (isLastPage) {
       return;
     }
@@ -261,7 +285,7 @@ Page({
       "current_no": coupons_current_no,
       "page_size": coupons_page_size
     }).then(res => {
-
+      
       var canUseCoupons = res;
       if (!canUseCoupons || canUseCoupons.length == 0) {
         that.setData({
@@ -273,8 +297,13 @@ Page({
         item.expire_time = dateUtil.toDate(item.expire_time)
         item.use_time = dateUtil.toDate(item.use_time)
       })
+      if(_canUseCoupons)
+      _canUseCoupons.concat(canUseCoupons)
+      else
+      _canUseCoupons=canUseCoupons
+      
       that.setData({
-        canUseCoupons,
+        canUseCoupons:_canUseCoupons
       })
 
     })
@@ -310,7 +339,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload() {
-
+    clearInterval(this.data.interval);
   },
 
   /**

@@ -78,9 +78,6 @@
     <!--可用卡券集合<-->
     <t-popup class="coupon_list" visible="{{couponVisible}}" bind:visible-change="onVisibleChange"
       placement="{{'bottom'}}">
-      <view class="header">
-        <view class="title">可用卡券</view>
-      </view>
       <text wx:if="{{canUseCoupons.length==0}}">没有可用的券</text>
       <scroll-view wx:else="{{canUseCoupons.length==0}}" bindscrolltolower="loadMoreCoupons" class="block scroll_coupon"
         scroll-y="true" scroll-with-animation="true">

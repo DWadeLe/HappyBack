@@ -71,19 +71,25 @@ Page({
         visible: true
       })
     }else{
-      Toast({
-        context: this,
-        selector: '#t-toast',
-        message: "请选择一张卡券",
-        theme: 'warning',
-        direction: 'column',
-      });
-      return
+      this.setData({
+        use_coupon: '',
+        confirmCoupon: null,
+        couponVisible: false,
+        visible: true
+      })
     }
     
   },
   onSelectCoupon(e) {
     const data = e.currentTarget.dataset.data;
+    
+    if(this.data.selectedCoupon && data.id==this.data.selectedCoupon.id){
+      //取消
+      this.setData({
+        selectedCoupon: null
+      });
+      return;
+    }
     this.setData({
       selectedCoupon: data
     });
@@ -312,19 +318,19 @@ Page({
    * 查询未使用的卡券
    * @returns 
    */
-  queryCouponsByUser() {
+  queryCanUseCoupon() {
     var that = this;
-    let { coupons_current_no, coupons_page_size, isLastPage } = this.data;
+    let { coupons_current_no, coupons_page_size, isLastPage,_canUseCoupons } = this.data;
     if (isLastPage) {
       return;
     }
-    //3包场结算
+    //venue==3 机位结算
     WXAPI.queryCouponsByUser(this.data.userInfo.id, {
       "payment_venue": 3, "status": 1,
       "current_no": coupons_current_no,
       "page_size": coupons_page_size
     }).then(res => {
-
+      
       var canUseCoupons = res;
       if (!canUseCoupons || canUseCoupons.length == 0) {
         that.setData({
@@ -332,17 +338,21 @@ Page({
         })
         return;
       }
-      canUseCoupons.forEach(item=>{
+      canUseCoupons.forEach(item => {
         item.expire_time = dateUtil.toDate(item.expire_time)
         item.use_time = dateUtil.toDate(item.use_time)
       })
+      if(_canUseCoupons)
+      _canUseCoupons.concat(canUseCoupons)
+      else
+      _canUseCoupons=canUseCoupons
+      
       that.setData({
-        canUseCoupons,
+        canUseCoupons:_canUseCoupons
       })
 
     })
   },
-
   letMeKnow(){
      this.setData({
       isReadTip:!this.data.isReadTip
