@@ -69,7 +69,7 @@ Page({
         wx.showLoading({
           title: '前往结算页面中',
         })
-        debugger
+        
         setTimeout(() => {
           wx.hideLoading({
             success: (res1) => {

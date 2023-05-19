@@ -22,7 +22,8 @@
         </view>
         <view class='expire_time' wx:if="{{isVip}}">
           <view style="font-size:20rpx;color:{{isWillExpire?'red':'var(--td-brand-color)'}};" bindtap="goVipCneter">有效期至{{userInfo.vip_expire_time}}</view>
-          <view><t-button  hover-class="default-t-button-hover" theme="primary"  bindtap="goVipCneter" variant="outline" size="small" shape="rectangle">去续费</t-button></view>
+          <view style="font-size:20rpx;color:red" bindtap="goVipCneter" >去续费>></view>
+          <!--<t-button  hover-class="default-t-button-hover" theme="primary"  bindtap="goVipCneter" variant="outline" size="small" shape="rectangle">去续费</t-button>-->
         </view>
       </view>
     </view>

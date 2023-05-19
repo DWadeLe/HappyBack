@@ -106,3 +106,39 @@
    color: #fff !important;
 }
 
+.header {
+  display: flex;
+  align-items: center;
+  height: 116rpx;
+  background-color: #f6f6f6;
+}
+
+.scroll_coupon{
+  position: fixed; /* 将元素固定在页面底部 */
+  bottom: 0px; /* 距离页面底部为0 */
+  left: 0; /* 距离页面左边界为0 */
+  width: 100%; /* 宽度占满整个页面 */
+}
+.block {
+  width: 100vw;
+  height: 540px;
+  background: #f6f6f6;
+  border-top-left-radius: 16rpx;
+  border-top-right-radius: 16rpx;
+}
+.selectcoupons-cancel{
+  float: left;
+  background-color:  #fff !important;
+  color:var(--td-brand-color) !important;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-align: center;
+  width: 40% !important;
+}
+.yd-py-btn{
+  margin: 0;
+  width: 40% !important;
+   float:right !important;
+   color: #fff !important;
+   background-color:  var(--td-brand-color) !important;
+}

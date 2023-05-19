@@ -142,8 +142,8 @@ module.exports = {
   updateOrder(order_no,param){
     return request(`/order/${order_no}/update?`+parseParamByJson(param), false, 'post',{})
   },
-  payOrderOnline(order_no){
-    return request(`/order/${order_no}/pay`, false, 'post',{})
+  payOrderOnline(order_no,param){
+    return request(`/order/${order_no}/pay?`+parseParamByJson(param), false, 'post',{})
   },
   payOrderOutline(order_no){
     return request(`/order/${order_no}/paid`, false, 'post',{})
