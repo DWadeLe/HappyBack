@@ -142,12 +142,13 @@ Page({
           callback();
           return;
       }
+      var vip_expire_time=userInfo.vip_expire_time;
       userInfo.vip_expire_time=dateUtil.toDateShort(userInfo.vip_expire_time)
-      
+       
       that.setData({
         userInfo: userInfo,
         isVip: userInfo.vip,
-        isWillExpire:dateUtil.isNowNear(userInfo.vip_expire_time,7)
+        isWillExpire:dateUtil.isNowNear(vip_expire_time,7)
       });
       wx.setStorageSync("userInfo",userInfo);
 
