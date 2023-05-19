@@ -50,19 +50,19 @@
         </view>
         <view class="qy_item">
           <view class="qy_icon">
-        <image src="../../images/icon/vipprice.png" mode="heightFix"></image>
+            <image src="../../images/icon/vipprice.png" mode="heightFix"></image>
           </view>
           <view class="qy_desc">会员折扣</view>
         </view>
         <view class="qy_item">
           <view class="qy_icon">
-        <image src="../../images/icon/vipact.png" mode="heightFix"></image>
+            <image src="../../images/icon/vipact.png" mode="heightFix"></image>
           </view>
           <view class="qy_desc">会员活动</view>
         </view>
         <view class="qy_item">
           <view class="qy_icon">
-        <image src="../../images/icon/vipday.png" mode="heightFix"></image>
+            <image src="../../images/icon/vipday.png" mode="heightFix"></image>
           </view>
           <view class="qy_desc">每周会员日</view>
         </view>
@@ -116,11 +116,13 @@
         style="position:relative;color:white;height:75rpx;width:400rpx;text-align:center;left:{{vip_desc_title_left}}px;background-color:black;top:-100rpx;font-size:60rpx;z-index:100">
         会员权益说明</view>
     </view>
-    <view class="qy_label">开卡赠券</view>
-    <t-grid t-class="qy_card_item" style="width:{{qy_item_width}}px !important;" theme="card">
-      <image src="../../images/not_found.png" mode="heightFix"></image>
-    </t-grid>
-    <view class="qy_label">会员折扣</view>
+    <block wx:for="vipBenefits">
+      <view class="qy_label">{{item.desc}}</view>
+      <t-grid t-class="qy_card_item" style="width:{{qy_item_width}}px !important;" theme="card">
+        <image src="{{item.url?item.url:'../../images/not_found.png'}}" mode="heightFix"></image>
+      </t-grid>
+    </block>
+    <!-- <view class="qy_label">会员折扣</view>
     <t-grid t-class="qy_card_item" style="width:{{qy_item_width}}px !important;" theme="card">
       <image src="../../images/not_found.png" mode="heightFix"></image>
     </t-grid>
@@ -131,7 +133,7 @@
     <view class="qy_label">超级会员日</view>
     <t-grid t-class="qy_card_item" style="width:{{qy_item_width}}px !important;" theme="card">
       <image src="../../images/not_found.png" mode="heightFix"></image>
-    </t-grid>
+    </t-grid> -->
     <!--会员权益说明 end -->
 
   </scroll-view>

@@ -22,7 +22,21 @@ Page({
       "2": "预约",
       "3": "机位结算"
     },
+    vipBenefits:[]
+  },
+  queryVIPBenefits(){
+    let that = this;
 
+    WXAPI.queryVipBenefitsBuyVipId(this.data.vipDetail.id).then(function (res) {
+      var vipBenefits = res;
+
+      that.setData({
+        vipBenefits
+      });
+      wx.hideNavigationBarLoading();
+    }).catch((e) => {
+      wx.hideNavigationBarLoading();
+    });
   },
   
   onPullDownRefresh() {
@@ -103,8 +117,8 @@ Page({
     this.setData({
       vipDetail: JSON.parse(e.data),
       userInfo:wx.getStorageSync("userInfo")
-
     })
+    this.queryVIPBenefits();
   },
 
   /**

@@ -12,7 +12,22 @@ Page({
    */
   data: {
     userInfo: {},
-    vipList: []
+    vipList: [],
+    vipBenefits:[]
+  },
+  queryVIPBenefits(){
+    let that = this;
+
+    WXAPI.queryAllVipBenefits().then(function (res) {
+      var vipBenefits = res;
+
+      that.setData({
+        vipBenefits
+      });
+      wx.hideNavigationBarLoading();
+    }).catch((e) => {
+      wx.hideNavigationBarLoading();
+    });
   },
   queryVIPList() {
 
@@ -91,6 +106,8 @@ Page({
 
 
     this.queryVIPList();
+    this.queryVIPBenefits();
+
   },
 
   /**

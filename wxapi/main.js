@@ -156,6 +156,14 @@ module.exports = {
   },
   queryAppointmentById(record_id){
     return request(`/appointment/user/record/${record_id}`, false, 'get',{})
+  },
+  queryAllVipBenefits(){
+    return request(`/vip/benefits/list`, false, 'get',{})
+
+  },
+  queryVipBenefitsBuyVipId(vip_id){
+    return request(`/vip/${vip_id}/benefits/list`, false, 'get',{})
+
   }
   
   
