@@ -14,10 +14,10 @@
         <view class="center-item"
           style="color:black;float:left;display: flex;flex-direction: column;margin: 20rpx;width:{{itemWidth*2}}px;height:{{1.5*itemWidth}}px">
           <view style="font-size:0.9rem;font-weight:bold">{{item.name}}</view>
-          <view><t-tag class='desc_tag' wx:for="{{item.tag_list}}" wx:for-item="tag" wx:for-index="idx"
-              style="background:{{colorMap[tag]}}" shape="mark">{{tag}}</t-tag></view>  
+          <view><t-tag class='desc_tag' wx:for="{{item.equipment_list}}" wx:for-item="equipment" wx:for-index="idx"
+              style="background:{{colorMap[equipment]}}" shape="mark">{{equipment}}</t-tag></view>  
 
-          <view style="font-size:0.7rem;font-weight:normal">适合2-3人</view>
+          <view style="font-size:0.7rem;font-weight:normal">适合{{item.people_num}}人</view>
         </view>
         <view
           style="display: flex;flex-direction: column;align-items: center;float:left;margin: 20rpx 20rpx 20rpx 0;width:{{itemWidth}}px;height:{{1.5*itemWidth}}px">

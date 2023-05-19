@@ -61,7 +61,7 @@
         <swiper style="width: {{itemWidth}}px;height: {{itemHeight * 3}}px" vertical="true" autoplay="true" bindchange="swiperchange">
           <block wx:for="{{activityList}}" wx:key="id">
             <swiper-item style="position: relative;" bindtap="jumpToUrl" data-url="{{item.jumpUrl}}">
-              <image bindtap="tapBanner" data-id="{{item.id}}" src="{{item.picUrl}}"
+              <image bindtap="tapBanner" data-id="{{item.id}}" src="{{item.pic}}"
                 style="width: {{itemWidth}}px;height: {{itemHeight * 3}}px" />
               <text
                 style="position:absolute;bottom: {{itemHeight/3}}px;left:{{parentWidth/2 - fontSize*(0.5+(item.name.length-1) * 0.75) }}px;text-align:right">{{item.name?item.name:''}}</text>
