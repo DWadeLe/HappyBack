@@ -250,7 +250,7 @@ Page({
       wx.hideNavigationBarLoading();
     });
 
-    this.queryCouponsByUser();
+    this.queryCanUseCoupon();
 
   },
   loadMoreCoupons() {
@@ -258,7 +258,7 @@ Page({
     this.setData({
       coupons_current_no: coupons_current_no + coupons_page_size
     })
-    this.queryCouponsByUser();
+    this.queryCanUseCoupon();
   },
   
   /**
@@ -320,7 +320,8 @@ Page({
    */
   queryCanUseCoupon() {
     var that = this;
-    let { coupons_current_no, coupons_page_size, isLastPage,_canUseCoupons } = this.data;
+    let { coupons_current_no, coupons_page_size, isLastPage } = this.data;
+    let _canUseCoupons=this.data.canUseCoupons
     if (isLastPage) {
       return;
     }

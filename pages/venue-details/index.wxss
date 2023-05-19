@@ -275,3 +275,35 @@
   background-color: grey !important;
   color:white !important;
 }
+.swiper-container swiper-item {
+  width: 750rpx;
+  height:475rpx;
+}
+.swiper-container swiper-item image {
+  width: 710rpx;
+  height:455rpx;
+  border-radius: 15rpx;
+  margin:20rpx 20rpx 0 20rpx;
+}
+
+.swiper-container .dots{  
+  position: absolute;  
+  left: 0;  
+  right: 0;  
+  bottom: 20rpx;  
+  display: flex;  
+  justify-content: center;  
+}  
+.swiper-container .dots .dot{  
+  margin: 0 8rpx;  
+  width: 14rpx;  
+  height: 14rpx;  
+  background: #fff;  
+  border-radius: 50%;  
+  transition: all .6s;  
+  opacity: .5;
+}  
+.swiper-container .dots .dot.active{  
+  width: 14rpx;  
+  opacity: 1;
+}

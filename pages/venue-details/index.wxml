@@ -1,7 +1,20 @@
 <view class="page">
   <navigation-bar title="预约详情"></navigation-bar>
   <view class="page__bd">
-    <image src="{{venueDetail.icon}}" class="goods-image" mode="aspectFit" lazy-load="true" />
+    <view class="swiper-container">
+      <swiper class="swiper_box" autoplay="true" bindchange="swiperchange">
+        <block wx:for="{{venueDetail.background_pic_list}}" wx:key="*this">
+          <swiper-item>
+            <image   src="{{venueDetail.background_pic_list[index]}}" />
+          </swiper-item>
+        </block>
+      </swiper>
+      <view class="dots">
+        <block wx:for="{{venueDetail.background_pic_list}}" wx:key="*this">
+          <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
+        </block>
+      </view>
+    </view>
     <view class='goods-name'>{{venueDetail.name}}</view>
 
     <t-calendar visible="{{calendarVisible}}" value="{{date}}" minDate="{{minDate}}" maxDate="{{maxDate}}"

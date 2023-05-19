@@ -1,4 +1,5 @@
 // pages/category/category.js
+const colorUtil = require('../../utils/color')
 
 const WXAPI = require('../../wxapi/main')
 const app = getApp();
@@ -26,7 +27,8 @@ Page({
     showData:[],
     itemWidth:"",
     buttonMarginTop:"",
-    userInfo:{}
+    userInfo:{},
+    colorMap:{}
   },
 
   /**
@@ -135,25 +137,32 @@ Page({
   },
   getGoodsList: function() {
     let that = this;
+    let colorMap=this.data.colorMap
     WXAPI.queryVenue({
     }).then(function(res) {
       var venueList=res;
       var hall=[];
       var privateRoom=[];
       venueList.forEach((element,index) => {
-           
+        debugger
+        element.tag_list=["PS5","XBOX"];
+        element.tag_list.forEach(tag => {
+          if (!colorMap[tag])
+            colorMap[tag] = colorUtil.getRandomColor()
+        })
           if(element.type==1){
             hall.push(element);
           }else{
             privateRoom.push(element)
           }
-          
+         
      
       });
       that.setData({
         hall: hall,
         privateRoom: privateRoom,
         showData:that.data.categorySelected==2?hall:privateRoom,
+        colorMap
       })
       wx.hideNavigationBarLoading();
     }).catch((e) => {
