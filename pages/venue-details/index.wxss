@@ -275,6 +275,13 @@
   background-color: grey !important;
   color:white !important;
 }
+/* 轮播图 */
+.swiper-container{
+  width: 750rpx;
+  height:455rpx;
+
+  position: relative;  
+}
 .swiper-container swiper-item {
   width: 750rpx;
   height:475rpx;

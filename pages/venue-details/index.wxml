@@ -5,7 +5,7 @@
       <swiper class="swiper_box" autoplay="true" bindchange="swiperchange">
         <block wx:for="{{venueDetail.background_pic_list}}" wx:key="*this">
           <swiper-item>
-            <image   src="{{venueDetail.background_pic_list[index]}}" />
+            <image   src="{{venueDetail.background_pic_list[index]}}"  />
           </swiper-item>
         </block>
       </swiper>
@@ -92,7 +92,7 @@
     <t-popup class="coupon_list" visible="{{couponVisible}}" bind:visible-change="onVisibleChange"
       placement="{{'bottom'}}">
       <text wx:if="{{canUseCoupons.length==0}}">没有可用的券</text>
-      <scroll-view wx:else="{{canUseCoupons.length==0}}" bindscrolltolower="loadMoreCoupons" class="block scroll_coupon"
+      <scroll-view id="scroll-view" wx:else="{{canUseCoupons.length==0}}" bindscrolltolower="loadMoreCoupons" class="block scroll_coupon"
         scroll-y="true" scroll-with-animation="true">
         <t-grid bindtap="onSelectCoupon" data-data="{{item}}" wx:for="{{canUseCoupons}}"
           class="{{item.coupon_type==1?'unuse_coupons_item':'use_coupons_item'}}" theme="card">
@@ -104,6 +104,7 @@
           <t-badge wx:if="{{item.coupon_type==2}}" count="包场" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
           <t-badge wx:if="{{item.coupon_type==3}}" count="小时" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
         </t-grid>
+        <view style="text-align:center" wx:if="{{!isLastPage}}">滑动加载更多...</view>
       </scroll-view>
       <view class="backgroud-color-fff margin-top">
         <t-button bindtap="closeCouponListPop" hover-class="default-t-button-hover" shape="rectangle" theme="primary" t-class="selectcoupons-cancel" block>取消

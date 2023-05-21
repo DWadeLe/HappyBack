@@ -163,7 +163,9 @@ module.exports = {
   },
   queryVipBenefitsBuyVipId(vip_id){
     return request(`/vip/${vip_id}/benefits/list`, false, 'get',{})
-
+  },
+  queryActivityList(){
+    return request(`/index/advertising/list`, false, 'post',{})
   }
   
   

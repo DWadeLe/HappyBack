@@ -71,11 +71,11 @@
     font-size: 17rpx;
 }
 
-.center-item view{
+.center-item>view{
     margin: 0 0 40rpx 0;
 }
 .desc_tag{
-  margin-right: 20rpx;
+  margin-right: 20rpx !important;
   color:#fff !important;
   text-align: center !important;
 }

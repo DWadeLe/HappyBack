@@ -101,6 +101,20 @@ Page({
       })
     }
   },
+  queryActivityList(){
+    var that=this
+    WXAPI.queryActivityList().then(function (res) {
+      var activityList = res;
+
+      that.setData({
+        activityList: activityList,
+
+      });
+      wx.hideNavigationBarLoading();
+    }).catch((e) => {
+      wx.hideNavigationBarLoading();
+    });
+  },
   bindTypeTap: function (e) {
     this.setData({
       selectCurrent: e.index
@@ -108,23 +122,7 @@ Page({
   },
   onLoad: function (e) {
 
-    this.setData({
-      "bannerList": [
-        {
-          "businessId": "1",
-          "picUrl": "../../images/banner/banner1.jpg"
-        },
-        {
-          "businessId": "2",
-          "picUrl": "../../images/banner/banner2.jpg"
-        },
-        {
-          "businessId": "3",
-          "picUrl": "../../images/banner/banner3.jpg"
-        }
-
-      ]
-    })
+    this.queryActivityList();
 
   },
   onPageScroll(e) {

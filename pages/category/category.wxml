@@ -17,26 +17,25 @@
           <view><t-tag class='desc_tag' wx:for="{{item.equipment_list}}" wx:for-item="equipment" wx:for-index="idx"
               style="background:{{colorMap[equipment]}}" shape="mark">{{equipment}}</t-tag></view>  
 
-          <view style="font-size:0.7rem;font-weight:normal">适合{{item.people_num}}人</view>
+          <view style="font-size:0.7rem;font-weight:normal">适合<span style="font-size:1rem;font-weight:bold;color:red">{{item.people_num}}</span>人</view>
         </view>
         <view
           style="display: flex;flex-direction: column;align-items: center;float:left;margin: 20rpx 20rpx 20rpx 0;width:{{itemWidth}}px;height:{{1.5*itemWidth}}px">
           <t-button hover-class="default-t-button-hover" wx:if="{{!userInfo.admin}}"
-            style="width:100rpx;height:50rpx;margin-top:{{buttonMarginTop}}px" size="small" theme="primary"
+            style="width:100rpx;height:50rpx;" size="small" theme="primary"
             bindtap="toDetailsTap" data-data="{{item}}">预约</t-button>
           <t-button hover-class="default-t-button-hover"
-            style="width:100rpx;height:50rpx;font-size:23rpx;margin-top:{{buttonMarginTop}}px" theme="primary"
+            style="width:100rpx;height:50rpx;font-size:23rpx;margin-top:{{2*buttonMarginTop}}px" theme="primary"
             size="small" data-id="{{item.id}}" bindtap="startTime" wx:if="{{item.status==0 && userInfo.admin}}">开始计时
           </t-button>
           <t-button hover-class="default-t-button-hover"
-            style="width:100rpx;height:50rpx;font-size:23rpx;margin-top:{{buttonMarginTop}}px" theme="primary"
+            style="width:100rpx;height:50rpx;font-size:23rpx;margin-top:{{2*buttonMarginTop}}px" theme="primary"
             size="small" data-id="{{item.id}}" bindtap="endTime" wx:if="{{item.status==1 && userInfo.admin}}">结束计时
           </t-button>
           <t-button
-            style="color:white;font-size:23rpx;background-color:{{item.status==0?'green':'red'}};width:100rpx;height:50rpx;margin-top:{{buttonMarginTop}}px"
+            style="color:white;font-size:23rpx;background-color:{{item.status==0?'green':'red'}};width:100rpx;height:50rpx;margin-top:{{2*buttonMarginTop}}px"
             size="small">{{item.status==0?'当前空闲':'当前忙碌'}}</t-button>
         </view>
-
       </block>
     </scrol-view>
   </view>

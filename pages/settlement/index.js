@@ -299,8 +299,8 @@ Page({
         item.expire_time = dateUtil.toDate(item.expire_time)
         item.use_time = dateUtil.toDate(item.use_time)
       })
-      if(_canUseCoupons)
-      _canUseCoupons.concat(canUseCoupons)
+      if(_canUseCoupons!=undefined && _canUseCoupons.length>0)
+      _canUseCoupons=_canUseCoupons.concat(canUseCoupons)
       else
       _canUseCoupons=canUseCoupons
       

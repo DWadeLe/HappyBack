@@ -27,7 +27,7 @@ Page({
     venuePriceMap: {},
     canUseCoupons: [],
     coupons_current_no: 0,
-    coupons_page_size: 10,
+    coupons_page_size: 1,
     isLastPage: false,
     couponVisible: false,
     use_coupon: '',
@@ -118,6 +118,7 @@ Page({
     })
   },
   goPay() {
+    var that=this;
     let isReadTip = this.data.isReadTip;
     if (!isReadTip) {
       return;
@@ -138,7 +139,7 @@ Page({
     WXAPI.appoint(venueDetail.id, param).then(res => {
       if(res.error){
         Toast({
-          context: this,
+          context: that,
           selector: '#t-toast',
           message: "预约异常:"+res.message,
           theme: 'error',
@@ -171,8 +172,17 @@ Page({
 
 
   sessionConfirm(e) {
-    const { value,text } = e.detail.value;
-    
+    const { value,text,disabled } = e.detail.value;
+    if(disabled){
+      Toast({
+        context: this,
+        selector: '#t-toast',
+        message: '无法选中，已被预约',
+        theme: 'warning',
+        direction: 'column',
+      });
+      return
+    }
     this.setData({
       session:value,
       sessionShow:text,
@@ -190,7 +200,7 @@ Page({
 
 
     this.setData({
-      venueDetail: JSON.parse(e.data),
+      venueDetail: JSON.parse(decodeURIComponent(e.data)),
       userInfo: wx.getStorageSync("userInfo")
 
     })
@@ -258,6 +268,10 @@ Page({
     this.setData({
       coupons_current_no: coupons_current_no + coupons_page_size
     })
+    var scrollView = wx.createSelectorQuery().select('#scroll-view');
+    scrollView.scroll({
+      top: 1
+    })
     this.queryCanUseCoupon();
   },
   
@@ -269,6 +283,7 @@ Page({
     WXAPI.queryAppointment(this.data.venueDetail.id, formattedDate).then(function (res) {
       var info = res;
       if (info && info.length > 0) {
+        var isAfterNoomOrder=false,isYYNightOrder=false;
         info.forEach(item => {
           if (item.session == 1) {
             var sessionOptions=that.data.sessionOptions;
@@ -277,6 +292,7 @@ Page({
                    it.disabled=true
                }
             })
+            isAfterNoomOrder=true
             that.setData({
               isAfterNoomOrder: true,
               sessionOptions
@@ -288,6 +304,7 @@ Page({
                    it.disabled=true
                }
             })
+            isYYNightOrder=true
             that.setData({
               isYYNightOrder: true,
               sessionOptions
@@ -295,11 +312,12 @@ Page({
           }
 
         })
-        if (that.data.isAfterNoomOrder && that.data.isYYNightOrder) {
+
+        if (isAfterNoomOrder && isYYNightOrder) {
           Toast({
-            context: this,
+            context: that,
             selector: '#t-toast',
-            message: this.data.showDate + '已预约满了，请下次再来',
+            message: '当前日期已预约满了',
             theme: 'warning',
             direction: 'column',
           });
@@ -343,8 +361,8 @@ Page({
         item.expire_time = dateUtil.toDate(item.expire_time)
         item.use_time = dateUtil.toDate(item.use_time)
       })
-      if(_canUseCoupons)
-      _canUseCoupons.concat(canUseCoupons)
+      if(_canUseCoupons!=undefined && _canUseCoupons.length>0)
+      _canUseCoupons=_canUseCoupons.concat(canUseCoupons)
       else
       _canUseCoupons=canUseCoupons
       

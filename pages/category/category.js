@@ -131,8 +131,9 @@ Page({
     this.getGoodsList();
   },
   toDetailsTap: function (e) {
+    debugger
     wx.navigateTo({
-      url: "/pages/venue-details/index?data=" + JSON.stringify(e.currentTarget.dataset.data)
+      url: "/pages/venue-details/index?data=" + encodeURIComponent(JSON.stringify(e.currentTarget.dataset.data))
     })
   },
   getGoodsList: function() {
@@ -144,9 +145,8 @@ Page({
       var hall=[];
       var privateRoom=[];
       venueList.forEach((element,index) => {
-        debugger
-        element.tag_list=["PS5","XBOX"];
-        element.tag_list.forEach(tag => {
+        
+        element.equipment_list.forEach(tag => {
           if (!colorMap[tag])
             colorMap[tag] = colorUtil.getRandomColor()
         })
